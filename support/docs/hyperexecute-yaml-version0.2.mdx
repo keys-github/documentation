@@ -20,7 +20,7 @@ This version introduces several new features and improvements over Version 0.1. 
 ## Why to use HyperExecute YAML Version 0.2?
 
 - The new framework feature supports caching by default. You do not have to specify any directories to cache for faster performance. If you adds the [`cacheKey`](/support/docs/deep-dive-into-hyperexecute-yaml/#cachekey) and [`cacheDirectories`](/support/docs/deep-dive-into-hyperexecute-yaml/#cachedirectories) keys in your yaml, the default caching gets disabled and preference is given to user specified cache.
-- In Version 0.2, the support for [matrix mode](/support/docs/hyperexecute-matrix-multiplexing-strategy/) has been removed, and only [static discovery](/support/docs/deep-dive-into-hyperexecute-yaml/#mode) is available. This means that the discovery command will run on your system rather than in a matrix.
+- In Version 0.2, the support for [matrix mode](/support/docs/hyperexecute-matrix-multiplexing-strategy) has been removed, and only [static discovery](/support/docs/deep-dive-into-hyperexecute-yaml/#mode) is available. This means that the discovery command will run on your system rather than in a matrix.
 - Since the support for [`testRunnerCommand`](/support/docs/deep-dive-into-hyperexecute-yaml/#testrunnercommand) is removed, the test orchestration will be managed automatically.
 
 ## ```framework```
