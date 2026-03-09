@@ -70,7 +70,54 @@ These images are referenced in docs but files don't exist:
 
 ---
 
-## 3. Notes
+## 3. Broken GitHub Links (Pre-existing in testmuCom)
+
+These GitHub links are broken in BOTH branches (pre-existing issues):
+
+| Link | Issue |
+|------|-------|
+| `https://github.com/actions/virtual-environments/...` | Repo moved/renamed (3 links) |
+| `https://github.com/apps/{private-app-name}/installations/new` | Placeholder - OK |
+| `https://github.com/gaurav8760/Cypress-` | Incomplete URL |
+| `https://github.com/LambdaTest/CSharp-xUnit-Selenium/blob/master/XUnit-` | Incomplete URL |
+| `https://github.com/LambdaTest/Nemo-` | Incomplete URL |
+| `https://github.com/LambdaTest/puppeteer-sample\`` | Has backtick in URL |
+| `https://github.com/LambdaTest/pyppeteer-sample` | Repo not found |
+| `https://github.com/LambdaTest/smartui-figma-web-cli-sample\`` | Has backtick in URL |
+| `https://github.com/LambdaTest/smartui-node-sample\`` | Has backtick in URL |
+| `https://github.com/organization/repo/pull/678` | Placeholder example |
+| `https://github.com/QAbleHQ/LamdaTest_Tesbo_Demo` | Repo not found |
+| `https://github.com/sushobhit-lt/nodejs-selenium-sample.git` | Repo not found |
+
+### FIXED (were only in stage-mintlify):
+- ~~`LambdaTest/applitools-testmu`~~ → Fixed to `applitools-lambdatest-integration`
+- ~~`LambdaTest/webdriverio-TestMu`~~ → Fixed to `webdriverio-selenium-sample`
+
+### FIXED (URL naming issues - 'testmu ai' with space):
+- ~~`ecommerce-playground.testmu ai.io`~~ → Fixed to `ecommerce-playground.lambdatest.io`
+- ~~`4dvanceboy.github.io/testmu ai`~~ → Fixed to `4dvanceboy.github.io/lambdatest`
+- ~~`drone.testmu ai.io`~~ → Fixed to `drone.lambdatest.io`
+- ~~`io.github.lambdatest`~~ → Fixed to `io.github.lambdatest`
+- ~~`fastlane-plugin-testmu ai`~~ → Fixed to `fastlane-plugin-lambdatest`
+- ~~`term=testmu ai`~~ → Fixed to `term=lambdatest` (Azure marketplace)
+- ~~`vpn-on-testmu ai`~~ → Fixed to `vpn-on-lambdatest`
+
+### Many LambdaTest repos returning connection errors (may be private/moved):
+- Multiple `hyp-*` repos
+- Multiple `hyperexecute-*` repos
+- Multiple `lambdatest-*` repos
+- Run `grep -r "github.com/LambdaTest" support/docs/ | grep -E "hyp-|hyperexecute-"` to find affected files
+
+---
+
+## 4. NPM Links
+
+All npm links return 403 (bot protection) but should work in browser:
+- `https://www.npmjs.com/package/testcafe-browser-provider-testmu` - May not exist, verify manually
+
+---
+
+## 5. Notes
 
 ### Issues Already Fixed
 - 13 broken internal doc links fixed

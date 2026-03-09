@@ -173,7 +173,7 @@ Let’s walk through a practical example demonstrating how to migrate a Selenium
 
 **Test Scenario**:
 
-This test script performs a basic text validation on the website [<BrandName /> eCommerce Playground](https://ecommerce-playground.testmu ai.io/) and shows the expected execution results when running the test in the <BrandName /> cloud.
+This test script performs a basic text validation on the website [<BrandName /> eCommerce Playground](https://ecommerce-playground.lambdatest.io/) and shows the expected execution results when running the test in the <BrandName /> cloud.
 
 <Tabs className="docs__val">
 
@@ -216,7 +216,7 @@ public class TextValidationTest {
 
         try {
 
-            driver.get("https://ecommerce-playground.testmu ai.io/");
+            driver.get("https://ecommerce-playground.lambdatest.io/");
 
             String expectedText = "This is a dummy website for Web Automation Testing";
             boolean isTextPresent = driver.getPageSource().contains(expectedText);
@@ -280,7 +280,7 @@ public class TextValidationTest {
 
         try {
 
-            driver.get("https://ecommerce-playground.testmu ai.io/");
+            driver.get("https://ecommerce-playground.lambdatest.io/");
 
             String expectedText = "This is a dummy website for Web Automation Testing";
             boolean isTextPresent = driver.getPageSource().contains(expectedText);
