@@ -1409,6 +1409,7 @@
                   "support/docs/smartui-root-cause-analysis",
                   "support/docs/smartui-visual-ai",
                   "support/docs/smartui-multiselect-bulkops",
+                  "support/docs/smartui-audit-logs",
                   "support/docs/smartui-smart-comments",
                   "support/docs/smartui-draw-on-ui",
                   "support/docs/smartui-custom-css",
@@ -2089,7 +2090,7 @@
                   "support/docs/testingwhiz-integration",
                   "support/docs/testsigma-integration",
                   "support/docs/tricentis-tosca-integration-testmu-selenium-grid",
-                  "support/docs/ghost-inspector-integration-with-lambdatest",
+                  "support/docs/ghost-inspector-integration-with-testmu",
                   "support/docs/accelq-integration",
                   "support/docs/algoqa-integration",
                   {
@@ -3013,7 +3014,7 @@
   },
   "footer": {
     "socials": {
-      "facebook": "https://www.facebook.com/lambdatest/",
+      "facebook": "https://www.facebook.com/testmuai/",
       "x": "https://twitter.com/Lambdatesting",
       "github": "https://github.com/LambdaTest/",
       "linkedin": "https://www.linkedin.com/company/lambdatest/",
