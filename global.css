@@ -27,3 +27,198 @@ a {
 /* .plugins-and-extensions a:hover {
     text-decoration: underline;
 } */
+
+/* ============================================
+   Bottom CTA Banner Styles
+   ============================================ */
+.lt-bottom-cta {
+  background: linear-gradient(135deg, #e8f4fc 0%, #f5fafd 100%);
+  border-radius: 16px;
+  padding: 50px 60px;
+  margin: 50px 0 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.lt-bottom-cta .lt-cta-content {
+  flex: 0 0 40%;
+  max-width: 450px;
+}
+.lt-bottom-cta .lt-cta-content h2 {
+  color: #1a1a2e;
+  margin: 0 0 25px 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.lt-bottom-cta .lt-cta-btn {
+  display: inline-block;
+  background: #c24e00;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.lt-bottom-cta .lt-cta-btn:hover {
+  background: #a94400;
+}
+.lt-bottom-cta .lt-cta-image {
+  flex: 0 0 55%;
+  text-align: right;
+}
+.lt-bottom-cta .lt-cta-image img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 900px) {
+  .lt-bottom-cta {
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+  }
+  .lt-bottom-cta .lt-cta-content,
+  .lt-bottom-cta .lt-cta-image {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .lt-bottom-cta .lt-cta-image {
+    text-align: center;
+  }
+}
+
+/* Help and Support Section */
+.lt-help-support {
+  margin: 40px 0;
+  padding-top: 30px;
+  border-top: 1px solid #e5e7eb;
+}
+.lt-help-support h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 25px 0;
+}
+.lt-help-support-content {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+.lt-help-column {
+  flex: 0 0 auto;
+}
+.lt-help-column-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a2e;
+  margin: 0 0 15px 0;
+}
+.lt-feedback-buttons {
+  display: flex;
+  gap: 10px;
+}
+.lt-feedback-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.lt-feedback-btn:hover {
+  border-color: #c24e00;
+  background: #fff5f0;
+}
+.lt-feedback-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+}
+.lt-help-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lt-help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.lt-help-link:hover {
+  color: #004999;
+  text-decoration: underline;
+}
+.lt-help-link svg {
+  width: 18px;
+  height: 18px;
+  color: #0066cc;
+}
+@media (max-width: 600px) {
+  .lt-help-support-content {
+    gap: 30px;
+  }
+}
+
+/* Feedback Form */
+.lt-feedback-form {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 25px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.lt-feedback-form label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #374151;
+}
+.lt-feedback-form input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.lt-feedback-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+.lt-feedback-form button[type="submit"] {
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.lt-feedback-form button[type="submit"]:hover {
+  background: #2d2d4a;
+}

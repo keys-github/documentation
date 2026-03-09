@@ -3001,6 +3001,16 @@
       "vscode"
     ]
   },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+  "integrations": {
+    "gtm": {
+      "tagId": "GTM-5M2PF5TP"
+    }
+  },
   "footer": {
     "socials": {
       "facebook": "https://www.facebook.com/lambdatest/",
