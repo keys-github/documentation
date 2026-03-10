@@ -2,7 +2,7 @@
 title: "Getting Started With Visual Regression Testing Using Espresso On SmartUI Real Devices"
 sidebarTitle: "Espresso"
 keywords: ['Visual Regression', 'Visual Regression Testing Guide', 'Visual Regression Test Automation', 'Visual Regression Automation Testing', 'Running Visual Regression Tests', 'Visual Regression Testing Online', 'Run Visual Regression', 'Visual Regression Run Specific Test', 'Visual Regression Testing Environment', 'How to Run Visual Regression Tests']
-description: "Dive into our detailed Appium Visual Regression support documentation for step-by-step guidance! Efficiently perform visual testing, manage applications, and ensure your mobile apps are visually perfect before launch."
+"og:description": "Dive into our detailed Appium Visual Regression support documentation for step-by-step guidance! Efficiently perform visual testing, manage applications, and ensure your mobile apps are visually perfect before launch."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -73,16 +73,16 @@ set LT_ACCESS_KEY="$YOUR_LAMBDATEST_ACCESS_KEY"
 It should be in your app configurations then only you can perform the Espresso integration.
 </Note>
 
-- In your `build.gradle` file, add the [testmu ai-espresso](https://central.sonatype.com/artifact/io.github.lambdatest/lambdatest-espresso) dependency:
+- In your `build.gradle` file, add the [lambdatest-espresso](https://central.sonatype.com/artifact/io.github.lambdatest/lambdatest-espresso) dependency:
 
 ```bash
-implementation 'io.github.testmu ai:testmu ai-espresso:1.0.1'
+implementation 'io.github.lambdatest:lambdatest-espresso:1.0.1'
 ```
 
 - Initialize this dependency in your test classes. You can do it as follows:
 
 ```bash java
-import io.github.testmu ai.LTApp;
+import io.github.lambdatest.LTApp;
 public class BrowserTest {
 
   LTApp smartUIApp = new LTApp();

@@ -2,7 +2,7 @@
 title: "Running Playwright Tests With Playwright Test Runner"
 sidebarTitle: "Integrate With Playwright Test Runner"
 keywords: ['playwright testing with playwright test runner - playwright e2e testing with playwright test runner - playwright mobile testing with playwright test runner - playwright testing on testmu ai playwright test runner - playwright testing testmu ai - playwright parallel tests - parallel testing with playwright']
-description: "Learn how to perform Playwright testing using Playwright test runner across 40+ browser versions on the TestMu AI platform."
+"og:description": "Learn how to perform Playwright testing using Playwright test runner across 40+ browser versions on the TestMu AI platform."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -95,7 +95,7 @@ Visit the <BrandName /> Automation dashboard to view the results of your execute
 
 If you are migrating test suites to <BrandName />, then follow the below steps.
 
-1. Add the `testmu ai-setup.js` to your project route.
+1. Add the `lambdatest-setup.js` to your project route.
 
 2. Include the `playwright.config.js` in your project in the below format.
 
@@ -153,7 +153,7 @@ const config = {
 
 3. Add your test script path in `playwright.config.js`.
 
-4. Import the test object from `testmu ai-setup.js` and run your tests.
+4. Import the test object from `lambdatest-setup.js` and run your tests.
 
 ```js
 const { test } = require('../lambdatest-setup')

@@ -192,6 +192,15 @@
   };
 
   const reinitialize = () => {
+    // Don't reinitialize on 404 pages
+    if (is404Page()) {
+      // Clean up any CTA that might have been injected before 404 was detected
+      const existingCTA = document.querySelector('.lt-bottom-cta');
+      const existingHelp = document.querySelector('.lt-help-support');
+      if (existingCTA) existingCTA.remove();
+      if (existingHelp) existingHelp.remove();
+      return;
+    }
     initYouTubeIframes();
     getUsernameToken();
     setupNavbarTracking();
@@ -199,10 +208,39 @@
   };
 
   // ============================================
+  // 404 Detection
+  // ============================================
+  const is404Page = () => {
+    // Check for common 404 indicators
+    const pageText = document.body?.innerText?.toLowerCase() || '';
+    const title = document.title?.toLowerCase() || '';
+
+    // Check if page contains 404 indicators
+    if (title.includes('404') || title.includes('not found')) return true;
+
+    // Check for Mintlify's 404 page elements
+    const h1 = document.querySelector('h1');
+    if (h1 && (h1.textContent.includes('404') || h1.textContent.toLowerCase().includes('not found'))) return true;
+
+    // Check for specific 404 class patterns
+    if (document.querySelector('[class*="not-found"], [class*="error-page"], [class*="404"]')) return true;
+
+    // Check if main content area is missing or empty (indicating 404)
+    const mainContent = document.querySelector('article, [class*="prose"], [class*="markdown"]');
+    if (!mainContent || mainContent.children.length === 0) return true;
+
+    return false;
+  };
+
+  // ============================================
   // Bottom CTA Banner
   // ============================================
   const injectBottomCTA = () => {
+    // Don't inject on home page, docs index, 404 pages, or if already exists
     if (window.location.pathname === '/' || window.location.pathname === '/support/docs/' || document.querySelector('.lt-bottom-cta')) return;
+
+    // Check if this is a 404 page - don't inject CTA on 404 pages
+    if (is404Page()) return;
 
     const main = document.querySelector('main, article, [class*="content"]');
     if (!main) return;
@@ -247,7 +285,16 @@
         </div>
       </div>`;
 
-    const target = main.querySelector('footer') || main.lastElementChild;
+    // Find the Previous/Next navigation to insert before it
+    const navigation = main.querySelector('a[href*="Previous"], a[href*="Next"], [class*="pagination"], [class*="nav-link"], [class*="PrevNext"]')?.closest('div[class*="flex"], nav, div[class*="grid"]');
+
+    // Also try to find by looking for links containing "Previous" or "Next" text
+    const prevNextLinks = Array.from(main.querySelectorAll('a')).filter(a =>
+      a.textContent.includes('Previous') || a.textContent.includes('Next')
+    );
+    const navContainer = prevNextLinks.length > 0 ? prevNextLinks[0].closest('div[class*="flex"], div[class*="grid"], nav') : null;
+
+    const target = navigation || navContainer || main.querySelector('footer') || main.lastElementChild;
     if (target) target.insertAdjacentHTML('beforebegin', html);
     else main.insertAdjacentHTML('beforeend', html);
 
@@ -340,6 +387,18 @@
   };
 
   // ============================================
+  // Cleanup CTA on 404
+  // ============================================
+  const cleanupOn404 = () => {
+    if (is404Page()) {
+      const existingCTA = document.querySelector('.lt-bottom-cta');
+      const existingHelp = document.querySelector('.lt-help-support');
+      if (existingCTA) existingCTA.remove();
+      if (existingHelp) existingHelp.remove();
+    }
+  };
+
+  // ============================================
   // Initialize
   // ============================================
   const init = () => {
@@ -348,7 +407,15 @@
     initYouTubeIframes();
     setupNavbarTracking();
     setupHistoryListener();
-    injectBottomCTA();
+
+    // Only inject CTA if not a 404 page
+    if (!is404Page()) {
+      injectBottomCTA();
+    }
+
+    // Delayed check in case 404 content loads after initial render
+    setTimeout(cleanupOn404, 500);
+    setTimeout(cleanupOn404, 1500);
   };
 
   // Load chat scripts
@@ -363,5 +430,15 @@
   else init();
 
   // Handle Mintlify's dynamic rendering
-  setTimeout(init, 1000);
+  setTimeout(() => {
+    // Run cleanup first to remove any CTA on 404 pages
+    cleanupOn404();
+    // Then run init (which will skip CTA injection on 404)
+    if (!is404Page()) {
+      init();
+    }
+  }, 1000);
+
+  // Additional delayed cleanup to catch late-rendering 404 pages
+  setTimeout(cleanupOn404, 2000);
 })();

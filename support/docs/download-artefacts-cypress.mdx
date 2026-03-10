@@ -3,7 +3,7 @@ title: Downloading Artefacts For A Cypress Project
 sidebarTitle: Download Artefacts For Cypress Project
 
 keywords: ['Cypress Automation', 'Cypress Testing Guide', 'Cypress Artefacts', 'Download Artefacts', 'Artefacts for Cypress', 'Cypress Test Automation', 'Cypress Automation Testing', 'Running Cypress Tests', 'Cypress Project']
-description: "This article guides you on how to download the artefacts for a cypress project from TestMu AI Cloud machine."
+"og:description": "This article guides you on how to download the artefacts for a cypress project from TestMu AI Cloud machine."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -29,17 +29,17 @@ Assuming that you have run a Cypress test on testmu ai platform ( if not, this a
 
 ---
 
-Before getting started, you would have to update the **testmu ai-cypress cli** using the command below:
+Before getting started, you would have to update the **lambdatest-cypress cli** using the command below:
 
 ```bash
-npm install -g testmu ai-cypress-cli
+npm install -g lambdatest-cypress-cli
 ```
 
 ### Add downloads Capability
 
 ---
 
-Add **"downloads"** capability in the `testmu ai-config.json` file and define the files/directories that you wanted to download in this capability. You can mention multiple file paths in this capability separated by a comma. Refer to the below example for the same.
+Add **"downloads"** capability in the `lambdatest-config.json` file and define the files/directories that you wanted to download in this capability. You can mention multiple file paths in this capability separated by a comma. Refer to the below example for the same.
 
 <img loading="lazy" src='/assets/images/cypress/cypress4.png' alt="Image" width="1282" height="722" />
 
@@ -50,7 +50,7 @@ Add **"downloads"** capability in the `testmu ai-config.json` file and define th
 Append `–-sync` flag in the run command as mentioned below and run your test on the <BrandName /> platform. 
 
 ```bash
-testmu ai-cypress run --sync=true
+lambdatest-cypress run --sync=true
 ```
 
 Once the test gets executed, you will find a `build_id` on the console corresponding to the executed test.
@@ -72,13 +72,13 @@ Go to your `lambdatest_run.json` file and copy the `session_id`.
 Now pass the session_id by running the following command.
 
 ```json
-testmu ai-cypress generate-report --session_id 6c899177-047e-4432-a9a7-17776e23aae3
+lambdatest-cypress generate-report --session_id 6c899177-047e-4432-a9a7-17776e23aae3
 ```
 
 ### View The Downloaded Folder
 ---
 
-- A new folder with the name **testmu ai-artifacts** will get created in the **root** directory of your project and all the files will be downloaded in this folder.
+- A new folder with the name **lambdatest-artifacts** will get created in the **root** directory of your project and all the files will be downloaded in this folder.
 
 <img loading="lazy" src='/assets/images/cypress/cypress6.png' alt="Image" width="1282" height="722" />
 

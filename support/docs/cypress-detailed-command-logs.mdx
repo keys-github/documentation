@@ -2,7 +2,7 @@
 title: "Detailed Command Logs for Cypress"
 sidebarTitle: "Cypress Detailed Command Logs"
 keywords: ['cypress testing', 'cypress automation testing', 'hyperexecute cypress testing', 'hyperexecute automation testing', 'hyperexecute cypressv10 testing', 'hyperexecute cypress testing']
-description: "Learn how to generate detailed command logs for the test reports of cypress framework testing on TestMu AI and download the reports from the dashboard."
+"og:description": "Learn how to generate detailed command logs for the test reports of cypress framework testing on TestMu AI and download the reports from the dashboard."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -14,7 +14,7 @@ The logs are presented in an easy-to-read, human-readable format using the [cypr
 ## Prerequisite: Install Cypress and Cypress Terminal Report
 Before proceeding, ensure that you have installed Cypress and the cypress-terminal-report plugin.
 
-In your `package.json` or `testmu ai-config.json` file, add the appropriate version of [cypress-terminal-report](https://www.npmjs.com/package/cypress-terminal-report) as a dependency:
+In your `package.json` or `lambdatest-config.json` file, add the appropriate version of [cypress-terminal-report](https://www.npmjs.com/package/cypress-terminal-report) as a dependency:
 
 ### For Cypress < 10:
 
@@ -28,9 +28,9 @@ In your `package.json` or `testmu ai-config.json` file, add the appropriate vers
 "cypress-terminal-report": "^5.3.2"
 ```
 
-- In the `testmu ai-config.json`, enable detailed command logs by adding the following setting:
+- In the `lambdatest-config.json`, enable detailed command logs by adding the following setting:
 <Note>
-**NOTE:-** You will be able to see this tab only when you use this capability **detailed_command_logs** in run_settings in testmu ai-config.json
+**NOTE:-** You will be able to see this tab only when you use this capability **detailed_command_logs** in run_settings in lambdatest-config.json
 </Note>
 
 ```javascript

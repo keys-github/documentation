@@ -3,7 +3,7 @@ title: Supported Browsers and Operating Systems
 sidebarTitle: Specify Browsers and OS
 
 keywords: ['Cypress Automation', 'Cypress Testing Guide', 'Cypress Test Automation', 'Cypress Automation Testing', 'Running Cypress Tests', 'Cypress Testing Online', 'Run Cypress', 'Cypress Run Specific Test', 'Cypress Testing Environment', 'How to Run Cypress Tests']
-description: "Check out the list of supported browsers and operating systems for Cypress testing on the TestMu AI platform."
+"og:description": "Check out the list of supported browsers and operating systems for Cypress testing on the TestMu AI platform."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -49,15 +49,15 @@ import { BrandName } from "/snippets/BrandName.mdx";
 
 You can run Cypress tests across multiple browsers and OS combinations using the following ways.
 
-1. Configuring the browser and platform keys in `testmu ai-config.json`
+1. Configuring the browser and platform keys in `lambdatest-config.json`
 2. Using the **--browsers** flag 
 
-## Configuring The Browser And Platform Keys In testmu ai-config.json
+## Configuring The Browser And Platform Keys In lambdatest-config.json
 ---
 
-To run Cypress tests on multiple browser and OS configurations, add the *browsers* object in the `testmu ai-config.json` file to define a list of browsers, browser versions and platforms.
+To run Cypress tests on multiple browser and OS configurations, add the *browsers* object in the `lambdatest-config.json` file to define a list of browsers, browser versions and platforms.
 
-Below is the syntax for configuring the browser and platform keys in the `testmu ai-config.json` file.
+Below is the syntax for configuring the browser and platform keys in the `lambdatest-config.json` file.
 
 ```js
    "browsers": [
@@ -83,5 +83,5 @@ You can also run Cypress tests on multiple configurations by specifying the brow
 Below is the command for specifying the browser and platform using **--brs, --browsers** flag.
 
 ```js
-testmu ai-cypress run --browsers "platform:browser:version"
+lambdatest-cypress run --browsers "platform:browser:version"
 ```

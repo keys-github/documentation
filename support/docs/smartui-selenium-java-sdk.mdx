@@ -3,7 +3,7 @@ title: Integrate SmartUI SDK with Selenium-Java
 sidebarTitle: Java
 
 keywords: ['Visual Regression', 'Visual Regression Testing Guide', 'Visual Regression Test Automation', 'Visual Regression Automation Testing', 'Running Visual Regression Tests', 'Visual Regression Testing Online', 'Run Visual Regression', 'Visual Regression Run Specific Test', 'Visual Regression Testing Environment', 'How to Run Visual Regression Tests']
-description: "In this documentation, learn how integrate your Selenium Java automated tests with TestMu AI's SmartUI."
+"og:description": "In this documentation, learn how integrate your Selenium Java automated tests with TestMu AI's SmartUI."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -50,14 +50,14 @@ git clone https://github.com/LambdaTest/smartui-java-testng-sample
 
 ```xml
 <dependency>
-    <groupId>io.github.testmu ai</groupId>
-    <artifactId>testmu ai-java-sdk</artifactId>
+    <groupId>io.github.lambdatest</groupId>
+    <artifactId>lambdatest-java-sdk</artifactId>
     <version>1.0.7</version>
 </dependency>
 ```
 
 <Note>
-**You can check the latest version of [testmu ai-java-sdk]( https://mvnrepository.com/artifact/io.github.lambdatest/lambdatest-java-sdk) and update the latest version accordingly.**
+**You can check the latest version of [lambdatest-java-sdk]( https://mvnrepository.com/artifact/io.github.lambdatest/lambdatest-java-sdk) and update the latest version accordingly.**
 
 </Note>
 ### **Step 3**: Install the Dependencies
@@ -165,7 +165,7 @@ Once, the configuration file will be created, you will be seeing the default con
 - You can incorporate SmartUI into your custom `Selenium` automation test (any platform) script by adding the `smartuiSnapshot` function in the required segment of selenium script of which we would like to take the screenshot, as shown below:
 
 ```java
- //Importing the testmu ai-java SDK
+ //Importing the lambdatest-java SDK
 
 //Rest of your code here
 
@@ -616,7 +616,7 @@ SmartUISnapshot.smartuiSnapshot(driver, "Page Loaded");
 
 **Issue: Maven Dependencies Not Resolving**
 
-**Symptoms**: Maven cannot find `testmu ai-java-sdk` dependency
+**Symptoms**: Maven cannot find `lambdatest-java-sdk` dependency
 
 **Possible Causes**:
 - Incorrect dependency version

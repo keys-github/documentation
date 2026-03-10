@@ -2,7 +2,7 @@
 title: "SmartUI App SDK Integration Guide"
 sidebarTitle: "Appium Java SDK"
 keywords: ['Visual Regression', 'Visual Regression Testing Guide', 'Visual Regression Test Automation', 'Visual Regression Automation Testing', 'Running Visual Regression Tests', 'Visual Regression Testing Online', 'Run Visual Regression', 'Visual Regression Run Specific Test', 'Visual Regression Testing Environment', 'How to Run Visual Regression Tests', 'Mobile App Testing', 'App Visual Testing']
-description: "Learn how to integrate SmartUI App SDK with your existing mobile app testing framework to perform visual regression testing on any cloud provider."
+"og:description": "Learn how to integrate SmartUI App SDK with your existing mobile app testing framework to perform visual regression testing on any cloud provider."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -36,8 +36,8 @@ Add the following dependency to your `pom.xml` file:
 
 ```xml
 <dependency>
-    <groupId>io.github.testmu ai</groupId>
-    <artifactId>testmu ai-java-sdk</artifactId>
+    <groupId>io.github.lambdatest</groupId>
+    <artifactId>lambdatest-java-sdk</artifactId>
     <version>1.0.8</version>
 </dependency>
 ```
@@ -354,8 +354,8 @@ SmartUISnapshot.smartuiSnapshot(driver, "Screen Loaded");
 3. Verify SDK dependency is added to pom.xml:
    ```xml
    <dependency>
-       <groupId>io.github.testmu ai</groupId>
-       <artifactId>testmu ai-java-sdk</artifactId>
+       <groupId>io.github.lambdatest</groupId>
+       <artifactId>lambdatest-java-sdk</artifactId>
        <version>1.0.2</version>
    </dependency>
    ```
@@ -440,7 +440,7 @@ SmartUISnapshot.smartuiSnapshot(driver, "Screen Loaded");
 
 **Issue: Maven Dependencies Not Resolving**
 
-**Symptoms**: Maven cannot find `testmu ai-java-sdk` or dependencies fail
+**Symptoms**: Maven cannot find `lambdatest-java-sdk` or dependencies fail
 
 **Possible Causes**:
 - Incorrect dependency version

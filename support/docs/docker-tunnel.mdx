@@ -4,7 +4,7 @@ title: Localhost Testing With Docker Tunnel
 sidebarTitle: Docker Tunnel
 
 keywords: ['local app testing', 'testmu ai local testing', 'testmu ai local tunnel', '<BrandName /> tunnel', 'local app testing for linux', 'ssh connection', 'shared ssh', 'secure-shell-tunnel', 'docker compose ssh tunnel', 'docker vpn tunnel']
-description: "Now you can use Docker image to perform live interactive and automated cross-browser testing of your locally hosted webpage on the TestMu AI platform."
+"og:description": "Now you can use Docker image to perform live interactive and automated cross-browser testing of your locally hosted webpage on the TestMu AI platform."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -27,41 +27,41 @@ With Docker Tunnel, you will also be able to create multiple instances of <Brand
 
 Initially, you need to pull the [Docker hub image of Lambda Tunnel](https://hub.docker.com/r/lambdatest/tunnel). You can use the below command to raise the pull request.
 
-`docker pull testmu ai/tunnel:latest`
+`docker pull lambdatest/tunnel:latest`
 
 <img loading="lazy" src='/assets/images/docker-tunnel/raise-the-pull-request.webp' alt="Image" width="756" height="169" />
 
 In order to pull the other docker images from the hub, use the below command:
 
 * **Legacy Alpine:**
-`docker pull testmu ai/tunnel:legacy-alpine`
+`docker pull lambdatest/tunnel:legacy-alpine`
 
 * **Alpine:**
-`docker pull testmu ai/tunnel:alpine`
+`docker pull lambdatest/tunnel:alpine`
 
 * **Legacy:**
-`docker pull testmu ai/tunnel:legacy`
+`docker pull lambdatest/tunnel:legacy`
 
 * **Burrow:**
-`docker pull testmu ai/tunnel:burrow`
+`docker pull lambdatest/tunnel:burrow`
 
 This image supports all the [tunnel modifier flags](/support/docs/lambda-tunnel-modifiers/) available in the tunnel command-line binary and passes them as the entry point. Let us see some of them:
 
 * **Version Checking**: You can check the installed version of the <BrandName /> Tunnel using the below command.
 
-`docker run -it  testmu ai/tunnel --version`
+`docker run -it  lambdatest/tunnel --version`
 
 <img loading="lazy" src='/assets/images/docker-tunnel/version-tracking.webp' alt="Image" width="732" height="91" />
 
 * **Basic Authentication and Login**: You can login into your <BrandName /> Tunnel with Docker image, with the help of below command:
 
-`docker run -it --name lt testmu ai/tunnel --user johndoe --key XXXXXXXXXXXX`
+`docker run -it --name lt lambdatest/tunnel --user johndoe --key XXXXXXXXXXXX`
 
 <img loading="lazy" src='/assets/images/docker-tunnel/Basic-Authentication-and-Login.webp' alt="Image" width="1534" height="179" />
 
 * **Capturing logs in mounted volume on host machine**: You can capture these logs with the help of below command:
 
-`docker run -it  -v /mydir:/logs testmu ai/tunnel --user joendoe --key XXXXXXXX --logFile /logs/tunnel.log`
+`docker run -it  -v /mydir:/logs lambdatest/tunnel --user joendoe --key XXXXXXXX --logFile /logs/tunnel.log`
 
 <img loading="lazy" src='/assets/images/docker-tunnel/Capturing-logs.webp' alt="Image" width="1540" height="169" />
 
@@ -69,7 +69,7 @@ This image supports all the [tunnel modifier flags](/support/docs/lambda-tunnel-
 
 Suppose the InfoAPI is available on the host over port 13001, then you need to expose the docker container port to host in the form 13001:8000. Use the below command to infuse the InfoAPI in the current docker image:
 
-`docker run -it -p 13001:8000 testmu ai/tunnel --user johndoe --key XXXXXXX  --infoAPIPort 8000`
+`docker run -it -p 13001:8000 lambdatest/tunnel --user johndoe --key XXXXXXX  --infoAPIPort 8000`
 
 <img loading="lazy" src='/assets/images/docker-tunnel/Getting-Tunnel-Status.webp' alt="Image" width="1534" height="176" />
 
@@ -81,7 +81,7 @@ Now, in order to fetch the current tunnel status, just execute the below command
 
 * You can also use **Proxy running on host machine at port 8082 having foo and bar as username and key** as per the example shown below:
 
-`docker run -it testmu ai/tunnel --user johndoe --key XXXXXXX  --proxy-host host.docker.internal  --proxy-port 8082 --proxy-user foo --proxy-pass bar`
+`docker run -it lambdatest/tunnel --user johndoe --key XXXXXXX  --proxy-host host.docker.internal  --proxy-port 8082 --proxy-user foo --proxy-pass bar`
 
 * You can also use Proxy running on another docker container within same default bridge network, assuming the container in which proxy is running has IP 172.17.0.2.
 
@@ -91,7 +91,7 @@ Note: The IP can be found from inside of the container or by inspecting the netw
 
 Consider the below example:
 
-`docker run -it testmu ai/tunnel --user johndoe --key XXXXXXX  --proxy-host 172.17.0.2  --proxy-port 8082 --proxy-user foo --proxy-pass bar`
+`docker run -it lambdatest/tunnel --user johndoe --key XXXXXXX  --proxy-host 172.17.0.2  --proxy-port 8082 --proxy-user foo --proxy-pass bar`
 
 * You can also use Proxy running on another docker container within same custom bridge network, assuming the container in which proxy is running has IP 172.17.0.2.
 
@@ -101,7 +101,7 @@ Note: When you create custom network, containers can reach each other using cont
 
 Consider the below example:
 
-`docker run -it testmu ai/tunnel --user johndoe --key XXXXXXX  --proxy-host proxy-service  --proxy-port 8082 --proxy-user foo --proxy-pass bar`
+`docker run -it lambdatest/tunnel --user johndoe --key XXXXXXX  --proxy-host proxy-service  --proxy-port 8082 --proxy-user foo --proxy-pass bar`
 
 * In order to stop the Docker tunnel, you can use the above mentioned InfoAPI, according to the command shown below:
 
@@ -119,7 +119,7 @@ By default <BrandName /> tunnel can no longer access web apps running on host ma
 
 On Linux, containers can run in a special network mode called host. This network mode makes the container use host’s network stack and doesn’t create an isolated one for the containers. Running the following command makes the tunnel containers run with host networking and can access the host’s network. The test scripts can access services running on the host machine using the localhost.
 
-`docker run -it  --network host testmu ai/tunnel --user johndoe --key XXXXXXXXXXXX`
+`docker run -it  --network host lambdatest/tunnel --user johndoe --key XXXXXXXXXXXX`
 
 **For Mac and Windows Machines:**
 

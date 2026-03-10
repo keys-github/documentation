@@ -2,7 +2,7 @@
 title: "Accessibility Testing on HyperExecute using Cypress v10"
 sidebarTitle: "Cypress v10"
 keywords: ['TestMu AI', 'Accessibility', 'Testing', 'Cypress', 'Cypress version 10', 'Automation', 'Accessibility Testing Settings']
-description: "Use TestMu AI Accessibility DevTools with HyperExecute to detect and report accessibility issues, adhering to WCAG guidelines, in your cypress tests for version 10 and above"
+"og:description": "Use TestMu AI Accessibility DevTools with HyperExecute to detect and report accessibility issues, adhering to WCAG guidelines, in your cypress tests for version 10 and above"
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -78,14 +78,14 @@ set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ### Step 2: Update the Necessary Capabilities and Configurations in your project
 
 #### 1. Install the Cypress CLI
-You will have to pass the `npm i testmu ai-cypress-cli` command in your [pre steps](/support/docs/deep-dive-into-hyperexecute-yaml/#pre) to install the <BrandName /> Cypress CLI which will be used to execute your Cypress tests.
+You will have to pass the `npm i lambdatest-cypress-cli` command in your [pre steps](/support/docs/deep-dive-into-hyperexecute-yaml/#pre) to install the <BrandName /> Cypress CLI which will be used to execute your Cypress tests.
 
 ```yaml title="hyperexecute.yaml"
 pre:
   - npm install
   - npm install cypress --save-dev
 #   highlight-next-line
-  - npm i testmu ai-cypress-cli
+  - npm i lambdatest-cypress-cli
 ```
 
 #### 2. Add the capabilities in the YAML file
@@ -105,7 +105,7 @@ cypressOps:
 Add this import statement in your `e2e.js` file to import the acceessibility scanner dependency
 
 ```javascript title="cypress/support/e2e.js"
-import 'testmu ai-cypress-cli/accessibility/scanner'
+import 'lambdatest-cypress-cli/accessibility/scanner'
 ```
 
 #### 4. In the `cypress.config.js` file
@@ -114,7 +114,7 @@ Add this code snippet in your `cypress.config.js` file.
 
 ```javascript title="cypress.config.js"
 const { defineConfig } = require("cypress");
-const lambdatestAccessibility = require('testmu ai-cypress-cli/accessibility/plugin');
+const lambdatestAccessibility = require('lambdatest-cypress-cli/accessibility/plugin');
 
 module.exports = defineConfig({
     ...//

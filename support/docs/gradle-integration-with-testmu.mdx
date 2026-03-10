@@ -2,7 +2,7 @@
 title: "Gradle Plugin Integration With TestMu AI"
 sidebarTitle: "Gradle Plugin"
 keywords: ['testmu ai integrations', 'push issues to localstack', 'free cross browser testing tool', 'cross platform testing tools', 'check browser compatibility online', 'testmu ai gradle integration', 'integrate gradle with testmu ai', 'create issue in gradle from testmu ai', 'gradle integration with testmu ai', 'bug tracking tools', 'project management tools']
-description: "Automate testing at scale! Integrate TestMu AI with Gradle for seamless CI/CD & lightning-fast execution."
+"og:description": "Automate testing at scale! Integrate TestMu AI with Gradle for seamless CI/CD & lightning-fast execution."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -26,7 +26,7 @@ Gradle is a build automation tool for multi-language software development. It co
 
 ```java title="build.gradle"
 plugins {
-    id 'io.github.testmu ai.gradle' version '1.0.7'
+    id 'io.github.lambdatest.gradle' version '1.0.7'
 }
 
 repositories {
@@ -52,7 +52,7 @@ runLambdaTest {
 ```
 
 ### Step 3: Configure Upload APK Parameters
-With the release of version **`1.0.7`** of the `testmu ai-gradle-plugin`, users now have the option to upload their APK files directly to <BrandName />. Add the following configuration to build.gradle to enable APK upload:
+With the release of version **`1.0.7`** of the `lambdatest-gradle-plugin`, users now have the option to upload their APK files directly to <BrandName />. Add the following configuration to build.gradle to enable APK upload:
 
 ```java title="build.gradle"
 uploadApkToLambdaTest {

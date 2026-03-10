@@ -222,3 +222,8 @@ a {
 .lt-feedback-form button[type="submit"]:hover {
   background: #2d2d4a;
 }
+
+/* Hide default Mintlify "Was this page helpful?" feedback widget */
+#feedback {
+  display: none !important;
+}

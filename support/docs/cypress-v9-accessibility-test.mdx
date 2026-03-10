@@ -4,7 +4,7 @@ title: Automation Tests with Accessibility Tool using Cypress v9
 sidebarTitle:  Cypress v9 
 
 keywords: ['<BrandName />', 'Accessibility', 'Testing', 'Cypress', 'Cypress version 9', 'Automation', 'Accessibility Testing Settings']
-description: "Use TestMu AI Accessibility DevTools to detect and report accessibility issues with automation, following WCAG guidelines, in your cypress tests for version 9 and above"
+"og:description": "Use TestMu AI Accessibility DevTools to detect and report accessibility issues with automation, following WCAG guidelines, in your cypress tests for version 9 and above"
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -36,7 +36,7 @@ Download or Clone the code sample from the <BrandName /> GitHub repository to ru
 
 Configure the desired capabilities based on your test requirements. For example:
 
-```yaml reference title="testmu ai-config.json"
+```yaml reference title="lambdatest-config.json"
   https://github.com/LambdaTest/lambdatest-accessibility-cypress-v9/blob/main/lambdatest ai-config.json
 ```
 
@@ -82,18 +82,18 @@ set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 "devDependencies": {
   "@cypress/eslint-plugin-dev": "5.0.0",
   // highlight-next-line
-  "testmu ai-cypress-cli": "^3.0.30"
+  "lambdatest-cypress-cli": "^3.0.30"
 },
 ```
 
 - If you are using **<BrandName />-config.json** to pass the dependency, then pass the given line there:
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 "run_settings": {
   //...
   "npm_dependencies": {
      "cypress": "10.0.0",
-     "testmu ai-cypress-cli": "^3.0.30"
+     "lambdatest-cypress-cli": "^3.0.30"
   },
   //...
 }
@@ -102,7 +102,7 @@ set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 - if you are not passing npm dependency in **<BrandName />-config.json** you can run
 
 ```bash
-npm i testmu ai-cypress-cli   
+npm i lambdatest-cypress-cli   
 ```
 
 #### 2. In the `support/index.js` file
@@ -110,7 +110,7 @@ npm i testmu ai-cypress-cli
 Add this import statement in your `index.js` file to import the acceessibility scanner dependency
 
 ```javascript
-import 'testmu ai-cypress-cli/accessibility/scanner'
+import 'lambdatest-cypress-cli/accessibility/scanner'
 ```
 
 #### 3. In the `cypress/plugins/index.js` file
@@ -118,7 +118,7 @@ import 'testmu ai-cypress-cli/accessibility/scanner'
 Add this template in your `index.js` file.
 
 ```javascript title="index.js"
-const lambdatestAccessibility = require('testmu ai-cypress-cli/accessibility/plugin');
+const lambdatestAccessibility = require('lambdatest-cypress-cli/accessibility/plugin');
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
@@ -130,11 +130,11 @@ module.exports = (on, config) => {
 
 ```
 
-#### 4. Add the capabilities in the `testmu ai-config.json` file
+#### 4. Add the capabilities in the `lambdatest-config.json` file
 
 To enable the accessibility testing within your automated test suite, set the `accessibility: true` in your configuration file. You can also define other settings capabilities as described below.
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 "accessibility" : true,                 // Enable accessibility testing
 "accessibility.wcagVersion": "wcag21a", // Specify WCAG version (e.g., WCAG 2.1 Level A)
 "accessibility.bestPractice": false,    // Exclude best practice issues from results

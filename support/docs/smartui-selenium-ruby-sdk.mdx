@@ -3,7 +3,7 @@ title: Integrate SmartUI SDK with Selenium-Ruby
 sidebarTitle: Ruby
 
 keywords: ['Visual Regression', 'Visual Regression Testing Guide', 'Visual Regression Test Automation', 'Visual Regression Automation Testing', 'Running Visual Regression Tests', 'Visual Regression Testing Online', 'Run Visual Regression', 'Visual Regression Run Specific Test', 'Visual Regression Testing Environment', 'How to Run Visual Regression Tests']
-description: "In this documentation, learn how integrate your Selenium Ruby automated tests with TestMu AI's SmartUI."
+"og:description": "In this documentation, learn how integrate your Selenium Ruby automated tests with TestMu AI's SmartUI."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -58,7 +58,7 @@ npm install @lambdatest/smartui-cli
 </Note>
 
 ```
-gem install testmu ai-selenium-driver selenium-webdriver
+gem install lambdatest-selenium-driver selenium-webdriver
 ```
 
 ### **Step 3:** Configure your Project Token
@@ -150,7 +150,7 @@ Once, the configuration file will be created, you will be seeing the default con
 
 ```ruby
 require "selenium-webdriver"
-require "testmu ai/selenium/driver"
+require "lambdatest/selenium/driver"
 
 driver = Selenium::WebDriver.for :chrome
 driver.navigate.to "https://www.pinterest.com/pin/16958936087791895/"
@@ -374,7 +374,7 @@ If you encounter difficulties loading interactive elements that appear on scroll
 
 ```rb Example for scrolling to bottom for lazy elements
 require 'selenium-webdriver'
-require 'testmu ai/selenium/driver'
+require 'lambdatest/selenium/driver'
 
 def quick_scroll_to_bottom(driver, last_page_wait)
   height = driver.execute_script("return document.body.scrollHeight")
@@ -583,7 +583,7 @@ wait.until { driver.find_element(id: 'main-content') }
 
 **Issue: Gem Dependencies Not Resolving**
 
-**Symptoms**: Bundler cannot find `testmu ai-selenium-driver` gem
+**Symptoms**: Bundler cannot find `lambdatest-selenium-driver` gem
 
 **Possible Causes**:
 - Incorrect gem version
@@ -604,7 +604,7 @@ wait.until { driver.find_element(id: 'main-content') }
    ```
 5. Update Gemfile with specific version:
    ```ruby
-   gem 'testmu ai-selenium-driver', '~"> 1.0'
+   gem 'lambdatest-selenium-driver', '~"> 1.0'
    ```
 
 </Tab>

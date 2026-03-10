@@ -2,7 +2,7 @@
 title: "Integrate SmartUI SDK with Playwright-Python"
 sidebarTitle: "Python"
 keywords: ['Visual Regression', 'Visual Regression Testing Guide', 'Visual Regression Test Automation', 'Visual Regression Automation Testing', 'Running Visual Regression Tests', 'Visual Regression Testing Online', 'Run Visual Regression', 'Visual Regression Run Specific Test', 'Visual Regression Testing Environment', 'How to Run Visual Regression Tests']
-description: "In this documentation, learn how integrate your Playwright Python automated tests with TestMu AI's SmartUI."
+"og:description": "In this documentation, learn how integrate your Playwright Python automated tests with TestMu AI's SmartUI."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -73,7 +73,7 @@ npm install @lambdatest/smartui-cli
 
 </Note>
 ```bash
-pip install testmu ai-playwright-driver
+pip install lambdatest-playwright-driver
 ```
 
 ### Step 3: Configure your Project Token
@@ -567,7 +567,7 @@ smartui_snapshot(page, "Page Loaded")
 
 **Issue: pip Dependencies Not Resolving**
 
-**Symptoms**: pip cannot find `testmu ai-playwright-driver` or package installation fails
+**Symptoms**: pip cannot find `lambdatest-playwright-driver` or package installation fails
 
 **Possible Causes**:
 - Incorrect package version
@@ -578,7 +578,7 @@ smartui_snapshot(page, "Page Loaded")
 **Solutions**:
 1. Check latest version:
    ```bash
-   pip index versions testmu ai-playwright-driver
+   pip index versions lambdatest-playwright-driver
    ```
 
 2. Clear pip cache:
@@ -597,7 +597,7 @@ smartui_snapshot(page, "Page Loaded")
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install testmu ai-playwright-driver
+   pip install lambdatest-playwright-driver
    ```
 
 </Tab>

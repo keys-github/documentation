@@ -2,7 +2,7 @@
 title: "How to run selenium test with google cloud CI"
 sidebarTitle: "Google Cloud CI"
 keywords: ['ci cd google cloud', 'ci cd pipeline google cloud', 'google cloud ci selenium', 'google cloud ci', 'testmu ai integration with google cloud ci']
-description: "This documentation will help you in integrating Selenium test suites with Google Cloud CI and perform automated testing on cloud Selenium grid."
+"og:description": "This documentation will help you in integrating Selenium test suites with Google Cloud CI and perform automated testing on cloud Selenium grid."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -101,7 +101,7 @@ To run parallel tests on <BrandName /> cloud, you will need to make minor tweaks
 ```
 steps:
 - name: gcr.io/cloud-builders/docker
-  args: ['run' , '-d', '--name=lt', '--network=cloudbuild', 'testmu ai/tunnel', '--user', '${_LT_USERNAME}', '--key', '${_LT_ACCESS_KEY}', '--tunnelName', 'GCloud', '--infoAPIPort', '15000','--load-balanced']
+  args: ['run' , '-d', '--name=lt', '--network=cloudbuild', 'lambdatest/tunnel', '--user', '${_LT_USERNAME}', '--key', '${_LT_ACCESS_KEY}', '--tunnelName', 'GCloud', '--infoAPIPort', '15000','--load-balanced']
 - name: curlimages/curl
   args: ['-s', '--retry-connrefused', '--connect-timeout', '5', '--max-time', '5', '--retry', '30', '--retry-delay', '2', '--retry-max-time', '60', 'http://lt:15000/api/v1.0/info']
 - name: 'ubuntu'
@@ -133,7 +133,7 @@ To run local tests on <BrandName /> cloud, you will need to make minor tweaks in
 ```
 steps:
 - name: gcr.io/cloud-builders/docker
-  args: ['run' , '-d', '--name=lt', '--network=cloudbuild', 'testmu ai/tunnel', '--user', '${_LT_USERNAME}', '--key', '${_LT_ACCESS_KEY}', '--tunnelName', 'GCloud', '--infoAPIPort', '15000','--load-balanced']
+  args: ['run' , '-d', '--name=lt', '--network=cloudbuild', 'lambdatest/tunnel', '--user', '${_LT_USERNAME}', '--key', '${_LT_ACCESS_KEY}', '--tunnelName', 'GCloud', '--infoAPIPort', '15000','--load-balanced']
 - name: curlimages/curl
   args: ['-s', '--retry-connrefused', '--connect-timeout', '5', '--max-time', '5', '--retry', '30', '--retry-delay', '2', '--retry-max-time', '60', 'http://lt:15000/api/v1.0/info']
 - name: 'ubuntu'

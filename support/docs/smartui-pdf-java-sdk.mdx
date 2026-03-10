@@ -2,7 +2,7 @@
 title: "Upload PDFs via Java SDK"
 sidebarTitle: "Java SDK Upload"
 keywords: ['PDF Java SDK', 'SmartUI Java SDK', 'Visual Regression Testing', 'PDF Testing', 'Java Development']
-description: "Learn how to upload PDF files to SmartUI using the Java SDK for programmatic visual regression testing."
+"og:description": "Learn how to upload PDF files to SmartUI using the Java SDK for programmatic visual regression testing."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -52,8 +52,8 @@ Add the SmartUI Java SDK to your `pom.xml`:
 
 ```xml
 <dependency>
-    <groupId>io.github.testmu ai</groupId>
-    <artifactId>testmu ai-java-sdk</artifactId>
+    <groupId>io.github.lambdatest</groupId>
+    <artifactId>lambdatest-java-sdk</artifactId>
     <version>1.0.18</version>
 </dependency>
 ```
@@ -416,7 +416,7 @@ config.withBuildName(PDF-Comparison-v1.0-" + LocalDate.now());
 
 **Issue: Maven Dependencies Not Resolving**
 
-**Symptoms**: Maven cannot find `testmu ai-java-sdk` or dependencies fail
+**Symptoms**: Maven cannot find `lambdatest-java-sdk` or dependencies fail
 
 **Possible Causes**:
 - Incorrect dependency version

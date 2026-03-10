@@ -2,7 +2,7 @@
 title: "Running your Cypress tests in WebKit"
 sidebarTitle: "Cypress Testing Using WebKit"
 keywords: ['cypress test webkit', 'cypress testing webkit', 'cypress testing webkit testmu ai']
-description: "This documentation explains how to run your Cypress tests using WebKit."
+"og:description": "This documentation explains how to run your Cypress tests using WebKit."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -61,7 +61,7 @@ Following are the steps to run your first Cypress test in WebKit on the <BrandNa
 1. Install the <BrandName />-Cypress CLI using the below command.
 
 ```bash
-npm install -g testmu ai-cypress-cli
+npm install -g lambdatest-cypress-cli
 ```
 
 2. Clone the Cypress kitchen sink repo using the following command.
@@ -121,15 +121,15 @@ cypress.config.js
 npm install
 ```
 
-4. Create `testmu ai-config.json` file that contains configurations like auth, capabilities, test settings, etc. which need to be successfully executed at LambaTest.
+4. Create `lambdatest-config.json` file that contains configurations like auth, capabilities, test settings, etc. which need to be successfully executed at LambaTest.
 
 Use `init` command to generate the sample configuration files.
 
 ```bash
-testmu ai-cypress init
+lambdatest-cypress init
 ```
 
-Once you run the above command, below is the project structure for the `testmu ai-config.json` file.
+Once you run the above command, below is the project structure for the `lambdatest-config.json` file.
 
 <Tabs className="docs__val">
 
@@ -202,7 +202,7 @@ Once you run the above command, below is the project structure for the `testmu a
 5. Pass the below command to run the test.
 
 ```bash
-testmu ai-cypress run
+lambdatest-cypress run
 ```
 
 6. Visit [<BrandName /> Automation dashboard](https://accounts.lambdatest.com/dashboard) to view your test results. The CLI also has a link to view the Cypress test build.
@@ -212,7 +212,7 @@ testmu ai-cypress run
 
 To tests locally hosted websites on the <BrandName /> platform, you need to setup [<BrandName /> tunnel](/support/docs/testing-locally-hosted-pages/), and execute commands using the CLI, or [Download UnderPass](/support/docs/underpass-tunnel-application/), our GUI based desktop app. Once you have the <BrandName /> tunnel or Underpass set up and started, you can use Cypress to test locally hosted websites.
 
-Now you need to activate the tunnel capability in the `testmu ai-config.json` file under the section "tunnel_settings" as shown below:
+Now you need to activate the tunnel capability in the `lambdatest-config.json` file under the section "tunnel_settings" as shown below:
 
 ```json 
   "tunnel_settings": {
@@ -228,7 +228,7 @@ You can provide the name of the **<BrandName /> tunnel** as per your requirement
 
 * WebKit only supports the latest version.
 
-* The following dependencies must be in `testmu ai-config.json` file. 
+* The following dependencies must be in `lambdatest-config.json` file. 
 
 ```js
 "npm_dependencies": {

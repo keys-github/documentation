@@ -2,7 +2,7 @@
 title: "TestMu AI Selenium Java SDK - Zero Code Changes"
 sidebarTitle: "Selenium Java SDK"
 keywords: ['selenium java sdk', 'testmu ai java sdk', 'selenium sdk', 'zero code changes', 'java selenium automation', 'selenium testing', 'testmu ai selenium']
-description: "Run your Selenium TestNG tests on TestMu AI with zero code changes. Simple YAML configuration, Maven dependencies, and a single listener is all you need."
+"og:description": "Run your Selenium TestNG tests on TestMu AI with zero code changes. Simple YAML configuration, Maven dependencies, and a single listener is all you need."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -46,8 +46,8 @@ To get started, add the <BrandName /> Selenium Java SDK dependency to your `pom.
 <dependencies>
   ....
     <dependency>
-        <groupId>io.github.testmu ai</groupId>
-        <artifactId>testmu ai-selenium-java-sdk</artifactId>
+        <groupId>io.github.lambdatest</groupId>
+        <artifactId>lambdatest-selenium-java-sdk</artifactId>
         <version>1.0.1</version>
     </dependency>
 </dependencies>
@@ -73,7 +73,7 @@ To get started, add the <BrandName /> Selenium Java SDK dependency to your `pom.
                     </goals>
                 </execution>
                 <execution>
-                    <id>copy-testmu ai-agent</id>
+                    <id>copy-lambdatest-agent</id>
                     <phase>generate-test-resources</phase>
                     <goals>
                         <goal>copy</goal>
@@ -81,10 +81,10 @@ To get started, add the <BrandName /> Selenium Java SDK dependency to your `pom.
                     <configuration>
                         <artifactItems>
                             <artifactItem>
-                                <groupId>io.github.testmu ai</groupId>
-                                <artifactId>testmu ai-selenium-java-sdk</artifactId>
+                                <groupId>io.github.lambdatest</groupId>
+                                <artifactId>lambdatest-selenium-java-sdk</artifactId>
                                 <version>1.0.1</version>
-                                <destFileName>testmu ai-agent.jar</destFileName>
+                                <destFileName>lambdatest-agent.jar</destFileName>
                                 <outputDirectory>${project.build.directory}/agents</outputDirectory>
                             </artifactItem>
                         </artifactItems>
@@ -119,7 +119,7 @@ To get started, add the <BrandName /> Selenium Java SDK dependency to your `pom.
 ```
 
 <Note>
-**You can check the latest version of [testmu ai-selenium-java-sdk](https://mvnrepository.com/artifact/io.github.lambdatest/lambdatest-selenium-java-sdk) and update the version accordingly.**
+**You can check the latest version of [lambdatest-selenium-java-sdk](https://mvnrepository.com/artifact/io.github.lambdatest/lambdatest-selenium-java-sdk) and update the version accordingly.**
 
 </Note>
 
@@ -180,7 +180,7 @@ Add the <BrandName /> status listener to your TestNG configuration:
 ```xml
 <suite name="TestMu AI Suite">
     <listeners>
-         <listener class-name="com.testmu ai.selenium.testng.TestNgTestListener"/>
+         <listener class-name="com.lambdatest.selenium.testng.TestNgTestListener"/>
     </listeners>
 
     <test name="My Tests">
