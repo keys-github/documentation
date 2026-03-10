@@ -68,7 +68,7 @@ Our goal is **a web that's accessible to all**.  Accessibility automation helps 
 :::note Playwright browser limitation
 For **Playwright Accessibility Automation**, use the **Chrome** browser.
 
-`pw-chromium` is currently not supported for accessibility report generation because the required internal accessibility extension does not load reliably in Playwright bundled Chromium sessions.
+`pw-chromium` is currently not supported for accessibility report generation because the required accessibility extension does not load reliably in Playwright bundled Chromium sessions.
 :::
 
 ## The Power Behind the Scenes

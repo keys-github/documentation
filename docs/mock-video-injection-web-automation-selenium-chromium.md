@@ -281,13 +281,14 @@ ffmpeg -f lavfi -i "smptebars=duration=10:size=640x360:rate=30" -f mjpeg sample_
 - [ ] The test navigates to a page that calls `getUserMedia()`
 - [ ] The video element is confirmed as playing (`readyState >= 2`) on Linux
 
-## Validated Sessions
+## Validation Notes
 
-| Date | Platform | Browser | Session ID | Result |
-|---|---|---|---|---|
-| 2026-03-10 | Linux (Ubuntu 20) | Chrome 145 | `DAL-UBU-1324375-1773139973435214472JZN` | PASS (API and visual) |
-| 2026-03-10 | macOS (Sequoia) | Chrome 145 | `a8270f31419342afa3ec522c97b91f3f` | PASS (API only, no visual rendering) |
-| 2026-03-10 | macOS (Sequoia) | Chrome 145 | `0c1ae1b272e1fa354880345f7b91aa58` | PASS (API only, confirmed after 15 seconds polling) |
+This workflow was validated on:
+
+- **Linux (Ubuntu 20) + Chrome 145**: visual rendering and API-level validation both passed
+- **macOS (Sequoia) + Chrome 145**: API-level validation passed, but visual rendering did not
+
+Use Linux when your test needs visible camera frames inside the page or canvas pipeline.
 
 ## Target Audience
 

@@ -49,7 +49,7 @@ This document walks you through the process of evaluating the accessibility of y
 > **Note:** Accessibility Testing for Playwright is currently supported on the **Chrome browser**. It is **not supported on `pw-chromium`**.
 
 :::caution Current limitation for `pw-chromium`
-Accessibility report generation in Playwright depends on an internal Chrome extension being loaded during the session.
+Accessibility report generation in Playwright depends on a Chrome extension required by the platform being loaded during the session.
 
 With **Playwright's bundled Chromium (`pw-chromium`)**, the required extension is not loaded reliably, so accessibility reports may not be generated even when `accessibility: true` is enabled and the scan hook runs correctly.
 
@@ -175,7 +175,7 @@ This is the safest workaround when reports are not being generated for `pw-chrom
 :::
 
 ### Step 4: Add the following add-on Script
-<BrandName /> uses an internal Chrome extension that powers accessibility scans and generates accessibility reports. In your `lambdatest-setup.js` file add these three lines after your page creation command as shown below:
+<BrandName /> uses a Chrome extension for accessibility scans and report generation. In your `lambdatest-setup.js` file add these three lines after your page creation command as shown below:
 
 ```javascript
 // Load the extension for report generation of the accessibility tests
@@ -185,7 +185,7 @@ await secondToggleButton.click();
 ```
 
 :::caution Why this fails on `pw-chromium`
-If you run the same setup on **Playwright bundled Chromium (`pw-chromium`)**, the internal extension may not stay loaded, which prevents accessibility report generation.
+If you run the same setup on **Playwright bundled Chromium (`pw-chromium`)**, the required accessibility extension may not stay loaded, which prevents accessibility report generation.
 
 At the moment, there is no confirmed public workaround for this behavior. Use **Chrome** for accessibility automation on Playwright.
 :::
@@ -208,7 +208,7 @@ You can access the detailed accessibility report from the [Accessibility Automat
 
 | Issue | What it means | Recommended action |
 |---|---|---|
-| Accessibility report is not generated on `pw-chromium` | The required internal extension is not loading reliably in Playwright bundled Chromium | Run the same test on **Chrome** instead of `pw-chromium` |
+| Accessibility report is not generated on `pw-chromium` | The required accessibility extension is not loading reliably in Playwright bundled Chromium | Run the same test on **Chrome** instead of `pw-chromium` |
 | Hook executes but no report appears | `lambda-accessibility-scan` ran, but the accessibility extension was not active in the session | Use **Chrome**, then rerun the test |
 | Unsure whether this is a product bug or setup issue | The test may be correct, but the browser target is unsupported for accessibility automation | Verify the browser is **Chrome**, not `pw-chromium` |
 | Customer needs immediate unblock | Browser is not central to the use case | Ask the customer to run functional + accessibility automation on **Chrome** until the limitation is resolved |
