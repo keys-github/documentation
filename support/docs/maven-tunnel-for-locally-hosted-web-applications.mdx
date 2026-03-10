@@ -2,7 +2,7 @@
 title: "Maven Tunnel For Locally Hosted Web Applications"
 sidebarTitle: "Maven Tunnel For Locally Hosted Web Apps"
 keywords: ['local app testing', 'testmu ai local testing', 'testmu ai local tunnel', 'TestMu AI Tunnel', 'local app testing for maven', 'maven tunnel for testmu ai']
-description: "Configure a secure TestMu AI Tunnel to execute your Selenium test automation scripts through your Maven project on our online Selenium Grid."
+"og:description": "Configure a secure TestMu AI Tunnel to execute your Selenium test automation scripts through your Maven project on our online Selenium Grid."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -52,8 +52,8 @@ Ensure that you have the Maven Tunnel dependency configured in your `pom.xml`.
 
 ```js
 <dependency>
-	<groupId>com.github.testmu ai</groupId>
-	<artifactId>testmu ai-tunnel-binary</artifactId>
+	<groupId>com.github.lambdatest</groupId>
+	<artifactId>lambdatest-tunnel-binary</artifactId>
 	<version>4.0.2</version>
 </dependency>
 ```
@@ -64,7 +64,7 @@ Ensure that you have the Maven Tunnel dependency configured in your `pom.xml`.
 Here is the code that is present in the cloned [GitHub repository for Maven Tunnel](https://github.com/LambdaTest/maven-tunnel-sample).
 
 ```js
-package com.testmu ai.tunnel;
+package com.lambdatest.tunnel;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -75,7 +75,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.testmu ai.tunnel.Tunnel;
+import com.lambdatest.tunnel.Tunnel;
 
 public class MavenSingle {
     Tunnel t;
@@ -140,7 +140,7 @@ In order to trigger parallel test execution you will need to specify the paramet
 <suite thread-count="40" name="LambaTestSuite" parallel="tests">
 
 	<listeners>
-		<listener class-name="com.testmu ai.tunnel.MavenParallel"/>
+		<listener class-name="com.lambdatest.tunnel.MavenParallel"/>
 	</listeners>
 	
    <test name="1 Chrome 12">
@@ -149,7 +149,7 @@ In order to trigger parallel test execution you will need to specify the paramet
         <parameter name="platform" value="Windows 10"/>
         <parameter name="resolution" value="1600x1200"/>
         <classes>
-            <class name="com.testmu ai.tunnel.MavenParallel"/>
+            <class name="com.lambdatest.tunnel.MavenParallel"/>
         </classes>
     </test> 
     
@@ -159,7 +159,7 @@ In order to trigger parallel test execution you will need to specify the paramet
         <parameter name="platform" value="Windows 8.1"/>
         <parameter name="resolution" value="1920x1080"/>
         <classes>
-            <class name="com.testmu ai.tunnel.MavenParallel"/>
+            <class name="com.lambdatest.tunnel.MavenParallel"/>
         </classes>
     </test> 
     
@@ -169,7 +169,7 @@ In order to trigger parallel test execution you will need to specify the paramet
         <parameter name="platform" value="Windows 8"/>
         <parameter name="resolution" value="2048x1536"/>
         <classes>
-            <class name="com.testmu ai.tunnel.MavenParallel"/>
+            <class name="com.lambdatest.tunnel.MavenParallel"/>
         </classes>
     </test> 
     
@@ -179,7 +179,7 @@ In order to trigger parallel test execution you will need to specify the paramet
         <parameter name="platform" value="Windows 7"/>
         <parameter name="resolution" value="2560x1440"/>
         <classes>
-            <class name="com.testmu ai.tunnel.MavenParallel"/>
+            <class name="com.lambdatest.tunnel.MavenParallel"/>
         </classes>
     </test> 
     </suite>
@@ -188,7 +188,7 @@ In order to trigger parallel test execution you will need to specify the paramet
 Here is the final code to execute parallel testing with Maven tunnel.
 
 ```js
-package com.testmu ai.tunnel;
+package com.lambdatest.tunnel;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -200,7 +200,7 @@ import org.testng.IExecutionListener;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import com.testmu ai.tunnel.Tunnel;
+import com.lambdatest.tunnel.Tunnel;
 
 public class MavenParallel implements IExecutionListener{
 
@@ -275,12 +275,12 @@ public class MavenParallel implements IExecutionListener{
 ```
 ## Enable Parallel Testing With Maven Tunnel using Serentiy BDD
 * * *
-In order to trigger parallel test execution with Maven Tunnel using Serenity BDD, you will need to specify the dependency of `testmu ai-tunnel-binary` with the exclusion of TestNG dependency in `MavenParallel.xml` file.
+In order to trigger parallel test execution with Maven Tunnel using Serenity BDD, you will need to specify the dependency of `lambdatest-tunnel-binary` with the exclusion of TestNG dependency in `MavenParallel.xml` file.
 
 ```js
 <dependency>
-   <groupId>com.github.testmu ai</groupId>
-   <artifactId>testmu ai-tunnel-binary</artifactId>
+   <groupId>com.github.lambdatest</groupId>
+   <artifactId>lambdatest-tunnel-binary</artifactId>
    <version>4.0.2</version>
    <exclusions>
       <exclusion>

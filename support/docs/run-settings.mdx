@@ -2,7 +2,7 @@
 title: "Configuring Cypress Test Execution"
 sidebarTitle: "Configure Cypress Test Execution"
 keywords: ['Cypress Automation', 'Cypress Testing Guide', 'Cypress Test Automation', 'Cypress Automation Testing', 'Running Cypress Tests', 'Cypress Testing Online', 'Run Cypress', 'Cypress Run Specific Test', 'Cypress Testing Environment', 'How to Run Cypress Tests']
-description: "Explore TestMu AI's comprehensive guide on configuring run settings for seamless cross-browser testing. Optimize your testing workflow today."
+"og:description": "Explore TestMu AI's comprehensive guide on configuring run settings for seamless cross-browser testing. Optimize your testing workflow today."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -10,17 +10,17 @@ import { BrandName } from "/snippets/BrandName.mdx";
 
 You can specify Cypress CLI flags to run on <BrandName /> in two ways:
 
-1. Adding the CLI flag details in `testmu ai-config.json` file
+1. Adding the CLI flag details in `lambdatest-config.json` file
 2. Using the CLI 
 
 <Tip>
 **If a glob pattern path is passed in the specs flag using CLI, you must enclose it within double quotes as shown:**
 
-`testmu ai-cypress-cli run --env=stage --verbose --specs "./cypress/integration/examples/*"`
+`lambdatest-cypress-cli run --env=stage --verbose --specs "./cypress/integration/examples/*"`
 </Tip>
 
 ## Cypress Config File
-#### Using `testmu ai-config.json`
+#### Using `lambdatest-config.json`
 You can use the `cypress_config_file` key in `run_settings` option to specify the Cypress configuration file.
 
 <Warning>
@@ -31,7 +31,7 @@ You can use the `cypress_config_file` key in `run_settings` option to specify th
 <Tabs className="docs__val">
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "cypress_config_file": "cypress.json",
@@ -43,9 +43,9 @@ You can use the `cypress_config_file` key in `run_settings` option to specify th
 
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   // In case of Cypress 10 and above, you can specify your custom config files by using the --cy flag.
-  testmu ai-cypress-cli run --env=stage,video=true --verbose --specs "./cypress/integration/examples/*"
+  lambdatest-cypress-cli run --env=stage,video=true --verbose --specs "./cypress/integration/examples/*"
   ```
   </Tab>
 </Tabs>
@@ -58,13 +58,13 @@ You can specify the Cypress configuration file using the below CLI flag with `ru
 | --ccf, --cypress-config-file | Path of the config file | String |
 
 ## Specifying Spec Files
-#### Using `testmu ai-config.json`
+#### Using `lambdatest-config.json`
 You can use the *specs* key in *run_settings* option to specify the Spec files.
 
 <Tabs className="docs__val">
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "specs": "**/*.cy.js",
@@ -75,7 +75,7 @@ You can use the *specs* key in *run_settings* option to specify the Spec files.
 
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "specs": "./cypress/integration/examples/*.spec.js",
@@ -99,7 +99,7 @@ You can use the *exclude_specs* key in *run_settings* option to specify the spec
 <Tabs className="docs__val">
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "exclude_specs": "./examples/assertion.spec.js, ./examples/connectors.spec.js",
@@ -110,7 +110,7 @@ You can use the *exclude_specs* key in *run_settings* option to specify the spec
 
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
           "exclude_specs": "./examples/assertion.spec.js, ./examples/connectors.spec.js",
@@ -121,13 +121,13 @@ You can use the *exclude_specs* key in *run_settings* option to specify the spec
 </Tabs>
 
 ## Geolocation
-#### Using `testmu ai-config.json`
+#### Using `lambdatest-config.json`
 You can use the *geo_location* key in *run_settings* option to specify the Spec files.
 
 <Tabs className="docs__val">
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "geo_location": "<country_code>",
@@ -138,7 +138,7 @@ You can use the *geo_location* key in *run_settings* option to specify the Spec 
 
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "geo_location": "<country_code>",
@@ -156,13 +156,13 @@ You can specify the geolocation files using the below CLI flag with `run` comman
 | --geo, --geo_location | Pass the Geo country code | String |
 
 ## Resolution
-#### Using `testmu ai-config.json`
+#### Using `lambdatest-config.json`
 Use the *resolution* key in *run_settings* option to specify the resolution.
 
 <Tabs className="docs__val">
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "resolution": "1024x768",
@@ -173,7 +173,7 @@ Use the *resolution* key in *run_settings* option to specify the resolution.
 
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "resolution": "1024x768",
@@ -195,13 +195,13 @@ You can specify the system's resolution using the below CLI flag with `run` comm
 **Supported resolutions**: `1024x768`, `1280x960`, `1280x1024`, `1600x1200`, `1920x1080`, `2048x1536`, `2560x1440`
 
 ## Excluding Files From Test Uploads
-#### Using `testmu ai-config.json`
+#### Using `lambdatest-config.json`
 You can use the *ignore_files* key in *run_settings* option to ignore or exclude any particular files while uploading your tests.
 
 <Tabs className="docs__val">
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "ignore_files": "<glob_pattern>",
@@ -212,7 +212,7 @@ You can use the *ignore_files* key in *run_settings* option to ignore or exclude
 
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "ignore_files": "<glob_pattern>",
@@ -233,13 +233,13 @@ Specify the files that you want to exclude using the below CLI flag with `run` c
 When running tests, if you encounter a situation where a particular test is running for an extended period and causing other parallel tests to be blocked, in this case, you can use the *max duration* flag to mitigate the issue. This flag allows you to specify a maximum time limit for the test to run before it is automatically stopped, thus freeing up resources for other tests to execute.
 
 The valid input for `max_duration` must be an integer, and it can only be within the range of 2 to 240 minutes.
-#### Using `testmu ai-config.json`
+#### Using `lambdatest-config.json`
 You can use the `max_duration` key in *run_settings* option to specify the session timeout.
 
 <Tabs className="docs__val">
   <Tab title="Cypress v10">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "max_duration":2
@@ -250,7 +250,7 @@ You can use the `max_duration` key in *run_settings* option to specify the sessi
 
   <Tab title="Cypress v9">
 
-  ```javascript title="testmu ai-config.json"
+  ```javascript title="lambdatest-config.json"
   {
     "run_settings": {
       "max_duration":2
@@ -278,7 +278,7 @@ You can name your test cases and categorize your Cypress builds by build number,
 
 **Example**:
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 {
   "run_settings": {
     "build-name": "Cypress 10 Demo",
@@ -297,7 +297,7 @@ You can run Headless tests with Cypress by the `headless` key to `true`.
 
 **Example**:
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 {
   "run_settings": {
     "headless": "true",
@@ -314,7 +314,7 @@ You can generate Network logs with Cypress by setting the `network` key to `true
 
 **Example**:
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 {
   "run_settings": {
     "network": "true",
@@ -328,9 +328,9 @@ In order to run your tests on <BrandName />, we refer to your `package.json` and
 Below are the ways through which <BrandName /> detects the dependencies which has to be installed before running the test on <BrandName />.
 
 #### Using `npm_dependencies`
-Inside `run_settings` of `testmu ai-config.json`, you can provide the list of NPM dependencies:
+Inside `run_settings` of `lambdatest-config.json`, you can provide the list of NPM dependencies:
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 "run_settings": {
   "npm_dependencies": {
     "cypress": "9.0.0",
@@ -355,13 +355,13 @@ It's recommended to use `npm_dependencies` instead of `package.json` because `pa
 </Tip>
 
 ## Specific Node Version
-<BrandName /> allows you to specify the Node.js version for running your tests using the ``useNodeVersion`` capability in the `run_settings` section of the `testmu ai-config.json` file. This capability provides greater flexibility and ensures compatibility with your project's dependencies and environment.
+<BrandName /> allows you to specify the Node.js version for running your tests using the ``useNodeVersion`` capability in the `run_settings` section of the `lambdatest-config.json` file. This capability provides greater flexibility and ensures compatibility with your project's dependencies and environment.
 
 <Note>
 Supported Versions are 18, 20 and 22. The exact version will be used are `18.17.1`, `20.18.0`, and `22.11.0` respectively
 </Note>
 
-```javascript title="testmu ai-config.json"
+```javascript title="lambdatest-config.json"
 "run_settings": {
   "useNodeVersion":"20"
 }

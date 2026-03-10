@@ -2,7 +2,7 @@
 title: "Zephyr Scale Integration"
 sidebarTitle: "Zephyr Scale"
 keywords: ['testmu ai zephyr scale integration', 'integrate testmu ai zephyr scale', 'testmu ai integration with zephyr scale']
-description: "Integrate Zephyr Scale with TestMu AI to perform automated browser testing, and view test results directly from the TestMu AI platform to your Zephyr Scale instance."
+"og:description": "Integrate Zephyr Scale with TestMu AI to perform automated browser testing, and view test results directly from the TestMu AI platform to your Zephyr Scale instance."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -45,8 +45,8 @@ public class PostTestResults {
 
     public void callApi() {
 
-        String fileName = "TEST-com.testmu ai.JUnitTodo.xml" ; //provide the file name of the test results
-        String filePath = "target/surefire-reports/TEST-com.testmu ai.JUnitTodo.xml"; //provide the file path of the test result file
+        String fileName = "TEST-com.lambdatest.JUnitTodo.xml" ; //provide the file name of the test results
+        String filePath = "target/surefire-reports/TEST-com.lambdatest.JUnitTodo.xml"; //provide the file path of the test result file
         String projectKey = "ZD"; //provide the Jira project key 
         String token = "abcdefghijklmnop123456"; // provide Zephyr Scale access token
 ```
@@ -55,7 +55,7 @@ public class PostTestResults {
 >**Test Scenario**: The below JUnit Selenium script tests a sample to-do list app by marking couple items as done, adding a new item to the list and finally displaying the count of pending items as output.
 
 ```js title="JUnitTodo.java"
-package com.testmu ai;
+package com.lambdatest;
 
 import org.junit.After;
 import org.junit.Before;

@@ -2,7 +2,7 @@
 title: "Test Case Insights"
 sidebarTitle: "Test Case Insights"
 keywords: ['analytics']
-description: "Gain insights into test case execution and performance with TestMu AI's analytics to optimize your testing strategy and enhance software quality."
+"og:description": "Gain insights into test case execution and performance with TestMu AI's analytics to optimize your testing strategy and enhance software quality."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -99,9 +99,9 @@ You can capture the test case insights by using the `reporter` configuration in 
 
 Here is a link to documentation for setting up the reporter for `PlaywrightJS`: [Click here](/support/docs/playwright-html-report/#step-1-update-your-playwright-configuration)
 
-#### Step 2 - Add the code to testmu ai-setup file
+#### Step 2 - Add the code to lambdatest-setup file
 
-Once, you have setup the `reporter` then the following code snippet should be added to your `testmu ai-setup.js` config. 
+Once, you have setup the `reporter` then the following code snippet should be added to your `lambdatest-setup.js` config. 
 
 ```js title=testmu ai-
 try {
@@ -130,11 +130,11 @@ You can now, execute the tests on our `HyperExecute` platform and you can see th
 
 ## Capture by NPM Package for WebdriverIO
 
-You can capture the test case insights by using the NPM Package. You need to add the following `NPM Package` in your test script. Here is the link to the NPM package: [wdio-testmu ai-test-case-analytics-service](https://www.npmjs.com/package/wdio-lambdatest-test-case-analytics-service)
+You can capture the test case insights by using the NPM Package. You need to add the following `NPM Package` in your test script. Here is the link to the NPM package: [wdio-lambdatest-test-case-analytics-service](https://www.npmjs.com/package/wdio-lambdatest-test-case-analytics-service)
 
 
 ```bash
-npm i wdio-testmu ai-test-case-analytics-service
+npm i wdio-lambdatest-test-case-analytics-service
 ```
 
 Now, once the package has been installed, you need to add the following code in your `wdio.conf.js` file.
@@ -143,7 +143,7 @@ Now, once the package has been installed, you need to add the following code in 
 exports.config = {
   // ...
   services: [
-    ["testmu ai-test-case-analytics", {}], // Add the service
+    ["lambdatest-test-case-analytics", {}], // Add the service
     // ... other services
   ],
   // ...

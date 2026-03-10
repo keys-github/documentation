@@ -28,14 +28,14 @@ With the newer versions of Cypress releasing, to gain the most from recent impro
 ***
  
 
-In *testmu ai-config.json* file, you can set the Cypress version as shown in the below code snippet.
+In *lambdatest-config.json* file, you can set the Cypress version as shown in the below code snippet.
 
 <Tabs className="docs__val">
 
 <Tab title="Cypress v10">
 
 ```javascript 
-// testmu ai-config.json
+// lambdatest-config.json
 
 "run_settings":{
    "cypress_config_file":"cypress.config.js",
@@ -58,7 +58,7 @@ In *testmu ai-config.json* file, you can set the Cypress version as shown in the
 <Tab title="Cypress v9">
 
 ```javascript 
-// testmu ai-config.json
+// lambdatest-config.json
 
 "run_settings":{
    "cypress_config_file": "cypress.json",
@@ -97,7 +97,7 @@ Example:
     "eslint": "7.0.0",
 ```
 
-2. Using `npm_dependencies`: If you are passing `npm_dependencies`, <BrandName /> will pick the Cypress version from `npm_dependencies` in `testmu ai-config.json`. 
+2. Using `npm_dependencies`: If you are passing `npm_dependencies`, <BrandName /> will pick the Cypress version from `npm_dependencies` in `lambdatest-config.json`. 
 
 Example:
 
@@ -118,7 +118,7 @@ Example:
   },
 ```  
 
-3. Using `cypress_version`: You can pass `cypress_version` in `testmu ai-config.json` and it will override the `cypress_version` present in `npm_dependencies` or `package.json`.
+3. Using `cypress_version`: You can pass `cypress_version` in `lambdatest-config.json` and it will override the `cypress_version` present in `npm_dependencies` or `package.json`.
 
 Example:
 

@@ -2,7 +2,7 @@
 title: "View Assertion Errors On TestMu AI"
 sidebarTitle: "View Assertion Errors Using Lambda Exceptions"
 keywords: ['assertionerror', 'assertion errors', 'assertionerror exception', 'assertion error handling', 'catch assertion error', 'assertionerror java', 'lambda exception', 'assertion failure']
-description: "Learn how to manage and handle GET request errors in your Selenium automation scripts using the Lambda Exceptions features of TestMu AI."
+"og:description": "Learn how to manage and handle GET request errors in your Selenium automation scripts using the Lambda Exceptions features of TestMu AI."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -48,7 +48,7 @@ For demo purpose, we will create a script to:
 Below is the complete code for this script, using TestNG framework in Java.
 
 ```javascript
-package com.testmu ai;
+package com.lambdatest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -137,7 +137,7 @@ Upon executing the above test as a TestNG script, you will notice that the test 
 You can even view the complete StackTrace on the <BrandName /> platform, using the Lambda Exceptions feature. For this, you need to convert the StackTrace to String and print it in the form of an array of Strings. Below is the complete script to print the StackTrace, using the TestNG framework in Java:
 
 ```javascript
-package com.testmu ai;
+package com.lambdatest;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -236,7 +236,7 @@ java.lang.AssertionError: expected [Most Powerful Cross Browser Testing Tool Onl
  org.testng.Assert.assertEquals(Assert.java:122) at
  org.testng.Assert.assertEquals(Assert.java:629) at
  org.testng.Assert.assertEquals(Assert.java:639) at
- com.testmu ai.LambdaException.testAssertionError(LambdaException.java:66) at
+ com.lambdatest.LambdaException.testAssertionError(LambdaException.java:66) at
  java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at
  java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) at
  java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at

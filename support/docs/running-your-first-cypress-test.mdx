@@ -2,7 +2,7 @@
 title: "Running Your First Cypress Test On TestMu AI Platform"
 sidebarTitle: "Run Your First Test"
 keywords: ['Cypress Automation', 'Cypress Testing Guide', 'Cypress Test Automation', 'Cypress Automation Testing', 'Running Cypress Tests', 'Cypress Testing Online', 'Run Cypress', 'Cypress Run Specific Test', 'Cypress Testing Environment', 'How to Run Cypress Tests']
-description: "TestMu AI enables you to run Cypress automated tests across 40+ browser versions on cloud. This documentation will help you get started with your first test."
+"og:description": "TestMu AI enables you to run Cypress automated tests across 40+ browser versions on cloud. This documentation will help you get started with your first test."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -19,16 +19,16 @@ git clone https://github.com/LambdaTest/Cypress-Cloud.git
 cd Cypress-Cloud
 ```
 
-**Step-2:** Setup the **<BrandName />-Cypress CLI** and configure the configuration file, as shown in the Prerequisites before. A file named `testmu ai-config.json` is generated in your project using the below command:
+**Step-2:** Setup the **<BrandName />-Cypress CLI** and configure the configuration file, as shown in the Prerequisites before. A file named `lambdatest-config.json` is generated in your project using the below command:
 
 ```bash
-testmu ai-cypress init
+lambdatest-cypress init
 ```
 
-Here, we have used the below configuration as default and generated it in the `testmu ai-config.json` file. You need to set up the authentication by using <BrandName /> credentials. You can check [here](/support/docs/authentication/) for more details about authentication.
+Here, we have used the below configuration as default and generated it in the `lambdatest-config.json` file. You need to set up the authentication by using <BrandName /> credentials. You can check [here](/support/docs/authentication/) for more details about authentication.
 
 <Tabs className="docs__val">
-  <Tab title="testmu ai-config.json">
+  <Tab title="lambdatest-config.json">
 
 ```json
 {
@@ -79,13 +79,13 @@ Here, we have used the below configuration as default and generated it in the `t
 ```
 
 <Info>
-In this demo, all occurrences of ``http://localhost:8080`` have been replaced with [https://example.cypress.io](https://example.cypress.io) to prevent running the Cypress tests locally. Alternatively, if you want to run your tests locally, refer to the [**Run locally**](/support/docs/running-your-first-cypress-test/#running-your-cypress-tests-locally-on-testmu ai-platform) section below.
+In this demo, all occurrences of ``http://localhost:8080`` have been replaced with [https://example.cypress.io](https://example.cypress.io) to prevent running the Cypress tests locally. Alternatively, if you want to run your tests locally, refer to the [**Run locally**](/support/docs/running-your-first-cypress-test/#running-your-cypress-tests-locally-on-lambdatest-platform) section below.
 </Info>
 
 **Step-3:** Execute your tests using the following command in the terminal:
 
 ```bash
-testmu ai-cypress run
+lambdatest-cypress run
 ```
 
 ## View Your Cypress Testing Results On TestMu AI Platform

@@ -2,7 +2,7 @@
 title: "Execute Selenium Tests With Selenide"
 sidebarTitle: "Selenide"
 keywords: ['Selenide', 'Selenium', 'Selenium automation testing', 'Selenium Testing tool', 'Selenium testing tutorial', 'selenium python', 'Selenium Grid', 'Selenium Automation']
-description: "Your guide to running tests using Selenide on TestMu AI's Selenium Grid of 3000+ real devices and desktop browsers."
+"og:description": "Your guide to running tests using Selenide on TestMu AI's Selenium Grid of 3000+ real devices and desktop browsers."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -103,7 +103,7 @@ You can also mention your <BrandName /> credentials in each of the config files 
 Let’s checkout sample Selenide code running <BrandName /> Selenium grid. This is a simple Selenide automation script similar to the script we have used in our [Github repo](https://github.com/LambdaTest/selenide-testng-sample).
 
 ```java title="Selenide To Do"
-package com.testmu ai;
+package com.lambdatest;
 
 import java.io.FileReader;
 import java.net.URL;
@@ -262,7 +262,7 @@ Here is an example of `parallel.testng.xml` file which would help you to run a s
     <parameter name="config" value="parallel.conf.json"/>
     <parameter name="environment" value="chrome"/>
     <classes>
-      <class name="com.testmu ai.SingleTest"/>
+      <class name="com.lambdatest.SingleTest"/>
     </classes>
 	</test>
 
@@ -270,7 +270,7 @@ Here is an example of `parallel.testng.xml` file which would help you to run a s
     <parameter name="config" value="parallel.conf.json"/>
     <parameter name="environment" value="firefox"/>
     <classes>
-      <class name="com.testmu ai.SingleTest"/>
+      <class name="com.lambdatest.SingleTest"/>
     </classes>
 	</test>
 
@@ -278,7 +278,7 @@ Here is an example of `parallel.testng.xml` file which would help you to run a s
     <parameter name="config" value="parallel.conf.json"/>
     <parameter name="environment" value="safari"/>
     <classes>
-      <class name="com.testmu ai.SingleTest"/>
+      <class name="com.lambdatest.SingleTest"/>
     </classes>
 	</test>
 </suite>

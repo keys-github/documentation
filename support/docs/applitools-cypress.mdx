@@ -3,7 +3,7 @@ title: Applitools Integration With <BrandName /> For Cypress
 sidebarTitle: Applitools Integration For Cypress
 
 keywords: ['testmu ai integrations', 'applitools for cypress', 'testmu ai cypress', 'cypress automation', 'testmu ai integration with applitools', 'applitools integration', 'cross browser testing', 'free cross browser testing tool']
-description: "TestMu AI integration with Applitools will allow you perform automated cross browser testing on more than 2000 real browsers running on real operating systems, hosted on a cloud platform. You can execute your Cypress automation test scripts on TestMu AI directly from your Applitools instance."
+"og:description": "TestMu AI integration with Applitools will allow you perform automated cross browser testing on more than 2000 real browsers running on real operating systems, hosted on a cloud platform. You can execute your Cypress automation test scripts on TestMu AI directly from your Applitools instance."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -65,20 +65,20 @@ Set the **testConcurrency** and **browser configuration** as per the requirement
 - Install the <BrandName /> CLI using below command:
 
   ```bash
-  npm install -g testmu ai-cypress-cli
+  npm install -g lambdatest-cypress-cli
   ```
 
 - Setup configurations on which you want to run your test using the below command:
 
   ```bash
-  testmu ai-cypress init
+  lambdatest-cypress init
   ```
 
 <Note>
-> It will create a **testmu ai-config.json** file in the root directory of your project.
+> It will create a **lambdatest-config.json** file in the root directory of your project.
 </Note>
 
-- Add spec file path in the `run_setting` and your **<BrandName /> credentials** in the auth section of the `testmu ai-config.json` file as shown in the image below.
+- Add spec file path in the `run_setting` and your **<BrandName /> credentials** in the auth section of the `lambdatest-config.json` file as shown in the image below.
 
   ***
 
@@ -91,7 +91,7 @@ Set the **testConcurrency** and **browser configuration** as per the requirement
 Execute your first test case using the below command:
 
 ```bash
-testmu ai-cypress run
+lambdatest-cypress run
 ```
 
 <img loading="lazy" src='/assets/images/applitools-cypress/applitools3.webp' alt="Image" width="1353" height="622" />

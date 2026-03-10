@@ -2,7 +2,7 @@
 title: "Using TestMu AI Tunnel with SmartUI SDK"
 sidebarTitle: "Tunnel Configuration"
 keywords: ['Visual Regression', 'SmartUI SDK', 'TestMu AI Tunnel', 'Local Testing', 'Internal Testing']
-description: "Learn how to use TestMu AI Tunnel with SmartUI SDK for testing internal, development, and staging environments"
+"og:description": "Learn how to use TestMu AI Tunnel with SmartUI SDK for testing internal, development, and staging environments"
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -37,8 +37,8 @@ For automatic tunnel setup, add the following configuration to your `.smartui.js
 {
   "tunnel": {
     "type": "auto",
-    "user": "<testmu ai-user>",  // Optional: Overrides LT_USERNAME if present in env
-    "key": "<testmu ai-accesskey>",  // Optional: Overrides LT_ACCESS_KEY if present in env
+    "user": "<lambdatest-user>",  // Optional: Overrides LT_USERNAME if present in env
+    "key": "<lambdatest-accesskey>",  // Optional: Overrides LT_ACCESS_KEY if present in env
     "port": "<port>",  // Optional: Default port if not specified
     "proxyHost": "127.0.0.1",  // Optional
     "proxyPort": "8000",  // Optional
@@ -103,8 +103,8 @@ The tunnel configuration automatically uses the following environment variables 
   },
   "tunnel": {
     "type": "auto",
-    "user": "<testmu ai-user>",  // Optional: Overrides LT_USERNAME if present in env
-    "key": "<testmu ai-accesskey>",  // Optional: Overrides LT_ACCESS_KEY if present in env
+    "user": "<lambdatest-user>",  // Optional: Overrides LT_USERNAME if present in env
+    "key": "<lambdatest-accesskey>",  // Optional: Overrides LT_ACCESS_KEY if present in env
     "proxyHost": "127.0.0.1",
     "proxyPort": "8000",
     "dir": "./src",
@@ -123,8 +123,8 @@ The tunnel configuration automatically uses the following environment variables 
   "tunnel": {
     "type": "manual",
     "tunnelName": "my-tunnel",
-    "user": "<testmu ai-user>",  // Optional: Overrides LT_USERNAME if present in env
-    "key": "<testmu ai-accesskey>",  // Optional: Overrides LT_ACCESS_KEY if present in env
+    "user": "<lambdatest-user>",  // Optional: Overrides LT_USERNAME if present in env
+    "key": "<lambdatest-accesskey>",  // Optional: Overrides LT_ACCESS_KEY if present in env
   }
 }
 ```

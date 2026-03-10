@@ -2,7 +2,7 @@
 title: "npm Plugin For TestCafe Integration With TestMu AI | TestMu AI"
 sidebarTitle: "npm Plugin For TestCafe"
 keywords: ['testcafe', 'testcafe integration', 'node.js', 'cross browser testing', 'developer tools', 'npm package']
-description: "TestMu AI with an npm plugin would allow you to integrate TestCafe with your TestMu AI account. That way, you can expand your test coverage using TestMu AI Selenium Grid of 3000+ real browsers, and browser versions running across various operating systems for mobile, desktop, and tablets. Similar to TestCafe, TestMu AI Selenium Grid also allows you to perform parallel testing."
+"og:description": "TestMu AI with an npm plugin would allow you to integrate TestCafe with your TestMu AI account. That way, you can expand your test coverage using TestMu AI Selenium Grid of 3000+ real browsers, and browser versions running across various operating systems for mobile, desktop, and tablets. Similar to TestCafe, TestMu AI Selenium Grid also allows you to perform parallel testing."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -42,7 +42,7 @@ TestCafe offers a comprehensive and extensive platform to perform end-to-end tes
 Use the below command for installing the npm plugin to integrate <BrandName /> with TestCafe.
 
 ``` js
-npm install testcafe-browser-provider-testmu ai
+npm install testcafe-browser-provider-lambdatest
 ```
 
 ## How To Use npm Plugin For <BrandName /> & TestCafe Integration?
@@ -50,19 +50,19 @@ npm install testcafe-browser-provider-testmu ai
 To acknowledge all available browsers aliases offered by <BrandName /> Selenium Grid, type the below command:
 
 ``` js
-testcafe -b testmu ai
+testcafe -b lambdatest
 ```
 
 To execute the test from cmd/terminal by declaring the browsers and operating systems to test:
 
 ``` js
-$ testcafe "testmu ai:Chrome@74.0:Windows 8" 'path/to/test/file.js'
+$ testcafe "lambdatest:Chrome@74.0:Windows 8" 'path/to/test/file.js'
 ```
 
 For Parallel testing:
 
 ``` js
-$ testcafe "testmu ai:Chrome@74.0:Windows 8","testmu ai:Chrome@75.0:Windows 10" "path/to/test/file.js"
+$ testcafe "lambdatest:Chrome@74.0:Windows 8","lambdatest:Chrome@75.0:Windows 10" "path/to/test/file.js"
 ```
 
 If you are using API, then you need to declare the aliases inside your `browser()` method:
@@ -115,7 +115,7 @@ export LT_TEST_NAME="Test TestCafe"
 export LT_BUILD="Build x"
 export LT_TUNNEL_NUMBER=2
 export LOAD_BALANCED_MODE=true
-testcafe "testmu ai:Chrome","testmu ai:Chrome@74.0:Windows 8" tests/
+testcafe "lambdatest:Chrome","lambdatest:Chrome@74.0:Windows 8" tests/
 ```
 
 [1]: https://bitbucket.org/dashboard/overview

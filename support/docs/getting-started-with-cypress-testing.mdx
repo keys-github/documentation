@@ -3,7 +3,7 @@ title: Getting Started With Cypress Testing On <BrandName /> Platform
 sidebarTitle: Cypress Testing
 
 keywords: ['Cypress Automation', 'Cypress Testing Guide', 'Cypress Test Automation', 'Cypress Automation Testing', 'Running Cypress Tests', 'Cypress Testing Online', 'Run Cypress', 'Cypress Run Specific Test', 'Cypress Testing Environment', 'How to Run Cypress Tests']
-description: "In this documentation, learn how to perform end-to-end Cypress testing on the TestMu AI Automation Cloud across 40+ browser versions."
+"og:description": "In this documentation, learn how to perform end-to-end Cypress testing on the TestMu AI Automation Cloud across 40+ browser versions."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
@@ -62,7 +62,7 @@ Following are the steps to run your first Cypress test on the <BrandName /> plat
 1. Install the <BrandName />-Cypress CLI using the below command.
 
 ```bash
-npm install -g testmu ai-cypress-cli
+npm install -g lambdatest-cypress-cli
 ```
 
 2. Clone the Cypress kitchen sink repo using the following command.
@@ -139,7 +139,7 @@ cypress.json
 npm install
 ```
 
-4. Create `testmu ai-config.json` file that contains configurations like auth, capabilities, test settings, etc. which need to be successfully executed at LambaTest.
+4. Create `lambdatest-config.json` file that contains configurations like auth, capabilities, test settings, etc. which need to be successfully executed at LambaTest.
 
 Use `init` command to generate the sample configuration files.
 
@@ -148,7 +148,7 @@ Use `init` command to generate the sample configuration files.
 <Tab title="Cypress v10">
 
 ```bash
-testmu ai-cypress init --cv=10
+lambdatest-cypress init --cv=10
 ```
 
 </Tab>
@@ -156,14 +156,14 @@ testmu ai-cypress init --cv=10
 <Tab title="Cypress v9">
 
 ```bash
-testmu ai-cypress init 
+lambdatest-cypress init 
 ```
 
 </Tab>
 
 </Tabs>
 
-Once you run the above command, below is the project structure for the `testmu ai-config.json` file.
+Once you run the above command, below is the project structure for the `lambdatest-config.json` file.
 
 <Tabs className="docs__val">
 
@@ -265,7 +265,7 @@ app
 5. Pass the below command to run the test.
 
 ```bash
-testmu ai-cypress run
+lambdatest-cypress run
 ```
 
 6. Visit <BrandName /> Automation dashboard to view your test results. The CLI also has a link to view the Cypress test build.
@@ -277,7 +277,7 @@ testmu ai-cypress run
 
 To tests locally hosted websites on the <BrandName /> platform, you need to setup [<BrandName /> tunnel](/support/docs/testing-locally-hosted-pages/), and execute commands using the CLI, or [Download UnderPass](/support/docs/underpass-tunnel-application/), our GUI based desktop app. Once you have the <BrandName /> tunnel or Underpass set up and started, you can use Cypress to test locally hosted websites.
 
-Now you need to activate the tunnel capability in the `testmu ai-config.json` file under the section "tunnel_settings" as shown below:
+Now you need to activate the tunnel capability in the `lambdatest-config.json` file under the section "tunnel_settings" as shown below:
 
 ```json 
   "tunnel_settings": {
