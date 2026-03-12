@@ -1664,6 +1664,7 @@ module.exports = {
           "google-chat-integration",
           "webex-teams-integration",
           "zoho-cliq-integration",
+          "webhooks-integration",
         ],
       },
       {
