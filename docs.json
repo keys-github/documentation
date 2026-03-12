@@ -93,20 +93,20 @@
                         "group": "C#",
                         "pages": [
                           "support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid",
-                          "support/docs/nunit-with-selenium-running-nunit-automation-scripts-on-lambdatest-selenium-grid",
+                          "support/docs/nunit-with-selenium",
                           "support/docs/selenium-with-xunit",
-                          "support/docs/mstest-with-selenium-running-mstest-automation-scripts-on-testmu-selenium-grid",
-                          "support/docs/specflow-with-selenium-running-specflow-automation-scripts-on-lambdatest-selenium-grid"
+                          "support/docs/mstest-with-selenium",
+                          "support/docs/specflow-with-selenium"
                         ]
                       },
                       {
                         "group": "Python",
                         "pages": [
-                          "support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid",
+                          "support/docs/python-with-selenium",
                           "support/docs/running-unit-testing-in-python-on-testmu-selenium-grid",
-                          "support/docs/pytest-with-selenium-running-pytest-automation-script-on-testmu-selenium-grid",
-                          "support/docs/robot-with-selenium-running-robot-automation-scripts-on-testmu-selenium-grid",
-                          "support/docs/behave-with-selenium-running-behave-automation-scripts-on-testmu-selenium-grid",
+                          "support/docs/pytest-with-selenium-running-pytest-automation-script-on-lambdatest-selenium-grid",
+                          "support/docs/robot-with-selenium-running-robot-automation-scripts-on-lambdatest-selenium-grid",
+                          "support/docs/behave-with-selenium-running-behave-automation-scripts-on-lambdatest-selenium-grid",
                           "support/docs/automation-testing-selenium-with-lettuce"
                         ]
                       },
@@ -172,7 +172,7 @@
                         "pages": [
                           "support/docs/debugging-options",
                           "support/docs/selenium-telemetry-logs",
-                          "support/docs/extended-debugging-options"
+                          "support/docs/extended-debugging"
                         ]
                       },
                       {
@@ -187,7 +187,7 @@
                           "support/docs/network-throttling",
                           "support/docs/custom-dns-map",
                           "support/docs/network-data-masking",
-                          "support/docs/upload-files-using-testmu",
+                          "support/docs/upload-files-using-lambdatest",
                           "support/docs/setup-pre-run-executable",
                           "support/docs/har-log-viewer-with-waterfall",
                           "support/docs/build-inactivity-time"
@@ -221,7 +221,7 @@
                       {
                         "group": "Proxy Settings",
                         "pages": [
-                          "support/docs/white-listing-proxy-with-testmu",
+                          "support/docs/white-listing-proxy-with-lambdatest",
                           "support/docs/selenium-tests-behind-proxy"
                         ]
                       },
@@ -231,7 +231,7 @@
                           "support/docs/filter-your-selenium-tests",
                           "support/docs/mark-as-bug-in-automation-testing",
                           "support/docs/sharing-test-results",
-                          "support/docs/download-files-using-testmu-selenium-grid",
+                          "support/docs/download-files-using-lambdatest-selenium-grid",
                           "support/docs/live-interaction",
                           "support/docs/group-tests-using-custom-tags",
                           "support/docs/group-and-filter-your-test-builds-using-build-tags"
@@ -322,7 +322,7 @@
                   "support/docs/playwright-test-runner",
                   "support/docs/playwright-with-cucumberjs",
                   "support/docs/playwright-tests-in-ci-cd",
-                  "support/docs/playwright-lighthouse-library",
+                  "support/docs/playwright-lighthouse library",
                   "support/docs/playwright-auto-healing"
                 ]
               },
@@ -429,7 +429,7 @@
                       "support/docs/supported-timezone",
                       "support/docs/app-testing-apis",
                       "support/docs/appium-testmu-hooks",
-                      "support/docs/appium-install-uninstall-testmu-hooks",
+                      "support/docs/appium-install-uninstall-hook",
                       "support/docs/appium-uploading-retrieving-files",
                       "support/docs/appium-firebase-app-upload",
                       {
@@ -456,7 +456,7 @@
                       "support/docs/app-auto-network-throttling",
                       "support/docs/sim-support",
                       "support/docs/appium-ip-geolocation",
-                      "support/docs/appium-app-performance-analytics",
+                      "support/docs/appium-app-performance",
                       "support/docs/appium-ios-app-settings",
                       "support/docs/ios-keychain-cleanup",
                       "support/docs/group-folder-redirects",
@@ -763,7 +763,7 @@
                   {
                     "group": "Integration with CI/CD tools",
                     "pages": [
-                      "support/docs/hyperexecute-integration-with-ci-cd-tools",
+                      "support/docs/hyperexecute-integration-with-lt-products",
                       "support/docs/aws-codepipeline-with-hyperexecute",
                       "support/docs/azure-with-hyperexecute",
                       "support/docs/github-actions-with-hyperexecute",
@@ -1263,7 +1263,7 @@
                       "support/docs/analytics-modules-automation-test-overview",
                       "support/docs/analytics-modules-hyperexecute",
                       "support/docs/analytics-modules-manual-test-overview",
-                      "support/docs/analytics-modules-smartui-analytics",
+                      "support/docs/analytics-modules-smartui",
                       "support/docs/analytics-modules-accessibility-widgets",
                       "support/docs/analytics-modules-test-manager-widgets"
                     ]
@@ -1279,11 +1279,11 @@
                   },
                   "support/docs/analytics-test-case-insights",
                   "support/docs/analytics-modules-resource-utilization",
-                  "support/docs/analytics-test-time-trends",
+                  "support/docs/analytics-test-time-insights",
                   {
                     "group": "Error Insights",
                     "pages": [
-                      "support/docs/analytics-modules-test-intelligence-command-logs-analytics",
+                      "support/docs/analytics-modules-test-manager-widgets",
                       "support/docs/analytics-modules-error-insights"
                     ]
                   },
@@ -1295,7 +1295,7 @@
                 "group": "Test Intelligence - AI",
                 "pages": [
                   "support/docs/analytics-test-insights",
-                  "support/docs/analytics-modules-test-intelligence-flaky-test-analytics",
+                  "support/docs/analytics-modules-test-manager-widgets",
                   "support/docs/analytics-build-insights",
                   "support/docs/analytics-build-comparison",
                   "support/docs/analytics-smart-tags-test-intelligence",
@@ -1407,7 +1407,7 @@
                 "pages": [
                   "support/docs/smartui-baseline-management",
                   "support/docs/smartui-root-cause-analysis",
-                  "support/docs/smartui-visual-ai",
+                  "support/docs/smartui-visual-ai-agent",
                   "support/docs/smartui-multiselect-bulkops",
                   "support/docs/smartui-audit-logs",
                   "support/docs/smartui-smart-comments",
@@ -1428,7 +1428,7 @@
                 "group": "Upload & Capture",
                 "pages": [
                   "support/docs/smartui-cli-upload",
-                  "support/docs/smartui-upload-api-v2",
+                  "support/docs/smartui-upload-api-new",
                   "support/docs/smartui-cli",
                   "support/docs/smartui-cli-complete-reference"
                 ]
@@ -1446,7 +1446,7 @@
               {
                 "group": "Git & Branching",
                 "pages": [
-                  "support/docs/smartui-cli-git-branching-strategy",
+                  "support/docs/smartui-cli-git-branching",
                   "support/docs/smartui-smart-git-strategy",
                   "support/docs/smartui-branch-merging",
                   "support/docs/smartui-build-merging"
@@ -1666,7 +1666,7 @@
                   "support/docs/kane-ai-command-guide",
                   "support/docs/kaneai-failure-conditions",
                   "support/docs/kane-ai-web-test-writing-guidelines",
-                  "support/docs/kane-ai-app-test-writing-guidelines",
+                  "support/docs/kane-ai-app-test",
                   "support/docs/error-handling-kaneai",
                   "support/docs/kane-ai-automation-code-generation",
                   "support/docs/kaneai-kb-knowledge-base-index",
@@ -1823,11 +1823,11 @@
                       "support/docs/screen-reader-on-real-devices-app",
                       "support/docs/accessibility-settings-ios",
                       "support/docs/devtools-on-real-devices-app",
-                      "support/docs/set-date-time-hour-format-real-devices",
+                      "support/docs/set-date-time-hour-format-real-devices-browser",
                       "support/docs/device-passcode-on-realdevice",
                       "support/docs/assistive-touch-on-real-ios-devices",
                       "support/docs/dark-mode-on-real-devices",
-                      "support/docs/group-folder-redirect-on-real-device",
+                      "support/docs/group-folder-redirect",
                       "support/docs/apple-pay-manual",
                       "support/docs/upload-files-media",
                       "support/docs/multi-device-testing"
@@ -1887,7 +1887,7 @@
                       "support/docs/one-click-migration-from-zephyr-scale"
                     ]
                   },
-                  "support/docs/generate-test-cases-with-ai",
+                  "support/docs/generate-test-cases",
                   "support/docs/manual-test-case-creation",
                   "support/docs/test-case-versioning",
                   "support/docs/create-modules",
@@ -1978,7 +1978,7 @@
                   "support/docs/integrations-with-project-management-tools",
                   "support/docs/clickup-integration",
                   "support/docs/github-integration",
-                  "support/docs/github-repo-based-oauth-integration",
+                  "support/docs/github-repo-based-auth-integration",
                   "support/docs/shortcut-integration",
                   "support/docs/gitlab-integration",
                   "support/docs/redmine-integration",
@@ -1994,8 +1994,8 @@
                   "support/docs/target-process-integration",
                   "support/docs/paymo-integration",
                   "support/docs/practitest-integration",
-                  "support/docs/breeze-integration-with-lambdatest",
-                  "support/docs/backlog-integration-with-testmu",
+                  "support/docs/breeze-integration",
+                  "support/docs/backlog-integration",
                   "support/docs/favro-integration",
                   "support/docs/zapier-integration-with-lambdatest",
                   "support/docs/axosoft-integration",
@@ -2037,13 +2037,13 @@
                       "support/docs/integrating-your-jenkins-pipeline-with-lambdatest"
                     ]
                   },
-                  "support/docs/semaphore-integration-with-lambdatest",
+                  "support/docs/semaphore-integration-with-hyperexecute",
                   "support/docs/circleci-integration",
                   "support/docs/travis-ci-with-lambdatest",
-                  "support/docs/gitlab-ci-integration-with-testmu",
-                  "support/docs/codeship-integration-with-testmu",
-                  "support/docs/codefresh-ci-integration-with-testmu",
-                  "support/docs/teamcity-integration-with-lambdatest",
+                  "support/docs/gitlab-ci-integration",
+                  "support/docs/codeship-integration",
+                  "support/docs/codefresh-ci-integration",
+                  "support/docs/teamcity-integration",
                   {
                     "group": "Integrate Azure Pipelines",
                     "pages": [
@@ -2055,7 +2055,7 @@
                   {
                     "group": "GoCD",
                     "pages": [
-                      "support/docs/gocd-integration-with-testmu",
+                      "support/docs/gocd-integration",
                       "support/docs/yaml-configuration-for-gocd-with-lambdatest"
                     ]
                   },
@@ -2065,7 +2065,7 @@
                   "support/docs/bitrise-integration",
                   "support/docs/run-espresso-tests-in-bitrise",
                   "support/docs/bitrise-integration-xcuitest",
-                  "support/docs/buildkite-integration-with-testmu"
+                  "support/docs/buildkite-integration"
                 ]
               },
               {
@@ -2077,20 +2077,20 @@
                     "pages": [
                       "support/docs/katalon-integration-with-lambdatest",
                       "support/docs/katalon-integration",
-                      "support/docs/running-groovy-script-in-katalon-with-lambdatest"
+                      "support/docs/running-groovy-script-in-katalon"
                     ]
                   },
                   "support/docs/run-selenium-ide-tests-on-lambdatest-selenium-cloud-grid",
                   "support/docs/ranorex-integration-with-lambdatest",
                   "support/docs/run-oxygen-automation-scripts-on-testmu",
-                  "support/docs/leapwork-integration-with-testmu",
+                  "support/docs/leapwork-integration",
                   "support/docs/vividus-integration",
                   "support/docs/qmetry-integration",
                   "support/docs/cerberus-integration",
                   "support/docs/testingwhiz-integration",
                   "support/docs/testsigma-integration",
                   "support/docs/tricentis-tosca-integration-testmu-selenium-grid",
-                  "support/docs/ghost-inspector-integration-with-testmu",
+                  "support/docs/ghost-inspector-integration",
                   "support/docs/accelq-integration",
                   "support/docs/algoqa-integration",
                   {
@@ -2414,7 +2414,7 @@
                 "pages": [
                   "support/docs/test-intelligence-overview",
                   "support/docs/test-intelligence-flakiness-test-detection",
-                  "support/docs/test-intelligence-command-error-logs-analytics"
+                  "support/docs/test-intelligence-command-error-logs"
                 ]
               },
               {
@@ -2425,17 +2425,17 @@
                     "group": "Automated Screenshot Testing",
                     "pages": [
                       "support/docs/automated-screenshot-testing",
-                      "support/docs/mark-as-bug-in-screenshot-testing",
+                      "support/docs/mark-as-bug",
                       "support/docs/automated-screenshot-api-for-cross-browser-testing",
                       "support/docs/taking-screenshots-of-pages-behind-login",
-                      "support/docs/default-list-of-mobile-and-desktop-browsers-for-automated-screenshot-testing"
+                      "support/docs/default-list-of-browsers-for-screesnshot-testing"
                     ]
                   },
                   {
                     "group": "Responsive Testing",
                     "pages": [
                       "support/docs/responsive-testing",
-                      "mark-as-bug-in-responsive-testing"
+                      "mark-as-bug"
                     ]
                   },
                   "support/docs/smart-visual-testing"
