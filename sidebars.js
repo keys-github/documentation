@@ -1249,6 +1249,11 @@ module.exports = {
       },
       {
         type: "doc",
+        label: "Features & Metrics",
+        id: "agent-features-and-metrics",
+      },
+      {
+        type: "doc",
         label: "Test Your First AI Agent",
         id: "testing-your-first-ai-agent",
       },
@@ -1325,6 +1330,7 @@ module.exports = {
               "kaneai-kb-api-testing-and-network-assertions",
               "kaneai-kb-js-snippets-and-workarounds",
               "kaneai-failure-conditions",
+              "kaneai-smart-locator-priority",
             ],
           },
           {
@@ -1373,6 +1379,7 @@ module.exports = {
               "kaneai-totp",
               "kaneai-database",
               "kaneai-rename-instructions",
+              "kaneai-conditional-logic",
             ],
           },
           {
@@ -1657,6 +1664,7 @@ module.exports = {
           "google-chat-integration",
           "webex-teams-integration",
           "zoho-cliq-integration",
+          "webhooks-integration",
         ],
       },
       {
@@ -2571,6 +2579,7 @@ module.exports = {
               "custom-dns-map",
               "network-data-masking",
               "upload-files-using-lambdatest",
+              "mock-video-injection-web-automation-selenium-chromium",
               "setup-pre-run-executable",
               "har-log-viewer",
               "build-split",
@@ -3052,7 +3061,8 @@ module.exports = {
               "device-passcode-appautomation",
               "set-device-dark-mode",
               "smart-heal-appium",
-              "apple-pay-auto"
+              "apple-pay-auto",
+              "button-text-click"
             ],
           },
           {
@@ -3408,6 +3418,11 @@ module.exports = {
                 type: "doc",
                 label: "Selenium Hooks",
                 id: "selenium-visual-regression",
+              },
+              {
+                type: "doc",
+                label: "Hooks Layout + Full Page",
+                id: "smartui-hooks-layout-fullpage-smartignore",
               },
               {
                 type: "doc",
