@@ -84,7 +84,7 @@
                           "support/docs/angularjs-with-karma-running-angular-tests-on-testmu-selenium-grid",
                           "support/docs/cucumberjs-with-selenium-running-cucumberjs-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/jasmine-with-karma-running-jasmine-tests-on-testmu-selenium-grid",
-                          "support/docs/karma-integration-with-lambdatest",
+                          "support/docs/karma-integration-with-testmu",
                           "support/docs/npm-plugin-for-testcafe-integration-with-lambdatest",
                           "support/docs/selenium-tests-with-nemojs"
                         ]
@@ -95,18 +95,18 @@
                           "support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/nunit-with-selenium-running-nunit-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/selenium-with-xunit",
-                          "support/docs/mstest-with-selenium",
+                          "support/docs/mstest-with-selenium-running-mstest-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/specflow-with-selenium-running-specflow-automation-scripts-on-testmu-selenium-grid"
                         ]
                       },
                       {
                         "group": "Python",
                         "pages": [
-                          "support/docs/python-with-selenium",
+                          "support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/running-unit-testing-in-python-on-testmu-selenium-grid",
-                          "support/docs/pytest-with-selenium-running-pytest-automation-script-on-lambdatest-selenium-grid",
-                          "support/docs/robot-with-selenium-running-robot-automation-scripts-on-lambdatest-selenium-grid",
-                          "support/docs/behave-with-selenium-running-behave-automation-scripts-on-lambdatest-selenium-grid",
+                          "support/docs/pytest-with-selenium-running-pytest-automation-script-on-testmu-selenium-grid",
+                          "support/docs/robot-with-selenium-running-robot-automation-scripts-on-testmu-selenium-grid",
+                          "support/docs/behave-with-selenium-running-behave-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/automation-testing-selenium-with-lettuce"
                         ]
                       },
@@ -173,7 +173,7 @@
                         "pages": [
                           "support/docs/debugging-options",
                           "support/docs/selenium-telemetry-logs",
-                          "support/docs/extended-debugging"
+                          "support/docs/extended-debugging-options"
                         ]
                       },
                       {
@@ -188,7 +188,7 @@
                           "support/docs/network-throttling",
                           "support/docs/custom-dns-map",
                           "support/docs/network-data-masking",
-                          "support/docs/upload-files-using-lambdatest",
+                          "support/docs/upload-files-using-testmu",
                           "support/docs/setup-pre-run-executable",
                           "support/docs/har-log-viewer-with-waterfall",
                           "support/docs/build-inactivity-time"
@@ -222,7 +222,7 @@
                       {
                         "group": "Proxy Settings",
                         "pages": [
-                          "support/docs/white-listing-proxy-with-lambdatest",
+                          "support/docs/white-listing-proxy-with-testmu",
                           "support/docs/selenium-tests-behind-proxy"
                         ]
                       },
@@ -232,7 +232,7 @@
                           "support/docs/filter-your-selenium-tests",
                           "support/docs/mark-as-bug-in-automation-testing",
                           "support/docs/sharing-test-results",
-                          "support/docs/download-files-using-lambdatest-selenium-grid",
+                          "support/docs/download-files-using-testmu-selenium-grid",
                           "support/docs/live-interaction",
                           "support/docs/group-tests-using-custom-tags",
                           "support/docs/group-and-filter-your-test-builds-using-build-tags"
@@ -323,7 +323,7 @@
                   "support/docs/playwright-test-runner",
                   "support/docs/playwright-with-cucumberjs",
                   "support/docs/playwright-tests-in-ci-cd",
-                  "support/docs/playwright-lighthouse library",
+                  "support/docs/playwright-lighthouse-library",
                   "support/docs/playwright-auto-healing"
                 ]
               },
@@ -430,7 +430,7 @@
                       "support/docs/supported-timezone",
                       "support/docs/app-testing-apis",
                       "support/docs/appium-testmu-hooks",
-                      "support/docs/appium-install-uninstall-hook",
+                      "support/docs/appium-install-uninstall-testmu-hooks",
                       "support/docs/appium-uploading-retrieving-files",
                       "support/docs/appium-firebase-app-upload",
                       {
@@ -457,7 +457,7 @@
                       "support/docs/app-auto-network-throttling",
                       "support/docs/sim-support",
                       "support/docs/appium-ip-geolocation",
-                      "support/docs/appium-app-performance",
+                      "support/docs/appium-app-performance-analytics",
                       "support/docs/appium-ios-app-settings",
                       "support/docs/ios-keychain-cleanup",
                       "support/docs/group-folder-redirects",
@@ -1447,7 +1447,7 @@
               {
                 "group": "Git & Branching",
                 "pages": [
-                  "support/docs/smartui-cli-git-branching",
+                  "support/docs/smartui-cli-git-branching-strategy",
                   "support/docs/smartui-smart-git-strategy",
                   "support/docs/smartui-branch-merging",
                   "support/docs/smartui-build-merging"
@@ -1828,7 +1828,7 @@
                       "support/docs/device-passcode-on-realdevice",
                       "support/docs/assistive-touch-on-real-ios-devices",
                       "support/docs/dark-mode-on-real-devices",
-                      "support/docs/group-folder-redirect",
+                      "support/docs/group-folder-redirect-on-real-device",
                       "support/docs/apple-pay-manual",
                       "support/docs/upload-files-media",
                       "support/docs/multi-device-testing"
@@ -1995,8 +1995,8 @@
                   "support/docs/target-process-integration",
                   "support/docs/paymo-integration",
                   "support/docs/practitest-integration",
-                  "support/docs/breeze-integration",
-                  "support/docs/backlog-integration",
+                  "support/docs/breeze-integration-with-lambdatest",
+                  "support/docs/backlog-integration-with-testmu",
                   "support/docs/favro-integration",
                   "support/docs/zapier-integration-with-testmu",
                   "support/docs/axosoft-integration",
@@ -2016,8 +2016,8 @@
                   "support/docs/team-communication-tools",
                   "support/docs/slack-integration",
                   "support/docs/microsoft-teams-integration",
-                  "support/docs/rocketchat-integration-with-lambdatest",
-                  "support/docs/integrating-mattermost-with-lambdatest",
+                  "support/docs/rocketchat-integration-with-testmu",
+                  "support/docs/integrating-mattermost-with-testmu",
                   "support/docs/flock-integration",
                   "support/docs/google-chat-integration",
                   "support/docs/webex-teams-integration",
@@ -2028,35 +2028,35 @@
                 "group": "Integrations With CI/CD Tools",
                 "pages": [
                   "support/docs/integrations-with-ci-cd-tools",
-                  "support/docs/bitbucket-pipelines-integration",
+                  "support/docs/bitbucket-pipelines-integration-with-testmu",
                   "support/docs/aws-codepipeline-integration-with-testmu",
                   "support/docs/bamboo-integration-with-testmu",
                   {
                     "group": "Jenkins Plugin",
                     "pages": [
                       "support/docs/jenkins-plugin",
-                      "support/docs/integrating-your-jenkins-pipeline-with-lambdatest"
+                      "support/docs/integrating-your-jenkins-pipeline-with-testmu"
                     ]
                   },
                   "support/docs/semaphore-integration-with-hyperexecute",
                   "support/docs/circleci-integration-with-testmu",
                   "support/docs/travis-ci-with-testmu",
-                  "support/docs/gitlab-ci-integration",
-                  "support/docs/codeship-integration",
-                  "support/docs/codefresh-ci-integration",
+                  "support/docs/gitlab-ci-integration-with-testmu",
+                  "support/docs/codeship-integration-with-testmu",
+                  "support/docs/codefresh-ci-integration-with-testmu",
                   "support/docs/teamcity-integration-with-testmu",
                   {
                     "group": "Integrate Azure Pipelines",
                     "pages": [
                       "support/docs/integrate-azure-pipelines-with-testmu",
-                      "support/docs/integrate-lambdatest-extension-with-azure-pipelines"
+                      "support/docs/integrate-testmu-extension-with-azure-pipelines"
                     ]
                   },
                   "support/docs/selenium-testing-with-concourse-ci-and-testmu",
                   {
                     "group": "GoCD",
                     "pages": [
-                      "support/docs/gocd-integration",
+                      "support/docs/gocd-integration-with-testmu",
                       "support/docs/yaml-configuration-for-gocd-with-lambdatest"
                     ]
                   },
@@ -2066,7 +2066,7 @@
                   "support/docs/bitrise-integration",
                   "support/docs/run-espresso-tests-in-bitrise",
                   "support/docs/bitrise-integration-xcuitest",
-                  "support/docs/buildkite-integration"
+                  "support/docs/buildkite-integration-with-testmu"
                 ]
               },
               {
@@ -2076,7 +2076,7 @@
                   {
                     "group": "Katalon",
                     "pages": [
-                      "support/docs/katalon-integration-with-lambdatest",
+                      "support/docs/katalon-integration-with-testmu",
                       "support/docs/katalon-integration",
                       "support/docs/running-groovy-script-in-katalon-with-testmu-selenium-grid"
                     ]
@@ -2084,14 +2084,14 @@
                   "support/docs/run-selenium-ide-tests-on-testmu-selenium-cloud-grid",
                   "support/docs/ranorex-integration-with-testmu",
                   "support/docs/run-oxygen-automation-scripts-on-testmu",
-                  "support/docs/leapwork-integration",
+                  "support/docs/leapwork-integration-with-testmu",
                   "support/docs/vividus-integration",
                   "support/docs/qmetry-integration",
                   "support/docs/cerberus-integration",
                   "support/docs/testingwhiz-integration",
                   "support/docs/testsigma-integration",
                   "support/docs/tricentis-tosca-integration-testmu-selenium-grid",
-                  "support/docs/ghost-inspector-integration",
+                  "support/docs/ghost-inspector-integration-with-testmu",
                   "support/docs/accelq-integration",
                   "support/docs/algoqa-integration",
                   {
@@ -2106,7 +2106,7 @@
                 "group": "Test Reporting",
                 "pages": [
                   "support/docs/integrate-test-reporting-test-management-tools",
-                  "support/docs/testrail-integration-with-lambdatest-selenium-grid",
+                  "support/docs/testrail-integration-with-testmu-selenium-grid",
                   "support/docs/zebrunner-integration",
                   "support/docs/zephyr-scale-integration",
                   "support/docs/testmo-integration",
@@ -2127,7 +2127,7 @@
                     "group": "Jenkins Plugin",
                     "pages": [
                       "support/docs/jenkins-with-testmu",
-                      "support/docs/integrating-lambdatest-with-jenkins-freestyle-project",
+                      "support/docs/integrating-testmu-with-jenkins-freestyle-project",
                       "support/docs/integrating-lambdatest-report-with-jenkins-pipeline"
                     ]
                   },
@@ -2139,22 +2139,22 @@
                   "support/docs/vs-code-extension",
                   "support/docs/xcode-plugin-testmu",
                   "support/docs/docker-tunnel-extension",
-                  "support/docs/gradle-integration-with-lambdatest"
+                  "support/docs/gradle-integration-with-testmu"
                 ]
               },
               "support/docs/record-and-replay-tests",
-              "support/docs/zalenium-integration-with-lambdatest",
-              "support/docs/applitools-integration-with-lambdatest",
+              "support/docs/zalenium-integration-with-testmu",
+              "support/docs/applitools-integration-with-testmu",
               "support/docs/selenified-integration-with-testmu",
               "support/docs/microsoft-teams-app",
-              "support/docs/app-center-integration",
+              "support/docs/app-center",
               "support/docs/app-automation-using-app-center",
               "support/docs/siesta-integration",
               "support/docs/testcomplete-integration",
               "support/docs/testrigor-integration",
               "support/docs/localstack-integration-with-testmu",
               "support/docs/genrocket-integration",
-              "support/docs/netlify-integration-with-lambdatest",
+              "support/docs/netlify-integration-with-testmu",
               "support/docs/testim-integration",
               "support/docs/simplifyqa-integration",
               "support/docs/uipath-integration"
@@ -2311,7 +2311,7 @@
                   "support/docs/hyperexecute-how-to-configure-tunnel",
                   "support/docs/smartui-sdk-tunnel",
                   "support/docs/maven-tunnel-for-locally-hosted-web-applications",
-                  "support/docs/integrate-lambdatest-extension-with-azure-pipelines"
+                  "support/docs/integrate-testmu-extension-with-azure-pipelines"
                 ]
               },
               {
@@ -2351,18 +2351,18 @@
                 "pages": [
                    "support/docs/account-management",
                    "support/docs/network-whitelisting-and-tunnel-guide",
-                   "support/docs/lambdatest-public-ip",
+                   "support/docs/testmu-public-ip",
                    {
                     "group": "Single Sign On",
                     "pages": [
                        "support/docs/single-sign-on",
-                       "support/docs/lambdatest-sso-self-serve",
-                       "support/docs/lambdatest-sso-manage-connection",
+                       "support/docs/testmu-sso-self-serve",
+                       "support/docs/testmu-sso-manage-connection",
                        "support/docs/testmu-sso-okta-integration",
                        "support/docs/testmu-sso-onelogin-using-saml",
-                       "support/docs/lambdatest-sso-google",
+                       "support/docs/testmu-sso-google",
                        "support/docs/sso-azure-integration",
-                       "support/docs/lambdatest-sso-pingidentity-integration",
+                       "support/docs/testmu-sso-pingidentity-integration",
                        "support/docs/testmu-sso-oidc"
                     ]
                    },
