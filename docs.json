@@ -47,7 +47,7 @@
                   {
                     "group": "Getting Started",
                     "pages": [
-                      "support/docs/getting-started-with-lambdatest-automation",
+                      "support/docs/getting-started-with-testmu-automation",
                       "support/docs/testmu-running-your-first-selenium-test",
                       "support/docs/inside-testmu-platform"
                     ]
@@ -3004,7 +3004,7 @@
     ]
   },
   "feedback": {
-    "thumbsRating": true,
+    "thumbsRating": false,
     "suggestEdit": true,
     "raiseIssue": true
   },
@@ -3016,10 +3016,10 @@
   "footer": {
     "socials": {
       "facebook": "https://www.facebook.com/testmuai/",
-      "x": "https://twitter.com/Lambdatesting",
+      "x": "https://x.com/testmuai",
       "github": "https://github.com/LambdaTest/",
-      "linkedin": "https://www.linkedin.com/company/lambdatest/",
-      "youtube": "https://www.youtube.com/channel/UCCymWVaTozpEng_ep0mdUyw?sub_confirmation=1"
+      "linkedin": "https://www.linkedin.com/company/testmu-ai",
+      "youtube": "https://www.youtube.com/@TestMuAI"
     }
   }
 }
