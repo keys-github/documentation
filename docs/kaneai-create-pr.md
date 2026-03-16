@@ -177,7 +177,6 @@ In the **Code** section of a test case, each code export version shows its PR st
 When Auto-PR is enabled in your settings, a pull request is automatically created whenever code generation completes for a test case. No manual action is required.
 
 - The PR uses your saved configuration (repository, folder structure, base branch).
-- If Auto-PR fails (e.g., due to a repository access issue), you are notified with error details and can create the PR manually.
 
 ## Step 5: Filter by PR Status
 
