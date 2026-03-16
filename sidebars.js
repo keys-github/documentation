@@ -2457,6 +2457,7 @@ module.exports = {
               "selenium-xunit",
               "mstest-with-selenium",
               "specflow-with-selenium",
+              "reqnroll-with-selenium-appium",
             ],
           },
           {
@@ -2998,6 +2999,7 @@ module.exports = {
               },
               "appium-kotlin",
               "test-flutter-apps",
+             
             ],
           },
           {
@@ -4610,4 +4612,5 @@ module.exports = {
       },
     ],
   ],
+
 };
