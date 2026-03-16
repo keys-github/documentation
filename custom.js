@@ -286,12 +286,15 @@
       </div>`;
 
     // Find the Previous/Next navigation to insert before it
-    const navigation = main.querySelector('a[href*="Previous"], a[href*="Next"], [class*="pagination"], [class*="nav-link"], [class*="PrevNext"]')?.closest('div[class*="flex"], nav, div[class*="grid"]');
+    // Be specific to avoid matching headings like "### Next Steps"
+    const navigation = main.querySelector('[class*="pagination"], [class*="PrevNext"], [class*="nav-footer"], [class*="page-nav"]')?.closest('div[class*="flex"], nav, div[class*="grid"]');
 
-    // Also try to find by looking for links containing "Previous" or "Next" text
-    const prevNextLinks = Array.from(main.querySelectorAll('a')).filter(a =>
-      a.textContent.includes('Previous') || a.textContent.includes('Next')
-    );
+    // Only look for navigation links that are direct children of nav containers (not heading anchors)
+    const prevNextLinks = Array.from(main.querySelectorAll('nav a, [class*="pagination"] a, [class*="footer"] a')).filter(a => {
+      const text = a.textContent.trim();
+      // Match exact "Previous" or "Next" or icons, not partial matches in headings
+      return (text === 'Previous' || text === 'Next' || text.match(/^(←|→|<|>)\s*(Previous|Next)?\s*$/i));
+    });
     const navContainer = prevNextLinks.length > 0 ? prevNextLinks[0].closest('div[class*="flex"], div[class*="grid"], nav') : null;
 
     const target = navigation || navContainer || main.querySelector('footer') || main.lastElementChild;

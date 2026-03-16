@@ -30,8 +30,7 @@
         "tab": "Home",
         "icon": "house",
         "pages": [
-          "index",
-          "support/docs/mintlify-components"
+          "support/docs/index"
         ]
       },
       {
@@ -73,7 +72,7 @@
                       {
                         "group": "JavaScript",
                         "pages": [
-                          "support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid",
+                          "support/docs/quick-guide-to-run-node-js-tests-on-testmu-selenium-grid",
                           "support/docs/protractor-with-selenium-running-protractor-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/automation-testing-with-mocha-and-selenium",
                           "support/docs/nightwatch-with-selenium-running-nightwatch-automation-scripts-on-testmu-selenium-grid",
@@ -102,7 +101,7 @@
                       {
                         "group": "Python",
                         "pages": [
-                          "support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid",
+                          "support/docs/run-python-tests-on-selenium-grid",
                           "support/docs/running-unit-testing-in-python-on-testmu-selenium-grid",
                           "support/docs/pytest-with-selenium-running-pytest-automation-script-on-testmu-selenium-grid",
                           "support/docs/robot-with-selenium-running-robot-automation-scripts-on-testmu-selenium-grid",
@@ -117,7 +116,7 @@
                           "support/docs/behat-with-selenium-running-behat-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/laravel-dusk-with-selenium-running-laravel-dusk-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/codeception-integration-with-testmu",
-                          "support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid"
+                          "support/docs/quick-guide-to-run-php-tests-on-testmu-selenium-grid"
                         ]
                       },
                       {
@@ -1831,7 +1830,8 @@
                       "support/docs/group-folder-redirect-on-real-device",
                       "support/docs/apple-pay-manual",
                       "support/docs/upload-files-media",
-                      "support/docs/multi-device-testing"
+                      "support/docs/multi-device-testing",
+                      "support/docs/Device-reservation"
                     ]
                   }
                 ]
@@ -1934,7 +1934,7 @@
           {
             "group": "TestMu AI MCP Server",
             "pages": [
-              "support/docs/lambdatest-mcp-server"
+              "support/docs/testmu-mcp-server"
             ]
           },
           {
@@ -3011,6 +3011,9 @@
   "integrations": {
     "gtm": {
       "tagId": "GTM-5M2PF5TP"
+    },
+    "telemetry": {
+      "enabled": false
     }
   },
   "footer": {
