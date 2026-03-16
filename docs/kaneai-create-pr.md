@@ -55,7 +55,7 @@ This guide covers how to integrate your Git provider, configure PR settings, cre
 
 - A <BrandName /> account with access to KaneAI and Test Manager.
 - A GitHub or GitLab account with at least one repository.
-- At least one test case with code generated (the simplified `test2.py` file).
+- At least one test case with code generated.
 - Admin role to configure integration and PR settings. Users with appropriate permissions can create PRs for their own test cases.
 
 ## Supported Platforms and Frameworks
@@ -207,10 +207,10 @@ your-repo/
 ├── {project_name}/
 │   ├── {test_id}_{test_name}/
 │   │   └── {version_no}/
-│   │       └── test2.py
+│   │       └── test.py
 │   └── {test_id}_{test_name}/
 │       └── {version_no}/
-│           └── test2.py
+│           └── test.py
 ```
 
 - **`{project_name}`** — Derived from the Test Manager project name.
