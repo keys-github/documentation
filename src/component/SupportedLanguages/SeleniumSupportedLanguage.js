@@ -101,6 +101,9 @@ export default function SeleniumSupportedLanguage() {
          <li>
           <a href="/support/docs/selenium-with-xunit/">xUnit</a>
         </li>
+        <li>
+          <a href="/support/docs/reqnroll-automation-with-selenium-appium-on-testmu/">Reqnroll</a>
+        </li>
       </ul>
     </div>
           <div className="lg_fr_col">
