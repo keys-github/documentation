@@ -1,6 +1,7 @@
 ---
 title: "Desired Capabilities"
 sidebarTitle: "Desired Capabilities"
+description: "This document will teach you how to leverage TestMu AI Capability Generator to easily for declaring desired capabilities in Appium to run your App Automation leveraging Appium Desktop."
 keywords: ['cross browser testing', 'appium capabilities generator', 'appium desired capabilities', 'testmu ai appium grid capabilities', 'testmu ai automation capabilities generator', 'appium capability configuration', 'appium automation testing', 'appium automation grid online', 'configure appium tests with desired capabilities', 'appium webdriver capabilities for running tests on testmu ai']
 "og:description": "This document will teach you how to leverage TestMu AI Capability Generator to easily for declaring desired capabilities in Appium to run your App Automation leveraging Appium Desktop."
 ---
@@ -18,7 +19,7 @@ Desired capabilities in [Appium](https://www.lambdatest.com/appium) are essentia
 By setting these parameters, QAs can ensure that the Appium server accurately targets the intended test environment, facilitating effective and efficient [mobile app testing](https://www.lambdatest.com/mobile-app-testing). 
 
 <Note>
-**Note:** With <BrandName /> [capabilities generator](https://www.lambdatest.com/capabilities-generator/) run your App Automation leveraging Appium Desktop.
+**Note:** With <BrandName /> [capabilities generator](https://www.testmuai.com/capabilities-generator/) run your App Automation leveraging Appium Desktop.
 </Note>
 
 <div class="desired-capabilities-page">
@@ -89,7 +90,7 @@ By setting these parameters, QAs can ensure that the Appium server accurately ta
 | enableImageInjection | TYPE: Boolean<br /> DEFAULT: false <br />`enableImageInjection: true` | Used to enable the Image Injection for the app. <br />Must send "media" capability along with this capability.| <VirtualDeviceTag value="Virtual Device" />  <RealDeviceTag value="Real Device" /> |
 | media | TYPE: STRING <br />`media: Path to the image`|Used to provide the media to upload the file to the app for Image Injection. If this capability is not passed, then the no media will be sent to the device. <br />Must send "enableImageInjection" capability along with this capability.|  <RealDeviceTag value="Real Device" /> |
 | enableBluetooth | TYPE: Boolean<br /> DEFAULT: false <br />`enableBluetooth: true` | Used to enable the bluetooth functionality during the session.|  <RealDeviceTag value="Real Device" /> |
-| location | TYPE: HashMap <br /> <br /> Python example: <br /> `location: {"lat": "28.6235192", "long": "77.3662948"}` <br /> <br /> For examples in other languages, please head over to [Capability Generator](https://www.lambdatest.com/capabilities-generator/)  | Used to change the GPS Geolocation of the device to the location provided. <br /> If this capability is not passed, the device will auto update the Geo Location based on the physical location of the device. <br /> It needs to be passed in a HashMap structure with `lat` & `long` being passed separately. | <VirtualDeviceTag value="Virtual Device" />  <RealDeviceTag value="Real Device" /> |
+| location | TYPE: HashMap <br /> <br /> Python example: <br /> `location: {"lat": "28.6235192", "long": "77.3662948"}` <br /> <br /> For examples in other languages, please head over to [Capability Generator](https://www.testmuai.com/capabilities-generator/)  | Used to change the GPS Geolocation of the device to the location provided. <br /> If this capability is not passed, the device will auto update the Geo Location based on the physical location of the device. <br /> It needs to be passed in a HashMap structure with `lat` & `long` being passed separately. | <VirtualDeviceTag value="Virtual Device" />  <RealDeviceTag value="Real Device" /> |
 
 ## Device configuration
 | KEY | VALUES | CAPABILITY DESCRIPTION | SUPPORTED ON |

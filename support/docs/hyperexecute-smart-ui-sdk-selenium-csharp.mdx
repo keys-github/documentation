@@ -1,11 +1,14 @@
 ---
 title: "UI Testing with C# using HyperExecute and SmartUI SDK"
 sidebarTitle: "C#"
+description: "Automate Hyperexecute tests seamlessly! Integrate SmartUI SDK with CSharp for efficient & reliable UI testing."
 keywords: ['smart ui testing in hyperexecute', 'visual  ui testing,image to image comparison', 'perform visual ui testing online', 'compare image to image', 'smart ui sdk', 'csharp', 'hyperexecute integrations with csharp sdk']
 "og:description": "Automate Hyperexecute tests seamlessly! Integrate SmartUI SDK with CSharp for efficient & reliable UI testing."
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
+
+---
 
 import { GitHubButton } from '/snippets/GitHubButton.mdx';
 
@@ -56,12 +59,12 @@ Download or Clone the code sample for the Selenium - JavaScript framework from t
 
 ```cs
 <ItemGroup>
-    <PackageReference Include="TestMu AI.Selenium.Driver" Version="1.0.1" />
+    <PackageReference Include="LambdaTest.Selenium.Driver" Version="1.0.1" />
 </ItemGroup>
 ```
 
 <Note>
-**You can check the latest version of [<BrandName />.Selenium.Driver]( https://www.nuget.org/packages/<BrandName />.Selenium.Driver) and update the latest version accordingly.**
+**You can check the latest version of [LambdaTest.Selenium.Driver](https://www.nuget.org/packages/LambdaTest.Selenium.Driver) and update the latest version accordingly.**
 
 </Note>
 
@@ -94,9 +97,9 @@ using System;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using TestMu AI.Selenium.Driver;
+using LambdaTest.Selenium.Driver;
 
-namespace TestMu AI.Selenium.TestProject
+namespace LambdaTest.Selenium.TestProject
 {
   public static class LocalTest{
     public static async Task Run(){

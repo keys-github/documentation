@@ -1,11 +1,13 @@
 ---
 title: "Automation Tests with Accessibility Tool using Selenium"
 sidebarTitle: "Selenium"
+description: "Use TestMu AI Accessibility DevTools to detect and report accessibility issues with automation, following WCAG guidelines, in your selenium tests"
 keywords: ['TestMu AI', 'Accessibility', 'Testing', 'selenium', 'Automation', 'Accessibility Testing Settings']
 "og:description": "Use TestMu AI Accessibility DevTools to detect and report accessibility issues with automation, following WCAG guidelines, in your selenium tests"
 ---
 
 import { BrandName } from "/snippets/BrandName.mdx";
+import { GitHubButton } from '/snippets/GitHubButton.mdx';
 
 
 This document provides a detailed, step-by-step way to execute your accessibility tests using <BrandName />'s Accessibility Tool on HyperExecute.
@@ -33,7 +35,7 @@ You can use your own Selenium project to configure and test it. For demo purpose
 
 Download or Clone the code sample for the TestNG from the <BrandName /> GitHub repository to run the tests on the HyperExecute.
 
-<a href="https://github.com/LambdaTest/testng-selenium-hyperexecute-sample" target="_blank" className="github__anchor"><img loading="lazy" src='/assets/images/icons/github.png' alt="Image" /> View on GitHub</a>
+<GitHubButton url="https://github.com/LambdaTest/testng-selenium-hyperexecute-sample" />
 </Tip>
 
 If you are using your own project, make sure you update the **Hub endpoint** in your tests file. By setting up the Hub endpoint, you establish the communication channel between your tests and the browser nodes, enabling effective test distribution and execution.
@@ -50,7 +52,7 @@ capabilities.setCapability("name", "LambdaTestJavaSample");
 ```
 
 <Warning>
-You can also use **dev** and **beta** browser versions. To generate capabilities for your test requirements, you can use our inbuilt 🔗 <a href="https://www.lambdatest.com/capabilities-generator/">Capabilities Generator Tool</a>.
+You can also use **dev** and **beta** browser versions. To generate capabilities for your test requirements, you can use our inbuilt 🔗 <a href="https://www.testmuai.com/capabilities-generator/">Capabilities Generator Tool</a>.
 </Warning>
 
 
