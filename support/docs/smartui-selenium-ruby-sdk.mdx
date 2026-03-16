@@ -10,8 +10,6 @@ keywords: ['Visual Regression', 'Visual Regression Testing Guide', 'Visual Regre
 import { BrandName } from "/snippets/BrandName.mdx";
 import { NewTag } from "/snippets/NewTag.mdx";
 
----
-
 Welcome to the world of simplified visual testing with the SmartUI SDK.
 
 Integrating seamlessly into your existing Selenium testing suite, SmartUI SDK revolutionizes the way you approach visual regression testing. Our robust solution empowers you to effortlessly capture, compare, and analyze screenshots across a multitude of browsers and resolutions, ensuring comprehensive coverage and accuracy in your visual testing endeavors.
@@ -157,7 +155,7 @@ driver = Selenium::WebDriver.for :chrome
 driver.navigate.to "https://www.pinterest.com/pin/16958936087791895/"
 
 # Take a snapshot
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
 
 driver.quit
 ```
@@ -207,7 +205,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -220,7 +218,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -233,7 +231,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -247,7 +245,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 </Tab>
 
@@ -263,7 +261,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -276,7 +274,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -289,7 +287,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -303,7 +301,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 </Tab>
 
@@ -323,7 +321,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -336,7 +334,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -349,7 +347,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </Tab>
@@ -363,7 +361,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 </Tab>
 
@@ -404,7 +402,7 @@ driver = Selenium::WebDriver.for :chrome
 begin
   driver.get("Required URL")
   quick_scroll_to_bottom(driver, 100) # Use wait time accordingly
-  <BrandName />::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
+  LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
 ensure
   driver.quit
 end
@@ -425,8 +423,8 @@ end
 
 **Example:**
 ```ruby
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, HomePage-Header")
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, "ProductPage-MainContent")
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, HomePage-Header")
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, "ProductPage-MainContent")
 ```
 
 </Tab>
@@ -445,7 +443,7 @@ require 'selenium-webdriver'
 driver.navigate.to 'https://example.com'
 wait = Selenium::WebDriver::Wait.new(timeout: 10)
 wait.until { driver.find_element(id: 'main-content') }
-<BrandName />::Selenium::Driver.smartui_snapshot(driver, Page Loaded")
+LambdaTest::Selenium::Driver.smartui_snapshot(driver, Page Loaded")
 ```
 
 </Tab>
