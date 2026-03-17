@@ -83,8 +83,7 @@ Best when app patching is enabled and your app uses standard HTTP libraries.
 :::note Requirements
 - `network: true` is required for `localhost: true` to work.
 - Cannot be used together with `portForwarding`.
-- Supported on both real devices and virtual devices.
-:::
+- Supported only on real android devices right now.
 
 ## Option 2: Port Forwarding
 
@@ -122,8 +121,7 @@ Port forwarding works at the network level, so **all HTTP libraries are supporte
 ## Troubleshooting
 
 - **Connection errors** — Ensure `network: true` is set when using `localhost: true`. For `portForwarding`, `network: true` is optional.
-- **Bypass not working** — Confirm your app uses a supported library, app patching is enabled, and your account has `mobile_universal_patching` and `combined_patching` flags.
-- **"Cannot use localhost and portForwarding together"** — These are mutually exclusive. Pick one.
+- **Cannot use localhost and portForwarding together** — These are mutually exclusive. Pick one.
 - **Port validation errors** — Ports must be 1024–65535, max 5 unique ports, no duplicates allowed.
 
 <nav aria-label="breadcrumbs">
