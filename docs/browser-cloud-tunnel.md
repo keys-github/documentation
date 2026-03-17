@@ -3,7 +3,6 @@ id: browser-cloud-tunnel
 title: Tunnel - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Access Localhost and Internal Networks
-displayed_sidebar: "BrowserCloudSidebar"
 description: Access localhost and internal networks from cloud browsers in TestMu AI Browser Cloud.
 keywords:
   - browser cloud tunnel

@@ -3,7 +3,6 @@ id: browser-cloud-files
 title: Files - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Upload and Download Files
-displayed_sidebar: "BrowserCloudSidebar"
 description: Upload, download, and manage files within cloud browser sessions in TestMu AI Browser Cloud.
 keywords:
   - browser cloud files

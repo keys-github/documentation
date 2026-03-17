@@ -3,7 +3,6 @@ id: browser-cloud-context
 title: Reusing Context & Auth - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Transfer Cookies & Storage
-displayed_sidebar: "BrowserCloudSidebar"
 description: Extract and inject browser state across sessions to preserve login and user data in TestMu AI Browser Cloud.
 keywords:
   - browser cloud context

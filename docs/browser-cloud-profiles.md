@@ -3,7 +3,6 @@ id: browser-cloud-profiles
 title: Profiles - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Stay Logged in Across Runs
-displayed_sidebar: "BrowserCloudSidebar"
 description: Persist browser state across sessions and script runs. Reuse auth, cookies, and browser settings across sessions.
 keywords:
   - browser cloud profiles

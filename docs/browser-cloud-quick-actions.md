@@ -3,7 +3,6 @@ id: browser-cloud-quick-actions
 title: Quick Actions - Scrape, Screenshot, PDF
 hide_title: true
 sidebar_label: One-Liner Scrape, Screenshot, and PDF
-displayed_sidebar: "BrowserCloudSidebar"
 description: One-liner operations that handle browser setup, navigation, and cleanup for scraping, screenshots, and PDF generation.
 keywords:
   - browser cloud scrape

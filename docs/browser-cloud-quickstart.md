@@ -3,7 +3,6 @@ id: browser-cloud-quickstart
 title: Quickstart - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Launch Your First Session
-displayed_sidebar: "BrowserCloudSidebar"
 description: Get up and running with your first TestMu AI Browser Cloud session in a few minutes using TypeScript and Puppeteer.
 keywords:
   - browser cloud quickstart

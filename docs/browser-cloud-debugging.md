@@ -3,7 +3,6 @@ id: browser-cloud-debugging
 title: Debugging & Observability - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Replay and Debug Sessions
-displayed_sidebar: "BrowserCloudSidebar"
 description: Watch, replay, and debug your agent's browser sessions with video recordings, console logs, and network capture.
 keywords:
   - browser cloud debugging

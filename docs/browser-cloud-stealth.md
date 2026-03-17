@@ -3,7 +3,6 @@ id: browser-cloud-stealth
 title: Stealth Mode - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Stealth Mode to Avoid Bot Detection
-displayed_sidebar: "BrowserCloudSidebar"
 description: Make your agent's browser look like a real human user to bot-detection systems with TestMu AI Browser Cloud stealth mode.
 keywords:
   - browser cloud stealth

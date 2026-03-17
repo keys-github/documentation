@@ -3,7 +3,6 @@ id: browser-cloud-intro
 title: Welcome to TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: What is Browser Cloud?
-displayed_sidebar: "BrowserCloudSidebar"
 description: TestMu AI Browser Cloud is cloud browser infrastructure purpose-built for AI agents, with built-in stealth, session persistence, and full observability.
 keywords:
   - browser cloud

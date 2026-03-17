@@ -3,7 +3,6 @@ id: browser-cloud-connect
 title: Connect to a Session - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Connect to a Session
-displayed_sidebar: "BrowserCloudSidebar"
 description: Drive TestMu AI Browser Cloud sessions using Puppeteer, Playwright, or Selenium.
 keywords:
   - browser cloud connect

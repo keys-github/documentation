@@ -3,7 +3,6 @@ id: browser-cloud-how-to-connect
 title: How to Connect to TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Set Up the SDK
-displayed_sidebar: "BrowserCloudSidebar"
 description: Connect your agents to TestMu AI Browser Cloud using the TestMu AI Browser SDK.
 keywords:
   - browser cloud connection

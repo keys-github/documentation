@@ -3,7 +3,6 @@ id: browser-cloud-session-lifecycle
 title: Session Lifecycle - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Handle Session Lifecycle
-displayed_sidebar: "BrowserCloudSidebar"
 description: How sessions are created, managed, and released in TestMu AI Browser Cloud.
 keywords:
   - browser cloud session lifecycle

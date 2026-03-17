@@ -3,7 +3,6 @@ id: browser-cloud-extensions
 title: Extensions - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Load Chrome Extensions
-displayed_sidebar: "BrowserCloudSidebar"
 description: Load Chrome extensions into TestMu AI Browser Cloud sessions.
 keywords:
   - browser cloud extensions

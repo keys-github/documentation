@@ -3,7 +3,6 @@ id: browser-cloud-api-reference
 title: API Reference - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: API Reference
-displayed_sidebar: "BrowserCloudSidebar"
 description: REST API reference for TestMu AI Browser Cloud. Planned endpoints for sessions, context, profiles, files, extensions, quick actions, and tunnels.
 keywords:
   - browser cloud api

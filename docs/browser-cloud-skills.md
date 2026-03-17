@@ -3,7 +3,6 @@ id: browser-cloud-skills
 title: Skills - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: AI Agent Skills
-displayed_sidebar: "BrowserCloudSidebar"
 description: Pre-built browser capabilities packaged as tools for AI agent frameworks like LangChain, CrewAI, and AutoGen.
 keywords:
   - browser cloud skills

@@ -3,7 +3,6 @@ id: browser-cloud-session-configuration
 title: Session Configuration - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Configure Session Options
-displayed_sidebar: "BrowserCloudSidebar"
 description: Complete reference for all options available when creating a session with the TestMu AI Browser SDK.
 keywords:
   - browser cloud configuration

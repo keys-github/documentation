@@ -3,7 +3,6 @@ id: browser-cloud-sessions-overview
 title: Sessions Overview - TestMu AI Browser Cloud
 hide_title: true
 sidebar_label: Understand the Sessions API
-displayed_sidebar: "BrowserCloudSidebar"
 description: The Sessions API lets you create and control cloud-based browser sessions through simple SDK calls in TestMu AI Browser Cloud.
 keywords:
   - browser cloud sessions
