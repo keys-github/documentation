@@ -82,7 +82,7 @@ Works when network is set to `true` and application uses standard HTTP libraries
 
 :::note Requirements
 - `network: true` is required for `localhost: true` to work.
-- Cannot be used together with `portForwarding`.
+- `localhost` capability cannot be used together with `portForwarding`.
 - Supported only on real android devices right now.
 
 ## Option 2: Port Forwarding
