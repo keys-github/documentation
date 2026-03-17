@@ -54,7 +54,7 @@ Platform provides two solutions: **Localhost Bypass** and **Port Forwarding**.
 
 ## Option 1: Localhost Bypass
 
-Best when app patching is enabled and your app uses standard HTTP libraries.
+Works when network is set to `true` and application uses standard HTTP libraries.Localhost network calls will not be captured.
 
 ```json
 {
@@ -87,7 +87,7 @@ Best when app patching is enabled and your app uses standard HTTP libraries.
 
 ## Option 2: Port Forwarding
 
-Best when app patching is unavailable or your app uses unsupported HTTP libraries.
+Best when localhost network logs need to be captured and there are no port conflicts.
 
 ```json
 {
