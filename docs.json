@@ -1599,6 +1599,7 @@
                   "support/docs/kane-ai-test-plan",
                   "support/docs/kaneai-hyperexecute-test-run-execution",
                   "support/docs/kaneai-ci-cd-automation",
+                  "support/docs/kaneai-create-pr",
                   "support/docs/test-runs-configurations",
                   "support/docs/kaneai-scheduled-test-runs"
                 ]
@@ -3027,5 +3028,23 @@
       "linkedin": "https://www.linkedin.com/company/testmu-ai",
       "youtube": "https://www.youtube.com/@TestMuAI"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/support/docs/scim/okta",
+      "destination": "/support/docs/scim-okta"
+    },
+    {
+      "source": "/support/docs/scim/okta/",
+      "destination": "/support/docs/scim-okta"
+    },
+    {
+      "source": "/support/docs/scim/azure",
+      "destination": "/support/docs/scim-azure"
+    },
+    {
+      "source": "/support/docs/scim/azure/",
+      "destination": "/support/docs/scim-azure"
+    }
+  ]
 }
