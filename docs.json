@@ -1417,6 +1417,7 @@
                     "group": "Smart Comparison Options",
                     "pages": [
                       "support/docs/smartui-smartignore",
+                      "support/docs/smartui-hooks-layout-fullpage-smartignore",
                       "support/docs/smartui-layout-testing",
                       "support/docs/smartui-diff-highlighter",
                       "support/docs/smartui-mismatch-thresholds"
@@ -1673,6 +1674,7 @@
                   "support/docs/kaneai-kb-finding-and-interacting-with-elements",
                   "support/docs/kaneai-kb-forms-inputs-and-data-entry",
                   "support/docs/kaneai-kb-assertions-and-validation",
+                  "support/docs/kaneai-conditional-logic",
                   "support/docs/kaneai-kb-dynamic-content-waits-and-page-state",
                   "support/docs/kaneai-kb-mobile-app-testing-patterns",
                   "support/docs/kaneai-kb-authentication-and-session-management",
@@ -1727,6 +1729,7 @@
           {
             "group": "Agent To Agent",
             "pages": [
+              "support/docs/ai-agent-testing-platform-overview",
               "support/docs/getting-started-with-agent-to-agent-testing",
               "support/docs/testing-your-first-ai-agent",
               "support/docs/agent-to-agent-faqs"
@@ -1995,7 +1998,7 @@
                   "support/docs/target-process-integration",
                   "support/docs/paymo-integration",
                   "support/docs/practitest-integration",
-                  "support/docs/breeze-integration-with-lambdatest",
+                  "support/docs/breeze-integration-with-testmu",
                   "support/docs/backlog-integration-with-testmu",
                   "support/docs/favro-integration",
                   "support/docs/zapier-integration-with-testmu",
@@ -2057,7 +2060,7 @@
                     "group": "GoCD",
                     "pages": [
                       "support/docs/gocd-integration-with-testmu",
-                      "support/docs/yaml-configuration-for-gocd-with-lambdatest"
+                      "support/docs/configure-yaml-for-integrating-gocd-pipelines-with-selenium-grid-online"
                     ]
                   },
                   "support/docs/drone-ci-integration-with-testmu",
@@ -2227,7 +2230,7 @@
                       "support/docs/accessibility-test-scheduling",
                       "support/docs/accessibility-test-scheduling-scan",
                       "support/docs/accessibility-test-scheduling-edit",
-                      "support/docs/accessibility-test-scheduling-crawler"
+                      "support/docs/accessibility-test-crawler"
                     ]
                   }
                 ]
