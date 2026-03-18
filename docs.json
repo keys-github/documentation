@@ -24,6 +24,13 @@
       "family": "SF Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
     }
   },
+  "openapi": [
+    "support-openapi.yaml",
+    "mobile_automation.yaml",
+    "Smart-UI.yaml",
+    "accessibility-testing.yaml",
+    "analytics-openapi.yaml"
+  ],
   "navigation": {
     "tabs": [
       {
@@ -2999,6 +3006,12 @@
             "group": "Accessibility Testing",
             "pages": [
               "support/api-doc/accessibility/get-test-issues"
+            ]
+          },
+          {
+            "group": "Analytics",
+            "pages": [
+              "support/api-doc/analytics/get-rca"
             ]
           },
           {
