@@ -1,0 +1,322 @@
+openapi: 3.0.0
+info:
+  title: TestMu AI Analytics API Documentation
+  version: 1.0.0
+servers:
+  - url: 'https://api.lambdatest.com/insights/api/v3'
+  - url: 'https://eu-api.lambdatest.com/insights/api/v3'
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+        status:
+          type: string
+          example: "failed"
+          description: Status of the API response.
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message describing what went wrong.
+    BadRequestResponse:
+      type: object
+      description: >-
+        Bad request errors may use different response shapes depending on the
+        validation layer. The `error`+`status` format is returned for input
+        validation errors, while the `message`+`status` format is returned for
+        request limit violations.
+      properties:
+        message:
+          type: string
+        error:
+          type: string
+        status:
+          type: string
+    RCAResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "success"
+          description: Status of the API response.
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              test_id:
+                type: string
+                example: "RMAA-AND-160849-XXXX"
+                description: Unique identifier of the test.
+              job_id:
+                type: string
+                example: "e3251d99-805a-4b3f-a3f5-c0ea9b1d2e3f"
+                description: Unique identifier of the job associated with the test.
+              stage_id:
+                type: string
+                example: "stage-xyz-67890"
+                description: Unique identifier of the stage associated with the test.
+              task_id:
+                type: string
+                example: "task-abc-12345"
+                description: Unique identifier of the task associated with the test.
+              build_id:
+                type: string
+                example: "290136414"
+                description: Unique identifier of the build associated with the test.
+              rca_category:
+                type: string
+                example: "Test Data Issue"
+                description: High-level category of the root cause.
+              create_timestamp:
+                type: string
+                format: date-time
+                example: "2026-03-05T11:13:32Z"
+                description: Timestamp when the RCA was generated.
+              rca_detail:
+                type: object
+                description: Detailed AI-powered Root Cause Analysis for the test failure.
+                properties:
+                  root_cause_category:
+                    type: string
+                    example: "Test Data Issue"
+                    description: Category of the root cause identified by AI analysis.
+                  parent_failure_category:
+                    type: string
+                    example: "Infrastructure Issue"
+                    description: Parent category of the failure for hierarchical classification.
+                  failure_summary:
+                    type: string
+                    example: "App could not reach backend server, so the expected button was not displayed and the test failed."
+                    description: Human-readable summary of why the test failed.
+                  stack_trace:
+                    type: string
+                    example: "org.openqa.selenium.NoSuchElementException: no such element..."
+                    description: Stack trace captured during the test failure.
+                  root_cause_failure_stack_trace:
+                    type: string
+                    example: "java.net.ConnectException: Connection refused (Connection refused)..."
+                    description: Stack trace associated with the root cause of the failure.
+                  analysis:
+                    type: array
+                    items:
+                      type: string
+                    description: Step-by-step AI analysis explaining the chain of events that led to the failure.
+                    example:
+                      - "Device logs show the app could not connect to the backend server."
+                      - "Because the server call failed, the expected UI element was never loaded."
+                  steps_to_fix:
+                    type: array
+                    description: Actionable steps to resolve the failure.
+                    items:
+                      type: object
+                      properties:
+                        issue:
+                          type: string
+                          example: "Backend server not reachable from the test device."
+                          description: Description of the specific issue.
+                        module:
+                          type: string
+                          example: "Mobile app backend connection"
+                          description: Module or area where the issue originates.
+                        suggested_fix:
+                          type: string
+                          example: "Ensure the backend server is accessible from the test environment."
+                          description: Suggested fix for the issue.
+                  error_timeline:
+                    type: array
+                    description: Chronological timeline of errors that occurred during the test.
+                    items:
+                      type: object
+                      properties:
+                        step_name:
+                          type: string
+                          example: "App connects to backend"
+                          description: Name of the step in the error timeline.
+                        timestamp:
+                          type: string
+                          format: date-time
+                          example: "2026-03-05T11:17:22Z"
+                          description: Timestamp when this error occurred.
+                        source_log:
+                          type: string
+                          example: "Device Logs"
+                          description: Log source where the error was detected (e.g., Device Logs, Command Logs).
+                        summary:
+                          type: string
+                          example: "Connection to backend server timed out."
+                          description: Summary of what happened at this point in the timeline.
+        pagination:
+          type: object
+          properties:
+            page:
+              type: integer
+              example: 1
+              description: Current page number.
+            limit:
+              type: integer
+              example: 10
+              description: Number of records per page.
+            total:
+              type: integer
+              example: 1
+              description: Total number of RCA records found.
+tags:
+  - name: Root Cause Analysis (RCA)
+    description: AI-powered root cause analysis for test failures
+paths:
+  /public/rca:
+    get:
+      tags:
+        - Root Cause Analysis (RCA)
+      summary: Get AI-powered Root Cause Analysis for test failures.
+      description: >-
+        This endpoint retrieves the AI-powered Root Cause Analysis (RCA) for the
+        specified test, job, task, or stage IDs. The RCA returned by this API
+        matches the same test-level AI RCA displayed on the UI dashboard.
+
+
+        At least one of test_ids, job_ids, task_ids, or stage_ids must be provided.
+      parameters:
+        - name: test_ids
+          in: query
+          description: Comma-separated list of test IDs to fetch RCA for.
+          required: false
+          schema:
+            type: string
+          example: RMAA-AND-160849-XXXX
+        - name: job_ids
+          in: query
+          description: Comma-separated list of job IDs to fetch RCA for.
+          required: false
+          schema:
+            type: string
+          example: e3251d99-805a-4b3f-a3f5-c0ea9b1d2e3f
+        - name: task_ids
+          in: query
+          description: Comma-separated list of task IDs to fetch RCA for.
+          required: false
+          schema:
+            type: string
+          example: task-abc-12345
+        - name: stage_ids
+          in: query
+          description: Comma-separated list of stage IDs to fetch RCA for.
+          required: false
+          schema:
+            type: string
+          example: stage-xyz-67890
+        - name: page
+          in: query
+          description: Page number for paginated results. Default is 1.
+          required: false
+          schema:
+            type: integer
+            default: 1
+          example: 1
+        - name: limit
+          in: query
+          description: Maximum number of records to return per page. Default is 10.
+          required: false
+          schema:
+            type: integer
+            default: 10
+          example: 10
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RCAResponse'
+              example:
+                status: "success"
+                data:
+                  - test_id: "RMAA-AND-160849-XXXX"
+                    job_id: "e3251d99-805a-4b3f-a3f5-c0ea9b1d2e3f"
+                    stage_id: "stage-xyz-67890"
+                    task_id: "task-abc-12345"
+                    build_id: "290136414"
+                    rca_category: "Test Data Issue"
+                    create_timestamp: "2026-03-05T11:13:32Z"
+                    rca_detail:
+                      root_cause_category: "Test Data Issue"
+                      parent_failure_category: "Infrastructure Issue"
+                      failure_summary: "App could not reach backend server, so the expected button was not displayed and the test failed."
+                      stack_trace: "org.openqa.selenium.NoSuchElementException: no such element..."
+                      root_cause_failure_stack_trace: "java.net.ConnectException: Connection refused (Connection refused)..."
+                      analysis:
+                        - "Device logs show the app could not connect to the backend server."
+                        - "Because the server call failed, the expected UI element was never loaded."
+                      steps_to_fix:
+                        - issue: "Backend server not reachable from the test device."
+                          module: "Mobile app backend connection"
+                          suggested_fix: "Ensure the backend server is accessible from the test environment."
+                      error_timeline:
+                        - step_name: "App connects to backend"
+                          timestamp: "2026-03-05T11:17:22Z"
+                          source_log: "Device Logs"
+                          summary: "Connection to backend server timed out."
+                pagination:
+                  limit: 10
+                  page: 1
+                  total: 1
+        '400':
+          description: Bad request error occurred while processing the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+              examples:
+                ids_required:
+                  summary: At least one ID parameter is required
+                  value:
+                    error: "at least one of test_ids, job_ids, task_ids, or stage_ids is required"
+                    status: "failed"
+                ids_limit_exceeded:
+                  summary: Total number of IDs exceeds the maximum limit of 100
+                  value:
+                    message: "total number of IDs must not exceed 100"
+                    status: "error"
+        '401':
+          description: Unauthorized. Invalid or expired authentication token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+              example:
+                message: "Invalid Token"
+        '403':
+          description: Forbidden. Authorization token is missing from the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+              example:
+                message: "Authorization token missing."
+        '500':
+          description: Server-side error occurred while processing the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "error getting rca data"
+                status: "failed"
+      security:
+        - BasicAuth: []
+        - BearerAuth: []
+
