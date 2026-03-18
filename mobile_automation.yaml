@@ -30,9 +30,14 @@ servers:
 paths:
   /app/uploadFramework:
     post:
+      servers:
+        - url: 'https://manual-api.lambdatest.com'
+          description: 'Manual API (US)'
+        - url: 'https://eu-manual-api.lambdatest.com'
+          description: 'Manual API (EU)'
       tags:
         - Application (Espresso/XCUI)
-      summary: Upload a framework file for testing(Espresso/XCUI) (Server 1)
+      summary: Upload a framework file for testing(Espresso/XCUI)
       description: Upload a framework file for testing purposes. Supports Espresso for Android and XCUITest for iOS.
       requestBody:
         required: true
@@ -85,9 +90,14 @@ paths:
 
   /app/upload/realDevice:
     post:
+      servers:
+        - url: 'https://manual-api.lambdatest.com'
+          description: 'Manual API (US)'
+        - url: 'https://eu-manual-api.lambdatest.com'
+          description: 'Manual API (EU)'
       tags:
         - Application (Appium)
-      summary: Upload Application to a Real Device (Server 1)
+      summary: Upload Application to a Real Device
       description: Upload an application (.ipa,.apk,.aab) for testing on a real device.
       operationId: uploadAppRealDevice
       requestBody:
@@ -153,9 +163,14 @@ paths:
 
   /app/data:
     get:
+      servers:
+        - url: 'https://manual-api.lambdatest.com'
+          description: 'Manual API (US)'
+        - url: 'https://eu-manual-api.lambdatest.com'
+          description: 'Manual API (EU)'
       tags:
         - Application (Appium)
-      summary: Fetch all uploaded applications (Server 1)
+      summary: Fetch all uploaded applications
       description: Fetch all applications based on the provided type (android/iOS) and access level (user/organization).
       operationId: fetchApplications
       parameters:
@@ -235,9 +250,14 @@ paths:
 
   /app/custom_id/{customId}:
     get:
+      servers:
+        - url: 'https://manual-api.lambdatest.com'
+          description: 'Manual API (US)'
+        - url: 'https://eu-manual-api.lambdatest.com'
+          description: 'Manual API (EU)'
       tags:
         - Application (Appium)
-      summary: Get data by Custom ID (Server 1)
+      summary: Get data by Custom ID
       description: Retrieve data by custom ID from LambdaTest.
       operationId: getDataByCustomId
       parameters:
@@ -296,9 +316,14 @@ paths:
 
   /app/delete:
     delete:
+      servers:
+        - url: 'https://manual-api.lambdatest.com'
+          description: 'Manual API (US)'
+        - url: 'https://eu-manual-api.lambdatest.com'
+          description: 'Manual API (EU)'
       tags:
         - Application (Appium)
-      summary: Delete your uploaded applications (Server 1)
+      summary: Delete your uploaded applications
       description: Delete the uploaded applications based on the provided appIds.
       operationId: deleteApplications
       requestBody:
@@ -337,9 +362,14 @@ paths:
 
   /app/{appId}:
     delete:
+      servers:
+        - url: 'https://manual-api.lambdatest.com'
+          description: 'Manual API (US)'
+        - url: 'https://eu-manual-api.lambdatest.com'
+          description: 'Manual API (EU)'
       tags:
         - Application (Appium)
-      summary: Delete a single uploaded application (Server 1)
+      summary: Delete a single uploaded application
       description: Deletes an uploaded application using its unique `appId`.
       operationId: deleteApplication
       parameters:
@@ -376,9 +406,12 @@ paths:
 
   /mfs/v1.0/media/list:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com'
+          description: 'General API (US)'
       tags:
         - Media
-      summary: Fetch media list for an organization (server 4)
+      summary: Fetch media list for an organization
       description: Retrieve a list of uploaded media files (images, videos, etc.) associated with an organization.
       parameters:
         - name: custom_id
@@ -435,9 +468,12 @@ paths:
 
   /mfs/v1.0/media/{media_id}:
     delete:
+      servers:
+        - url: 'https://api.lambdatest.com'
+          description: 'General API (US)'
       tags:
         - Media
-      summary: Delete a media asset (server 4)
+      summary: Delete a media asset
       description: Deletes the media files associated with the given `media_id`.
       operationId: deleteMediaByMediaId
       parameters:
@@ -470,9 +506,12 @@ paths:
 
   /mfs/v1.0/media/upload/:
     post:
+      servers:
+        - url: 'https://api.lambdatest.com'
+          description: 'General API (US)'
       tags:
         - Media
-      summary: Upload Media File (Image/Video/Document/Certificate) (Server 4)
+      summary: Upload Media File (Image/Video/Document/Certificate)
       description: Upload a media file (.jpg, .png, .mp4, .pdf, etc.) for use.
       operationId: uploadMediaFile
       requestBody:
@@ -536,9 +575,14 @@ paths:
 
   /list:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
         - Devices List
-      summary: Fetch available devices for running tests (Server 2)
+      summary: Fetch available devices for running tests
       description: Retrieves the list of devices available for running tests. You can filter the devices based on the region.
       operationId: getDevices
       parameters:
@@ -585,9 +629,14 @@ paths:
 
   /org/concurrency:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
         - Concurrency Details
-      summary: Get your account's concurrency details (Server 2)
+      summary: Get your account's concurrency details
       description: Retrieve the concurrency details for your account.
       operationId: getConcurrencyDetails
       responses:
@@ -608,9 +657,14 @@ paths:
 
   /mobile-automation/api/v1/fetchpatchedapkurl:
     post:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com'
+          description: 'Mobile API (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com'
+          description: 'Mobile API (EU)'
       tags:
         - Application Processing (Appium)
-      summary: Fetch patched APK URL (Server 3)
+      summary: Fetch patched APK URL
       description: |
         This endpoint facilitates the retrieval of a patched APK URL and provides information on whether the patching process is complete or not. It is essential for Appium automation and supports testing workflows.
       operationId: fetchpatchedapkurl
@@ -656,9 +710,14 @@ paths:
 
   /framework/v1/espresso/build:
     post:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com'
+          description: 'Mobile API (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com'
+          description: 'Mobile API (EU)'
       tags:
         - Execute Test (Espresso/XCUI)
-      summary: Execute espresso test on the LambdaTest platform (Server 3)
+      summary: Execute espresso test on the LambdaTest platform
       description: |
         This endpoint enables you to execute automated tests using the LambdaTest platform.
       operationId: executeWindowsTest
@@ -765,9 +824,14 @@ paths:
 
   /framework/v1/xcui/build:
     post:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com'
+          description: 'Mobile API (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com'
+          description: 'Mobile API (EU)'
       tags:
         - Execute Test (Espresso/XCUI)
-      summary: Execute XCUI test on the LambdaTest platform (Server 3)
+      summary: Execute XCUI test on the LambdaTest platform
       description: Execute the automation tests on Lambdatest platform using the provided parameters.
       operationId: executeTest
       requestBody:
@@ -870,9 +934,14 @@ paths:
 
   /metadata/{session_id}/details:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
         - Session
-      summary: Fetch the app URL for a particular session (Server 2)
+      summary: Fetch the app URL for a particular session
       description: Retrieve the app URL being used for a specific session.
       operationId: getAppUrlForSession
       parameters:
@@ -902,9 +971,14 @@ paths:
 
   /builds:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Build
-      summary: Fetch all builds of an account. (Server 2)
+      summary: Fetch all builds of an account.
       description: Fetch all builds of an account. You can limit the number of records and apply filter on status,build date range and sort by users,start date and end date in asc and desc order. You can apply sort on multiple columns.
       operationId: builds
       parameters:
@@ -975,9 +1049,14 @@ paths:
       - basicAuth: []
   /builds/{build_id}:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Build
-      summary: Fetch specified build details (Server 2)
+      summary: Fetch specified build details
       description: To fetch build details of the buildid specified by the user.
       operationId: singlebuild
       parameters:
@@ -1007,9 +1086,14 @@ paths:
       security:
       - basicAuth: []
     delete:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Build
-      summary: Delete Build (Server 2)
+      summary: Delete Build
       description: To delete specified Build from dashboard.
       operationId: status_ind
       parameters:
@@ -1039,9 +1123,14 @@ paths:
       security:
       - basicAuth: []
     patch:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Build
-      summary: Update Build Name (Server 2)
+      summary: Update Build Name
       description: To change build name.
       operationId: build_id
       parameters:
@@ -1080,9 +1169,14 @@ paths:
 
   /builds/{build_id}/stop:
     put:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
         - Build
-      summary: Stop a running build (server 2)
+      summary: Stop a running build
       description: Stops the execution of a running build using its `build_id`.
       parameters:
         - name: build_id
@@ -1116,9 +1210,14 @@ paths:
 
   /sessions:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: Fetch list of all sessions (Server 2)
+      summary: Fetch list of all sessions
       description: To fetch list of sessions. You can also limit the number of records, and paginate through your data using Parameters.
       operationId: sessions
       parameters:
@@ -1209,9 +1308,14 @@ paths:
       - basicAuth: []
   /sessions/{session_id}:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: session specific information (Server 2)
+      summary: session specific information
       description: To fetch specified session details such as name, status,os,browser,version and all generated logs endpoint.
       parameters:
       - name: session_id
@@ -1244,9 +1348,14 @@ paths:
       security:
       - basicAuth: []
     delete:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: Delete test session (Server 2)
+      summary: Delete test session
       description: Delete a session.
       parameters:
       - name: session_id
@@ -1285,9 +1394,14 @@ paths:
       security:
       - basicAuth: []
     patch:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: Update session name and status. (Server 2)
+      summary: Update session name and status.
       description: To update the test session name and status {"passed","failed"}.
       parameters:
       - name: session_id
@@ -1378,9 +1492,14 @@ paths:
   #     - basicAuth: []
   /sessions/{session_id}/video:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: Fetch recorded video of a test session id. (Server 2)
+      summary: Fetch recorded video of a test session id.
       description: To fetch video of a recorded test session.
       parameters:
       - name: session_id
@@ -1415,9 +1534,14 @@ paths:
 
   /sessions/{session_id}/log/command:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: command logs of a test session (Server 2)
+      summary: command logs of a test session
       description: To fetch the all executed commands of a test session in plain json text.
       operationId: session
       parameters:
@@ -1469,9 +1593,14 @@ paths:
 
   /sessions/{session_id}/log/appium:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: appium log of a test session (Server 2)
+      summary: appium log of a test session
       description: To fetch appium log that contains grid requests and reponses of a test session in plain json text.
       operationId: session1
       parameters:
@@ -1509,9 +1638,14 @@ paths:
 
   /sessions/{session_id}/log/network:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: Network log of a test session (Server 2)
+      summary: Network log of a test session
       description: To fetch Network log that contains all the requested urls of a test session in plain json text.
       operationId: session2
       parameters:
@@ -1546,9 +1680,14 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/log/devicelog:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: devicelog log of a test session (Server 2)
+      summary: devicelog log of a test session
       description: To fetch devicelog log that contains devicelog errors thrown by application during a test session in plain json text.
       operationId: session3
       parameters:
@@ -1589,9 +1728,14 @@ paths:
 
   /sessions/{session_id}/log/devicelogzip:
     get:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
       - Session
-      summary: devicelog custom logs of a test session in .zip file (Server 2)
+      summary: devicelog custom logs of a test session in .zip file
       description: To fetch devicelog in zipped format that contains all device logs including custom logs generated during a test session.
       operationId: getDeviceLogZip
       parameters:
@@ -1628,9 +1772,14 @@ paths:
 
   /sessions/{test_id}/stop:
     put:
+      servers:
+        - url: 'https://mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (US)'
+        - url: 'https://eu-mobile-api.lambdatest.com/mobile-automation/api/v1'
+          description: 'Mobile Automation v1 (EU)'
       tags:
         - Session
-      summary: Stop a running test session (server 2)
+      summary: Stop a running test session
       description: Stops a running test session using its `test_id`
       parameters:
         - name: test_id

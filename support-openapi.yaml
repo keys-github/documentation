@@ -13,6 +13,11 @@ servers:
 paths:
   /builds:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Build
       summary: Fetch all builds of an account.
@@ -105,6 +110,11 @@ paths:
       - basicAuth: []
   /builds/{build_id}:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Build
       summary: Fetch specified build details
@@ -145,6 +155,11 @@ paths:
       security:
       - basicAuth: []
     delete:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Build
       summary: Delete Build
@@ -177,6 +192,11 @@ paths:
       security:
       - basicAuth: []
     patch:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Build
       summary: Update Build Name or Status
@@ -217,6 +237,11 @@ paths:
       - basicAuth: []
   /build/stop:
     put:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Build
       summary: Stop tests by BuildID
@@ -265,6 +290,11 @@ paths:
       - basicAuth: []
   /sessions:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Fetch list of all sessions
@@ -374,6 +404,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: session specific information
@@ -417,6 +452,11 @@ paths:
       security:
       - basicAuth: []
     delete:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Delete test session
@@ -458,6 +498,11 @@ paths:
       security:
       - basicAuth: []
     patch:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Update test session details.
@@ -513,6 +558,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/stop:
     put:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Stop session by sessionID
@@ -555,6 +605,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/screenshots:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: To fetch all step by step screenshots
@@ -591,6 +646,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/video:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Fetch recorded video of a test session id.
@@ -633,6 +693,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/log/command:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: command logs of a test session
@@ -670,6 +735,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/log/selenium:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: selenium log of a test session
@@ -707,6 +777,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/log/network:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Network log of a test session
@@ -744,6 +819,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/log/console:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: console log of a test session
@@ -781,6 +861,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/log/network.har:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Session
       summary: Network har log of a test session
@@ -856,6 +941,11 @@ paths:
               -   basicAuth: [ ]
   /sessions/{session_id}/terminal-logs:
     post:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - Session
       summary: Upload terminal logs to our lambda storage
@@ -903,6 +993,11 @@ paths:
 
   /sessions/{session_id}/exceptions:
     post:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - Session
       summary: Upload assertion logs to our lambda storage
@@ -948,6 +1043,11 @@ paths:
         - basicAuth: []
   /sessions/{session_id}/v2/log/command:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v2'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v2'
+          description: 'EU'
       tags:
       - Session Logs (V2)
       summary: command logs of a test session
@@ -985,6 +1085,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/v2/log/selenium:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v2'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v2'
+          description: 'EU'
       tags:
       - Session Logs (V2)
       summary: selenium/appium log of a test session
@@ -1022,6 +1127,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/v2/log/network:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v2'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v2'
+          description: 'EU'
       tags:
       - Session Logs (V2)
       summary: Network log of a test session
@@ -1059,6 +1169,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/v2/log/console:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v2'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v2'
+          description: 'EU'
       tags:
       - Session Logs (V2)
       summary: console/browser log of a test session
@@ -1096,6 +1211,11 @@ paths:
       - basicAuth: []
   /sessions/{session_id}/v2/log/network.har:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v2'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v2'
+          description: 'EU'
       tags:
       - Session Logs (V2)
       summary: Network har log of a test session
@@ -1170,6 +1290,11 @@ paths:
               -   basicAuth: [ ]
   /tests/{test_id}/exceptions:
     post:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - Test
       summary: Upload assertion logs to our lambda storage
@@ -1216,6 +1341,11 @@ paths:
 
   /test/{test_id}/video:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Test
       summary: Fetch recorded video of a test id.
@@ -1259,6 +1389,11 @@ paths:
 
   /tunnels:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - tunnel
       summary: Fetch running tunnels of your account.
@@ -1286,6 +1421,11 @@ paths:
       - basicAuth: []
   /tunnels/{tunnel_id}:
     delete:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - tunnel
       summary: Stop a running tunnel
@@ -1328,6 +1468,11 @@ paths:
       - basicAuth: []
   /platforms:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - platforms
       summary: Fetch platforms
@@ -1347,6 +1492,11 @@ paths:
 #                $ref: '#/components/schemas/PageNotFound'
   /files:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - prerun
       summary: Fetch all pre run files uploaded by the user
@@ -1368,6 +1518,11 @@ paths:
       security:
         - basicAuth: []
     post:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - prerun
       summary: Upload pre run executable file to our lambda storage
@@ -1517,6 +1672,11 @@ paths:
 
   /user-files:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - user-files
       summary: Fetch all user files uploaded by the user
@@ -1538,6 +1698,11 @@ paths:
       security:
         - basicAuth: []
     post:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - user-files
       summary: Upload files to our lambda storage
@@ -1646,6 +1811,11 @@ paths:
 
   /lighthouse/report/{session_id}:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Lighthouse
       summary: To fetch the Lighthouse performance report data.
@@ -1735,6 +1905,11 @@ paths:
 
   /files/extensions:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - extensions
       summary: Fetch all extensions uploaded by the user
@@ -1756,6 +1931,11 @@ paths:
       security:
         - basicAuth: [ ]
     post:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - extensions
       summary: Upload new extensions in zip format to our lambda storage
@@ -1792,6 +1972,11 @@ paths:
 
   /files/extensions/delete:
     delete:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
         - extensions
       summary: Delete extension from our lambda storage
@@ -1998,6 +2183,11 @@ paths:
 
   /autoheal/test/{test_id}:
     get:
+      servers:
+        - url: 'https://api.lambdatest.com/automation/api/v1'
+          description: 'US'
+        - url: 'https://eu-api.lambdatest.com/automation/api/v1'
+          description: 'EU'
       tags:
       - Autoheal Command Logs
       summary: Fetch autohealed commands data for a test
