@@ -2639,11 +2639,83 @@
           },
           {
             "group": "App Automation API (Real Devices)",
-            "openapi": "mobile_automation.yaml"
+            "pages": [
+              {
+                "group": "App Management",
+                "pages": [
+                  "support/api-doc/app-automation/upload-framework",
+                  "support/api-doc/app-automation/upload-app-real-device",
+                  "support/api-doc/app-automation/fetch-all-uploaded-apps",
+                  "support/api-doc/app-automation/get-app-by-custom-id",
+                  "support/api-doc/app-automation/delete-uploaded-apps",
+                  "support/api-doc/app-automation/delete-single-app"
+                ]
+              },
+              {
+                "group": "Media Management",
+                "pages": [
+                  "support/api-doc/app-automation/fetch-media-list",
+                  "support/api-doc/app-automation/delete-media-asset",
+                  "support/api-doc/app-automation/upload-media-file"
+                ]
+              },
+              {
+                "group": "Device & Concurrency",
+                "pages": [
+                  "support/api-doc/app-automation/fetch-available-devices",
+                  "support/api-doc/app-automation/get-concurrency-details"
+                ]
+              },
+              {
+                "group": "Framework Execution",
+                "pages": [
+                  "support/api-doc/app-automation/fetch-patched-apk-url",
+                  "support/api-doc/app-automation/execute-espresso-test",
+                  "support/api-doc/app-automation/execute-xcui-test"
+                ]
+              },
+              {
+                "group": "Build",
+                "pages": [
+                  "support/api-doc/app-automation/fetch-all-builds",
+                  "support/api-doc/app-automation/fetch-build-details",
+                  "support/api-doc/app-automation/delete-build",
+                  "support/api-doc/app-automation/update-build-name",
+                  "support/api-doc/app-automation/stop-running-build"
+                ]
+              },
+              {
+                "group": "Session",
+                "pages": [
+                  "support/api-doc/app-automation/fetch-all-sessions",
+                  "support/api-doc/app-automation/get-session-info",
+                  "support/api-doc/app-automation/delete-session",
+                  "support/api-doc/app-automation/update-session",
+                  "support/api-doc/app-automation/fetch-session-video",
+                  "support/api-doc/app-automation/fetch-session-app-url",
+                  "support/api-doc/app-automation/stop-running-session"
+                ]
+              },
+              {
+                "group": "Session Logs",
+                "pages": [
+                  "support/api-doc/app-automation/get-command-logs",
+                  "support/api-doc/app-automation/get-appium-logs",
+                  "support/api-doc/app-automation/get-network-logs",
+                  "support/api-doc/app-automation/get-device-logs",
+                  "support/api-doc/app-automation/get-device-logs-zip"
+                ]
+              }
+            ]
           },
           {
             "group": "Smart UI",
-            "openapi": "Smart-UI.yaml"
+            "pages": [
+              "support/api-doc/smart-ui/upload-screenshot",
+              "support/api-doc/smart-ui/get-build-status",
+              "support/api-doc/smart-ui/get-screenshot-build-status",
+              "support/api-doc/smart-ui/get-build-screenshots"
+            ]
           },
           
           {
@@ -2925,7 +2997,9 @@
           },
           {
             "group": "Accessibility Testing",
-            "openapi": "accessibility-testing.yaml"
+            "pages": [
+              "support/api-doc/accessibility/get-test-issues"
+            ]
           },
           {
             "group": "Performance Testing",
