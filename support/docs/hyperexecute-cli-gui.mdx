@@ -93,7 +93,9 @@ At the configuration listing page you can find basic details and tags for each c
 
 <img src='/assets/images/hyperexecute/gui/manage_config.png'  />
 
-<details><summary> **What is a Configuration?** </summary>A configuration is essentially a **complete test execution profile** that includes which specific tests to run from your test suite, all execution parameters (OS, concurrency, etc.), environment variables and other settings. Configurations eliminate the need to repeatedly select tests and adjust settings for common testing scenarios. For example, you might create separate configurations for smoke tests and full regression.</details>
+<Accordion title="What is a Configuration?">
+A configuration is essentially a **complete test execution profile** that includes which specific tests to run from your test suite, all execution parameters (OS, concurrency, etc.), environment variables and other settings. Configurations eliminate the need to repeatedly select tests and adjust settings for common testing scenarios. For example, you might create separate configurations for smoke tests and full regression.
+</Accordion>
 
   {/* <Info>
 At its current state, the GUI will not self-discover the tests according to rules stated in the YAML file while loading it. This feature will be available soon in next release.
@@ -163,10 +165,20 @@ Once your project is set up and you want to import a configuration using an exis
 ## FAQs
 ---
 
-<details><summary> 1. Are Appium tests supported on GUI as of now? </summary>No, Appium test support will be coming soon. Currently, the GUI is in beta and primarily supports TestNG framework with Selenium only.</details>
+<AccordionGroup>
+  <Accordion title="1. Are Appium tests supported on GUI as of now?">
+    No, Appium test support will be coming soon. Currently, the GUI is in beta and primarily supports TestNG framework with Selenium only.
+  </Accordion>
 
-<details><summary> 2. If my tests are written using Chrome Driver or any other local driver, can I use that project? </summary>Yes, you can use the project, but the associated test IDs will not be created. You would need to enable the "Screen Recording For Scenarios" key to record the entire scenario execution, with the video accessible from the HyperExecute dashboard. (This is applicable for non-Selenium based tests)</details>  
+  <Accordion title="2. If my tests are written using Chrome Driver or any other local driver, can I use that project?">
+    Yes, you can use the project, but the associated test IDs will not be created. You would need to enable the "Screen Recording For Scenarios" key to record the entire scenario execution, with the video accessible from the HyperExecute dashboard. (This is applicable for non-Selenium based tests)
+  </Accordion>
 
-<details><summary> 3. If I have a scenario where the project has two folders - one which creates the test dependencies and another which uses those dependencies to run the tests, how can I use that? </summary>You would not be able to use such a project. Please ensure that each project is created from one folder only. We will be supporting this feature in the future.</details>
+  <Accordion title="3. If I have a scenario where the project has two folders - one which creates the test dependencies and another which uses those dependencies to run the tests, how can I use that?">
+    You would not be able to use such a project. Please ensure that each project is created from one folder only. We will be supporting this feature in the future.
+  </Accordion>
 
-<details><summary> 4. My test discovery failed on the HyperExecute GUI. What may be the most possible cause, and how do I fix it? </summary>Test discovery failures often stem from misconfigured environment variables or discovery flags when you may have private dependencies in your project. Here’s how to troubleshoot. You can try adding environment variables or discovery flags in the GUI itself which may be required to resolve the dependencies. You will find two types of Environment Variables - Local and Remote. Local environment variables are used for local discovery and it is advisable to add these without any secret values since these are stored on local environment only.</details>
+  <Accordion title="4. My test discovery failed on the HyperExecute GUI. What may be the most possible cause, and how do I fix it?">
+    Test discovery failures often stem from misconfigured environment variables or discovery flags when you may have private dependencies in your project. Here's how to troubleshoot. You can try adding environment variables or discovery flags in the GUI itself which may be required to resolve the dependencies. You will find two types of Environment Variables - Local and Remote. Local environment variables are used for local discovery and it is advisable to add these without any secret values since these are stored on local environment only.
+  </Accordion>
+</AccordionGroup>
