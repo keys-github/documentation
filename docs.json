@@ -79,6 +79,7 @@
                       {
                         "group": "JavaScript",
                         "pages": [
+                          "support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/quick-guide-to-run-node-js-tests-on-testmu-selenium-grid",
                           "support/docs/protractor-with-selenium-running-protractor-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/automation-testing-with-mocha-and-selenium",
@@ -108,6 +109,7 @@
                       {
                         "group": "Python",
                         "pages": [
+                          "support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/run-python-tests-on-selenium-grid",
                           "support/docs/running-unit-testing-in-python-on-testmu-selenium-grid",
                           "support/docs/pytest-with-selenium-running-pytest-automation-script-on-testmu-selenium-grid",
@@ -119,6 +121,7 @@
                       {
                         "group": "PHP",
                         "pages": [
+                          "support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/phpunit-with-selenium-running-phpunit-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/behat-with-selenium-running-behat-automation-scripts-on-testmu-selenium-grid",
                           "support/docs/laravel-dusk-with-selenium-running-laravel-dusk-automation-scripts-on-testmu-selenium-grid",
@@ -149,7 +152,7 @@
                           "support/docs/selenium-default-capabilities",
                           "support/docs/selenium-three-capabilities",
                           "support/docs/selenium-four-capabilities",
-                          "support/docs/lambdatest-selenium-advance-capabilities"
+                          "support/docs/testmu-selenium-advance-capabilities"
                         ]
                       },
                       {
@@ -264,7 +267,7 @@
                   "support/docs/run-settings",
                   "support/docs/screen-resolution-testing-with-cypress",
                   "support/docs/download-artefacts-cypress",
-                  "support/docs/integrate-lambdatest-with-cypress",
+                  "support/docs/integrate-testmu-with-cypress",
                   "support/docs/private-dependencies-cypress",
                   "support/docs/applitools-integration-cypress",
                   "support/docs/report-portal-cypress",
@@ -454,7 +457,7 @@
                     "group": "Features",
                     "pages": [
                       "support/docs/camera-image-injection",
-                      "support/docs/mock-video-injection-web-automation-selenium-chromium",
+                      "support/docs/video-injection",
                       "support/docs/biometric-authentication",
                       "support/docs/audio-injection",
                       "support/docs/regular-expression-appium",
@@ -1740,6 +1743,7 @@
               "support/docs/ai-agent-testing-platform-overview",
               "support/docs/getting-started-with-agent-to-agent-testing",
               "support/docs/testing-your-first-ai-agent",
+              "support/docs/agent-features-and-metrics",
               "support/docs/agent-to-agent-faqs"
             ]
           },
@@ -1920,6 +1924,7 @@
                 "group": "Test Runs",
                 "pages": [
                   "support/docs/test-run-creation-and-management",
+                  "support/docs/sync-test-instance",
                   "support/docs/test-instance-audit-logs"
                 ]
               },
@@ -1935,9 +1940,9 @@
                 "group": "Issue Tracker Integration",
                 "pages": [
                   "support/docs/link-jira-issues-with-test-manager",
-                  "support/docs/lambdatest-jira-app",
+                  "support/docs/testmu-jira-app",
                   "support/docs/link-ado-issues-with-test-manager",
-                  "support/docs/lambdatest-azure-devops-app"
+                  "support/docs/testmu-azure-devops-app"
                 ]
               }
             ]
@@ -2139,7 +2144,7 @@
                     "pages": [
                       "support/docs/jenkins-with-testmu",
                       "support/docs/integrating-testmu-with-jenkins-freestyle-project",
-                      "support/docs/integrating-lambdatest-report-with-jenkins-pipeline"
+                      "support/docs/integrating-testmu-report-with-jenkins-pipeline"
                     ]
                   },
                   "support/docs/wordpress-plugin",
@@ -2298,7 +2303,7 @@
               {
                 "group": "Getting started with Tunnel",
                 "pages": [
-                  "support/docs/lambdatest-tunnel",
+                  "support/docs/testmu-tunnel",
                   "support/docs/testing-locally-hosted-pages",
                   "support/docs/local-testing-linux",
                   "support/docs/local-testing-windows",
@@ -2336,7 +2341,7 @@
                 "group": "Advanced Features",
                 "pages": [
                   "support/docs/sharing-lambda-tunnel",
-                  "docs/load-balancing-in-lambda-tunnel",
+                  "support/docs/load-balancing-in-lambda-tunnel",
                   "support/docs/charles-proxy",
                   "support/docs/dedicated-proxy",
                   "support/docs/bypass-proxy-domains",
@@ -2447,7 +2452,7 @@
                     "group": "Responsive Testing",
                     "pages": [
                       "support/docs/responsive-testing",
-                      "mark-as-bug"
+                      "support/docs/mark-as-bug"
                     ]
                   },
                   "support/docs/smart-visual-testing"
