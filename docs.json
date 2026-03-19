@@ -24,6 +24,11 @@
       "family": "SF Pro, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"
     }
   },
+  "api": {
+    "proxy": {
+      "url": "https://api.lambdatest.com"
+    }
+  },
   "openapi": [
     "support-openapi.yaml",
     "mobile_automation.yaml",
