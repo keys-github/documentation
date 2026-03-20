@@ -166,12 +166,6 @@ Navigate to the **Agent** page in KaneAI and select `Generate Scenarios`. This o
 ### Step 2: Enter Your Requirements
 Start by entering your product or feature requirements in the input box.
 
-:::info Public URLs Only
-Currently, the AI Test Case Generator can only access **publicly available URLs**. Websites behind a VPN, corporate proxy, firewall, or those requiring authentication to reach the landing page cannot be analyzed.
-
-**Support for private URLs is coming soon.**
-:::
-
 We support multiple input formats, including:
 - **Textual requirements**
 - **Jira/Azure DevOps links** (e.g., epics, stories, tasks)
@@ -182,6 +176,12 @@ We support multiple input formats, including:
 - **Spreadsheets** (CSV or XLSX)
 - **Documents**
 - **JSON or XML**
+
+:::info Public URLs Only
+Currently, the AI Test Case Generator can only access **publicly available URLs**. Websites behind a VPN, corporate proxy, firewall, or those requiring authentication to reach the landing page cannot be analyzed.
+
+**Support for private URLs is coming soon.**
+:::
 
 #### Add Input Requirements
 
