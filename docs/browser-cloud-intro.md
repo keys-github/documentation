@@ -45,13 +45,17 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
 # What is <BrandName /> Browser Cloud?
 ***
 
-<BrandName /> Browser Cloud gives your AI agents on-demand access to real Chrome
+<BrandName /> Browser Cloud gives your AI agents on-demand access to real
 browsers in the cloud. Build agents that browse, scrape, and interact with any
 website - without getting blocked, losing login state, or managing browser
 infrastructure yourself.
 
+<iframe src="https://assets.testmuai.com/resources/images/testmu-ai/sectionFold/browser-cloud-final-home-video.webm" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen height="400" width="710"></iframe>
+
 ## Why Browser Cloud?
 ***
+
+​A better way to take your agents and LLMs online
 
 AI agents that interact with the web run into real problems fast: bot detection,
 CAPTCHAs, lost cookies, flaky headless browsers, and no way to see what went
