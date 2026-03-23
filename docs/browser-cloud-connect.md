@@ -69,7 +69,7 @@ you have an existing Selenium test suite you want to run on the cloud.
 
 Make sure you have completed the following before connecting to a session:
 
-- **TestMu AI Browser SDK installed** - Run `npm install @testmuai/testmu-cloud` if you have not already.
+- **TestMu AI Browser SDK installed** - Run `npm install @testmuai/browser-cloud` if you have not already.
 - **Session credentials configured** - Set your `LT_USERNAME` and `LT_ACCESS_KEY` environment variables.
 - **Quickstart completed** - If this is your first time using <BrandName /> Browser Cloud, [launch your first session](/support/docs/launch-first-session/) first.
 
@@ -87,7 +87,7 @@ subsequent Puppeteer calls work exactly the same as before.
 ## Basic Usage
 
 ```typescript
-import { Browser } from '@testmuai/testmu-cloud';
+import { Browser } from '@testmuai/browser-cloud';
 
 const client = new Browser();
 
@@ -161,7 +161,7 @@ A complete script that creates a session, scrapes a page title, and cleans up
 with proper error handling:
 
 ```typescript
-import { Browser } from '@testmuai/testmu-cloud';
+import { Browser } from '@testmuai/browser-cloud';
 
 const client = new Browser();
 
@@ -225,7 +225,7 @@ Like Puppeteer, the main change is how you connect - replacing
 ## Basic Usage
 
 ```typescript
-import { Browser } from '@testmuai/testmu-cloud';
+import { Browser } from '@testmuai/browser-cloud';
 
 const client = new Browser();
 
@@ -297,7 +297,7 @@ connecting to <BrandName />'s Selenium Hub.
 ## Basic Usage
 
 ```typescript
-import { Browser } from '@testmuai/testmu-cloud';
+import { Browser } from '@testmuai/browser-cloud';
 
 const client = new Browser();
 
