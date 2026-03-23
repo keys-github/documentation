@@ -63,7 +63,7 @@ This guide details how to execute your **Reqnroll** framework tests on **HyperEx
 - [**Using Local System**](/support/docs/reqnroll-on-hyperexecute-grid/#1-testing-using-local-system) - You can use your own local machine to execute tests.
 - [**Using Gitpod Platform**](/support/docs/reqnroll-on-hyperexecute-grid/#2-testing-using-gitpod) -  Execute tests using GitPod. (Requires a [Gitpod](https://gitpod.io/login/) account)
 
-## 1. Testing Using Local System
+## Testing Using Local System
 
 Follow the step-by-step guide to execute your test on HyperExecute.
 
