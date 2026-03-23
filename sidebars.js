@@ -28,6 +28,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "Run Your Test With Agent Skills",
+            id: "hyperexecute-agent-skills",
+          },
+          {
+            type: "doc",
             label: "Guided Walkthrough",
             id: "hyperexecute-guided-walkthrough",
           },
@@ -246,6 +251,7 @@ module.exports = {
                 items: [
                   "nunit-on-hyperexecute-grid",
                   "specflow-on-hyperexecute-grid",
+                  "reqnroll-on-hyperexecute-grid",
                 ],
               },
               {
@@ -2415,6 +2421,7 @@ module.exports = {
         },
         items: [
           "lambdatest-running-your-first-selenium-test",
+          "selenium-agent-skills",
           "inside-lambdatest-automation-platform",
         ],
       },
@@ -2690,94 +2697,120 @@ module.exports = {
     },
     [
       {
-        type: "doc",
-        label: "Cypress Testing",
-        id: "getting-started-with-cypress-testing",
+        type: "category",
+        collapsed: false,
+        label: "Getting Started",
+        items: [
+          {
+            type: "doc",
+            label: "Cypress Testing",
+            id: "getting-started-with-cypress-testing",
+          },
+          {
+            type: "doc",
+            label: "Run Your Test With Agent Skills",
+            id: "cypress-agent-skills",
+          },
+          {
+            type: "doc",
+            label: "Authentication",
+            id: "authentication",
+          },
+        ],
       },
       {
-        type: "doc",
-        label: "Authentication",
-        id: "authentication",
+        type: "category",
+        collapsed: true,
+        label: "Test Capabilities",
+        items: [
+          {
+            type: "doc",
+            label: "Parallel Testing",
+            id: "run-your-cypress-tests-in-parallel",
+          },
+          {
+            type: "doc",
+            label: "Specify Browsers and OS",
+            id: "supported-browsers-and-os",
+          },
+          {
+            type: "doc",
+            label: "Supported Cypress Versions",
+            id: "supported-cypress-versions",
+          },
+          {
+            type: "doc",
+            label: "Cypress Testing Using WebKit",
+            id: "cypress-webkit",
+          },
+          {
+            type: "doc",
+            label: "Cypress CLI Commands",
+            id: "cypress-cli-commands",
+          },
+          {
+            type: "doc",
+            label: "Configure Cypress Test Execution",
+            id: "run-settings",
+          },
+          {
+            type: "doc",
+            label: "Test On Different Screen Resolutions",
+            id: "screen-resolution-cypress",
+          },
+          {
+            type: "doc",
+            label: "Environment Variables Support for Cypress Tests",
+            id: "cyp-environment",
+          },
+          {
+            type: "doc",
+            label: "Execute Including Private Dependencies",
+            id: "private-dependencies-cypress",
+          },
+          {
+            type: "doc",
+            label: "Install NPM via Tunnel",
+            id: "npm-via-tunnel",
+          },
+          {
+            type: "doc",
+            label: "Download Artefacts For Cypress Project",
+            id: "download-artefacts-cypress",
+          },
+        ],
       },
       {
-        type: "doc",
-        label: "Parallel Testing",
-        id: "run-your-cypress-tests-in-parallel",
-      },
-      {
-        type: "doc",
-        label: "Specify Browsers and OS",
-        id: "supported-browsers-and-os",
-      },
-      {
-        type: "doc",
-        label: "Supported Cypress Versions",
-        id: "supported-cypress-versions",
-      },
-      {
-        type: "doc",
-        label: "Cypress Testing Using WebKit",
-        id: "cypress-webkit",
-      },
-      {
-        type: "doc",
-        label: "Cypress CLI Commands",
-        id: "cypress-cli-commands",
-      },
-      {
-        type: "doc",
-        label: "Configure Cypress Test Execution",
-        id: "run-settings",
-      },
-      {
-        type: "doc",
-        label: "Test On Different Screen Resolutions",
-        id: "screen-resolution-cypress",
-      },
-      {
-        type: "doc",
-        label: "Download Artefacts For Cypress Project",
-        id: "download-artefacts-cypress",
-      },
-      {
-        type: "doc",
-        label: "Integrate TestMu AI with Cypress Dashboard",
-        id: "integrate-lambdatest-with-cypress",
-      },
-      {
-        type: "doc",
-        label: "Execute Including Private Dependencies",
-        id: "private-dependencies-cypress",
-      },
-      {
-        type: "doc",
-        label: "Applitools Integration For Cypress",
-        id: "applitools-integration-cypress",
-      },
-      {
-        type: "doc",
-        label: "Report Portal IO Integration For Cypress",
-        id: "report-portal-cypress",
-      },
-      {
-        type: "doc",
-        label: "Multi Reporters Support",
-        id: "cyp-multi-reporters",
-      },
-      {
-        type: "doc",
-        label: "Environment Variables Support for Cypress Tests",
-        id: "cyp-environment",
-      },
-      {
-        type: "doc",
-        label: "Cypress Terminal Reports",
-        id: "cypress-detailed-command-logs",
-      },
-      {
-        type: "doc",
-        label: "Install NPM via Tunnel",
-        id: "npm-via-tunnel",
+        type: "category",
+        collapsed: true,
+        label: "Integrations",
+        items: [
+          {
+            type: "doc",
+            label: "Integrate TestMu AI with Cypress Dashboard",
+            id: "integrate-lambdatest-with-cypress",
+          },
+          {
+            type: "doc",
+            label: "Applitools Integration For Cypress",
+            id: "applitools-integration-cypress",
+          },
+          {
+            type: "doc",
+            label: "Report Portal IO Integration For Cypress",
+            id: "report-portal-cypress",
+          },
+          {
+            type: "doc",
+            label: "Multi Reporters Support",
+            id: "cyp-multi-reporters",
+          },
+          {
+            type: "doc",
+            label: "Cypress Terminal Reports",
+            id: "cypress-detailed-command-logs",
+          },
+        ],
       },
     ],
   ],
@@ -2795,13 +2828,12 @@ module.exports = {
       {
         type: "category",
         collapsed: true,
-        label: "Playwright Testing ",
-        items: ["playwright-testing-guide"],
-      },
-      {
-        type: "doc",
-        id: "playwright-sdk",
-        label: "Playwright SDK",
+        label: "Getting Started",
+        items: [
+          "playwright-testing-guide",
+          "playwright-agent-skills",
+          "playwright-sdk",
+        ],
       },
       {
         type: "category",
@@ -2842,25 +2874,39 @@ module.exports = {
       {
         type: "category",
         collapsed: true,
-        label: "Test on Android Device",
-        link: {
-          type: "doc",
-          id: "playwright-android-guide",
-        },
-        items: ["playwright-android-caps", "playwright-webview-test"],
+        label: "Test Capabilities",
+        items: [
+          {
+            type: "category",
+            collapsed: true,
+            label: "Test on Android Device",
+            link: {
+              type: "doc",
+              id: "playwright-android-guide",
+            },
+            items: ["playwright-android-caps", "playwright-webview-test"],
+          },
+          "playwright-ios-guide",
+          "parallel-playwright-test",
+          "migrate-playwright-tests",
+          "playwright-test-execution-setup",
+          "playwright-bundled-browser-support",
+          "playwright-caps",
+          "local-testing-playwright",
+          "playwright-auto-heal",
+        ],
       },
-      "playwright-ios-guide",
-      "parallel-playwright-test",
-      "migrate-playwright-tests",
-      "playwright-test-execution-setup",
-      "playwright-bundled-browser-support",
-      "playwright-caps",
-      "local-testing-playwright",
-      "playwright-playwrighttest",
-      "playwright-cucumberjs",
-      "playwright-cicd",
-      "playwright-lighthouse-library",
-      "playwright-auto-heal",
+      {
+        type: "category",
+        collapsed: true,
+        label: "Integrations",
+        items: [
+          "playwright-playwrighttest",
+          "playwright-cucumberjs",
+          "playwright-cicd",
+          "playwright-lighthouse-library",
+        ],
+      },
     ],
   ],
 
@@ -2876,16 +2922,38 @@ module.exports = {
     [
       {
         type: "category",
-        collapsed: true,
-        label: "Puppeteer Testing ",
+        collapsed: false,
+        label: "Getting Started",
         items: [
           "puppeteer-testing-guide",
+          "puppeteer-agent-skills",
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Test Capabilities",
+        items: [
           "puppeteer-test-execution",
           "puppeteer-capabilities",
           "local-testing-puppeteer",
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Frameworks",
+        items: [
           "puppeteer-mocha",
           "puppeteer-jest",
           "puppeteer-pytest-pyppeteer",
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "CI/CD",
+        items: [
           "puppeteer-cicd",
         ],
       },
@@ -2945,6 +3013,11 @@ module.exports = {
           id: "getting-started-with-appium-testing",
         },
         items: [
+          {
+            type: "doc",
+            label: "Run Your Test With Agent Skills",
+            id: "appium-agent-skills",
+          },
           {
             type: "category",
             collapsed: true,
@@ -3130,6 +3203,11 @@ module.exports = {
         id: "getting-started-with-espresso-testing",
       },
       {
+        type: "doc",
+        label: "Run Your Test With Agent Skills",
+        id: "espresso-agent-skills",
+      },
+      {
         type: "category",
         collapsed: true,
         label: "Supported Capabilities",
@@ -3302,6 +3380,7 @@ module.exports = {
         },
         items: [
           "smartui-running-your-first-project",
+          "smartui-agent-skills",
           "smartui-guided-walkthrough",
           "smartui-cli-env-variables",
           "smartui-approval-workflow-guide",
@@ -4642,141 +4721,6 @@ module.exports = {
         type: "doc",
         label: "Concurrency Widget",
         id: "concurrency-widget",
-      },
-    ],
-  ],
-
-  BrowserCloudSidebar: [
-    {
-      type: "link",
-      label: "Back",
-      href: "/docs/",
-      customProps: {
-        className: "back-to-main-menu",
-      },
-    },
-    [
-      {
-        type: "category",
-        collapsed: true,
-        label: "Get Started",
-        items: [
-          {
-            type: "doc",
-            label: "What is Browser Cloud?",
-            id: "browser-cloud-intro",
-          },
-          {
-            type: "doc",
-            label: "Launch Your First Session",
-            id: "browser-cloud-quickstart",
-          },
-        ],
-      },
-      {
-        type: "category",
-        collapsed: true,
-        label: "Connect Your Agent",
-        items: [
-          {
-            type: "doc",
-            label: "Set Up the SDK",
-            id: "browser-cloud-how-to-connect",
-          },
-          {
-            type: "doc",
-            label: "Connect to a Session",
-            id: "browser-cloud-connect",
-          },
-        ],
-      },
-      {
-        type: "category",
-        collapsed: true,
-        label: "Manage Your Sessions",
-        items: [
-          {
-            type: "doc",
-            label: "Understand the Sessions API",
-            id: "browser-cloud-sessions-overview",
-          },
-          {
-            type: "doc",
-            label: "Handle Session Lifecycle",
-            id: "browser-cloud-session-lifecycle",
-          },
-          {
-            type: "doc",
-            label: "Configure Session Options",
-            id: "browser-cloud-session-configuration",
-          },
-        ],
-      },
-      {
-        type: "category",
-        collapsed: true,
-        label: "Preserve Browser State",
-        items: [
-          {
-            type: "doc",
-            label: "Transfer Cookies & Storage",
-            id: "browser-cloud-context",
-          },
-          {
-            type: "doc",
-            label: "Stay Logged in Across Runs",
-            id: "browser-cloud-profiles",
-          },
-        ],
-      },
-      {
-        type: "category",
-        collapsed: true,
-        label: "Extend Your Browser",
-        items: [
-          {
-            type: "doc",
-            label: "Stealth Mode to Avoid Bot Detection",
-            id: "browser-cloud-stealth",
-          },
-          {
-            type: "doc",
-            label: "Upload and Download Files",
-            id: "browser-cloud-files",
-          },
-          {
-            type: "doc",
-            label: "Load Chrome Extensions",
-            id: "browser-cloud-extensions",
-          },
-          {
-            type: "doc",
-            label: "Access Localhost and Internal Networks",
-            id: "browser-cloud-tunnel",
-          },
-          {
-            type: "doc",
-            label: "One-Liner Scrape, Screenshot, and PDF",
-            id: "browser-cloud-quick-actions",
-          },
-        ],
-      },
-      {
-        type: "category",
-        collapsed: true,
-        label: "Debug and Troubleshoot",
-        items: [
-          {
-            type: "doc",
-            label: "Replay and Debug Sessions",
-            id: "browser-cloud-debugging",
-          },
-          {
-            type: "doc",
-            label: "API Reference",
-            id: "browser-cloud-api-reference",
-          },
-        ],
       },
     ],
   ],
