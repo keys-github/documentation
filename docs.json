@@ -3128,8 +3128,8 @@
   },
   "redirects": [
     {
-  "source": "/:slug*",
-  "destination": "/:slug*/"
+  "source": "/support/docs/:slug",
+  "destination": "/support/docs/:slug/"
 },
     {
       "source": "/support/api-doc/:path/:slug/",
