@@ -31,6 +31,11 @@
     "accessibility-testing.yaml",
     "analytics-openapi.yaml"
   ],
+  "api": {
+    "playground": {
+      "proxy": false
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -3122,6 +3127,18 @@
     }
   },
   "redirects": [
+    {
+      "source": "/support/docs/:slug/",
+      "destination": "/support/docs/:slug"
+    },
+    {
+      "source": "/support/api-doc/:path/:slug/",
+      "destination": "/support/api-doc/:path/:slug"
+    },
+    {
+      "source": "/support/api-doc/:slug/",
+      "destination": "/support/api-doc/:slug"
+    },
     {
       "source": "/support/docs/scim/okta",
       "destination": "/support/docs/scim-okta"
