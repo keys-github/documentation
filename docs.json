@@ -1352,14 +1352,14 @@
                     "group": "SDK Integration",
                     "pages": [
                       {
-                        "group": "Selenium SDKs",
-                        "pages": [
-                          "support/docs/smartui-selenium-java-sdk",
-                          "support/docs/smartui-selenium-js-sdk",
-                          "support/docs/smartui-selenium-csharp-sdk",
-                          "support/docs/smartui-selenium-python-sdk",
-                          "support/docs/smartui-selenium-ruby-sdk"
-                        ]
+                      "group": "Selenium SDKs",
+                      "pages": [
+                        "support/docs/smartui-selenium-java-sdk",
+                        "support/docs/smartui-selenium-js-sdk",
+                        "support/docs/smartui-selenium-csharp-sdk",
+                        "support/docs/smartui-selenium-python-sdk",
+                        "support/docs/smartui-selenium-ruby-sdk"
+                      ]
                       },
                       {
                         "group": "Playwright SDKs",
@@ -2370,35 +2370,35 @@
               {
                 "group": "Acount Management",
                 "pages": [
-                  "support/docs/account-management",
-                  "support/docs/network-whitelisting-and-tunnel-guide",
-                  "support/docs/testmu-public-ip/",
-                  {
+                   "support/docs/account-management",
+                   "support/docs/network-whitelisting-and-tunnel-guide",
+                   "support/docs/testmu-public-ip",
+                   {
                     "group": "Single Sign On",
                     "pages": [
-                      "support/docs/single-sign-on",
-                      "support/docs/testmu-sso-self-serve",
-                      "support/docs/testmu-sso-manage-connection",
-                      "support/docs/testmu-sso-okta-integration",
-                      "support/docs/testmu-sso-onelogin-using-saml",
-                      "support/docs/testmu-sso-google",
-                      "support/docs/sso-azure-integration",
-                      "support/docs/testmu-sso-pingidentity-integration",
-                      "support/docs/testmu-sso-oidc"
+                       "support/docs/single-sign-on",
+                       "support/docs/testmu-sso-self-serve",
+                       "support/docs/testmu-sso-manage-connection",
+                       "support/docs/testmu-sso-okta-integration",
+                       "support/docs/testmu-sso-onelogin-using-saml",
+                       "support/docs/testmu-sso-google",
+                       "support/docs/sso-azure-integration",
+                       "support/docs/testmu-sso-pingidentity-integration",
+                       "support/docs/testmu-sso-oidc"
                     ]
-                  },
-                  {
-                    "group": "SCIM",
-                    "pages": [
-                      "support/docs/scim",
-                      "support/docs/scim-azure",
-                      "support/docs/scim-okta",
-                      "support/docs/jumpcloud-scim",
-                      "support/docs/pingone-scim"
-                    ]
-                  }
+                   },
+                    {
+                      "group": "SCIM",
+                      "pages": [
+                        "support/docs/scim",
+                        "support/docs/scim-azure",
+                        "support/docs/scim-okta",
+                        "support/docs/jumpcloud-scim",
+                        "support/docs/pingone-scim"
+                      ]
+                    }               
                 ]
-              },
+              },           
               "support/docs/manage-subscriptions",
               "support/docs/credits-management",
               "support/docs/service-accounts",
@@ -2734,6 +2734,7 @@
               "support/api-doc/smart-ui/get-build-screenshots"
             ]
           },
+          
           {
             "group": "Cypress Automation",
             "pages": [
@@ -2788,6 +2789,7 @@
                   "support/api-doc/token/fetch-service-account-token",
                   "support/api-doc/token/regen-token-by-admin",
                   "support/api-doc/token/fetch-user-token-by-admin"
+                  
                 ]
               },
               {
@@ -2887,6 +2889,7 @@
                 "pages": [
                   "support/api-doc/folder/create-folder",
                   "support/api-doc/folder/update-folder-by-id",
+                  
                   "support/api-doc/folder/get-all-folder-details-by-project-id",
                   "support/api-doc/folder/get-test-cases-by-folder-id"
                 ]
@@ -2897,6 +2900,7 @@
                   "support/api-doc/environment/get-all-environments",
                   "support/api-doc/environment/create-environments",
                   "support/api-doc/environment/update-environment"
+                  
                 ]
               },
               {
@@ -2930,6 +2934,7 @@
                   "support/api-doc/test-runs/get-test-run-by-id",
                   "support/api-doc/test-runs/delete-test-run",
                   "support/api-doc/test-runs/update-test-run-by-id",
+                  
                   "support/api-doc/test-runs/duplicate-test-run",
                   "support/api-doc/test-runs/get-test-run-instances-by-test-run-id",
                   "support/api-doc/test-runs/update-test-run-instance",
@@ -2947,6 +2952,7 @@
                   "support/api-doc/milestone/delete-milestone",
                   "support/api-doc/milestone/get-milestone-by-id",
                   "support/api-doc/milestone/update-milestone"
+                  
                 ]
               },
               {
@@ -2958,6 +2964,7 @@
                   "support/api-doc/jira-flow/remove-jira-issue"
                 ]
               }
+
             ]
           },
           {
@@ -3121,24 +3128,24 @@
   },
   "redirects": [
     {
-      "source": "/support/docs/:slug*",
-      "destination": "/support/docs/:slug*/"
+      "source": "/support/docs/:slug",
+      "destination": "/support/docs/:slug/"
     },
     {
-      "source": "/support/api-doc/:path/:slug",
-      "destination": "/support/api-doc/:path/:slug/"
+      "source": "/support/api-doc/:path/:slug/",
+      "destination": "/support/api-doc/:path/:slug"
     },
     {
-      "source": "/support/api-doc/:slug",
-      "destination": "/support/api-doc/:slug/"
+      "source": "/support/api-doc/:slug/",
+      "destination": "/support/api-doc/:slug"
     },
     {
       "source": "/support/docs/scim/okta",
-      "destination": "/support/docs/scim-okta/"
+      "destination": "/support/docs/scim-okta"
     },
     {
       "source": "/support/docs/scim/azure",
-      "destination": "/support/docs/scim-azure/"
+      "destination": "/support/docs/scim-azure"
     }
   ]
 }
