@@ -3144,16 +3144,8 @@
       "destination": "/support/docs/scim-okta"
     },
     {
-      "source": "/support/docs/scim/okta/",
-      "destination": "/support/docs/scim-okta"
-    },
-    {
       "source": "/support/docs/scim/azure",
       "destination": "/support/docs/scim-azuree/"
-    },
-    {
-      "source": "/support/docs/scim/azure/",
-      "destination": "/support/docs/scim-azure"
     }
   ]
 }
