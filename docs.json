@@ -3128,7 +3128,7 @@
   },
   "redirects": [
     {
-      "source": "/support/docs/:slug",
+      "source": "/support/docs/:slug/",
       "destination": "/support/docs/:slug/"
     },
     {
@@ -3145,7 +3145,7 @@
     },
     {
       "source": "/support/docs/scim/azure",
-      "destination": "/support/docs/scim-azuree/"
+      "destination": "/support/docs/scim-azure/"
     }
   ]
 }
