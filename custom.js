@@ -5,16 +5,6 @@
 (function () {
   if (typeof window === "undefined") return;
 
-  // ============================================
-  // Trailing Slash Enforcer
-  // ============================================
-  (function enforceTrailingSlash() {
-    const path = window.location.pathname;
-    // Skip root, already-slashed paths, and file paths (e.g. .js, .png, .json)
-    if (!path || path.endsWith('/') || /\.[a-zA-Z0-9]+$/.test(path)) return;
-    window.location.replace(path + '/' + window.location.search + window.location.hash);
-  })();
-
   // Global namespace
   window.lt_web_doc = { username: "YOUR_LAMBDATEST_USERNAME", apiToken: "YOUR_LAMBDATEST_ACCESS_KEY" };
 
