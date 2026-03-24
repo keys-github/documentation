@@ -3128,9 +3128,9 @@
   },
   "redirects": [
     {
-      "source": "/support/docs/:slug/",
-      "destination": "/support/docs/:slug/"
-    },
+  "source": "/:slug*",
+  "destination": "/:slug*/"
+},
     {
       "source": "/support/api-doc/:path/:slug/",
       "destination": "/support/api-doc/:path/:slug"
