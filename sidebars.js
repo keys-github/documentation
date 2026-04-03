@@ -1380,6 +1380,7 @@ module.exports = {
               "kaneai-database",
               "kaneai-rename-instructions",
               "kaneai-conditional-logic",
+              "kane-ai-network-assertions",
             ],
           },
           {
@@ -1387,7 +1388,6 @@ module.exports = {
             collapsed: true,
             label: "Desktop Browser",
             items: [
-              "kane-ai-network-assertions",
               "kane-ai-drag-drop",
               "kaneai-dynamic-url-replacement",
               "kaneai-chrome-options",
