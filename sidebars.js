@@ -4556,6 +4556,11 @@ module.exports = {
         label: "Access Management - KaneAI <> Test Manager",
         id: "kaneai-test-manager-access-management",
       },
+      {
+        type: "doc",
+        label: "Manage AI Capabilities",
+        id: "manage-ai-capabilities",
+      },
     ],
   ],
 
