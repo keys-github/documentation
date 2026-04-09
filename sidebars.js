@@ -2119,6 +2119,7 @@ module.exports = {
         items: [
           "accessibility-passed-test-cases",
           "accessibility-capture-screenshot",
+          "accessibility-tag-support",
           "accessibility-fragment-identifier",
           "accessibility-web-score"
         ],
