@@ -291,6 +291,19 @@ function ResponseSection({ responses, responseSchema }) {
 
   const [selectedCode, setSelectedCode] = useState(statusCodes[0] || '200');
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click
+  React.useEffect(() => {
+    if (!dropdownOpen) return;
+    function handleOutsideClick(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [dropdownOpen]);
 
   // Sync selectedCode when the endpoint changes and it no longer exists
   React.useEffect(() => {
@@ -389,9 +402,11 @@ function ResponseSection({ responses, responseSchema }) {
         </h2>
 
         {/* Status code dropdown */}
-        <div style={{ position: 'relative' }}>
+        <div ref={dropdownRef} style={{ position: 'relative' }}>
           <button
             onClick={() => setDropdownOpen((v) => !v)}
+            aria-haspopup="listbox"
+            aria-expanded={dropdownOpen}
             style={{
               display: 'inline-flex',
               alignItems: 'center',

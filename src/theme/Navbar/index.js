@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
 import SearchBar from '@theme/SearchBar';
-import { useAIChat } from '../../component/AskAI/AIChatContext';
+import { useAIChatSafe } from '../../component/AskAI/AIChatContext';
 import styles from './styles.module.css';
 
 function getStoredTheme() {
@@ -157,12 +157,7 @@ export default function Navbar() {
     setColorModeState(next);
   }
 
-  let openPanel;
-  try {
-    openPanel = useAIChat().openPanel;
-  } catch {
-    openPanel = () => {};
-  }
+  const { openPanel } = useAIChatSafe();
 
   return (
     <nav className={styles.navbar}>

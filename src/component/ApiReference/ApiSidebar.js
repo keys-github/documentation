@@ -67,8 +67,7 @@ export default function ApiSidebar({ apis, selectedEndpoint, onSelectEndpoint })
               ? 'bg-primary/10 text-primary [text-shadow:-0.2px_0_0_currentColor,0.2px_0_0_currentColor] dark:text-primary-light dark:bg-primary-light/10'
               : 'hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300'
           }`}
-          style={{ textDecoration: 'none' }}
-          style={{ paddingLeft: '1.75rem' }}
+          style={{ textDecoration: 'none', paddingLeft: '1.75rem' }}
           onClick={(e) => {
             e.preventDefault();
             onSelectEndpoint({ ...endpoint, group: groupName, baseUrl: apiBaseUrl });
