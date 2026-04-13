@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from '@docusaurus/router';
-import { useHistory } from 'react-router-dom';
 import SharedSidebar from '@site/src/component/SharedSidebar/SharedSidebar';
 import ApiSidebar from '@site/src/component/ApiReference/ApiSidebar';
 import EndpointDetail from '@site/src/component/ApiReference/EndpointDetail';

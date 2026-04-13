@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useAIChat } from './AIChatContext';
 import styles from './AskAIBar.module.css';
 
 export default function AskAIBar() {
+  const { siteConfig } = useDocusaurusContext();
   const { isOpen, closePanel } = useAIChat();
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
@@ -81,8 +83,8 @@ export default function AskAIBar() {
     setMessages((prev) => [...prev, { role: 'user', content: q }]);
     setLoading(true);
     try {
-      const teamId = process.env.REACT_APP_DOCSBOT_TEAM_ID || '';
-      const botId = process.env.REACT_APP_DOCSBOT_BOT_ID || '';
+      const teamId = siteConfig.customFields.docsbotTeamId || '';
+      const botId = siteConfig.customFields.docsbotBotId || '';
       const res = await fetch(`https://api.docsbot.ai/teams/${teamId}/bots/${botId}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -167,12 +169,7 @@ export default function AskAIBar() {
               className={styles.drawerInput}
             />
             <div className={styles.drawerFormFooter}>
-              <button type="button" className={styles.attachBtn} aria-label="Attach">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.41 17.41a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-                </svg>
-              </button>
-              <button type="submit" className={styles.drawerSendBtn} disabled={!input.trim() || loading} aria-label="Send">
+<button type="submit" className={styles.drawerSendBtn} disabled={!input.trim() || loading} aria-label="Send">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="12" y1="19" x2="12" y2="5" /><polyline points="5 12 12 5 19 12" />
                 </svg>
