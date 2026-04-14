@@ -252,5 +252,27 @@
   text-decoration: underline;
 }
 
-/* ── Responsive ── */
-/* Panel auto-closes at ≤996px via JS; no CSS override needed */
+/* ── Mobile: bottom sheet ── */
+@media (max-width: 996px) {
+  .expandBtn {
+    display: none;
+  }
+
+  .drawer {
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100% !important;
+    height: 80vh;
+    border-left: none;
+    border-top: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(100%);
+  }
+
+  .drawerOpen {
+    transform: translateY(0);
+  }
+}
