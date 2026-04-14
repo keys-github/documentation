@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
-import { slugify } from '@site/src/pages/api-doc/_ApiDocPage';
+import { slugify } from '@site/src/component/ApiReference/utils';
 
 const METHOD_BG = {
   GET: '#2AB673',

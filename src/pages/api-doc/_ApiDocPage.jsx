@@ -14,14 +14,8 @@ import CopyPageButton from '@site/src/component/CopyPageButton/CopyPageButton';
 import PageContentContext from '@site/src/component/CopyPageButton/PageContentContext';
 import styles from './styles.module.css';
 import allApisData from '@site/src/data/api/all-apis.json';
-
-export function slugify(str) {
-  return str
-    .toLowerCase()
-    .replace(/\.$/, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
+import { slugify } from '@site/src/component/ApiReference/utils';
+export { slugify } from '@site/src/component/ApiReference/utils';
 
 function findEndpointBySlugs(apiSlug, groupSlug, endpointSlug) {
   for (const api of allApisData.apis) {
