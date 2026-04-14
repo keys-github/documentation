@@ -17,25 +17,25 @@ canonical: https://www.testmuai.com/support/docs/accessibility-android-what-we-c
 
 # Android Accessibility Coverage
 
-**Note:** This document describes TestMU AI / LambdaTest Accessibility coverage for Android. For platform or accessibility support, contact TestMU/LambdaTest support.
+**Note:** This document describes TestMu AI / LambdaTest Accessibility coverage for Android. For platform or accessibility support, contact TestMu/LambdaTest support.
 
 ---
 
 ## Overview
 
-This document describes **what TestMU AI / LambdaTest Accessibility Android covers**: a **full WCAG rules reference** (100% for Android), a **checklist** of rules the platform can check, **how to use** the accessibility testing platform to run scans and view results, and **how to check** / **how to do** (remediation) for **native Android apps**. It is intended for teams who:
+This document describes **what TestMu AI / LambdaTest Accessibility Android covers**: a **full WCAG rules reference** (100% for Android), a **checklist** of rules the platform can check, **how to use** the accessibility testing platform to run scans and view results, and **how to check** / **how to do** (remediation) for **native Android apps**. It is intended for teams who:
 
-- Run accessibility scans on Android apps via TestMU AI / LambdaTest Accessibility (e.g. TestMU AI Accessibility DevTools or the accessibility testing platform with supported engines).
+- Run accessibility scans on Android apps via TestMu AI / LambdaTest Accessibility (e.g. TestMu AI Accessibility DevTools or the accessibility testing platform with supported engines).
 - Need a single reference for **what is checked** on Android, **how to use** the platform, and **how to verify or fix** issues.
 - Target **WCAG 2.0, 2.1, and 2.2** (Level A, AA, and selected AAA) as applicable to native Android.
 
-**Technology:** TestMU AI / LambdaTest Accessibility for **native Android apps** (Views, Jetpack Compose where applicable). **Platform:** Android (check TestMU docs for supported API levels and devices).
+**Technology:** TestMu AI / LambdaTest Accessibility for **native Android apps** (Views, Jetpack Compose where applicable). **Platform:** Android (check TestMu docs for supported API levels and devices).
 
 ---
 
 ## WCAG Reference
 
-Below is a **complete** list of all success criteria for **WCAG 2.0, 2.1, and 2.2** at Levels **A, AA, and AAA** as they apply to **native Android apps**. Use this as the master reference for full Android accessibility coverage. (Criteria apply to app UI, in-app content, and in-app WebViews where applicable.) The **Coverage Checklist** below shows which of these TestMU AI Accessibility Android can check automatically or with supported rules.
+Below is a **complete** list of all success criteria for **WCAG 2.0, 2.1, and 2.2** at Levels **A, AA, and AAA** as they apply to **native Android apps**. Use this as the master reference for full Android accessibility coverage. (Criteria apply to app UI, in-app content, and in-app WebViews where applicable.) The **Coverage Checklist** below shows which of these TestMu AI Accessibility Android can check automatically or with supported rules.
 
 ### Principle 1 – Perceivable
 
@@ -150,7 +150,7 @@ Below is a **complete** list of all success criteria for **WCAG 2.0, 2.1, and 2.
 
 ## Coverage Checklist
 
-Below is a consolidated checklist by WCAG version, plus an **Android-specific rules** table that maps to the rules TestMU AI Accessibility Android can report. **Level** is A, AA, or AAA; **Impact** is typical severity (Critical, Serious, Moderate, Minor). Use **Use the Platform** to run scans.
+Below is a consolidated checklist by WCAG version, plus an **Android-specific rules** table that maps to the rules TestMu AI Accessibility Android can report. **Level** is A, AA, or AAA; **Impact** is typical severity (Critical, Serious, Moderate, Minor). Use **Use the Platform** to run scans.
 
 ### WCAG 2.0 (Level A and AA) – Android-relevant
 
@@ -198,14 +198,14 @@ Below is a consolidated checklist by WCAG version, plus an **Android-specific ru
 |------|-------|-------------------|--------------------------|
 | 2.4.11 Focus Not Obscured (Minimum) | AA | Focused element not entirely obscured | Focused element at least partially visible (manual). |
 | 2.5.7 Dragging Movements | AA | Dragging has single-pointer alternative | Alternative to drag gestures (manual). |
-| 2.5.8 Target Size (Minimum) | AA | Touch targets at least 24×24 CSS pixels | Overlaps with 2.5.5; 48dp recommended on Android. |
-| 3.2.6 Consistent Help | AA | Help in consistent relative order | Help mechanism placement (manual). |
-| 3.3.7 Redundant Entry | AA | No re-entry of same information in same process | Pre-fill / avoid duplicate entry (manual). |
+| 2.5.8 Target Size (Minimum) | AA | Touch targets at least 24×24 dp (WCAG minimum) | Overlaps with 2.5.5; 48dp recommended on Android. |
+| 3.2.6 Consistent Help | A | Help in consistent relative order | Help mechanism placement (manual). |
+| 3.3.7 Redundant Entry | A | No re-entry of same information in same process | Pre-fill / avoid duplicate entry (manual). |
 | 3.3.8 Accessible Authentication (Minimum) | AA | Auth not solely cognitive function tests | Login alternatives to CAPTCHA/cognitive tests (manual). |
 
-### Android-specific rules (TestMU AI Accessibility Android)
+### Android-specific rules (TestMu AI Accessibility Android)
 
-These map to the rules that TestMU AI Accessibility Android can report. Use this table for **what we cover** and quick remediation direction.
+These map to the rules that TestMu AI Accessibility Android can report. Use this table for **what we cover** and quick remediation direction.
 
 | Rule name | WCAG | Level | Impact | What we cover |
 |-----------|------|-------|--------|----------------|
@@ -227,7 +227,7 @@ These map to the rules that TestMU AI Accessibility Android can report. Use this
 | Undersized Touch Target | 2.5.5 | AAA | Moderate | Touch targets at least 48dp × 48dp. |
 | Insufficient Target Spacing | 2.5.5 | AAA | Moderate | Adequate spacing between adjacent touch targets to prevent accidental activation. |
 
-**Note:** Exact rule set depends on your TestMU/LambdaTest Accessibility version. Check TestMU docs for the latest Android rule list.
+**Note:** Exact rule set depends on your TestMu/LambdaTest Accessibility version. Check TestMu docs for the latest Android rule list.
 
 ---
 
@@ -237,7 +237,7 @@ Use the TestMu AI Accessibility platform to run automated accessibility scans on
 
 | Step | How to use the platform to test |
 |------|-------------------------|
-| **1. Access the platform** | Log in to TestMU / LambdaTest and open the **Accessibility** (or **TestMU AI Accessibility**) section. Ensure you have access to **Android** device or emulator for testing. |
+| **1. Access the platform** | Log in to TestMu / LambdaTest and open the **Accessibility** (or **TestMu AI Accessibility**) section. Ensure you have access to **Android** device or emulator for testing. |
 | **2. Select your Android app** | Upload your Android app build (e.g. APK or AAB) or connect to your app source so the platform can run scans. Select the **Android** platform and, if applicable, device/emulator and API level (e.g. Pixel, API 34). |
 | **3. Run an accessibility scan** | Start an **accessibility scan** for the Android app. The platform runs automated checks against the rules listed in **Coverage Checklist** (WCAG 2.0, 2.1, 2.2 Level A, AA, and selected AAA as supported). |
 | **4. View the report** | After the scan completes, open the **accessibility report**. Review **violations** (issues found), **passes** (rules that passed), and **incomplete** (items that need manual verification). |
@@ -260,7 +260,7 @@ For each area, below is **how to check** (including using the platform scan) and
 
 **How to check**
 
-- Run TestMU AI Accessibility scan on the Android app and review violations for missing labels, unlabeled controls, and missing screen title.
+- Run TestMu AI Accessibility scan on the Android app and review violations for missing labels, unlabeled controls, and missing screen title.
 - Manually: Turn on **TalkBack** (Settings > Accessibility > TalkBack). Navigate through the app; ensure every interactive element is announced with a clear name and role; ensure labels match visible text where applicable.
 
 **How to do (remediation)**
@@ -374,9 +374,13 @@ For each area, below is **how to check** (including using the platform scan) and
 
 ---
 
+## Rule-Level Remediation
+
+For per-rule explanations, common failure patterns, and fix guidance for each of the 18 Android accessibility rules, see the [Android Rule Repository](/support/docs/accessibility-android-rule-repository/). For actionable manual verification steps, see the [Rules & Checklist](/support/docs/accessibility-rules-checklist/).
+
 ## Summary
 
-- **Support:** For TestMU platform, accessibility coverage, or device issues contact TestMU/LambdaTest support.
+- **Support:** For TestMu platform, accessibility coverage, or device issues contact TestMu/LambdaTest support.
 - **Full WCAG reference:** **WCAG Reference** lists **100% of WCAG 2.0, 2.1, and 2.2** success criteria (87 total) as they apply to Android. Use it as the master reference.
 - **What we cover:** **Coverage Checklist** is the rules checklist TestMu AI Accessibility Android can check (WCAG 2.0, 2.1, 2.2 Level A, AA, and selected AAA). **Use the Platform** describes how to run scans and review reports. **Verification and Remediation** provides the practical guidance for labels, contrast, field labels, touch targets, orientation, and assistive technology access.
 - **Use this doc** as a single reference for what is covered on Android, how to use the platform, and how to verify or fix issues.

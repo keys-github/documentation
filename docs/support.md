@@ -261,13 +261,19 @@ import NewTag from '../src/component/newTag';
     <div className="home_inners_box">
       <h2 className='homeMain_h2'><AccessibilityLightIcon className="home_icons home_light_icon" role="presentation"/> <AccessibilityDarkIcon className="home_icons home_dark_icon" role="presentation"/>Accessibility Testing</h2>
       <div className="home_inners">
-        <a href="/support/docs/accessibility-testing/"><p className="p_home_inners">Getting Started</p></a>
+        <a href="/support/docs/accessibility-testing/"><p className="p_home_inners">Accessibility Overview</p></a>
+        <a href="/support/docs/accessibility-getting-started-quick-setup/"><p className="p_home_inners">Quick Setup</p></a>
+        <a href="/support/docs/accessibility-choosing-the-right-tool/"><p className="p_home_inners">Choose the Right Tool</p></a>
         <a href="/support/docs/accessibility-devtools/"><p className="p_home_inners">Accessibility DevTools</p></a>
-        <a href="/support/docs/accessibility-automation/"><p className="p_home_inners">Accessibility Web Automation</p></a>
-        <a href="/support/docs/accessibility-test-scheduling/"><p className="p_home_inners">Sitemap Scheduling</p></a>
-        <a href="/support/docs/accessibility-app-scanner/"><p className="p_home_inners">Native App Scanner &nbsp; </p></a> 
-        <a href="/support/docs/accessibility-native-app-automation-test/"><p className="p_home_inners">Native App Automation &nbsp; </p></a>
-        <a href="/support/docs/screen-reader-on-accessibility/"><p className="p_home_inners">Screen Reader</p></a>
+        <a href="/support/docs/accessibility-keyboard-scan/"><p className="p_home_inners">Keyboard Scan</p></a>
+        <a href="/support/docs/accessibility-automation/"><p className="p_home_inners">Accessibility Automation</p></a>
+        <a href="/support/docs/accessibility-test-scheduling/"><p className="p_home_inners">Test Scheduling</p></a>
+        <a href="/support/docs/web-scanner-getting-started/"><p className="p_home_inners">Web Scanner Integration</p></a>
+        <a href="/support/docs/accessibility-app-scanner/"><p className="p_home_inners">Accessibility App Scanner</p></a>
+        <a href="/support/docs/accessibility-native-app-automation-test/"><p className="p_home_inners">Native App Automation</p></a>
+        <a href="/support/docs/kaneai-mobile-app-accessibility/"><p className="p_home_inners">KaneAI Mobile Accessibility</p></a>
+        <a href="/support/docs/accessibility-testing-navigating-dashboard/"><p className="p_home_inners">Accessibility Reports</p></a>
+        <a href="/support/docs/accessibility-mcp-server/"><p className="p_home_inners">Accessibility MCP Server</p></a>
       </div>
     </div>
         <div className="home_inners_box">

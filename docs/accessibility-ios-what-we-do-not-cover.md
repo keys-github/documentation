@@ -18,16 +18,16 @@ canonical: https://www.testmuai.com/support/docs/accessibility-ios-what-we-do-no
 
 # iOS Accessibility Manual Checklist
 
-**Note:** This document describes TestMU AI / LambdaTest Accessibility coverage for iOS. For platform or accessibility support, contact TestMU/LambdaTest support.
+**Note:** This document describes TestMu AI / LambdaTest Accessibility coverage for iOS. For platform or accessibility support, contact TestMu/LambdaTest support.
 
 ---
 
 ## Overview
 
-This document describes **what TestMU AI / LambdaTest Accessibility iOS does NOT cover**: the **manual tests** (and assistive-technology testing) that **you need to perform** for **full WCAG rules coverage and compliance** on **native iOS apps**. TestMU Accessibility automated scanning on iOS covers a subset of accessibility issues; the rest require human judgment, VoiceOver/Switch Control testing, and media/layout checks.
+This document describes **what TestMu AI / LambdaTest Accessibility iOS does NOT cover**: the **manual tests** (and assistive-technology testing) that **you need to perform** for **full WCAG rules coverage and compliance** on **native iOS apps**. TestMu Accessibility automated scanning on iOS covers a subset of accessibility issues; the rest require human judgment, VoiceOver/Switch Control testing, and media/layout checks.
 
 - **Full rules reference:** **WCAG Reference** lists **100% of WCAG 2.0, 2.1, and 2.2** success criteria (Level A, AA, and AAA) as they apply to **iOS** (native apps and in-app WebViews). EN 301 549 and Apple’s accessibility guidelines map to these criteria.
-- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (or assistive-technology testing) because TestMU Accessibility does not support them or only partially supports them on iOS.
+- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (or assistive-technology testing) because TestMu Accessibility does not support them or only partially supports them on iOS.
 - **How to do:** For each area, **how to test manually** on iOS (VoiceOver, Switch Control, Dynamic Type, device settings, rotation, etc.) so you can achieve full coverage and compliance.
 
 ---
@@ -338,9 +338,9 @@ For each area below, use the **Checklist** column to see what to verify and the 
 
 ## Summary
 
-- **Support:** For TestMU platform, accessibility coverage, or device issues contact TestMU/LambdaTest support.
+- **Support:** For TestMu platform, accessibility coverage, or device issues contact TestMu/LambdaTest support.
 - **Full rules:** **WCAG Reference** lists **100% of WCAG 2.0, 2.1, and 2.2** success criteria (87 total) as they apply to **iOS** (A, AA, AAA). Use it as the master reference for full iOS accessibility coverage.
-- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (and, where noted, assistive-technology testing with **VoiceOver** and **Switch Control**) because TestMU Accessibility does not support them or only partially supports them on iOS. For each area, a **checklist** and **how to do** (manual test procedure on iOS) are provided so you can achieve full rules coverage and compliance.
+- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (and, where noted, assistive-technology testing with **VoiceOver** and **Switch Control**) because TestMu Accessibility does not support them or only partially supports them on iOS. For each area, a **checklist** and **how to do** (manual test procedure on iOS) are provided so you can achieve full rules coverage and compliance.
 - **Use this doc** as a reference for manual testing responsibilities for full iOS accessibility coverage.
 
 **Coverage cross-check:** **WCAG Reference** lists all **87** WCAG 2.2 success criteria (Principle 1: 29; Principle 2: 34; Principle 3: 21; Principle 4: 3). **Manual Checklist** addresses every criterion that requires manual or assistive-technology testing (including 1.2.x, 1.3.2–1.3.5, 1.4.1–1.4.5, 1.4.10–1.4.13, 2.1.x, 2.2.x, 2.3.1, 2.3.3, 2.4.x, 2.5.x, 3.1.x, 3.2.x, 3.3.x, 4.1.3, and AAA where applicable). Together with automated coverage (see **iOS Accessibility Coverage**), this document supports **100%** WCAG rules coverage for iOS.

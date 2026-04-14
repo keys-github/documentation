@@ -51,13 +51,18 @@ Screen readers are essential for making digital environments accessible to visua
 ## Screen Reader Support in <BrandName /> Accessibility Testing
 <BrandName /> supports the following screen readers during Accessibility Testing:
 
-- **NVDA (NonVisual Desktop Access)** – Windows
-- **VoiceOver** – macOS
-- **TalkBack** – Android
-> 📕 To learn more about using TalkBack for Android devices, refer to the [TalkBack Documentation](/support/docs/screen-reader-on-real-devices-app/).
+- **NVDA (NonVisual Desktop Access)** – Windows. See [NVDA on Windows](/support/docs/accessibility-nvda-windows/).
+- **JAWS (Job Access With Speech)** – Windows. See [JAWS on Windows](/support/docs/accessibility-jaws-windows/).
+- **VoiceOver** – macOS. See [VoiceOver on macOS](/support/docs/accessibility-voiceover-macos/).
+- **TalkBack** – Android. See [TalkBack on Android](/support/docs/accessibility-talkback-android/).
 
 These tools allow developers and testers to evaluate how well their applications or websites perform for visually impaired users, ensuring accessibility compliance and usability.
 
 <video class="right-side" width="100%" controls id="vid">
 <source src= {require('../assets/images/accessibility-testing/screen-reader/output.mp4').default} type="video/mp4" />
 </video>
+
+## Related docs
+
+- [Accessibility Testing (Overview)](/support/docs/accessibility-testing/)
+- [Choosing the Right Accessibility Tool](/support/docs/accessibility-choosing-the-right-tool/)

@@ -18,16 +18,16 @@ canonical: https://www.testmuai.com/support/docs/accessibility-web-what-we-do-no
 
 # Web Accessibility Manual Checklist
 
-**Note:** This document describes TestMU AI / LambdaTest Accessibility coverage for web. For platform or accessibility support, contact TestMU/LambdaTest support.
+**Note:** This document describes TestMu AI / LambdaTest Accessibility coverage for web. For platform or accessibility support, contact TestMu/LambdaTest support.
 
 ---
 
 ## Overview
 
-This document describes **what TestMU AI / LambdaTest Accessibility Web does NOT cover**: the **manual tests** (and assistive-technology testing) that **you need to perform** for **full WCAG rules coverage and compliance**. TestMU Accessibility automated scanning on web typically covers a subset of accessibility issues; the rest require human judgment, keyboard/screen-reader testing, and media/layout checks.
+This document describes **what TestMu AI / LambdaTest Accessibility Web does NOT cover**: the **manual tests** (and assistive-technology testing) that **you need to perform** for **full WCAG rules coverage and compliance**. TestMu Accessibility automated scanning on web typically covers a subset of accessibility issues; the rest require human judgment, keyboard/screen-reader testing, and media/layout checks.
 
 - **Full rules reference:** **WCAG Reference** lists **100% of WCAG 2.0, 2.1, and 2.2** success criteria (Level A, AA, and AAA) for web.
-- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (or assistive-technology testing) because TestMU Accessibility does not support them or only partially supports them.
+- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (or assistive-technology testing) because TestMu Accessibility does not support them or only partially supports them.
 - **How to do:** For each area, **how to test manually** (or with assistive technology) so you can achieve full coverage and compliance.
 
 **Why these are manual:** The companion **"What we cover"** document explains *how* coverage works (syntactic vs semantic, AI-enhanced rules, and what "partial" means) and *why* some criteria fall into manual-only categories (dynamic behavior, human judgment, complex visual rendering). Use that doc for the reasoning; use this doc for the manual test procedures.
@@ -338,9 +338,9 @@ For each area below, use the **Checklist** column to see what to verify and the 
 
 ## Summary
 
-- **Support:** For TestMU platform, accessibility coverage, or scan issues contact TestMU/LambdaTest support.
+- **Support:** For TestMu platform, accessibility coverage, or scan issues contact TestMu/LambdaTest support.
 - **Full rules:** **WCAG Reference** lists **100% of WCAG 2.0, 2.1, and 2.2** success criteria for web (87 total; A, AA, AAA). Use it as the master reference.
-- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (and, where noted, assistive-technology testing) because TestMU Accessibility does not support them or only partially supports them. For each area, a **checklist** and **how to do** (manual test procedure) are provided so you can achieve full rules coverage and compliance.
+- **What we do not cover:** **Manual Checklist** lists the criteria that require **manual testing** (and, where noted, assistive-technology testing) because TestMu Accessibility does not support them or only partially supports them. For each area, a **checklist** and **how to do** (manual test procedure) are provided so you can achieve full rules coverage and compliance.
 - **Use this doc** as a reference for manual testing responsibilities for full accessibility coverage. For *why* these criteria are manual (semantic vs syntactic, partial coverage, and manual-only categories), see the **"What we cover"** document.
 
 **Coverage cross-check:** **WCAG Reference** lists all **87** WCAG 2.2 success criteria (Principle 1: 29; Principle 2: 34; Principle 3: 21; Principle 4: 3). **Manual Checklist** addresses every criterion that requires manual or assistive-technology testing (including 1.2.x, 1.3.2–1.3.5, 1.4.1–1.4.5, 1.4.10–1.4.13, 2.1.x, 2.2.x, 2.3.1, 2.3.3, 2.4.x, 2.5.x, 3.1.x, 3.2.x, 3.3.x, 4.1.3, and AAA where applicable). Together with automated coverage (see **Web Accessibility Coverage**), this document supports **100%** WCAG rules coverage for web.

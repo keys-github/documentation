@@ -1,66 +1,38 @@
 ---
 id: accessibility-test-scheduling
-title: Accessibility Test Scheduling
-hide_title: false
-sidebar_label: Accessibility Test Scheduling
-description: Automate accessibility testing with TestMu AI's Accessibility Scheduler. Schedule scans, ensure WCAG compliance, and get detailed reports effortlessly.
-keywords:
-    - TestMu AI
-    - Accessibility
-    - Testing
-    - DevTools
-    - Accessibility Testing Settings
-url: https://www.testmuai.com/support/docs/accessibility-test-scheduling/
-site_name: TestMu AI
+title: Test Scheduling - Sitemap (Overview)
+sidebar_label: Test Scheduling - Sitemap (Overview)
+description: Overview of scheduled accessibility scans for websites, including sitemap-based and crawler-based workflows.
 slug: accessibility-test-scheduling/
-canonical: https://www.testmuai.com/support/docs/accessibility-test-scheduling/
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
+# Test Scheduling - Sitemap (Overview)
 
+Test Scheduling helps teams run recurring Accessibility scans on websites and web apps without manually starting a new scan every time.
 
-<script type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({
-       "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": BRAND_URL
-        },{
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Support",
-          "item": `${BRAND_URL}/support/docs/`
-        },{
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Accessibility Test Scheduling",
-          "item": `${BRAND_URL}/support/docs/accessibility-test-scheduling/`
-        }]
-      })
-    }}
-></script>
-Web Accessibility is crucial for creating inclusive digital experiences. This ensures that all the users, including those with disabilities, can access and interact with web content. However, manually verifying accessibility compliance is often time-intensive and prone to human error.
+When you want recurring Accessibility scans outside of Web Scanner, this overview explains how the native scheduling flow fits the product, how it differs from Web Scanner, and where to go for setup, URL import, authentication, and recurring schedules. Use it to orient sitemap-based or crawler-driven workflows and ongoing visibility into accessibility drift.
 
-To address these challenges, <BrandName /> introduces the Accessibility Scheduler—an automated solution to help you stay compliant with WCAG (Web Content Accessibility Guidelines). This tool streamlines accessibility testing by automating checks and generating comprehensive reports, ensuring a faster, more reliable process.
+## Use this when
 
-The Scheduled Accessibility Scan feature allows you to automate recurring or one-time accessibility scans, significantly reducing manual effort while ensuring high standards of accessibility compliance.
+- you want recurring scans
+- you want to import or discover many URLs at once
+- you need scheduled visibility into accessibility drift over time
 
-<video class="right-side" width="100%" controls id="vid">
-<source src= {require('../assets/images/accessibility-testing/accessibility-scheduling.mp4').default} type="video/mp4" />
-</video>
+## Product boundary
 
-## Key Features
-- **Automated Scheduling :** Set up recurring or one-time scans for your websites.
-- **WCAG Compliance :** Ensure your websites adhere to WCAG standards (selectable version).
-- **Local and Authenticated Pages :** Configure scans for local environments and authenticated pages.
-- **Comprehensive Reporting :** Receive detailed scan reports via email and access them on the dashboard.
+This page is for the Accessibility-native scheduling flow. If you are already inside Web Scanner, use [Starting an Accessibility Scan with Web Scanner](/support/docs/web-scanner-accessibility-scan/) instead.
 
-## Use Case
-- **Developers :** Stay ahead of accessibility issues by scheduling regular scans and ensuring WCAG compliance throughout the development lifecycle.
-- **QA Testers :** Conduct detailed accessibility testing as part of their quality assurance workflows.
-- **Product Managers :** Monitor accessibility performance across websites to meet organizational and legal compliance requirements.
+## Typical workflow
+
+1. Create the scheduled scan.
+2. Add URLs manually, through CSV, or through sitemap extraction.
+3. Configure authentication or local access if required.
+4. Set the schedule.
+5. Review the resulting reports.
+
+## Related docs
+
+- [Steps to Schedule an Accessibility Scan](/support/docs/accessibility-test-scheduling-scan/)
+- [Sitemap Extraction & URL Import](/support/docs/accessibility-sitemap-extraction-url-import/)
+- [Steps to Schedule an Accessibility Scan](/support/docs/accessibility-test-scheduling-scan/)
+- [Crawler](/support/docs/accessibility-test-crawler/)

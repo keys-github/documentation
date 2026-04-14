@@ -9,8 +9,6 @@ keywords:
   - Accessibility
   - Testing
   - DevTools
-  - run quick scan
-  - test issues
   - Keyboard Scan
   - Tab Order
 url: https://www.testmuai.com/support/docs/accessibility-keyboard-scan/
@@ -40,7 +38,7 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
         },{
           "@type": "ListItem",
           "position": 3,
-          "name": "What is Accessibility Testing",
+          "name": "Keyboard Accessibility Scan",
           "item": `${BRAND_URL}/support/docs/accessibility-keyboard-scan/`
         }]
       })

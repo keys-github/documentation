@@ -37,7 +37,7 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
         },{
           "@type": "ListItem",
           "position": 3,
-          "name": "Test Overview",
+          "name": "Accessibility Dashboard Widgets",
           "item": `${BRAND_URL}/support/docs/analytics-modules-accessibility-widgets/`
         }]
       })

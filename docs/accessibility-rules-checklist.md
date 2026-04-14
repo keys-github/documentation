@@ -106,18 +106,9 @@ The checklists in each tab below include both **scanner-supported rules** (where
 
 ## Web: Rules Reference
 
-The Web Scanner audits pages against **WCAG 2.0 / 2.1** (default **WCAG 2.1 AA**). Issues are categorized by severity: **Critical**, **Serious**, **Moderate**, **Minor**. Common checks include:
+The Web Scanner audits pages against configurable WCAG versions up to **WCAG 2.2** (default **WCAG 2.1 AA**). Issues are categorized by severity: **Critical**, **Serious**, **Moderate**, **Minor**.
 
-| Area | WCAG (examples) | Level | What the scanner checks |
-|------|------------------|-------|--------------------------|
-| Text alternatives | 1.1.1 | A | Missing or empty `alt` on images; non-text content without a text alternative |
-| Color contrast | 1.4.3 | AA | Text and background contrast below 4.5:1 (normal) or 3:1 (large text) |
-| Form labels | 3.3.2, 4.1.2 | A | Inputs without associated `<label>`, `aria-label`, or `aria-labelledby` |
-| Keyboard access | 2.1.1 | A | Interactive elements not focusable or operable via keyboard |
-| Name, role, value | 4.1.2 | A | Custom controls missing accessible name, role, or state |
-| Headings / structure | 1.3.1 | A | Missing or incorrect heading hierarchy; structure not programmatically exposed |
-| Focus visible | 2.4.7 | AA | No visible focus indicator on keyboard focus |
-| Link purpose | 2.4.4, 4.1.2 | A | Links with non-descriptive text (e.g. "click here") or missing accessible name |
+For the full list of 37 rules the scanner checks, including per-rule explanations and remediation guidance, see the [Web Rule Repository](/support/docs/accessibility-web-rule-repository/). For a complete WCAG coverage breakdown, see [Web Accessibility Coverage](/support/docs/accessibility-web-what-we-cover/).
 
 ---
 
@@ -267,27 +258,9 @@ These WCAG success criteria **cannot be fully automated**. The scanner does not 
 
 ## Android: Rules Reference
 
-The Accessibility App Scanner for Android uses the following rules. Each maps to WCAG success criteria and has an impact level (Critical, Serious, Moderate).
+The Accessibility App Scanner for Android checks 18 rules, each mapped to WCAG success criteria with an impact level (Critical, Serious, Moderate).
 
-| Rule Name | WCAG | Level | Impact | Description |
-|-----------|------|-------|--------|-------------|
-| Missing Image Alt | 1.1.1 | A | Critical | Images lack alternative text. Add `android:contentDescription` for meaningful images or empty string for decorative. |
-| Missing View Accessibility | 4.1.2 | A | Serious | Interactive elements lack accessibility labels. Ensure `android:contentDescription` or associated labels for screen readers. |
-| Unlabeled Checkbox Element | 4.1.2 | A | Serious | Checkboxes missing accessible names. Use `android:text`, `android:contentDescription`, or associated TextView. |
-| Insufficient Color Ratio | 1.4.3 | AA | Serious | Text contrast below 4.5:1 (normal) or 3:1 (large). Adjust colors or background. |
-| Missing Field Label | 3.3.2 | A | Serious | EditText/inputs lack labels. Use `android:hint`, TextView with `android:labelFor`, or TextInputLayout. |
-| Non-accessible Interaction | 4.1.2 | A | Serious | Custom/gesture controls not accessible to assistive tech. Add focus handling, role, and labels. |
-| Missing Screen Title | 2.4.2 | A | Serious | Activities lack descriptive titles. Set with `setTitle()` or `supportActionBar?.title`. |
-| Unlabeled Toggle Control | 4.1.2 | A | Serious | Switch/toggle missing name. Provide a label describing what it controls. |
-| Mismatched Label Text | 2.5.3 | A | Serious | Visible label text differs from accessible name. Align accessible name with visible text. |
-| Missing Input Value | 4.1.2 | A | Moderate | EditText value not exposed to assistive tech. Expose and announce current value. |
-| Inaccessible Text Focus | 4.1.2 | A | Moderate | Focusable text lacks role/description. Add roles/descriptions or remove focus. |
-| Misplaced Field Label | 3.3.2 | A | Moderate | Label not correctly associated or ordered. Use `android:labelFor`; place label before control. |
-| Nested Control Issues | 4.1.2 | A | Moderate | Interactive elements nested inside others. Separate into distinct, non-nested components. |
-| Unnamed Nested Element | 4.1.2 | A | Moderate | Nested elements need distinct names or must be marked non-focusable. |
-| Fixed Orientation Lock | 1.3.4 | AA | Moderate | App locks to one orientation without justification. Support both or provide alternative. |
-| Undersized Touch Target | 2.5.5 | AAA | Moderate | Touch targets smaller than 48dp × 48dp. Increase size to at least 48dp. |
-| Insufficient Target Spacing | 2.5.5 | AAA | Moderate | Touch targets too close. Add spacing between adjacent targets. |
+For the full list of all 18 Android rules with per-rule explanations and remediation guidance, see the [Android Rule Repository](/support/docs/accessibility-android-rule-repository/). For a complete WCAG coverage breakdown, see [Android Accessibility Coverage](/support/docs/accessibility-android-what-we-cover/).
 
 ---
 
@@ -397,25 +370,9 @@ The App Scanner checks many Android-specific rules (labels, contrast, touch targ
 
 ## iOS: Rules Reference
 
-The Accessibility App Scanner for iOS uses the following rules. Each maps to WCAG success criteria and has an impact level (Critical, Serious, Moderate, Minor).
+The Accessibility App Scanner for iOS checks 15 rules, each mapped to WCAG success criteria with an impact level (Critical, Serious, Moderate, Minor).
 
-| Rule Name | WCAG | Level | Impact | Description |
-|-----------|------|-------|--------|-------------|
-| Missing Accessibility Labels | 4.1.2 | A | Serious | Interactive elements lack `accessibilityLabel` / `accessibilityHint`. Use `.accessibilityLabel()` and `.accessibilityHint()` in SwiftUI. |
-| Color Contrast Issues | 1.4.3 | AA | Serious | Text/background contrast below 4.5:1 or 3:1 for large text. Use semantic colors (e.g. `UIColor.label`) and verify with tools. |
-| Touch Target Sizing | 2.5.5 | AAA | Moderate | Touch areas below 44pt or insufficient spacing. Use at least 44×44pt; in SwiftUI `.frame(minWidth: 44, minHeight: 44)`. |
-| Assistive Technology Access | 4.1.2 | A | Serious | Elements not detectable/focusable/activatable by VoiceOver. Set `isAccessibilityElement = true`, `accessibilityActivate()`, and `accessibilityElements`. |
-| Text Truncation Issues | 1.4.4 | AA | Serious | Text truncates when Dynamic Type is increased. Use `adjustsFontForContentSizeCategory = true` and flexible layouts. |
-| Accessibility Role Definition | 4.1.2 | A | Moderate | Missing or wrong `accessibilityTraits` (e.g. .button, .header). Use `.accessibilityAddTraits()` in SwiftUI. |
-| Dynamic Type Support | 1.4.4 | AA | Serious | UI does not scale with user text size. Support Dynamic Type and reflow layout. |
-| Accessibility Label Not Punctuated | 3.3.2 | A | Critical | Labels should end with punctuation for natural screen reader pauses. Add period, exclamation, or question mark. |
-| Missing Image Element Label | 1.1.1 | A | Critical | UIImageView/UIButton with image lack `accessibilityLabel`. Add label; for decorative set `isAccessibilityElement = false`. |
-| Missing Button Element Label | 1.3.1 | A | Critical | Buttons need `accessibilityLabel` or title describing the action. |
-| Button Element Capitalisation Check | 3.1.6 | AAA | Minor | Button labels should use proper capitalization (sentence case); avoid ALL CAPS. |
-| Missing Checkbox Element Label | 1.3.1 | A | Critical | Checkboxes need `accessibilityLabel` and appropriate traits (.button, .selected). |
-| Missing Editable Element Label | 1.3.1 | A | Critical | UITextField/UITextView need label and value exposed; do not rely on placeholder alone. |
-| Missing Switch Element Label | 1.3.1 | A | Critical | UISwitch needs `accessibilityLabel` describing what is toggled (state is announced automatically). |
-| Duplicate Accessibility Label | 4.1.2 | A | Critical | Multiple elements share the same label. Give each a unique label (e.g. "Delete photo 1", "Delete photo 2"). |
+For the full list of all 15 iOS rules with per-rule explanations and remediation guidance, see the [iOS Rule Repository](/support/docs/accessibility-ios-rule-repository/). For a complete WCAG coverage breakdown, see [iOS Accessibility Coverage](/support/docs/accessibility-ios-what-we-cover/).
 
 ---
 
@@ -531,7 +488,7 @@ The App Scanner checks many iOS-specific rules (labels, contrast, Dynamic Type, 
 
 | Platform | Scanner / standard | What the scanner can automate (partial) | What cannot be automated (manual only) |
 |----------|--------------------|----------------------------------------|----------------------------------------|
-| **Web** | Web Scanner (WCAG 2.0/2.1 AA, axe-core) | Missing alt, contrast, form labels, name/role/value, headings, focus visible, link/button text (presence). | Adequacy of alt text; 1.3.3 sensory characteristics; 1.4.1 use of color; 1.4.2 audio; 1.4.4 resize; 1.4.10 reflow; 1.4.13 hover/focus; 2.1.1/2.1.2 keyboard/trap; 2.1.4 character shortcuts; 2.2.1/2.2.2 timing/pause; 2.4.3 focus order; 2.4.6 headings/labels; 3.2.1/3.2.2 change of context; 3.3.1/3.3.3 errors; 4.1.3 status messages. |
+| **Web** | Web Scanner (WCAG up to 2.2, default 2.1 AA) | Missing alt, contrast, form labels, name/role/value, headings, focus visible, link/button text (presence). | Adequacy of alt text; 1.3.3 sensory characteristics; 1.4.1 use of color; 1.4.2 audio; 1.4.4 resize; 1.4.10 reflow; 1.4.13 hover/focus; 2.1.1/2.1.2 keyboard/trap; 2.1.4 character shortcuts; 2.2.1/2.2.2 timing/pause; 2.4.3 focus order; 2.4.6 headings/labels; 3.2.1/3.2.2 change of context; 3.3.1/3.3.3 errors; 4.1.3 status messages. |
 | **Android** | Accessibility App Scanner (Android rules) | Missing image alt, view/checkbox/toggle/field labels, color ratio, screen title, mismatched label, nested controls, orientation lock, touch targets. | Adequacy of descriptions; 1.3.3 sensory; 1.4.1 color; 2.1.1/2.1.2 keyboard/trap; 2.2.1/2.2.2 timing/pause; focus order; 3.2.1/3.2.2 change of context; 3.3.1/3.3.3 errors; 4.1.3 status messages. |
 | **iOS** | Accessibility App Scanner (iOS rules) | Missing labels (image/button/checkbox/editable/switch), duplicate labels, punctuation, contrast, touch target, Dynamic Type, role definition, capitalisation. | Adequacy of labels; 1.3.3 sensory; 1.4.1 color; 2.1.1/2.1.2 keyboard/trap; 2.2.1/2.2.2 timing/pause; focus order; 3.2.1/3.2.2 change of context; 3.3.1/3.3.3 errors; 4.1.3 status messages. |
 

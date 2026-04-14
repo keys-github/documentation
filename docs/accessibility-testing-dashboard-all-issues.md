@@ -1,52 +1,31 @@
 ---
 id: accessibility-testing-dashboard-all-issues
 title: All Issues
-hide_title: false
 sidebar_label: All Issues
-description: Access a detailed breakdown of issues, including type, WCAG guideline violations, and customizable filtering options for a seamless user experience.
-keywords:
-    - TestMu AI
-    - Accessibility
-    - Testing
-    - DevTools
-    - all issues
-url: https://www.testmuai.com/support/docs/accessibility-testing-dashboard-issue-summary/
-site_name: TestMu AI
+description: Review the full list of Accessibility findings and filter the issue set for triage.
 slug: accessibility-testing-dashboard-all-issues/
-canonical: https://www.testmuai.com/support/docs/accessibility-testing-dashboard-all-issues/
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import {YOUR_LAMBDATEST_USERNAME, YOUR_LAMBDATEST_ACCESS_KEY} from "@site/src/component/keys";
-import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
+# All Issues
 
-<script type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({
-       "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": BRAND_URL
-        },{
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Support",
-          "item": `${BRAND_URL}/support/docs/`
-        },{
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Navigating Dashboard",
-          "item": `${BRAND_URL}/support/docs/accessibility-testing-dashboard-all-issues/`
-        }]
-      })
-    }}
-></script>
-This section enlists all the issues along with the tag of type of issue, what guideline of WCAG it is violating, and also you can filter it as per your convenience.
+The All Issues view lists every issue found in a report and helps teams move from high-level summary to detailed triage.
 
-<img loading="lazy" src={require('../assets/images/accessibility-testing/dashboard/9.png').default} alt="automation-dashboard" className="doc_img"/>
+The rest of this page walks through using All Issues to inspect findings and interpret grouping. It also explains how to decide whether to fix, hide, or escalate each item so your triage flow stays consistent across reviewers.
 
-Click on the **Review Issues** button and it will list down all those issues which needs to be reviewed manually by the tester or the developer to make sure it is actually an issue.
+## What you can do here
 
-<img loading="lazy" src={require('../assets/images/accessibility-testing/dashboard/10.png').default} alt="automation-dashboard" className="doc_img"/>
+- inspect issue-level detail
+- review needs-review findings
+- understand which guideline each issue maps to
+- switch grouping based on the report structure
+- take actions such as hide, restore, export, or report a bug
+
+## When to use this
+
+Use this view when you need issue-level depth rather than summary statistics.
+
+## Related docs
+
+- [Issue Summary](/support/docs/accessibility-testing-dashboard-issue-summary/)
+- [Hide and Restore Issues](/support/docs/accessibility-hide-restore-issues/)
+- [Bug Report](/support/docs/accessibility-report-bug/)

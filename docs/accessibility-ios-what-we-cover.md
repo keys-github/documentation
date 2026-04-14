@@ -17,25 +17,25 @@ canonical: https://www.testmuai.com/support/docs/accessibility-ios-what-we-cover
 
 # iOS Accessibility Coverage
 
-**Note:** This document describes TestMU AI / LambdaTest Accessibility coverage for iOS. For platform or accessibility support, contact TestMU/LambdaTest support.
+**Note:** This document describes TestMu AI / LambdaTest Accessibility coverage for iOS. For platform or accessibility support, contact TestMu/LambdaTest support.
 
 ---
 
 ## Overview
 
-This document describes **what TestMU AI / LambdaTest Accessibility iOS covers**: a **full WCAG rules reference** (100% for iOS), a **checklist** of rules the platform can check, **how to use** the accessibility testing platform to run scans and view results, and **how to check** / **how to do** (remediation) for **native iOS apps**. It is intended for teams who:
+This document describes **what TestMu AI / LambdaTest Accessibility iOS covers**: a **full WCAG rules reference** (100% for iOS), a **checklist** of rules the platform can check, **how to use** the accessibility testing platform to run scans and view results, and **how to check** / **how to do** (remediation) for **native iOS apps**. It is intended for teams who:
 
-- Run accessibility scans on iOS apps via TestMU AI / LambdaTest Accessibility (e.g. TestMU AI Accessibility DevTools or the accessibility testing platform with supported engines).
+- Run accessibility scans on iOS apps via TestMu AI / LambdaTest Accessibility (e.g. TestMu AI Accessibility DevTools or the accessibility testing platform with supported engines).
 - Need a single reference for **what is checked** on iOS, **how to use** the platform, and **how to verify or fix** issues.
 - Target **WCAG 2.0, 2.1, and 2.2** (Level A, AA, and selected AAA) as applicable to native iOS.
 
-**Technology:** TestMU AI / LambdaTest Accessibility for **native iOS apps** (UIKit and SwiftUI). **Platform:** iOS (e.g. iOS 18+, iPhone 16 series as per TestMU support; check current docs for supported versions).
+**Technology:** TestMu AI / LambdaTest Accessibility for **native iOS apps** (UIKit and SwiftUI). **Platform:** iOS (e.g. iOS 18+, iPhone 16 series as per TestMu support; check current docs for supported versions).
 
 ---
 
 ## WCAG Reference
 
-Below is a **complete** list of all success criteria for **WCAG 2.0, 2.1, and 2.2** at Levels **A, AA, and AAA** as they apply to **native iOS apps**. Use this as the master reference for full iOS accessibility coverage. (Criteria apply to app UI, in-app content, and in-app WebViews where applicable.) The **Coverage Checklist** below shows which of these TestMU AI Accessibility iOS can check automatically or with supported rules.
+Below is a **complete** list of all success criteria for **WCAG 2.0, 2.1, and 2.2** at Levels **A, AA, and AAA** as they apply to **native iOS apps**. Use this as the master reference for full iOS accessibility coverage. (Criteria apply to app UI, in-app content, and in-app WebViews where applicable.) The **Coverage Checklist** below shows which of these TestMu AI Accessibility iOS can check automatically or with supported rules.
 
 ### Principle 1 – Perceivable
 
@@ -150,7 +150,7 @@ Below is a **complete** list of all success criteria for **WCAG 2.0, 2.1, and 2.
 
 ## Coverage Checklist
 
-Below is a consolidated checklist by WCAG version, plus an **iOS-specific rules** table that maps to the rules TestMU AI Accessibility iOS can report. **Level** is A, AA, or AAA; **Impact** is typical severity (Critical, Serious, Moderate, Minor). Use **Use the Platform** to run scans.
+Below is a consolidated checklist by WCAG version, plus an **iOS-specific rules** table that maps to the rules TestMu AI Accessibility iOS can report. **Level** is A, AA, or AAA; **Impact** is typical severity (Critical, Serious, Moderate, Minor). Use **Use the Platform** to run scans.
 
 ### WCAG 2.0 (Level A and AA) – iOS-relevant
 
@@ -198,14 +198,14 @@ Below is a consolidated checklist by WCAG version, plus an **iOS-specific rules*
 |------|-------|-------------------|----------------------|
 | 2.4.11 Focus Not Obscured (Minimum) | AA | Focused element not entirely obscured | Focused element at least partially visible (manual). |
 | 2.5.7 Dragging Movements | AA | Dragging has single-pointer alternative | Alternative to drag gestures (manual). |
-| 2.5.8 Target Size (Minimum) | AA | Touch targets at least 24×24 CSS pixels | Overlaps with 2.5.5; 44pt recommended on iOS. |
-| 3.2.6 Consistent Help | AA | Help in consistent relative order | Help mechanism placement (manual). |
-| 3.3.7 Redundant Entry | AA | No re-entry of same information in same process | Pre-fill / avoid duplicate entry (manual). |
+| 2.5.8 Target Size (Minimum) | AA | Touch targets at least 24×24 pt (WCAG minimum) | Overlaps with 2.5.5; 44pt recommended on iOS. |
+| 3.2.6 Consistent Help | A | Help in consistent relative order | Help mechanism placement (manual). |
+| 3.3.7 Redundant Entry | A | No re-entry of same information in same process | Pre-fill / avoid duplicate entry (manual). |
 | 3.3.8 Accessible Authentication (Minimum) | AA | Auth not solely cognitive function tests | Login alternatives to CAPTCHA/cognitive tests (manual). |
 
-### iOS-specific rules (TestMU AI Accessibility iOS)
+### iOS-specific rules (TestMu AI Accessibility iOS)
 
-These map to the rules that TestMU AI Accessibility iOS can report. Use this table for **what we cover** and quick remediation direction.
+These map to the rules that TestMu AI Accessibility iOS can report. Use this table for **what we cover** and quick remediation direction.
 
 | Rule name | WCAG | Level | Impact | What we cover |
 |-----------|------|-------|--------|----------------|
@@ -225,7 +225,7 @@ These map to the rules that TestMU AI Accessibility iOS can report. Use this tab
 | Missing Switch Element Label | 1.3.1 | A | Critical | Switches have `accessibilityLabel` describing what is toggled (e.g. "Enable notifications"). |
 | Duplicate Accessibility Label | 4.1.2 | A | Critical | Each interactive element has a unique label (e.g. "Delete photo 1", "Delete photo 2"). |
 
-**Note:** Exact rule set depends on your TestMU/LambdaTest Accessibility version. Check TestMU docs for the latest iOS rule list.
+**Note:** Exact rule set depends on your TestMu/LambdaTest Accessibility version. Check TestMu docs for the latest iOS rule list.
 
 ---
 
@@ -235,7 +235,7 @@ Use the TestMu AI Accessibility platform to run automated accessibility scans on
 
 | Step | How to use the platform to test |
 |------|-------------------------|
-| **1. Access the platform** | Log in to TestMU / LambdaTest and open the **Accessibility** (or **TestMU AI Accessibility**) section. Ensure you have access to **iOS** device or simulator for testing. |
+| **1. Access the platform** | Log in to TestMu / LambdaTest and open the **Accessibility** (or **TestMu AI Accessibility**) section. Ensure you have access to **iOS** device or simulator for testing. |
 | **2. Select your iOS app** | Upload your iOS app build (e.g. .ipa) or connect to your app source so the platform can run scans. Select the **iOS** platform and, if applicable, device/OS version (e.g. iPhone, iOS 18). |
 | **3. Run an accessibility scan** | Start an **accessibility scan** for the iOS app. The platform runs automated checks against the rules listed in **Coverage Checklist** (WCAG 2.0, 2.1, 2.2 Level A, AA, and selected AAA as supported). |
 | **4. View the report** | After the scan completes, open the **accessibility report**. Review **violations** (issues found), **passes** (rules that passed), and **incomplete** (items that need manual verification). |
@@ -258,7 +258,7 @@ For each area, below is **how to check** (including using the platform scan) and
 
 **How to check**
 
-- Run TestMU AI Accessibility scan on the iOS app and review violations for missing labels, duplicate labels, and role/traits.
+- Run TestMu AI Accessibility scan on the iOS app and review violations for missing labels, duplicate labels, and role/traits.
 - Manually: Turn on **VoiceOver** (Settings > Accessibility > VoiceOver). Navigate through the app; ensure every interactive element is announced with a clear name and role; ensure labels are unique and end with punctuation where it improves clarity.
 
 **How to do (remediation)**
@@ -353,9 +353,13 @@ For each area, below is **how to check** (including using the platform scan) and
 
 ---
 
+## Rule-Level Remediation
+
+For per-rule explanations, common failure patterns, and fix guidance for each of the 15 iOS accessibility rules, see the [iOS Rule Repository](/support/docs/accessibility-ios-rule-repository/). For actionable manual verification steps, see the [Rules & Checklist](/support/docs/accessibility-rules-checklist/).
+
 ## Summary
 
-- **Support:** For TestMU platform, accessibility coverage, or device issues contact TestMU/LambdaTest support.
+- **Support:** For TestMu platform, accessibility coverage, or device issues contact TestMu/LambdaTest support.
 - **Full WCAG reference:** **WCAG Reference** lists **100% of WCAG 2.0, 2.1, and 2.2** success criteria (87 total) as they apply to iOS. Use it as the master reference.
 - **What we cover:** **Coverage Checklist** is the rules checklist TestMu AI Accessibility iOS can check (WCAG 2.0, 2.1, 2.2 Level A, AA, and selected AAA). **Use the Platform** describes how to run scans and review reports. **Verification and Remediation** provides the practical guidance for labels, contrast, Dynamic Type, touch targets, and assistive technology access.
 - **Use this doc** as a single reference for what is covered on iOS, how to use the platform, and how to verify or fix issues.

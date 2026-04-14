@@ -1,150 +1,45 @@
 ---
 id: accessibility-testing
-title: TestMu AI Accessibility Testing
-hide_title: false
+title: Accessibility Testing (Overview)
 sidebar_label: Accessibility Testing
-description: Make your digital products usable for people with disabilities through comprehensive testing and improvement using TestMu AI Accessibility DevTools
-keywords:
-    - TestMu AI
-    - Accessibility
-    - Testing
-    - DevTools
-url: https://www.testmuai.com/support/docs/accessibility-testing/
-site_name: TestMu AI
+description: Overview of TestMu AI Accessibility Testing across web, mobile apps, reports, checklists, and integrated product surfaces.
 slug: accessibility-testing/
-canonical: https://www.testmuai.com/support/docs/accessibility-testing/
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import {YOUR_LAMBDATEST_USERNAME, YOUR_LAMBDATEST_ACCESS_KEY} from "@site/src/component/keys";
-import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
+# Accessibility Testing (Overview)
 
+TestMu AI Accessibility Testing helps teams find, understand, and fix accessibility issues across websites, web apps, and mobile apps.
 
-<script type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({
-       "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": BRAND_URL
-        },{
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Support",
-          "item": `${BRAND_URL}/support/docs/`
-        },{
-          "@type": "ListItem",
-          "position": 3,
-          "name": "What is Accessibility Testing",
-          "item": `${BRAND_URL}/support/docs/accessibility-testing/`
-        }]
-      })
-    }}
-></script>
+This overview introduces the Accessibility documentation set and how TestMu AI splits accessibility testing across web and app surfaces, checklists, screen reader coverage, product features such as reports and exports, the Accessibility MCP Server, and FAQs or reference material. Skim it first to see how those areas connect before you open a workflow-specific setup guide.
 
-<BrandName />’s Accessibility Testing Suite ensures digital experiences are accessible to everyone. Whether it's a website, web app, or mobile app, the suite simplifies the process of testing and improving accessibility. It offers various types of accessibility testing, including support for NVDA, VoiceOver, and TalkBack, ensuring seamless experiences for users with visual, motor, and hearing impairments. It helps businesses adhere to global accessibility standards while enhancing usability across platforms. Additionally, automated accessibility checks for both web and mobile apps streamline the testing process, ensuring compliance with global standards like WCAG.
+## When to use this
 
-## What is Accessibility Testing?
+Use this page when you are new to Accessibility Testing or when you need to choose the right workflow before opening a setup guide.
 
-Accessibility testing is the process of evaluating and improving web apps, websites, and mobile apps to ensure they are usable by everyone, including individuals with disabilities.
+## Main product surfaces
 
-This includes people with:
+- **Accessibility Web / DevTools** for browser-based scanning and assisted testing.
+- **Accessibility Web / Automation** for automated web checks in supported test frameworks.
+- **Accessibility Web / Test Scheduling** for recurring site scans.
+- **Accessibility Web / Web Scanner (Integration)** for URL-based Accessibility scanning inside the Web Scanner product surface.
+- **Accessibility App** for manual and automated mobile app accessibility testing.
+- **Accessibility App / KaneAI (Integration)** for KaneAI-authored mobile app flows that trigger Accessibility scans during execution.
+- **Features** for reports, score, exports, tags, passed tests, and issue management.
+- **Accessibility MCP Server** for AI-assisted accessibility analysis workflows.
 
-- **Visual impairments:** Blindness, low vision, color blindness.
-- **Motor impairments:** Difficulty using a mouse or keyboard, relying on assistive technologies.
-- **Hearing impairments:** Deafness, hearing loss, relying on captions and transcripts.
-- **Cognitive impairments:** Difficulty focusing, understanding complex information, needing simpler interfaces.
+## How to choose the right path
 
-## Why Accessibility Testing is Important?
+- If you are testing a website manually, start with [Accessibility DevTools](/support/docs/accessibility-devtools/).
+- If you are running automated web tests, start with [Accessibility Automation](/support/docs/accessibility-automation/).
+- If you are using Web Scanner as the execution surface, start with [Starting an Accessibility Scan with Web Scanner](/support/docs/web-scanner-accessibility-scan/).
+- If you are testing a mobile app manually, start with [Accessibility App Scanner](/support/docs/accessibility-app-scanner/).
+- If you are testing a mobile app through automation, start with [Native App Automation Appium (Overview)](/support/docs/accessibility-native-app-automation-test/).
+- If you are authoring the flow in KaneAI, start with [Mobile App Accessibility Testing](/support/docs/kaneai-mobile-app-accessibility/).
+- If you need reports, issue views, or exports, start with [Navigating the Dashboard](/support/docs/accessibility-testing-navigating-dashboard/).
+- If you want to understand what accessibility rules are checked, start with [Rules & Checklist](/support/docs/accessibility-rules-checklist/).
+- If you need screen reader testing, start with [Screen Reader Overview](/support/docs/screen-reader-on-accessibility/).
+- If you want AI-assisted accessibility analysis, start with [Accessibility MCP Server](/support/docs/accessibility-mcp-server/).
 
-:::info
-Based on [**WebAIM's research**](https://webaim.org/projects/million/), there is a significant disparity in digital inclusivity, with **95.9%** of the top 1 million websites not meeting basic accessible standards. This disparity highlights the importance of accessibility testing to ensure digital spaces are accessible to all.
-:::
+## Accessibility standards and expectations
 
-The following explains why accessibility testing is essential:
-
-- **Meeting Accessibility Standards:** Ensuring your platform meets essential accessibility guidelines such as WCAG, ADA, and Section 508 not only reduces legal risks but also supports inclusivity and provides equal access for all users.
-- **Digital Inclusivity:** Users with disabilities can access content, eliminating barriers for those with visual, auditory, or motor impairments.
-- **Wider Audience Reach:** Over 2 billion people worldwide live with impairments. By using accessibility testing, you can reach this untapped market and grow your clientele.
-- **Improved Usability for All Users:** Features like enhanced colour contrast, keyboard navigation, and alternate text make your website easier to use for all users.
-- **Future-Proofing Your Digital Presence:** Using inclusive design now guarantees that your platform will remain ahead of the curve and relevant as accessibility standards change.
-
-## The European Accessibility Act (EAA)
-
->  The [European Accessibility Act (EAA)](https://accessible-eu-centre.ec.europa.eu/content-corner/news/eaa-comes-effect-june-2025-are-you-ready-2025-01-31_en), effective from June 2025, is a groundbreaking regulation made to improve accessibility across the European Union. This act guarantees the accessibility of digital products and services to all individuals, including the 135 million people living with disabilities in the EU. It gives businesses a clear requirement to design products and services that are accessible to everyone, breaking down digital barriers and inclusivity.
-
-### Scope of the EAA
-
-The EAA applies to a wide range of digital products and services, including:
-
-- **Digital Content:** Websites, mobile applications, and electronic documents.
-- **Consumer Devices:** Computers, smartphones, e-readers, and television equipment.
-- **Public Services:** ATMs, ticketing machines, and other self-service terminals.
-- **Financial Services:** Online banking platforms, investment services, and related digital processes.
-
-## Accessibility Laws and Compliances
-
-Ensuring accessibility compliance is not just good practice but a legal necessity. Several laws mandate accessibility standards to protect the rights of individuals with disabilities:
-
-- **Web Content Accessibility Guidelines (WCAG):** These guidelines are internationally recognized and provide recommendations to make web content more accessible. They are often referenced by many laws and set the standard for compliance.
-- **American Disabilities Act (ADA):** Ensures U.S. websites and digital platforms are accessible to people with disabilities. Non-compliance can result in legal actions, fines, and reputational damage.
-- **Section 508 (Rehabilitation Act):** Mandates that federal agencies and contractors provide accessible electronic information technology, including websites and apps, to individuals with disabilities.
-- **Accessibility for Ontarians with Disabilities Act (AODA):** A Canadian law that requires businesses in Ontario to ensure that their websites and online services are accessible to individuals with disabilities.
-
-## Use Cases of Accessibility Testing
-
-Accessibility testing is essential for all businesses striving to create inclusive digital experiences. Below are some key areas where accessibility testing can make a significant impact:
-
-- **E-commerce Websites:** All users can seamlessly browse products, add items to their cart, and complete the checkout process.
-- **Government Websites:** Public services are accessible to all citizens, including those with disabilities.
-- **Mobile Apps:** Mobile apps offer a smooth and navigable experience for all users.
-- **Educational Platforms:** Helps students access learning materials, participate in discussions, and complete assignments without barriers.
-- **Financial Services:** Ensures accessibility for managing accounts, completing transactions, and accessing services.
-
-## How <BrandName /> Helps Ensure Accessibility Compliance?
-
-<BrandName />’s Accessibility Testing Suite simplifies the process of identifying accessibility issues across websites, web apps, and mobile apps, enabling users to make improvements quickly. Below are the different types of accessibility testing that <BrandName /> offers to help achieve compliance, create seamless and inclusive user experiences.
-
-### Types of <BrandName /> Accessibility Testing
-
-<div className="support_main">  
-  <a href="/support/docs/accessibility-devtools">
-    <div className="support_inners">
-      <h3>Accessibility DevTools</h3>
-      <p>Get a comprehensive accessibility analysis via browser extension.</p>
-    </div>
-  </a>
-    <a href="/support/docs/accessibility-app-scanner">
-    <div className="support_inners">
-      <h3>Accessibility Manual App</h3>
-      <p>Get a comprehensive accessibility analysis for your app.</p>
-    </div>
-  </a>
-    <a href="/support/docs/accessibility-automation">
-    <div className="support_inners">
-      <h3>Accessibility Web Automation</h3>
-      <p>Get the accessibility check for automated webapp tests and scripts.</p>
-    </div>
-  </a>
-  <a href="/support/docs/accessibility-native-app-automation-test/">
-    <div className="support_inners">
-      <h3>Accessibility App Automation</h3>
-      <p>Get the accessibility check for your automated app tests and scripts.</p>
-    </div>
-  </a>
-    <a href="/support/docs/accessibility-test-scheduling">
-    <div className="support_inners">
-      <h3>Sitemap Scheduling</h3>
-      <p>Streamline your accessibility testing by automating checks and generating comprehensive reports.</p>
-    </div>
-  </a>
-</div>
-
-<br /><br />
-
-<div className="support_main ms-auto">
-  <p><i>Powered By <b><a href="https://github.com/dequelabs/axe-core" target="_blank">Axe-Core</a></b></i></p><br />
-  <p><i>Axe-core® is a trademark of Deque Systems, Inc. in the US and other countries.</i></p>
-</div>
+Accessibility Testing helps you work toward standards such as WCAG, ADA, EAA, and Section 508. Automated testing is useful, but it does not replace manual verification for every accessibility requirement.
