@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Link from '@docusaurus/Link';
+import { slugify } from '@site/src/pages/api-doc/_ApiDocPage';
 
 const METHOD_BG = {
   GET: '#2AB673',
@@ -40,39 +42,61 @@ function GroupToggleIcon({ open }) {
   );
 }
 
-export default function ApiSidebar({ apis, selectedEndpoint, onSelectEndpoint }) {
-  const [collapsedGroups, setCollapsedGroups] = useState({});
+export default function ApiSidebar({ apis, activeApiSlug, activeGroupSlug, activeEndpointSlug }) {
+  // Initialise collapsed state — expand the active group by default
+  const [collapsedGroups, setCollapsedGroups] = useState(() => {
+    const init = {};
+    if (!activeApiSlug) return init;
+    apis.forEach((api) => {
+      api.groups.forEach((group) => {
+        const key = `${api.name}::${group.name}`;
+        const gSlug = slugify(group.noHeading ? api.name : group.name);
+        const aSlug = slugify(api.name);
+        // Collapse all except the active group
+        if (aSlug === activeApiSlug && gSlug === activeGroupSlug) {
+          init[key] = false; // expanded
+        } else {
+          init[key] = true; // collapsed
+        }
+      });
+    });
+    return init;
+  });
 
   function toggleGroup(key) {
     setCollapsedGroups((prev) => ({ ...prev, [key]: !prev[key] }));
   }
 
-  function isActive(endpoint) {
+  function isActive(api, group, endpoint) {
     return (
-      selectedEndpoint?.method === endpoint.method &&
-      selectedEndpoint?.path === endpoint.path
+      slugify(api.name) === activeApiSlug &&
+      slugify(group.noHeading ? api.name : group.name) === activeGroupSlug &&
+      slugify(endpoint.name) === activeEndpointSlug
     );
   }
 
-  function renderEndpoint(endpoint, apiName, groupName, apiBaseUrl) {
-    const active = isActive(endpoint);
+  function endpointHref(api, group, endpoint) {
+    const aSlug = slugify(api.name);
+    const gSlug = slugify(group.noHeading ? api.name : group.name);
+    const eSlug = slugify(endpoint.name);
+    return `/support/api-doc/${aSlug}/${gSlug}/${eSlug}/`;
+  }
+
+  function renderEndpoint(endpoint, api, group) {
+    const active = isActive(api, group, endpoint);
     return (
       <li
         key={`${endpoint.method}-${endpoint.path}`}
         className="relative scroll-m-4 first:scroll-m-20 list-none"
       >
-        <a
+        <Link
+          to={endpointHref(api, group, endpoint)}
           className={`group flex items-start pr-3 py-1.5 cursor-pointer gap-x-3 text-left rounded-xl w-full outline-offset-[-1px] no-underline hover:no-underline ${
             active
               ? 'bg-primary/10 text-primary [text-shadow:-0.2px_0_0_currentColor,0.2px_0_0_currentColor] dark:text-primary-light dark:bg-primary-light/10'
               : 'hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300'
           }`}
           style={{ textDecoration: 'none', paddingLeft: '1.75rem' }}
-          onClick={(e) => {
-            e.preventDefault();
-            onSelectEndpoint({ ...endpoint, group: groupName, baseUrl: apiBaseUrl });
-          }}
-          href="#"
         >
           <MethodPill method={endpoint.method} />
           <div className="flex-1 flex min-w-0 items-start gap-x-2.5">
@@ -80,7 +104,7 @@ export default function ApiSidebar({ apis, selectedEndpoint, onSelectEndpoint })
               <span className="min-w-0 max-w-full break-words">{endpoint.name}</span>
             </div>
           </div>
-        </a>
+        </Link>
       </li>
     );
   }
@@ -102,10 +126,7 @@ export default function ApiSidebar({ apis, selectedEndpoint, onSelectEndpoint })
               if (group.noHeading) {
                 return (
                   <React.Fragment key={groupKey}>
-                    {hasEndpoints &&
-                      group.endpoints.map((ep) =>
-                        renderEndpoint(ep, api.name, api.name, api.baseUrl)
-                      )}
+                    {hasEndpoints && group.endpoints.map((ep) => renderEndpoint(ep, api, group))}
                   </React.Fragment>
                 );
               }
@@ -125,9 +146,7 @@ export default function ApiSidebar({ apis, selectedEndpoint, onSelectEndpoint })
 
                   {!isCollapsed && hasEndpoints && (
                     <ul className="space-y-px list-none pl-0 m-0">
-                      {group.endpoints.map((ep) =>
-                        renderEndpoint(ep, api.name, group.name, api.baseUrl)
-                      )}
+                      {group.endpoints.map((ep) => renderEndpoint(ep, api, group))}
                     </ul>
                   )}
                 </li>
