@@ -133,10 +133,18 @@ function SearchIcon() {
   );
 }
 
+function DotsIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="12" cy="5" r="1.5" /><circle cx="12" cy="12" r="1.5" /><circle cx="12" cy="19" r="1.5" />
+    </svg>
+  );
+}
+
 export default function Navbar() {
   const location = useLocation();
   const [colorMode, setColorModeState] = useState(getStoredTheme);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dotsOpen, setDotsOpen] = useState(false);
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -146,15 +154,26 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Close mobile menu on route change
+  // Close dots dropdown on route change or outside click
+  useEffect(() => { setDotsOpen(false); }, [location.pathname]);
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location.pathname]);
+    if (!dotsOpen) return;
+    function handleClick(e) {
+      if (!e.target.closest('[data-dots-menu]')) setDotsOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [dotsOpen]);
 
   function toggleColorMode() {
     const next = colorMode === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     setColorModeState(next);
+  }
+
+  function triggerSearch() {
+    const btn = document.querySelector('.DocSearch-Button');
+    if (btn) btn.click();
   }
 
   const { openPanel } = useAIChatSafe();
@@ -197,21 +216,28 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile-only: search + sparkle + menu icons (right side) */}
+        {/* Mobile-only: search + sparkle + 3-dots */}
         <div className={styles.mobileRight}>
+          <button className={styles.mobileIconBtn} onClick={triggerSearch} aria-label="Search">
+            <SearchIcon />
+          </button>
           <button className={styles.mobileIconBtn} onClick={openPanel} aria-label="Ask AI">
             <SparkleIcon />
           </button>
-          <button className={styles.mobileIconBtn} onClick={toggleColorMode} aria-label="Toggle dark mode">
-            {colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
-          </button>
-          <button
-            className={styles.mobileIconBtn}
-            onClick={() => setMobileMenuOpen(o => !o)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
-          </button>
+          <div className={styles.dotsWrapper} data-dots-menu="true">
+            <button className={styles.mobileIconBtn} onClick={() => setDotsOpen(o => !o)} aria-label="More options">
+              <DotsIcon />
+            </button>
+            {dotsOpen && (
+              <div className={styles.dotsDropdown}>
+                <a href="https://github.com/LambdaTest" target="_blank" rel="noopener noreferrer" className={styles.dotsItem}>
+                  <GithubIcon /><span>Github</span>
+                </a>
+                <a href="https://accounts.lambdatest.com/login" className={styles.dotsItem}>Login</a>
+                <a href="https://accounts.lambdatest.com/register" className={`${styles.dotsItem} ${styles.dotsItemCta}`}>Get Started Free</a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -231,27 +257,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ── Mobile menu overlay ── */}
-      {mobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          {NAV_LINKS.map(({ to, label, icon: Icon }) => (
-            <a
-              key={to}
-              href={to}
-              className={`${styles.mobileMenuLink} ${isActiveLink(location.pathname, to) ? styles.mobileMenuLinkActive : ''}`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Icon />
-              <span>{label}</span>
-            </a>
-          ))}
-          <div className={styles.mobileMenuDivider} />
-          <a href="https://accounts.lambdatest.com/login" className={styles.mobileMenuLink}>Login</a>
-          <a id="signbtn-mobile" href="https://accounts.lambdatest.com/register" className={styles.mobileMenuGetStarted}>
-            Get Started Free &rsaquo;
-          </a>
-        </div>
-      )}
     </nav>
   );
 }

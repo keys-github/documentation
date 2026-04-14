@@ -55,6 +55,60 @@
   display: none;
 }
 
+/* Mobile breadcrumb row */
+.mobileBreadcrumb {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .mobileBreadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    background: #ffffff;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  /* Push the content down to account for the fixed breadcrumb (~44px) */
+  .apiLayout {
+    margin-top: 44px;
+  }
+}
+
+@media (max-width: 996px) {
+  :global([data-theme='dark']) .mobileBreadcrumb {
+    background: #1b1b1d;
+  }
+}
+
+.mobileSidebarBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-700);
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.mobileBreadcrumbText {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 0;
+  flex: 1;
+  color: var(--ifm-color-emphasis-700);
+}
+
 /* Responsive */
 @media (max-width: 1400px) {
   .rightPanel {

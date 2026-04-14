@@ -226,10 +226,7 @@ function ParamField({ label, sublabel, type, required, description, value, onCha
   }
 
   return (
-    <div style={{
-      display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', alignItems: 'start',
-      padding: '16px 20px', borderTop: '1px solid var(--ifm-color-emphasis-200)',
-    }}>
+    <div className={styles.paramField}>
       {/* Left: label + type + required + description */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '6px' }}>

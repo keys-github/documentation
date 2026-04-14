@@ -34,39 +34,29 @@ export default function AskAIBar() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, closePanel]);
 
-  // Auto-close panel when viewport is too narrow (≤996px)
+  // When AI panel opens on desktop: shift the layout left to make room.
+  // On mobile (≤996px) the panel is a bottom sheet — lock scroll instead.
   useEffect(() => {
-    const mql = window.matchMedia('(max-width: 996px)');
-    function handleNarrow(e) {
-      if (e.matches && isOpen) closePanel();
-    }
-    mql.addEventListener('change', handleNarrow);
-    // Also close immediately if already narrow when panel opens
-    if (mql.matches && isOpen) closePanel();
-    return () => mql.removeEventListener('change', handleNarrow);
-  }, [isOpen, closePanel]);
-
-  // When AI panel opens: narrow the entire #__docusaurus root (navbar + content)
-  // so the whole layout shifts left and the panel fills the right 420px.
-  // Also toggle a body class so CSS can hide the right panel and show inline code examples.
-  useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 996px)').matches;
     const root = document.getElementById('__docusaurus');
     if (isOpen) {
       document.body.classList.add('ai-panel-open');
-      if (root) {
+      if (isMobile) {
+        document.body.style.overflow = 'hidden';
+      } else if (root) {
         root.style.transition = 'padding-right 0.25s ease';
         root.style.boxSizing = 'border-box';
         root.style.paddingRight = `${PANEL_WIDTH}px`;
       }
     } else {
       document.body.classList.remove('ai-panel-open');
+      document.body.style.overflow = '';
       setIsExpanded(false);
-      if (root) {
-        root.style.paddingRight = '0px';
-      }
+      if (root) root.style.paddingRight = '0px';
     }
     return () => {
       document.body.classList.remove('ai-panel-open');
+      document.body.style.overflow = '';
       if (root) {
         root.style.paddingRight = '0px';
         root.style.transition = '';
@@ -115,7 +105,7 @@ export default function AskAIBar() {
             <span>Assistant</span>
           </div>
           <div className={styles.drawerActions}>
-            <button className={styles.iconBtn} onClick={() => setIsExpanded(v => !v)} title={isExpanded ? 'Collapse' : 'Expand'} aria-label={isExpanded ? 'Collapse' : 'Expand'}>
+            <button className={`${styles.iconBtn} ${styles.expandBtn}`} onClick={() => setIsExpanded(v => !v)} title={isExpanded ? 'Collapse' : 'Expand'} aria-label={isExpanded ? 'Collapse' : 'Expand'}>
               {isExpanded ? (
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="4 14 10 14 10 20" /><polyline points="20 10 14 10 14 4" />
