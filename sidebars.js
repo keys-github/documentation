@@ -1404,9 +1404,19 @@ module.exports = {
               "kane-ai-scroll-in-feature",
               "kane-ai-jira-integration",
               "kane-ai-api-testing",
-              "kane-ai-modules",
-              "kaneai-modules-versions-and-enhancement",
-              "kaneai-bulk-module-update",
+              {
+                type: "category",
+                collapsed: true,
+                label: "Modules",
+                link: {
+                  type: "doc",
+                  id: "kane-ai-modules",
+                },
+                items: [
+                  "kaneai-modules-versions-and-enhancement",
+                  "kaneai-bulk-module-update",
+                ],
+              },
               "kaneai-upload-and-download-files",
               "kaneai-totp",
               "kaneai-database",
@@ -1450,6 +1460,7 @@ module.exports = {
         items: [
           "kane-ai-test-plan",
           "kaneai-hyperexecute-test-run-execution",
+          "kaneai-sequential-test-runs",
           "kaneai-ci-cd-automation",
           "test-runs-configurations",
           "kaneai-scheduled-test-runs",
