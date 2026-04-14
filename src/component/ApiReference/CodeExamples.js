@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Highlight, themes } from 'prism-react-renderer';
-import { useAIChat } from '@site/src/component/AskAI/AIChatContext';
+import { useAIChatSafe } from '@site/src/component/AskAI/AIChatContext';
 import { LANGUAGES, generateCodeExample, LangDropdownPortal, LangSelectorButton } from './langUtils';
 
 // Override github theme: JSON property names (keys) in green, matching stage
@@ -96,7 +96,7 @@ function formatResponse(value) {
 }
 
 export default function CodeExamples({ endpoint, selectedLang: selectedLangProp, onLangChange }) {
-  const { openPanel } = useAIChat();
+  const { openPanel } = useAIChatSafe();
   const [localLang, setLocalLang] = useState('cURL');
   const selectedLang = selectedLangProp !== undefined ? selectedLangProp : localLang;
   const setSelectedLang = onLangChange || setLocalLang;
@@ -119,7 +119,8 @@ export default function CodeExamples({ endpoint, selectedLang: selectedLangProp,
   const currentTab = activeResponseTab && responseTabs.includes(activeResponseTab)
     ? activeResponseTab
     : responseTabs[0];
-  const currentResp = currentTab ? formatResponse(responses[currentTab]) : '';
+  const rawResp = currentTab ? responses[currentTab] : null;
+  const currentResp = rawResp ? formatResponse(rawResp.example ?? rawResp) : '';
   const respIsJson = currentResp.startsWith('{') || currentResp.startsWith('[');
 
   function copyText(text, setFn) {
