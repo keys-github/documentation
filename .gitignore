@@ -8,8 +8,9 @@
 .docusaurus
 .cache-loader
 
-# Temp (unnecessary / local-only files moved here)
-/temp
+# Auto-generated API data and endpoint pages (regenerated on every build)
+/src/data/api/all-apis.json
+/src/pages/api-doc/*/
 
 # Misc
 .DS_Store
