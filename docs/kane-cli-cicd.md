@@ -56,6 +56,7 @@ kane-cli run "Verify checkout flow completes" \
   --username $LT_USERNAME \
   --access-key $LT_ACCESS_KEY \
   --headless \
+  --agent \
   --timeout 300
 ```
 
@@ -72,7 +73,7 @@ Get your `LT_USERNAME` and `LT_ACCESS_KEY` from the <BrandName /> dashboard unde
 
 ## CI/CD Checklist
 
-- ✅ Always use `--headless`: no display server in CI
+- ✅ Always use `--headless` and `--agent`: no display server in CI
 - ✅ Set `--timeout`: prevents pipeline hangs (e.g. `--timeout 300`)
 - ✅ Set `--max-steps`: caps run length (e.g. `--max-steps 50`)
 - ✅ Use `--variables-file`: load test data from a committed config file
@@ -116,6 +117,7 @@ jobs:
             --username $LT_USERNAME \
             --access-key $LT_ACCESS_KEY \
             --headless \
+            --agent \
             --timeout 300 \
             --max-steps 50 \
             "Complete the checkout flow and verify order confirmation"
@@ -150,6 +152,7 @@ browser-tests:
         --username $LT_USERNAME
         --access-key $LT_ACCESS_KEY
         --headless
+        --agent
         --timeout 300
         --max-steps 50
         "Complete the checkout flow and verify order confirmation"
@@ -188,6 +191,7 @@ pipeline {
                         --username $LT_USERNAME \
                         --access-key $LT_ACCESS_KEY \
                         --headless \
+                        --agent \
                         --timeout 300 \
                         --max-steps 50 \
                         "Complete the checkout flow and verify order confirmation"
@@ -224,6 +228,7 @@ pipelines:
               --username $LT_USERNAME
               --access-key $LT_ACCESS_KEY
               --headless
+              --agent
               --timeout 300
               --max-steps 50
               "Complete the checkout flow and verify order confirmation"
@@ -257,7 +262,7 @@ run_test() {
       --url https://staging.myapp.com \
       --username $LT_USERNAME \
       --access-key $LT_ACCESS_KEY \
-      --headless --timeout 120; then
+      --headless --agent --timeout 120; then
     ((PASS++))
   else
     ((FAIL++))
@@ -300,5 +305,5 @@ kane-cli run "Log in as {{email}} with {{password}} and verify dashboard" \
   --variables "{\"email\": {\"value\": \"$TEST_EMAIL\"}, \"password\": {\"value\": \"$TEST_PASSWORD\", \"secret\": true}}" \
   --username $LT_USERNAME \
   --access-key $LT_ACCESS_KEY \
-  --headless
+  --headless --agent
 ```

@@ -61,8 +61,6 @@ kane-cli run "Verify the checkout flow completes successfully" \
 
 When `--agent` is active:
 - The interactive TUI is fully suppressed (no boot screen, no menus)
-- Each event streams as a single JSON line to **stdout**
-- Progress UI goes to **stderr**
 - Stdin is not used (no interactive prompts)
 
 :::tip
