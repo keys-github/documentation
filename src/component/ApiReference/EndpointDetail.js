@@ -568,12 +568,26 @@ const METHOD_COLORS = {
 };
 
 function UrlBar({ endpoint, onTryIt }) {
-  // Build server list: use endpoint.servers if present, else fall back to single baseUrl
-  const servers = endpoint.servers && endpoint.servers.length > 0
+  // Determine if this is a V2 endpoint (path contains /v2/ or group name contains V2)
+  const isV2Endpoint = (endpoint.path && endpoint.path.includes('/v2/')) ||
+    (endpoint.group && endpoint.group.toLowerCase().includes('v2'));
+
+  // Build server list: filter to matching version (v1 or v2)
+  const allServers = endpoint.servers && endpoint.servers.length > 0
     ? endpoint.servers
     : [{ url: endpoint.baseUrl, description: '' }];
 
-  const [selectedBase, setSelectedBase] = useState(servers[0].url);
+  // Filter servers to only show matching version
+  const servers = allServers.filter((s) => {
+    if (!s.url) return false;
+    const urlHasV2 = s.url.includes('/v2');
+    return isV2Endpoint ? urlHasV2 : !urlHasV2;
+  });
+
+  // Fallback if no servers match (shouldn't happen, but safety net)
+  const effectiveServers = servers.length > 0 ? servers : allServers.slice(0, 1);
+
+  const [selectedBase, setSelectedBase] = useState(effectiveServers[0].url);
   const [copied, setCopied] = useState(false);
 
   function copyUrl() {
@@ -591,7 +605,7 @@ function UrlBar({ endpoint, onTryIt }) {
 
   // Keep selectedBase in sync when endpoint changes
   React.useEffect(() => {
-    setSelectedBase(servers[0].url);
+    setSelectedBase(effectiveServers[0].url);
   }, [endpoint.path, endpoint.method]);
 
   const segments = parsePathSegments(endpoint.path || '');
@@ -625,7 +639,7 @@ function UrlBar({ endpoint, onTryIt }) {
               flexShrink: 0,
             }}
           >
-            {servers.map((s) => (
+            {effectiveServers.map((s) => (
               <option key={s.url} value={s.url}>{s.url}</option>
             ))}
           </select>
