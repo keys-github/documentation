@@ -181,11 +181,6 @@
   }
 }
 
-:global(body.ai-panel-open) .mobileCodeSlot {
-  display: block;
-  margin-bottom: 24px;
-}
-
 /* Code block */
 .codeBlock {
   background: var(--ifm-color-emphasis-100);
