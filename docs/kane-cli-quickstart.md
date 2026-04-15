@@ -85,14 +85,14 @@ Use this method for environments without a browser (servers, containers, CI/CD).
 
 <TabItem value="ci" label="CI/CD">
 
-For non-interactive CI pipelines, pass credentials inline:
+### For non-interactive CI pipelines, pass credentials inline:
 
 ```bash
 kane-cli run "your objective" \
   --url https://example.com \
   --username $LT_USERNAME \
   --access-key $LT_ACCESS_KEY \
-  --headless
+  --headless --agent
 ```
 
 Store `LT_USERNAME` and `LT_ACCESS_KEY` as secrets in your CI/CD platform. See [CI/CD Integration](/support/docs/kane-cli-cicd/) for platform-specific guides.

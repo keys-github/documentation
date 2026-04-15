@@ -45,7 +45,7 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
     }}
 ></script>
 
-**Kane CLI** (`kane-cli`) is an AI-powered browser automation tool that runs from your terminal. Describe what you want to test in plain English: Kane CLI navigates websites, clicks elements, fills forms, extracts data, and validates outcomes in a real Chrome browser.
+**Kane CLI** `kane-cli` is an AI-powered browser automation tool that runs from your terminal. Describe what you want to test in plain English: Kane CLI navigates websites, clicks elements, fills forms, extracts data, and validates outcomes in a real Chrome browser.
 
 - **Run browser tests from any terminal or IDE**: no test scripts, no selectors, no framework boilerplate
 - **Integrate into CI/CD pipelines**: headless mode with structured JSON output and standard exit codes
@@ -67,7 +67,7 @@ kane-cli run --url https://example.com "Click the 'More information' link and ve
 | Mode | Command | Best For |
 |------|---------|----------|
 | **Interactive TUI** | `kane-cli` | Development, exploration, chained multi-run sessions |
-| **Headless CLI** | `kane-cli run "..." --headless` | CI/CD pipelines, shell scripts |
+| **Non-Interactive CLI Mode** | `kane-cli run "..." --headless --agent` | CI/CD pipelines, shell scripts |
 | **Agent Mode** | `kane-cli run "..." --agent` | AI coding agents (Claude, Codex, Gemini) |
 
 ## Next Steps

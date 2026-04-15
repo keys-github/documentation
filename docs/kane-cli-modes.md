@@ -50,7 +50,7 @@ Kane CLI has three modes. Choose based on who (or what) is running the test.
 | Mode | Command | Output | Best For |
 |------|---------|--------|----------|
 | **Interactive TUI** | `kane-cli` | Terminal UI | Development, exploration, chained sessions |
-| **Headless CLI** | `kane-cli run "..." --headless` | Formatted text + JSON | CI/CD, shell scripts |
+| **Non-Interactive CLI Mode** | `kane-cli run "..." --headless --agent` | Formatted text + JSON | CI/CD, shell scripts |
 | **Agent Mode** | `kane-cli run "..." --agent` | NDJSON on stdout | AI coding agents (Claude, Codex, Gemini) |
 
 ---
@@ -86,20 +86,6 @@ The browser stays open between runs. Each new objective inherits the previous se
   ✓ PASSED (3 steps, 4.5s)
 ```
 
-### TUI Slash Commands
-
-| Command | Description |
-|---------|-------------|
-| `/cancel` | Stop the current run |
-| `/clear` | Clear chat history |
-| `/login` | Authenticate |
-| `/logout` | Sign out |
-| `/whoami` | Show active user and auth status |
-| `/config show` | Show current settings |
-| `/profiles` | Manage auth profiles |
-| `/help` | Show all commands |
-| `/exit` | Save session and quit |
-
 ### Keyboard Shortcuts
 
 | Shortcut | Action |
@@ -109,23 +95,28 @@ The browser stays open between runs. Each new objective inherits the previous se
 | Ctrl+C (twice) | Exit TUI |
 | Esc | Go back / close picker |
 | Up / Down | Navigate menu or history |
-| Tab | Accept autocomplete |
+| Tab | Accept autocomplete in chat mode |
 
 ---
 
-## Headless CLI
-
-Run a single test directly without the interactive UI:
+## Non-Interactive CLI Mode
 
 ```bash
 kane-cli run "Search for 'automation testing' on Google" \
   --url https://google.com \
-  --headless
+  --headless --agent
 ```
 
-Step progress streams to **stderr**. The final JSON result outputs to **stdout**. The process exits with a [standard exit code](/support/docs/kane-cli-cli-reference/#exit-codes).
+This mode is best for shell scripts, CI/CD pipelines, and any scenario where the interactive TUI is not needed. Always combine `--headless` and `--agent` for non-interactive environments to prevent display server errors.
 
-Use this mode for shell scripts, CI/CD pipelines, and any scenario where the interactive TUI is not needed.
+### Exit Codes
+
+| Exit Code | Meaning |
+|-----------|---------|
+| `0` | Test passed |
+| `1` | Test failed (assertion not met) |
+| `2` | Error (auth failure, Chrome crash) |
+| `3` | Timeout or cancelled |
 
 ---
 
