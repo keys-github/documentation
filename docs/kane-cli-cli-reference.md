@@ -101,8 +101,7 @@ First-time setup with explicit auth method. Use in CI/CD or agent contexts where
 kane-cli setup \
   --auth-method basic \
   --username <user> \
-  --access-key <key> \
-  [--profile <name>]
+  --access-key <key> 
 ```
 
 | Flag | Description |
@@ -110,7 +109,6 @@ kane-cli setup \
 | `--auth-method` | `basic` or `oauth` |
 | `--username` | LambdaTest username |
 | `--access-key` | LambdaTest access key |
-| `--profile` | Optional profile name (default: `default`) |
 
 ---
 
@@ -119,7 +117,7 @@ kane-cli setup \
 Revoke tokens and remove stored credentials for the active profile.
 
 ```bash
-kane-cli logout [--profile <name>]
+kane-cli logout
 ```
 
 ---
@@ -134,18 +132,6 @@ kane-cli whoami
 
 ---
 
-### `kane-cli profiles`
-
-Manage multiple accounts or environments.
-
-```bash
-kane-cli profiles list
-kane-cli profiles switch --profile <name>
-kane-cli profiles delete --profile <name>
-```
-
----
-
 ### `kane-cli config`
 
 View and modify persistent settings.
@@ -154,12 +140,9 @@ View and modify persistent settings.
 kane-cli config show                       # Show all settings
 kane-cli config set-url <url>              # Set default URL
 kane-cli config set-window <W>x<H>        # Set browser window size
-kane-cli config set-mode <action|testing>  # Set mode
-kane-cli config set-model <model>          # Set model
 kane-cli config set-chrome-profile         # Interactive Chrome profile picker (human only)
 kane-cli config set-project                # Interactive TMS project picker (human only)
 kane-cli config set-folder                 # Interactive TMS folder picker (human only)
-kane-cli config reset                      # Reset all settings to defaults
 ```
 
 :::note
@@ -189,22 +172,6 @@ kane-cli feedback \
 | `1` | Test failed (assertion not met) |
 | `2` | Error (auth failure, Chrome crash, infra issue) |
 | `3` | Timeout or cancelled |
-
----
-
-## TUI Slash Commands
-
-| Command | Description |
-|---------|-------------|
-| `/cancel` | Stop the current run |
-| `/clear` | Clear chat history |
-| `/login` | Authenticate |
-| `/logout` | Sign out |
-| `/whoami` | Show active user and auth status |
-| `/config show` | Show current settings |
-| `/profiles` | Manage auth profiles |
-| `/help` | Show all commands |
-| `/exit` | Save session and quit |
 
 ---
 
