@@ -9,10 +9,6 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'TestMu AI', // Usually your GitHub org/user name.
   projectName: 'TestMu AI', // Usually your repo name.
-  customFields: {
-    docsbotTeamId: process.env.DOCSBOT_TEAM_ID || '',
-    docsbotBotId: process.env.DOCSBOT_BOT_ID || '',
-  },
   clientModules: [
     require.resolve('./custom.js'),
   ],

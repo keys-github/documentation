@@ -49,12 +49,6 @@
   border-left: 1px solid var(--ifm-color-emphasis-200);
 }
 
-/* When AI panel is open: hide the right code panel so the AI drawer takes its place.
-   The mobileCodeSlot inside EndpointDetail shows inline (after URL bar) instead. */
-:global(body.ai-panel-open) .rightPanel {
-  display: none;
-}
-
 /* Mobile breadcrumb row */
 .mobileBreadcrumb {
   display: none;

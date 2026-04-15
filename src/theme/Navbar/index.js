@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
 import SearchBar from '@theme/SearchBar';
-import { useAIChatSafe } from '../../component/AskAI/AIChatContext';
 import styles from './styles.module.css';
 
 function getStoredTheme() {
@@ -56,14 +55,6 @@ function FaqIcon() {
       <circle cx="12" cy="12" r="10" />
       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
       <line x1="12" y1="17" x2="12.01" y2="17" />
-    </svg>
-  );
-}
-
-function SparkleIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
     </svg>
   );
 }
@@ -176,8 +167,6 @@ export default function Navbar() {
     if (btn) btn.click();
   }
 
-  const { openPanel } = useAIChatSafe();
-
   return (
     <nav className={styles.navbar}>
       {/* Hidden sentinel for Docusaurus scroll offset calculation */}
@@ -190,15 +179,11 @@ export default function Navbar() {
           <img src="/support/img/testmuai-logo-dark.svg" alt="TestMu AI" className={`${styles.logoDark} no-zoom`} height="28" />
         </a>
 
-        {/* Search + Ask AI — hidden on mobile */}
+        {/* Search — hidden on mobile */}
         <div className={styles.searchGroup}>
           <div className={styles.searchWrapper}>
             <SearchBar />
           </div>
-          <button className={styles.askAiBtn} onClick={openPanel} aria-label="Ask AI">
-            <SparkleIcon />
-            <span>Ask AI</span>
-          </button>
         </div>
 
         {/* Right buttons — hidden on mobile */}
@@ -220,9 +205,6 @@ export default function Navbar() {
         <div className={styles.mobileRight}>
           <button className={styles.mobileIconBtn} onClick={triggerSearch} aria-label="Search">
             <SearchIcon />
-          </button>
-          <button className={styles.mobileIconBtn} onClick={openPanel} aria-label="Ask AI">
-            <SparkleIcon />
           </button>
           <div className={styles.dotsWrapper} data-dots-menu="true">
             <button className={styles.mobileIconBtn} onClick={() => setDotsOpen(o => !o)} aria-label="More options">
