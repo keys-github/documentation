@@ -148,11 +148,10 @@ export default function CopyPageButton() {
 
   async function handleItem(id) {
     const rawUrl = typeof window !== 'undefined' ? window.location.href : '';
-    // API reference provides a real .md URL; for Docusaurus doc pages use the page URL as-is
-    // (Docusaurus doesn't serve raw .md at runtime).
-    const aiUrl = (pageContent && pageContent.getMdUrl)
-      ? pageContent.getMdUrl()
-      : rawUrl.replace(/\/$/, '');
+    // For AI prompts, use the clean page URL (without trailing slash or .md suffix)
+    const pageUrl = rawUrl.replace(/\/$/, '').replace(/\.md$/, '');
+    // Build the AI prompt with instructional text
+    const aiPrompt = `Read from ${pageUrl} so I can ask questions about it.`;
 
     setShowDropdown(false);
     switch (id) {
@@ -171,13 +170,13 @@ export default function CopyPageButton() {
         break;
       }
       case 'open-chatgpt':
-        window.open(`https://chatgpt.com/?q=${encodeURIComponent(aiUrl)}`, '_blank');
+        window.open(`https://chatgpt.com/?q=${encodeURIComponent(aiPrompt)}`, '_blank');
         break;
       case 'open-claude':
-        window.open(`https://claude.ai/new?q=${encodeURIComponent(aiUrl)}`, '_blank');
+        window.open(`https://claude.ai/new?q=${encodeURIComponent(aiPrompt)}`, '_blank');
         break;
       case 'open-perplexity':
-        window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(aiUrl)}`, '_blank');
+        window.open(`https://www.perplexity.ai/search?q=${encodeURIComponent(aiPrompt)}`, '_blank');
         break;
       case 'copy-mcp':
         await navigator.clipboard.writeText(MCP_SERVER_URL).catch(() => {});
