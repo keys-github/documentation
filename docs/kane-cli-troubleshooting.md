@@ -2,7 +2,7 @@
 id: kane-cli-troubleshooting
 title: Troubleshooting
 sidebar_label: Troubleshooting
-description: Fix common Kane CLI issues: Chrome launch failures, authentication errors, run timeouts, variables not resolving, and Agent Mode output problems.
+description: "Fix common Kane CLI issues: Chrome launch failures, authentication errors, run timeouts, variables not resolving, and Agent Mode output problems."
 keywords:
   - kane cli troubleshooting
   - kaneai errors
