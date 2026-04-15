@@ -25,7 +25,7 @@ function findEndpointBySlugs(apiSlug, groupSlug, endpointSlug) {
       if (gSlug !== groupSlug) continue;
       for (const ep of group.endpoints || []) {
         if (slugify(ep.name) === endpointSlug) {
-          return { ...ep, group: group.noHeading ? api.name : group.name, baseUrl: api.baseUrl };
+          return { ...ep, group: group.noHeading ? api.name : group.name, baseUrl: api.baseUrl, servers: api.servers };
         }
       }
     }
@@ -38,7 +38,7 @@ function findFirstEndpoint() {
     for (const group of api.groups) {
       if (group.endpoints && group.endpoints.length > 0) {
         const ep = group.endpoints[0];
-        return { ...ep, group: group.noHeading ? api.name : group.name, baseUrl: api.baseUrl };
+        return { ...ep, group: group.noHeading ? api.name : group.name, baseUrl: api.baseUrl, servers: api.servers };
       }
     }
   }

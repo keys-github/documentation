@@ -271,11 +271,12 @@ async function main() {
     }
 
     if (!spec || !spec.paths) {
-      result.apis.push({ name, baseUrl: '', groups: [] });
+      result.apis.push({ name, baseUrl: '', servers: [], groups: [] });
       continue;
     }
 
-    const baseUrl = (spec.servers && spec.servers[0] && spec.servers[0].url) || '';
+    const servers = spec.servers || [];
+    const baseUrl = (servers[0] && servers[0].url) || '';
     const allEndpoints = flattenSpec(spec);
 
     // Group endpoints by their first tag (standard OpenAPI grouping)
@@ -307,7 +308,7 @@ async function main() {
       groups.push({ name: tag, endpoints });
     }
 
-    result.apis.push({ name, baseUrl, groups });
+    result.apis.push({ name, baseUrl, servers, groups });
   }
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
