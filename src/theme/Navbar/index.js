@@ -15,7 +15,7 @@ function applyTheme(theme) {
 
 const NAV_LINKS = [
   { to: '/support/', label: 'Home', icon: HomeIcon },
-  { to: '/support/docs/getting-started-with-lambdatest-automation/', label: 'Docs', icon: DocsIcon },
+  { to: '/support/docs/getting-started-with-testmu-automation/', label: 'Docs', icon: DocsIcon },
   { to: '/support/api-doc/', label: 'API Reference', icon: ApiIcon },
   { to: '/support/faq/', label: 'FAQ', icon: FaqIcon },
 ];
