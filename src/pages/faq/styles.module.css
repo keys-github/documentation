@@ -65,7 +65,7 @@
 }
 
 .tabBtn:hover {
-  color: var(--ifm-color-emphasis-900);
+  color: var(--brand-amber);
 }
 
 .tabBtnActive {
@@ -190,7 +190,7 @@
 }
 
 .subTabBtn:hover {
-  color: var(--ifm-color-emphasis-700);
+  color: var(--brand-amber);
 }
 
 .subTabBtnActive {
