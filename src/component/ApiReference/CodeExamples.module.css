@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   padding: 10px 14px;
-  background: var(--ifm-color-emphasis-100);
+  background: var(--brand-amber-light);
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   gap: 8px;
 }
@@ -99,7 +99,7 @@
   align-items: center;
   padding: 0 14px;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
-  background: var(--ifm-color-emphasis-100);
+  background: var(--brand-amber-light);
   gap: 4px;
 }
 
