@@ -68,7 +68,7 @@
 
 .copyBtn:hover {
   background: var(--ifm-color-emphasis-200);
-  color: var(--ifm-color-primary);
+  color: var(--brand-amber);
 }
 
 .codeBlock {
@@ -116,7 +116,7 @@
 }
 
 .responseTab:hover {
-  color: var(--ifm-color-primary);
+  color: var(--brand-amber);
 }
 
 .responseTabActive {
