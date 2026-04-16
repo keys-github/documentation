@@ -2135,6 +2135,7 @@ module.exports = {
           "accessibility-capture-screenshot",
           "accessibility-tag-support",
           "accessibility-fragment-identifier",
+          "accessibility-hide-restore-issues",
           "accessibility-web-score"
         ],
       },
