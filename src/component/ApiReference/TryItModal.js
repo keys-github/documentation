@@ -74,8 +74,8 @@ function CodeHighlight({ code, language }) {
   );
 }
 
-function buildCurl(endpoint, username, password, params) {
-  let url = `${endpoint.baseUrl}${endpoint.path}`;
+function buildCurl(endpoint, username, password, params, baseUrl) {
+  let url = `${baseUrl || endpoint.baseUrl}${endpoint.path}`;
   if (endpoint.pathParams) {
     endpoint.pathParams.forEach((p) => {
       url = url.replace(`{${p.name}}`, params[p.name] || `{${p.name}}`);
@@ -262,6 +262,25 @@ function ParamField({ label, sublabel, type, required, description, value, onCha
 }
 
 export default function TryItModal({ endpoint, onClose, selectedLang: selectedLangProp, onLangChange }) {
+  // Determine if this is a V2 endpoint (path contains /v2/ or group name contains V2)
+  const isV2Endpoint = (endpoint.path && endpoint.path.includes('/v2/')) ||
+    (endpoint.group && endpoint.group.toLowerCase().includes('v2'));
+
+  // Build server list: filter to matching version (v1 or v2)
+  const allServers = endpoint.servers && endpoint.servers.length > 0
+    ? endpoint.servers
+    : [{ url: endpoint.baseUrl, description: '' }];
+
+  // Filter servers to only show matching version
+  const filteredServers = allServers.filter((s) => {
+    if (!s.url) return false;
+    const urlHasV2 = s.url.includes('/v2');
+    return isV2Endpoint ? urlHasV2 : !urlHasV2;
+  });
+
+  // Fallback if no servers match
+  const effectiveServers = filteredServers.length > 0 ? filteredServers : allServers.slice(0, 1);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [params, setParams] = useState({});
@@ -272,6 +291,7 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
   const [respCopied, setRespCopied] = useState(false);
   const [liveRespCopied, setLiveRespCopied] = useState(false);
   const [localLang, setLocalLang] = useState('cURL');
+  const [selectedServer, setSelectedServer] = useState(effectiveServers[0]?.url || endpoint.baseUrl);
   const selectedLang = selectedLangProp !== undefined ? selectedLangProp : localLang;
   const setSelectedLang = onLangChange || setLocalLang;
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
@@ -297,6 +317,11 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
     return () => document.removeEventListener('keydown', handleEscape);
   }, [onClose]);
 
+  // Update selected server when endpoint changes
+  useEffect(() => {
+    setSelectedServer(effectiveServers[0]?.url || endpoint.baseUrl);
+  }, [endpoint.path, endpoint.method]);
+
 
   function updateParam(name, value) {
     setParams((prev) => ({ ...prev, [name]: value }));
@@ -306,7 +331,7 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
     setLoading(true);
     setResponse(null);
 
-    let url = `${endpoint.baseUrl}${endpoint.path}`;
+    let url = `${selectedServer}${endpoint.path}`;
     if (endpoint.pathParams) {
       endpoint.pathParams.forEach((p) => {
         url = url.replace(`{${p.name}}`, params[p.name] || '');
@@ -358,7 +383,7 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
     }
   }
 
-  const curlCode = buildCurl(endpoint, username, password, params);
+  const curlCode = buildCurl(endpoint, username, password, params, selectedServer);
   const langDef = LANGUAGES.find((l) => l.label === selectedLang) || LANGUAGES[0];
   const codeToShow = selectedLang === 'cURL'
     ? curlCode
@@ -398,7 +423,30 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
           </div>
           <div className={styles.topBarUrl}>
             <span className={styles.topBarMethod}>{endpoint.method}</span>
-            <span className={styles.topBarPath}>{endpoint.baseUrl}{endpoint.path}</span>
+            {effectiveServers.length > 1 ? (
+              <select
+                value={selectedServer}
+                onChange={(e) => setSelectedServer(e.target.value)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  fontSize: '13px',
+                  fontFamily: 'monospace',
+                  color: 'var(--ifm-color-emphasis-800)',
+                  cursor: 'pointer',
+                  outline: 'none',
+                  padding: 0,
+                  maxWidth: '100%',
+                }}
+              >
+                {effectiveServers.map((s) => (
+                  <option key={s.url} value={s.url}>{s.url}</option>
+                ))}
+              </select>
+            ) : (
+              <span style={{ fontSize: '13px', fontFamily: 'monospace', color: 'var(--ifm-color-emphasis-800)' }}>{selectedServer}</span>
+            )}
+            <span className={styles.topBarPath}>{endpoint.path}</span>
           </div>
           <button
             className={styles.sendBtn}
