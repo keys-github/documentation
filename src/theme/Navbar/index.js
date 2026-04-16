@@ -92,8 +92,11 @@ function MoonIcon() {
 }
 
 function isActiveLink(pathname, to) {
-  if (to === '/support/') return pathname === '/support/' || pathname === '/support';
-  return pathname.startsWith(to);
+  if (!pathname || !to) return false;
+  const normalizedPath = pathname.toLowerCase();
+  const normalizedTo = to.toLowerCase();
+  if (normalizedTo === '/support/') return normalizedPath === '/support/' || normalizedPath === '/support';
+  return normalizedPath.startsWith(normalizedTo);
 }
 
 function HamburgerIcon() {
