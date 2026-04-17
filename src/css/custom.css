@@ -2116,3 +2116,11 @@ h6[id]::before {
 .DocSearch-Container {
   z-index: 500 !important;
 }
+
+/* Fix mobile padding asymmetry */
+@media (max-width: 996px) {
+  .primary_main .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
