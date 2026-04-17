@@ -95,7 +95,14 @@ function isActiveLink(pathname, to) {
   if (!pathname || !to) return false;
   const normalizedPath = pathname.toLowerCase();
   const normalizedTo = to.toLowerCase();
+  // Home should only match exact /support/ path
   if (normalizedTo === '/support/') return normalizedPath === '/support/' || normalizedPath === '/support';
+  // Docs link points to specific page but should match any /support/docs/* path
+  if (normalizedTo.startsWith('/support/docs/')) return normalizedPath.startsWith('/support/docs/');
+  // API Reference should match any /support/api-doc/* path
+  if (normalizedTo.startsWith('/support/api-doc/')) return normalizedPath.startsWith('/support/api-doc/');
+  // FAQ should match any /support/faq/* path
+  if (normalizedTo.startsWith('/support/faq/')) return normalizedPath.startsWith('/support/faq/');
   return normalizedPath.startsWith(normalizedTo);
 }
 
