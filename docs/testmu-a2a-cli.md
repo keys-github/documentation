@@ -53,13 +53,37 @@ The TestMu A2A CLI lets you test chat agents and phone agents directly from your
 ---
 
 ```bash
-pip install -e .
+pip install testmu-a2a-cli
 ```
 
-Or run directly from the project:
+## Quick Reference
+---
 
-```bash
-python -m cli.main --help
+```
+testmu-a2a auth              Authenticate with TestMu
+testmu-a2a test              Quick chat agent test (one command)
+testmu-a2a init              Initialize testmu-a2a.yaml config
+testmu-a2a run               Run tests from testmu-a2a.yaml
+testmu-a2a call              Test phone agents with real calls
+testmu-a2a redteam           Adversarial security testing
+testmu-a2a prompts           Set agent prompt and upload requirements
+testmu-a2a projects          Manage projects
+testmu-a2a results           View chat evaluation results
+testmu-a2a workflows         Manage chat testing workflows
+testmu-a2a scenarios         Manage chat test scenarios
+testmu-a2a phone-scenarios   Manage phone test scenarios
+testmu-a2a suites            Manage test suites
+testmu-a2a schedules         Manage scheduled runs
+testmu-a2a call-results      View phone call results
+testmu-a2a profiles          Manage test/agent/endpoint profiles
+testmu-a2a recordings        Upload and analyze call recordings
+testmu-a2a voices            Browse available voices
+testmu-a2a personas          Manage test personas
+testmu-a2a phone-numbers     Manage phone numbers
+testmu-a2a thresholds        Manage pass/fail thresholds
+testmu-a2a assessments       Go-live readiness assessments
+testmu-a2a health            System health check
+testmu-a2a credits           View credit balance
 ```
 
 ## Authenticate Your Account
@@ -220,6 +244,52 @@ testmu-a2a run --category security
 testmu-a2a run --format junit --output results.xml
 ```
 
+## Manage Workflows
+---
+
+Workflows are the execution context for chat test scenarios within a project.
+
+```bash
+testmu-a2a workflows create --project <project_id>
+testmu-a2a workflows list --project <project_id>
+testmu-a2a workflows summary <workflow_id>
+testmu-a2a workflows rename <workflow_id> --project <project_id> --name "My Workflow"
+testmu-a2a workflows files <workflow_id> --project <project_id>
+testmu-a2a workflows delete <workflow_id> --project <project_id>
+testmu-a2a workflows delete <workflow_id> --project <project_id> --yes  # skip confirmation
+```
+
+### Chat Testing Flow with Explicit Workflow
+
+Use this when you already have a project and want full control over each step:
+
+```bash
+# Step 1: Create workflow
+testmu-a2a workflows create --project <project_id>
+
+# Step 2: Upload documents
+testmu-a2a sources upload \
+    --workflow <workflow_id> \
+    --project <project_id> \
+    --files ./spec.pdf,./faq.md
+
+# Step 3: Generate scenarios from the uploaded docs
+testmu-a2a run --workflow <workflow_id> --project <project_id>
+
+# Step 4: View results
+testmu-a2a results <workflow_id> --project <project_id>
+```
+
+Or combine upload and generation in one step:
+
+```bash
+testmu-a2a sources upload-and-generate \
+    --workflow <workflow_id> \
+    --project <project_id> \
+    --files ./spec.pdf,./faq.md \
+    --categories intent-recognition,context-memory,error-handling
+```
+
 ## Test a Phone Agent
 ---
 
@@ -266,20 +336,52 @@ Note the project ID from the output.
 
 **Step 2: Set the agent prompt.** This is the most important step - the prompt drives scenario generation, evaluation criteria, and go-live assessments.
 
+From a YAML file (recommended — define everything in one place):
+
 ```bash
-# Inline
+testmu-a2a prompts set --project <project_id> --from-file prompt.yaml
+```
+
+`prompt.yaml`:
+
+```yaml
+prompt: |
+  You are an airline booking assistant. You help customers find flights,
+  make reservations, handle cancellations, and process refunds.
+  Always verify the customer's identity before making changes.
+  Never share other customers' booking information.
+
+# Or reference a separate file (path relative to this YAML)
+# prompt_file: ./agent_system_prompt.md
+
+context: "Agent must comply with DOT airline passenger rights regulations"
+
+files:
+  - ./compliance_rules.pdf
+  - ./fare_structure.docx
+```
+
+Inline:
+
+```bash
 testmu-a2a prompts set --project <project_id> \
     --prompt "You are an airline booking assistant. You help customers find
     flights, make reservations, handle cancellations, and process refunds.
     Always verify the customer's identity before making changes.
     Never share other customers' booking information.
     If the customer is upset, empathize before offering solutions."
+```
 
-# From a file
+From a prompt file:
+
+```bash
 testmu-a2a prompts set --project <project_id> \
     --prompt-file ./agent_system_prompt.md
+```
 
-# With additional requirement documents (compliance rules, product specs, etc.)
+With additional requirement documents (compliance rules, product specs, etc.):
+
+```bash
 testmu-a2a prompts set --project <project_id> \
     --prompt-file ./agent_prompt.md \
     --files ./compliance_rules.pdf,./fare_structure.docx \
@@ -472,19 +574,58 @@ Output includes a letter grade (A+ through F) and per-category breakdown.
 
 The prompt is the single most important input - it tells TestMu AI what your agent does so it can generate relevant scenarios and evaluate correctly.
 
+### Set Prompt from YAML (recommended)
+
+Define prompt, files, and context in one file:
+
 ```bash
-# Set inline
+testmu-a2a prompts set --project <project_id> --from-file prompt.yaml
+```
+
+`prompt.yaml`:
+
+```yaml
+prompt: |
+  You are a customer support agent for a SaaS product.
+  You help users with billing, account issues, and technical troubleshooting.
+  Always verify the user's email before making account changes.
+  Escalate to a human if the customer asks for a refund over $500.
+
+# Or reference a separate file:
+# prompt_file: ./agent_system_prompt.md
+
+context: "Agent must comply with GDPR and never store PII in logs"
+
+files:
+  - ./compliance_rules.pdf
+  - ./product_catalog.docx
+  - ./faq.md
+```
+
+All file paths in the YAML are resolved relative to the YAML file's location.
+
+### Set Prompt Inline
+
+```bash
 testmu-a2a prompts set --project <project_id> \
     --prompt "You are a customer support agent for a SaaS product.
     You help users with billing, account issues, and technical troubleshooting.
     Always verify the user's email before making account changes.
     Escalate to a human if the customer asks for a refund over $500."
+```
 
-# Set from file
+### Set Prompt from File
+
+```bash
 testmu-a2a prompts set --project <project_id> \
     --prompt-file ./agent_system_prompt.md
+```
 
-# Set with additional requirement documents
+### Set Prompt with Additional Requirements
+
+Upload compliance docs, product specs, or knowledge base files alongside the prompt:
+
+```bash
 testmu-a2a prompts set --project <project_id> \
     --prompt-file ./agent_prompt.md \
     --files ./compliance_rules.pdf,./product_catalog.docx,./faq.md \
@@ -521,9 +662,9 @@ testmu-a2a projects create \
     --description "Agent description" \
     --type chat
 
-python -m cli.main projects update <project_id> --name "New Name"
-python -m cli.main projects update <project_id> --description "Updated description"
-python -m cli.main projects update <project_id> \
+testmu-a2a projects update <project_id> --name "New Name"
+testmu-a2a projects update <project_id> --description "Updated description"
+testmu-a2a projects update <project_id> \
     --name "New Name" \
     --description "Updated description"
 
