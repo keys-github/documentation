@@ -3,7 +3,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 module.exports = {
   title: 'TestMu AI (Formerly LambdaTest)',
   tagline: 'Ensure your web-apps work seamlessly on every desktop and mobile browsers.',
-  url: 'https://www.lambdatest.com',
+  url: 'https://www.testmuai.com',
   baseUrl: '/support/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
