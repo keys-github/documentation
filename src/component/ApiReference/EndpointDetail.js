@@ -39,32 +39,37 @@ function DefaultBadge({ value }) {
   );
 }
 
-// Render text with `backtick` segments as inline code elements
+// Render text with `backtick` segments as inline code and **bold** as strong
 function InlineText({ text }) {
-  if (!text || !text.includes('`')) return <>{text}</>;
-  const parts = text.split(/(`[^`]+`)/g);
+  if (!text) return null;
+  // Split by both `code` and **bold** patterns
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
   return (
     <>
-      {parts.map((part, i) =>
-        part.startsWith('`') && part.endsWith('`') ? (
-          <code
-            key={i}
-            style={{
-              background: 'var(--ifm-color-emphasis-100)',
-              border: '1px solid var(--ifm-color-emphasis-200)',
-              borderRadius: '4px',
-              padding: '1px 5px',
-              fontSize: '12px',
-              fontFamily: 'monospace',
-              color: 'var(--ifm-color-emphasis-700)',
-            }}
-          >
-            {part.slice(1, -1)}
-          </code>
-        ) : (
-          part
-        )
-      )}
+      {parts.map((part, i) => {
+        if (part.startsWith('`') && part.endsWith('`')) {
+          return (
+            <code
+              key={i}
+              style={{
+                background: 'var(--ifm-color-emphasis-100)',
+                border: '1px solid var(--ifm-color-emphasis-200)',
+                borderRadius: '4px',
+                padding: '1px 5px',
+                fontSize: '12px',
+                fontFamily: 'monospace',
+                color: 'var(--ifm-color-emphasis-700)',
+              }}
+            >
+              {part.slice(1, -1)}
+            </code>
+          );
+        }
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={i}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      })}
     </>
   );
 }
@@ -741,7 +746,7 @@ export default function EndpointDetail({ endpoint, apiName, onTryIt, mobileCodeS
       {/* Description */}
       {endpoint.description && (
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-          {endpoint.description}
+          <InlineText text={endpoint.description} />
         </p>
       )}
 
@@ -802,7 +807,7 @@ export default function EndpointDetail({ endpoint, apiName, onTryIt, mobileCodeS
             )}
           </div>
           {endpoint.requestBody.description && (
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{endpoint.requestBody.description}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4"><InlineText text={endpoint.requestBody.description} /></p>
           )}
           {endpoint.requestBody.properties.map((prop, i) => (
             <ParamRow key={i} param={prop} />
