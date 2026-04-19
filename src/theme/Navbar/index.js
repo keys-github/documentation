@@ -192,8 +192,8 @@ export default function Navbar() {
       {/* ── Desktop Row 1 ── */}
       <div className={styles.row1}>
         <a href="https://www.testmuai.com" className={styles.logoLink}>
-          <img src="/support/img/testmuai-logo-light.svg" alt="TestMu AI" className={`${styles.logoLight} no-zoom`} height="28" />
-          <img src="/support/img/testmuai-logo-dark.svg" alt="TestMu AI" className={`${styles.logoDark} no-zoom`} height="28" />
+          <img src="/support/img/testmuai-logo-light.svg" alt="TestMu AI" className={`${styles.logoLight} no-zoom`} height="32" />
+          <img src="/support/img/testmuai-logo-dark.svg" alt="TestMu AI" className={`${styles.logoDark} no-zoom`} height="32" />
         </a>
 
         {/* Search — hidden on mobile */}
