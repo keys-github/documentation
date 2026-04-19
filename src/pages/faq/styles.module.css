@@ -194,8 +194,8 @@
 }
 
 .subTabBtnActive {
-  color: #ED5F00;
-  border-bottom-color: #ED5F00;
+  color: #ED5F00 !important;
+  border-bottom-color: #ED5F00 !important;
   font-weight: 600;
 }
 
