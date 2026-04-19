@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import MethodBadge from './MethodBadge';
+import InlineText from './InlineText';
 import styles from './EndpointDetail.module.css';
 
 // ─── Small reusable badge components ────────────────────────────────────────
@@ -36,41 +37,6 @@ function DefaultBadge({ value }) {
     >
       default:{String(value)}
     </span>
-  );
-}
-
-// Render text with `backtick` segments as inline code and **bold** as strong
-function InlineText({ text }) {
-  if (!text) return null;
-  // Split by both `code` and **bold** patterns
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith('`') && part.endsWith('`')) {
-          return (
-            <code
-              key={i}
-              style={{
-                background: 'var(--ifm-color-emphasis-100)',
-                border: '1px solid var(--ifm-color-emphasis-200)',
-                borderRadius: '4px',
-                padding: '1px 5px',
-                fontSize: '12px',
-                fontFamily: 'monospace',
-                color: 'var(--ifm-color-emphasis-700)',
-              }}
-            >
-              {part.slice(1, -1)}
-            </code>
-          );
-        }
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={i}>{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      })}
-    </>
   );
 }
 
