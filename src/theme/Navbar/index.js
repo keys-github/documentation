@@ -14,7 +14,7 @@ function applyTheme(theme) {
 }
 
 const NAV_LINKS = [
-  { to: '/support/', label: 'Home', icon: HomeIcon },
+  { to: '/support/docs/', label: 'Home', icon: HomeIcon },
   { to: '/support/docs/getting-started-with-testmu-automation/', label: 'Docs', icon: DocsIcon },
   { to: '/support/api-doc/', label: 'API Reference', icon: ApiIcon },
   { to: '/support/faq/', label: 'FAQ', icon: FaqIcon },
@@ -91,9 +91,26 @@ function MoonIcon() {
   );
 }
 
-function isActiveLink(pathname, to) {
-  if (to === '/support/') return pathname === '/support/' || pathname === '/support';
-  return pathname.startsWith(to);
+function isActiveLink(pathname, to, label) {
+  if (!pathname || !to) return false;
+  const normalizedPath = pathname.toLowerCase();
+  const normalizedTo = to.toLowerCase();
+
+  // Home link (/support/docs/) - only match exact /support/docs/ or /support/docs
+  if (label === 'Home') {
+    return normalizedPath === '/support/docs/' || normalizedPath === '/support/docs';
+  }
+  // Docs link - match any /support/docs/* path EXCEPT /support/docs/ itself
+  if (label === 'Docs') {
+    return normalizedPath.startsWith('/support/docs/') &&
+           normalizedPath !== '/support/docs/' &&
+           normalizedPath !== '/support/docs';
+  }
+  // API Reference should match any /support/api-doc/* path
+  if (normalizedTo.startsWith('/support/api-doc/')) return normalizedPath.startsWith('/support/api-doc/');
+  // FAQ should match any /support/faq/* path
+  if (normalizedTo.startsWith('/support/faq/')) return normalizedPath.startsWith('/support/faq/');
+  return normalizedPath.startsWith(normalizedTo);
 }
 
 function HamburgerIcon() {
@@ -175,8 +192,8 @@ export default function Navbar() {
       {/* ── Desktop Row 1 ── */}
       <div className={styles.row1}>
         <a href="https://www.testmuai.com" className={styles.logoLink}>
-          <img src="/support/img/testmuai-logo-light.svg" alt="TestMu AI" className={`${styles.logoLight} no-zoom`} height="28" />
-          <img src="/support/img/testmuai-logo-dark.svg" alt="TestMu AI" className={`${styles.logoDark} no-zoom`} height="28" />
+          <img src="/support/img/testmuai-logo-light.svg" alt="TestMu AI" className={`${styles.logoLight} no-zoom`} height="32" />
+          <img src="/support/img/testmuai-logo-dark.svg" alt="TestMu AI" className={`${styles.logoDark} no-zoom`} height="32" />
         </a>
 
         {/* Search — hidden on mobile */}
@@ -230,7 +247,7 @@ export default function Navbar() {
             <a
               key={to}
               href={to}
-              className={`${styles.navLink} ${isActiveLink(location.pathname, to) ? styles.navLinkActive : ''}`}
+              className={`${styles.navLink} ${isActiveLink(location.pathname, to, label) ? styles.navLinkActive : ''}`}
             >
               <Icon />
               <span>{label}</span>

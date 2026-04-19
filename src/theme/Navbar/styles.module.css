@@ -34,7 +34,7 @@
 
 .logoLink img {
   display: block;
-  height: 26px;
+  height: 32px;
   width: auto;
 }
 
@@ -232,13 +232,13 @@
 }
 
 .navLinkActive {
-  color: var(--brand-amber);
-  border-bottom-color: var(--brand-amber);
+  color: var(--brand-amber) !important;
+  border-bottom-color: var(--brand-amber) !important;
   border-radius: 0;
 }
 
 .navLinkActive svg {
-  stroke: var(--brand-amber);
+  stroke: var(--brand-amber) !important;
 }
 
 /* Mobile-only elements — hidden on desktop */

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import MethodBadge from './MethodBadge';
+import InlineText from './InlineText';
 import styles from './EndpointDetail.module.css';
 
 // ─── Small reusable badge components ────────────────────────────────────────
@@ -36,36 +37,6 @@ function DefaultBadge({ value }) {
     >
       default:{String(value)}
     </span>
-  );
-}
-
-// Render text with `backtick` segments as inline code elements
-function InlineText({ text }) {
-  if (!text || !text.includes('`')) return <>{text}</>;
-  const parts = text.split(/(`[^`]+`)/g);
-  return (
-    <>
-      {parts.map((part, i) =>
-        part.startsWith('`') && part.endsWith('`') ? (
-          <code
-            key={i}
-            style={{
-              background: 'var(--ifm-color-emphasis-100)',
-              border: '1px solid var(--ifm-color-emphasis-200)',
-              borderRadius: '4px',
-              padding: '1px 5px',
-              fontSize: '12px',
-              fontFamily: 'monospace',
-              color: 'var(--ifm-color-emphasis-700)',
-            }}
-          >
-            {part.slice(1, -1)}
-          </code>
-        ) : (
-          part
-        )
-      )}
-    </>
   );
 }
 
@@ -741,7 +712,7 @@ export default function EndpointDetail({ endpoint, apiName, onTryIt, mobileCodeS
       {/* Description */}
       {endpoint.description && (
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-          {endpoint.description}
+          <InlineText text={endpoint.description} />
         </p>
       )}
 
@@ -802,7 +773,7 @@ export default function EndpointDetail({ endpoint, apiName, onTryIt, mobileCodeS
             )}
           </div>
           {endpoint.requestBody.description && (
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{endpoint.requestBody.description}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4"><InlineText text={endpoint.requestBody.description} /></p>
           )}
           {endpoint.requestBody.properties.map((prop, i) => (
             <ParamRow key={i} param={prop} />
