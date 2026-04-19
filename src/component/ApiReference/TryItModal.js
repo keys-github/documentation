@@ -38,6 +38,40 @@ function useDarkMode() {
   return dark;
 }
 
+// Render text with `backtick` segments as inline code and **bold** as strong
+function InlineText({ text }) {
+  if (!text) return null;
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.startsWith('`') && part.endsWith('`')) {
+          return (
+            <code
+              key={i}
+              style={{
+                background: 'var(--ifm-color-emphasis-100)',
+                border: '1px solid var(--ifm-color-emphasis-200)',
+                borderRadius: '4px',
+                padding: '1px 5px',
+                fontSize: '12px',
+                fontFamily: 'monospace',
+                color: 'var(--ifm-color-emphasis-700)',
+              }}
+            >
+              {part.slice(1, -1)}
+            </code>
+          );
+        }
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={i}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      })}
+    </>
+  );
+}
+
 function CodeHighlight({ code, language }) {
   const dark = useDarkMode();
   return (
@@ -251,7 +285,7 @@ function ParamField({ label, sublabel, type, required, description, value, onCha
         )}
         {description && (
           <p style={{ margin: required ? '6px 0 0' : '0', fontSize: '12.5px', color: 'var(--ifm-color-emphasis-600)', lineHeight: '1.6' }}>
-            {description}
+            <InlineText text={description} />
           </p>
         )}
       </div>
@@ -479,7 +513,7 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
                   {endpoint.name}
                 </h3>
                 <p style={{ fontSize: '14px', color: 'var(--ifm-color-emphasis-600)', lineHeight: '1.6', margin: 0 }}>
-                  {endpoint.description}
+                  <InlineText text={endpoint.description} />
                 </p>
               </div>
             )}
