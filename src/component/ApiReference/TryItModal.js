@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import { Highlight, themes } from 'prism-react-renderer';
 import MethodBadge from './MethodBadge';
+import InlineText from './InlineText';
 import styles from './TryItModal.module.css';
 import { LANGUAGES, generateCodeExample, LangDropdownPortal, LangSelectorButton } from './langUtils';
 
@@ -36,40 +37,6 @@ function useDarkMode() {
     return () => obs.disconnect();
   }, []);
   return dark;
-}
-
-// Render text with `backtick` segments as inline code and **bold** as strong
-function InlineText({ text }) {
-  if (!text) return null;
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
-  return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith('`') && part.endsWith('`')) {
-          return (
-            <code
-              key={i}
-              style={{
-                background: 'var(--ifm-color-emphasis-100)',
-                border: '1px solid var(--ifm-color-emphasis-200)',
-                borderRadius: '4px',
-                padding: '1px 5px',
-                fontSize: '12px',
-                fontFamily: 'monospace',
-                color: 'var(--ifm-color-emphasis-700)',
-              }}
-            >
-              {part.slice(1, -1)}
-            </code>
-          );
-        }
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={i}>{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      })}
-    </>
-  );
 }
 
 function CodeHighlight({ code, language }) {
@@ -297,23 +264,23 @@ function ParamField({ label, sublabel, type, required, description, value, onCha
 
 export default function TryItModal({ endpoint, onClose, selectedLang: selectedLangProp, onLangChange }) {
   // Determine if this is a V2 endpoint (path contains /v2/ or group name contains V2)
-  const isV2Endpoint = (endpoint.path && endpoint.path.includes('/v2/')) ||
+  const isV2Endpoint = (endpoint.path && endpoint.path.toLowerCase().includes('/v2/')) ||
     (endpoint.group && endpoint.group.toLowerCase().includes('v2'));
 
-  // Build server list: filter to matching version (v1 or v2)
-  const allServers = endpoint.servers && endpoint.servers.length > 0
-    ? endpoint.servers
-    : [{ url: endpoint.baseUrl, description: '' }];
+  // Memoize effective servers to prevent stale closures in useEffect
+  const effectiveServers = useMemo(() => {
+    const allServers = endpoint.servers && endpoint.servers.length > 0
+      ? endpoint.servers
+      : [{ url: endpoint.baseUrl || '', description: '' }];
 
-  // Filter servers to only show matching version
-  const filteredServers = allServers.filter((s) => {
-    if (!s.url) return false;
-    const urlHasV2 = s.url.includes('/v2');
-    return isV2Endpoint ? urlHasV2 : !urlHasV2;
-  });
+    const filteredServers = allServers.filter((s) => {
+      if (!s.url) return false;
+      const urlHasV2 = s.url.toLowerCase().includes('/v2');
+      return isV2Endpoint ? urlHasV2 : !urlHasV2;
+    });
 
-  // Fallback if no servers match
-  const effectiveServers = filteredServers.length > 0 ? filteredServers : allServers.slice(0, 1);
+    return filteredServers.length > 0 ? filteredServers : allServers.slice(0, 1);
+  }, [endpoint.servers, endpoint.baseUrl, isV2Endpoint]);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -353,8 +320,8 @@ export default function TryItModal({ endpoint, onClose, selectedLang: selectedLa
 
   // Update selected server when endpoint changes
   useEffect(() => {
-    setSelectedServer(effectiveServers[0]?.url || endpoint.baseUrl);
-  }, [endpoint.path, endpoint.method]);
+    setSelectedServer(effectiveServers[0]?.url || endpoint.baseUrl || '');
+  }, [effectiveServers, endpoint.baseUrl]);
 
 
   function updateParam(name, value) {
