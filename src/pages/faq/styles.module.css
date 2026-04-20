@@ -5,17 +5,18 @@
   min-height: calc(100vh - 100px);
 }
 
-/* Stretches to fill remaining space and centers the content column */
+/* Stretches to fill remaining space */
 .faqContentWrapper {
   flex: 1;
   min-width: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  border-left: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .faqCenter {
   width: 100%;
-  max-width: 780px;
+  max-width: 900px;
   padding: 32px 40px;
   padding-bottom: 100px;
 }
