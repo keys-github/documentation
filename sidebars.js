@@ -3131,6 +3131,7 @@ module.exports = {
               "sim-support",
               "appium-ip-geolocation",
               "appium-app-performance",
+              "app-automation-slack-notifications",
               "appium-ios-app-settings",
               "ios-keychain-cleanup",
               "group-folder-redirects",
