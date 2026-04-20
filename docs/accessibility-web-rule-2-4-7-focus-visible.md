@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-4-7-focus-visible/
 Keyboard users need a visible focus indicator while moving through the interface.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)
 :::
 

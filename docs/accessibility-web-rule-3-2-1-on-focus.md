@@ -11,6 +11,7 @@ slug: accessibility-web-rule-3-2-1-on-focus/
 Receiving focus on a component must not trigger an unexpected change of context such as a page navigation, form submission, or modal opening.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/on-focus.html)
 :::
 

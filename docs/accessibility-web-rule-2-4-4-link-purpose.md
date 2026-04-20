@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-4-4-link-purpose/
 The purpose of each link must be determinable from the link text alone or from the link text combined with its programmatically determined context.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html)
 :::
 

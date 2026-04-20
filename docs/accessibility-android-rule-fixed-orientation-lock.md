@@ -11,7 +11,8 @@ slug: accessibility-android-rule-fixed-orientation-lock/
 Android activities must support both portrait and landscape orientations unless a specific orientation is essential to the functionality.
 
 :::info WCAG Reference
-**Maps to:** WCAG 1.3.4 Orientation | **Introduced in:** WCAG 2.1 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)
+**Maps to:** WCAG 1.3.4 Orientation | **Applies to:** WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.1 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)
 :::
 
 ## What this rule checks

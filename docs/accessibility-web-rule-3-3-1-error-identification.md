@@ -11,6 +11,7 @@ slug: accessibility-web-rule-3-3-1-error-identification/
 When an input error is automatically detected, the item in error must be identified and the error described to the user in text.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html)
 :::
 

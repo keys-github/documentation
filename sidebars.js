@@ -1896,21 +1896,15 @@ module.exports = {
       {
         type: "category",
         collapsed: false,
-        label: "Overview",
+        label: "Getting Started",
+        link: {
+          type: "doc",
+          id: "accessibility-testing",
+        },
         items: [
           {
             type: "doc",
-            label: "Accessibility Testing (Overview)",
-            id: "accessibility-testing",
-          },
-          {
-            type: "doc",
-            label: "Getting Started (Quick Setup)",
-            id: "accessibility-getting-started-quick-setup",
-          },
-          {
-            type: "doc",
-            label: "Choosing the Right Accessibility Tool",
+            label: "Choose Your Tool",
             id: "accessibility-choosing-the-right-tool",
           },
         ],
@@ -1918,27 +1912,27 @@ module.exports = {
       {
         type: "category",
         collapsed: true,
-        label: "Accessibility Web",
+        label: "Manual Testing (DevTools)",
+        link: {
+          type: "doc",
+          id: "accessibility-devtools",
+        },
         items: [
+          {
+            type: "doc",
+            label: "Install Toolkit",
+            id: "accessibility-testing-install-devtools",
+          },
+          {
+            type: "doc",
+            label: "Run a Quick Scan",
+            id: "accessibility-testing-run-quick-scan",
+          },
           {
             type: "category",
             collapsed: true,
-            label: "DevTools",
-            link: {
-              type: "doc",
-              id: "accessibility-devtools",
-            },
+            label: "Scanning Methods",
             items: [
-              {
-                type: "doc",
-                label: "Install TestMu AI Accessibility Toolkit",
-                id: "accessibility-testing-install-devtools",
-              },
-              {
-                type: "doc",
-                label: "Run Your Quick Scan",
-                id: "accessibility-testing-run-quick-scan",
-              },
               {
                 type: "doc",
                 label: "Full Page Scan",
@@ -1964,141 +1958,133 @@ module.exports = {
                 label: "Keyboard Scan",
                 id: "accessibility-keyboard-scan",
               },
-              {
-                type: "doc",
-                label: "Configure Accessibility DevTools",
-                id: "accessibility-devtools-settings",
-              },
-              {
-                type: "doc",
-                label: "Update DevTools Chrome Extension",
-                id: "accessibility-update-devtools-extension",
-              },
-              
             ],
           },
           {
+            type: "doc",
+            label: "DevTools Settings",
+            id: "accessibility-devtools-settings",
+          },
+          {
+            type: "doc",
+            label: "Update DevTools",
+            id: "accessibility-update-devtools-extension",
+          },
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Automation",
+        link: {
+          type: "doc",
+          id: "accessibility-automation",
+        },
+        items: [
+          {
             type: "category",
             collapsed: true,
-            label: "Automation",
+            label: "Framework Setup Guides",
+            items: [
+              {
+                type: "doc",
+                label: "Selenium",
+                id: "accessibility-automation-test",
+              },
+              {
+                type: "doc",
+                label: "Cypress v10",
+                id: "cypress-v10-accessibility-test",
+              },
+              {
+                type: "doc",
+                label: "Cypress v9 (Legacy)",
+                id: "cypress-v9-accessibility-test",
+              },
+              {
+                type: "doc",
+                label: "Playwright",
+                id: "playwright-accessibility-test",
+              },
+              {
+                type: "doc",
+                label: "TestNG",
+                id: "accessibility-testng-test",
+              },
+              {
+                type: "doc",
+                label: "JUnit 5",
+                id: "accessibility-junit5-test",
+              },
+              {
+                type: "doc",
+                label: "NUnit (C#)",
+                id: "accessibility-nunit-csharp-test",
+              },
+              {
+                type: "doc",
+                label: "Robot Framework",
+                id: "accessibility-robot-framework-test",
+              },
+              {
+                type: "doc",
+                label: "Cucumber (Java)",
+                id: "accessibility-cucumber-java-test",
+              },
+            ],
+          },
+          {
+            type: "doc",
+            label: "Automation Settings",
+            id: "accessibility-automation-settings",
+          },
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Test Scheduling",
+        link: {
+          type: "doc",
+          id: "accessibility-test-scheduling",
+        },
+        items: [
+          {
+            type: "doc",
+            label: "Sitemap Extraction & URL Import",
+            id: "accessibility-sitemap-extraction-url-import",
+          },
+          {
+            type: "doc",
+            label: "Create Scheduled Scan",
+            id: "accessibility-test-scheduling-scan",
+          },
+          {
+            type: "doc",
+            label: "Edit Scheduled Scan",
+            id: "accessibility-test-scheduling-edit",
+          },
+          {
+            type: "doc",
+            label: "Crawler",
+            id: "accessibility-test-crawler",
+          },
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Integrations with TestMu AI products",
+        items: [
+          {
+            type: "category",
+            collapsed: true,
+            label: "Web Scanner",
             link: {
               type: "doc",
-              id: "accessibility-automation",
+              id: "web-scanner-getting-started",
             },
             items: [
-              {
-                type: "category",
-                collapsed: true,
-                label: "Automation - Standard Grid",
-                items: [
-                  {
-                    type: "doc",
-                    label: "Selenium",
-                    id: "accessibility-automation-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "Cypress v10",
-                    id: "cypress-v10-accessibility-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "Cypress v9 (Legacy)",
-                    id: "cypress-v9-accessibility-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "Playwright",
-                    id: "playwright-accessibility-test",
-                  },
-                  
-                  {
-                    type: "doc",
-                    label: "TestNG",
-                    id: "accessibility-testng-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "JUnit 5",
-                    id: "accessibility-junit5-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "NUnit (C#)",
-                    id: "accessibility-nunit-csharp-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "Robot Framework",
-                    id: "accessibility-robot-framework-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "Cucumber (Java)",
-                    id: "accessibility-cucumber-java-test",
-                  },
-                  {
-                    type: "doc",
-                    label: "HyperExecute with Selenium",
-                    id: "selenium-hyperexecute-accessibility-tests",
-                  },
-                  
-                ],
-              },
-              {
-                type: "doc",
-                label: "Configure Accessibility Automation",
-                id: "accessibility-automation-settings",
-              },
-              {
-                type: "doc",
-                label: "CI/CD Integration Guide",
-                id: "accessibility-cicd-integration-guide",
-              },
-            ],
-          },
-          {
-            type: "category",
-            collapsed: true,
-            label: "Test Scheduling",
-            link: {
-              type: "doc",
-              id: "accessibility-test-scheduling",
-            },
-            items: [
-              {
-                type: "doc",
-                label: "Sitemap Extraction & URL Import",
-                id: "accessibility-sitemap-extraction-url-import",
-              },
-              
-              {
-                type: "doc",
-                label: "Create Scheduled Scan",
-                id: "accessibility-test-scheduling-scan",
-              },
-              {
-                type: "doc",
-                label: "Edit Scheduled Scan",
-                id: "accessibility-test-scheduling-edit",
-              },
-              {
-                type: "doc",
-                label: "Crawler",
-                id: "accessibility-test-crawler",
-              },
-            ],
-          },
-          {
-            type: "category",
-            collapsed: true,
-            label: "Web Scanner (Integration)",
-            items: [
-              {
-                type: "doc",
-                label: "Web Scanner Getting Started",
-                id: "web-scanner-getting-started",
-              },
               {
                 type: "doc",
                 label: "Starting an Accessibility Scan",
@@ -2121,27 +2107,49 @@ module.exports = {
               },
             ],
           },
+          {
+            type: "doc",
+            label: "KaneAI Mobile App Testing",
+            id: "kaneai-mobile-app-accessibility",
+          },
+          {
+            type: "doc",
+            label: "HyperExecute (Selenium)",
+            id: "selenium-hyperexecute-accessibility-tests",
+          },
         ],
       },
       {
         type: "category",
         collapsed: true,
-        label: "Accessibility App",
+        label: "External integrations",
         items: [
           {
-            type: "category",
-            collapsed: true,
-            label: "App Scanner (Manual)",
-            link: {
-              type: "doc",
-              id: "accessibility-app-scanner",
-            },
-            items: [],
+            type: "doc",
+            label: "CI/CD Integration Guide",
+            id: "accessibility-cicd-integration-guide",
+          },
+          {
+            type: "doc",
+            label: "Integrations (Jira / Slack)",
+            id: "accessibility-report-integrations",
+          },
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Mobile App Testing",
+        items: [
+          {
+            type: "doc",
+            label: "Manual App Scanner",
+            id: "accessibility-app-scanner",
           },
           {
             type: "category",
             collapsed: true,
-            label: "Native App Automation",
+            label: "Appium Automation",
             link: {
               type: "doc",
               id: "accessibility-native-app-automation-test",
@@ -2159,12 +2167,137 @@ module.exports = {
               },
             ],
           },
+        ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Reports",
+        link: {
+          type: "doc",
+          id: "accessibility-testing-navigating-dashboard",
+        },
+        items: [
           {
             type: "doc",
-            label: "KaneAI Mobile Accessibility",
-            id: "kaneai-mobile-app-accessibility",
+            label: "Issue Summary",
+            id: "accessibility-testing-dashboard-issue-summary",
+          },
+          {
+            type: "doc",
+            label: "All Issues",
+            id: "accessibility-testing-dashboard-all-issues",
+          },
+          {
+            type: "doc",
+            label: "Exporting & Sharing Reports",
+            id: "accessibility-exporting-sharing-reports",
+          },
+          {
+            type: "doc",
+            label: "Passed Test Cases",
+            id: "accessibility-passed-test-cases",
+          },
+          {
+            type: "doc",
+            label: "Bug Report",
+            id: "accessibility-report-bug",
           },
         ],
+      },
+      {
+        type: "category",
+        collapsed: true,
+        label: "Features",
+        link: {
+          type: "doc",
+          id: "accessibility-hide-restore-issues",
+        },
+        items: [
+          {
+            type: "category",
+            collapsed: true,
+            label: "Web",
+            link: {
+              type: "doc",
+              id: "accessibility-hide-restore-issues",
+            },
+            items: [
+              {
+                type: "doc",
+                label: "Hide and Restore Issues",
+                id: "accessibility-hide-restore-issues",
+              },
+              {
+                type: "doc",
+                label: "AI Issue Detection Agent",
+                id: "accessibility-ai-issue-detection-agent",
+              },
+              {
+                type: "doc",
+                label: "Capture Screenshot",
+                id: "accessibility-capture-screenshot",
+              },
+              {
+                type: "doc",
+                label: "Accessibility Web Score",
+                id: "accessibility-web-score",
+              },
+              {
+                type: "doc",
+                label: "Fragment Identifier",
+                id: "accessibility-fragment-identifier",
+              },
+              {
+                type: "doc",
+                label: "PDF Accessibility Scanning",
+                id: "accessibility-pdf-accessibility-scanning",
+              },
+            ],
+          },
+          {
+            type: "category",
+            collapsed: true,
+            label: "Mobile",
+            link: {
+              type: "doc",
+              id: "accessibility-tag-support",
+            },
+            items: [
+              {
+                type: "doc",
+                label: "Tag Support",
+                id: "accessibility-tag-support",
+              },
+            ],
+          },
+          {
+            type: "category",
+            collapsed: true,
+            label: "Common",
+            link: {
+              type: "doc",
+              id: "accessibility-issue-remediation-guide",
+            },
+            items: [
+              {
+                type: "doc",
+                label: "Issue Remediation Guide",
+                id: "accessibility-issue-remediation-guide",
+              },
+              {
+                type: "doc",
+                label: "Analytics Widgets",
+                id: "analytics-modules-accessibility-widgets",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "doc",
+        label: "Accessibility MCP Server",
+        id: "accessibility-mcp-server",
       },
       {
         type: "category",
@@ -2173,54 +2306,18 @@ module.exports = {
         items: [
           {
             type: "doc",
-            label: "What We Cover (Web)",
+            label: "Web Checklist",
             id: "accessibility-web-what-we-cover",
           },
-          
           {
             type: "doc",
-            label: "VPAT Report Generation",
-            id: "accessibility-vpat-report-generation",
-          },
-          {
-            type: "doc",
-            label: "Web Manual Checklist",
-            id: "accessibility-web-what-we-do-not-cover",
-          },
-          {
-            type: "doc",
-            label: "Rules & Checklist",
-            id: "accessibility-rules-checklist",
-          },
-          {
-            type: "doc",
-            label: "iOS Coverage",
+            label: "iOS Checklist",
             id: "accessibility-ios-what-we-cover",
           },
           {
             type: "doc",
-            label: "iOS Manual Checklist",
-            id: "accessibility-ios-what-we-do-not-cover",
-          },
-          {
-            type: "doc",
-            label: "Android Coverage",
+            label: "Android Checklist",
             id: "accessibility-android-what-we-cover",
-          },
-          {
-            type: "doc",
-            label: "Android Manual Checklist",
-            id: "accessibility-android-what-we-do-not-cover",
-          },
-          {
-            type: "doc",
-            label: "iOS Rules",
-            id: "accessibility-ios-rules",
-          },
-          {
-            type: "doc",
-            label: "Android Rules",
-            id: "accessibility-android-rules",
           },
           {
             type: "category",
@@ -2330,11 +2427,11 @@ module.exports = {
       {
         type: "category",
         collapsed: true,
-        label: "Screen Reader",
+        label: "Assistive technology (manual)",
         items: [
           {
             type: "doc",
-            label: "Screen Reader Overview",
+            label: "Overview",
             id: "screen-reader-on-accessibility",
           },
           {
@@ -2362,115 +2459,6 @@ module.exports = {
       {
         type: "category",
         collapsed: true,
-        label: "Features",
-        items: [
-          "accessibility-passed-test-cases",
-          "accessibility-capture-screenshot",
-          "accessibility-tag-support",
-          "accessibility-fragment-identifier",
-          "accessibility-hide-restore-issues",
-          "accessibility-web-score"
-        ],
-      },
-      {
-        type: "doc",
-        label: "Accessibility MCP Server",
-        id: "accessibility-mcp-server",
-      },
-      {
-        type: "category",
-        collapsed: true,
-        label: "Navigating Dashboard",
-        link: {
-          type: "doc",
-          id: "accessibility-testing-navigating-dashboard",
-        },
-        items: [
-          {
-            type: "doc",
-            label: "Issue Summary",
-            id: "accessibility-testing-dashboard-issue-summary",
-          },
-          {
-            type: "doc",
-            label: "All Issues",
-            id: "accessibility-testing-dashboard-all-issues",
-          },
-          {
-            type: "doc",
-            label: "Hide and Restore Issues",
-            id: "accessibility-hide-restore-issues",
-          },
-          {
-            type: "doc",
-            label: "Exporting & Sharing Reports",
-            id: "accessibility-exporting-sharing-reports",
-          },
-          {
-            type: "doc",
-            label: "Integrations (JIRA / Slack)",
-            id: "accessibility-report-integrations",
-          },
-          {
-            type: "doc",
-            label: "AI Issue Detection Agent",
-            id: "accessibility-ai-issue-detection-agent",
-          },
-          {
-            type: "doc",
-            label: "Accessibility Issue Remediation Guide",
-            id: "accessibility-issue-remediation-guide",
-          },
-          {
-            type: "doc",
-            label: "PDF Accessibility Scanning",
-            id: "accessibility-pdf-accessibility-scanning",
-          },
-          {
-            type: "doc",
-            label: "Passed Test Cases",
-            id: "accessibility-passed-test-cases",
-          },
-          {
-            type: "doc",
-            label: "Capture Screenshot",
-            id: "accessibility-capture-screenshot",
-          },
-          {
-            type: "doc",
-            label: "Tag Support",
-            id: "accessibility-tag-support",
-          },
-          {
-            type: "doc",
-            label: "Fragment Identifier",
-            id: "accessibility-fragment-identifier",
-          },
-          {
-            type: "doc",
-            label: "Accessibility Score",
-            id: "accessibility-web-score",
-          },
-          {
-            type: "doc",
-            label: "Bug Report",
-            id: "accessibility-report-bug",
-          },
-          {
-            type: "doc",
-            label: "Analytics Widgets",
-            id: "analytics-modules-accessibility-widgets",
-          },
-        ],
-      },
-      {
-        type: "doc",
-        label: "Accessibility MCP Server",
-        id: "accessibility-mcp-server",
-      },
-      {
-        type: "category",
-        collapsed: true,
         label: "FAQs & Reference",
         items: [
           {
@@ -2485,13 +2473,19 @@ module.exports = {
           },
           {
             type: "doc",
-            label: "Accessibility Compliance Guide (ADA / WCAG / EAA / 508)",
+            label: "Compliance Guide (ADA / WCAG / EAA / 508)",
             id: "accessibility-compliance-guide",
+          },
+          {
+            type: "doc",
+            label: "VPAT Report Generation",
+            id: "accessibility-vpat-report-generation",
           },
         ],
       },
     ],
   ],
+
 
   SettingsAndSecuritySidebar: [
     {

@@ -11,7 +11,8 @@ slug: accessibility-ios-rule-dynamic-type-support/
 iOS apps must support Dynamic Type so text scales according to the user's preferred text size setting.
 
 :::info WCAG Reference
-**Maps to:** WCAG 1.4.4 Resize Text | **Introduced in:** WCAG 2.0 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html)
+**Maps to:** WCAG 1.4.4 Resize Text | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html)
 :::
 
 ## What this rule checks

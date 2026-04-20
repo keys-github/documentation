@@ -12,6 +12,7 @@ Interactive targets must be at least 24 by 24 CSS pixels in size, with exception
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.2
 **Introduced in:** WCAG 2.2 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html)
 :::
 

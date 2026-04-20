@@ -11,7 +11,8 @@ slug: accessibility-web-rule-4-1-1-parsing/
 HTML markup must be well-formed: elements must have complete start and end tags, be nested correctly, not contain duplicate attributes, and use unique IDs.
 
 :::info WCAG Reference
-**Introduced in:** WCAG 2.0 (obsolete in WCAG 2.2) | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)
+**Applies to:** WCAG 2.0, WCAG 2.1 (obsolete in WCAG 2.2)
+**Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)
 :::
 
 :::note

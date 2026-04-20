@@ -11,7 +11,8 @@ slug: accessibility-ios-rule-touch-target-sizing/
 Touch targets should be large enough for reliable interaction.
 
 :::info WCAG Reference
-**Maps to:** WCAG 2.5.5 Target Size (Enhanced) | **Introduced in:** WCAG 2.1 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)
+**Maps to:** WCAG 2.5.5 Target Size (Enhanced) | **Applies to:** WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.1 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)
 :::
 
 ## What this rule checks

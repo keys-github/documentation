@@ -12,6 +12,7 @@ For single-pointer actions, at least one of the following must be true: the down
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html)
 :::
 

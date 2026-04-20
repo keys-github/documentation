@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-2-1-timing-adjustable/
 When a page enforces a time limit, users must be able to turn off, adjust, or extend the time before it expires.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)
 :::
 

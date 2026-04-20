@@ -11,6 +11,7 @@ slug: accessibility-web-rule-1-4-2-audio-control/
 Audio that plays automatically for more than three seconds must provide a mechanism to pause, stop, or control the volume independently of the system volume.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html)
 :::
 

@@ -11,7 +11,8 @@ slug: accessibility-ios-rule-accessibility-label-not-punctuated/
 Accessibility labels on iOS elements should end with appropriate punctuation so VoiceOver produces natural pauses and intonation when reading them.
 
 :::info WCAG Reference
-**Maps to:** WCAG 3.3.2 Labels or Instructions | **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
+**Maps to:** WCAG 3.3.2 Labels or Instructions | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
 :::
 
 ## What this rule checks

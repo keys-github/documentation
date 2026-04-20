@@ -33,6 +33,5 @@ Use this page when you already know you are working on a web accessibility issue
 
 ## Related docs
 
-- [What We Cover (Web)](/support/docs/accessibility-web-what-we-cover/)
-- [Web Manual Checklist](/support/docs/accessibility-web-what-we-do-not-cover/)
+- [Web checklist](/support/docs/accessibility-web-what-we-cover/)
 - [Accessibility Issue Remediation Guide](/support/docs/accessibility-issue-remediation-guide/)

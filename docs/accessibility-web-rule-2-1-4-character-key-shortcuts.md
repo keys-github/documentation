@@ -12,6 +12,7 @@ If a keyboard shortcut uses only a single printable character (letter, number, p
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts.html)
 :::
 

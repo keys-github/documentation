@@ -11,6 +11,7 @@ slug: accessibility-web-rule-1-4-3-contrast-minimum/
 Text and important visual elements need sufficient contrast to remain readable.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 :::
 

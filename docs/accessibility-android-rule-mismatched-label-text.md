@@ -11,7 +11,8 @@ slug: accessibility-android-rule-mismatched-label-text/
 The accessible name of an Android element must contain its visible text so that voice-access users can activate controls by speaking what they see.
 
 :::info WCAG Reference
-**Maps to:** WCAG 2.5.3 Label in Name | **Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html)
+**Maps to:** WCAG 2.5.3 Label in Name | **Applies to:** WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html)
 :::
 
 ## What this rule checks

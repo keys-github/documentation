@@ -12,6 +12,7 @@ Content must remain readable and functional when users override text spacing pro
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html)
 :::
 

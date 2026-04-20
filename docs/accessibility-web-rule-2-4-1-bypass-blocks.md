@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-4-1-bypass-blocks/
 Pages must provide a mechanism to skip past repeated blocks of content that appear on multiple pages, such as navigation menus and headers.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html)
 :::
 

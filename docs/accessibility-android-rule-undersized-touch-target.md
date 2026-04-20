@@ -11,7 +11,8 @@ slug: accessibility-android-rule-undersized-touch-target/
 Interactive Android elements must meet a minimum touch target size of 48x48 dp to ensure users with motor impairments can tap them reliably.
 
 :::info WCAG Reference
-**Maps to:** WCAG 2.5.5 Target Size (Enhanced) | **Introduced in:** WCAG 2.1 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)
+**Maps to:** WCAG 2.5.5 Target Size (Enhanced) | **Applies to:** WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.1 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)
 :::
 
 ## What this rule checks

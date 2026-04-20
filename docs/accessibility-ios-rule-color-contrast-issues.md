@@ -11,7 +11,8 @@ slug: accessibility-ios-rule-color-contrast-issues/
 Text and meaningful visual elements in iOS apps must maintain sufficient contrast against their backgrounds to remain readable for all users.
 
 :::info WCAG Reference
-**Maps to:** WCAG 1.4.3 Contrast (Minimum) | **Introduced in:** WCAG 2.0 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
+**Maps to:** WCAG 1.4.3 Contrast (Minimum) | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
 :::
 
 ## What this rule checks

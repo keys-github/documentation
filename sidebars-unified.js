@@ -72,10 +72,6 @@ const docsSidebar = [
     items: items(s.TestManagerSidebar),
   },
   {
-    type: 'category', label: 'TestMu AI MCP Server', collapsible: true, collapsed: true,
-    items: items(s.LTMCPServerSidebar),
-  },
-  {
     type: 'category', label: 'Integration', collapsible: true, collapsed: true,
     items: items(s.IntegrationsSidebar),
   },
@@ -84,11 +80,15 @@ const docsSidebar = [
     items: items(s.AccessibilityTestingSidebar),
   },
   {
+    type: 'category', label: 'TestMu AI MCP Server', collapsible: true, collapsed: true,
+    items: items(s.LTMCPServerSidebar),
+  },
+  {
     type: 'category', label: 'Testing Locally', collapsible: true, collapsed: true,
     items: items(s.TestingLocalPagesSidebar),
   },
   {
-    type: 'category', label: 'Setting and Security', collapsible: true, collapsed: true,
+    type: 'category', label: 'Settings and Security', collapsible: true, collapsed: true,
     items: [
       ...items(s.SettingsAndSecuritySidebar),
       ...items(s.AccountManagementSidebar),

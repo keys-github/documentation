@@ -11,7 +11,8 @@ slug: accessibility-android-rule-interactive-role-undefined/
 Interactive Android elements must expose a meaningful accessibility role so TalkBack can announce what the element is and how to interact with it.
 
 :::info WCAG Reference
-**Maps to:** WCAG 4.1.2 Name, Role, Value | **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)
+**Maps to:** WCAG 4.1.2 Name, Role, Value | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)
 :::
 
 ## What this rule checks

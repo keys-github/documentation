@@ -11,6 +11,7 @@ slug: accessibility-web-rule-4-1-2-name-role-value/
 All user interface components must expose their name, role, states, properties, and values to assistive technologies, and notification of changes must be available programmatically.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)
 :::
 

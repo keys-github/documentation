@@ -12,6 +12,7 @@ When a user interface component receives keyboard focus, it must not be entirely
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.2
 **Introduced in:** WCAG 2.2 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html)
 :::
 

@@ -4,6 +4,9 @@ title: Exporting & Sharing Reports
 sidebar_label: Exporting & Sharing Reports
 description: Export, share, and distribute Accessibility results for triage, audit, and remediation workflows.
 slug: accessibility-exporting-sharing-reports/
+url: https://www.testmuai.com/support/docs/accessibility-exporting-sharing-reports/
+site_name: TestMu AI
+canonical: https://www.testmuai.com/support/docs/accessibility-exporting-sharing-reports/
 ---
 
 # Exporting & Sharing Reports
@@ -22,6 +25,14 @@ The following sections outline common reasons teams export Accessibility results
 ## Important behavior
 
 Report exports reflect the active issue state for the current report view. In scheduled aggregated reporting, historical consistency can still limit how past aggregate views are reflected.
+
+## How to export (onboarding)
+
+1. Open the report from **[Navigating the Dashboard](/support/docs/accessibility-testing-navigating-dashboard/)**.
+2. Apply any **filters** or **[hide/restore](/support/docs/accessibility-hide-restore-issues/)** decisions first—exports represent the **current** visible state.
+3. Use the report’s **export** or **share** action (label varies by surface) and pick the format your stakeholder needs (spreadsheet, PDF, or packaged evidence where offered).
+4. Store exports with **build metadata** (date, commit SHA, scan type) so audit trails stay traceable.
+5. For recurring programs, pair exports with **[Integrations](/support/docs/accessibility-report-integrations/)** so issues also land in Jira or Slack automatically.
 
 ## Related docs
 

@@ -12,6 +12,7 @@ If a set of web pages provides help mechanisms (contact information, chat, FAQ l
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.2
 **Introduced in:** WCAG 2.2 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html)
 :::
 

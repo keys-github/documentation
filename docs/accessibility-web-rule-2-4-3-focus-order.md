@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-4-3-focus-order/
 When a page can be navigated sequentially, interactive components must receive focus in an order that preserves meaning and operability.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)
 :::
 

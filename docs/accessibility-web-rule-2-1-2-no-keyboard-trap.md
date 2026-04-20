@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-1-2-no-keyboard-trap/
 If keyboard focus can be moved to a component on the page, focus must also be able to move away from that component using standard keyboard navigation.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html)
 :::
 

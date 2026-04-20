@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-1-1-keyboard/
 All interactive functionality must be operable through a keyboard interface without requiring specific timing for individual keystrokes.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)
 :::
 

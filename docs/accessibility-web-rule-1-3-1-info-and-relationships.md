@@ -11,6 +11,7 @@ slug: accessibility-web-rule-1-3-1-info-and-relationships/
 Content structure conveyed visually through layout, formatting, or styling must also be available programmatically so assistive technologies can interpret and present it correctly.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)
 :::
 

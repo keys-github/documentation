@@ -12,6 +12,7 @@ When a UI component has a visible text label, the accessible name must contain t
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html)
 :::
 

@@ -28,8 +28,8 @@ Use DevTools when you want to inspect a page directly in the browser, validate i
 DevTools is not the same as:
 
 - **Accessibility Automation**, which runs through test frameworks
-- **Test Scheduling**, which runs recurring web scans
-- **Web Scanner**, which is a separate integrated product surface for URL-based scanning
+- **Test Scheduling** (Accessibility), which runs recurring web scans inside the Accessibility product
+- **Web Scanner**, the separate Web Scanner product for URL lists and scans—different navigation tree from Accessibility Test Scheduling
 
 ## Typical workflow
 

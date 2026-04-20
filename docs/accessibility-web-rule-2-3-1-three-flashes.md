@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-3-1-three-flashes/
 Pages must not contain anything that flashes more than three times per second, unless the flash is below general flash and red flash thresholds.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)
 :::
 

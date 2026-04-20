@@ -4,6 +4,9 @@ title: Test Scheduling - Sitemap (Overview)
 sidebar_label: Test Scheduling - Sitemap (Overview)
 description: Overview of scheduled accessibility scans for websites, including sitemap-based and crawler-based workflows.
 slug: accessibility-test-scheduling/
+url: https://www.testmuai.com/support/docs/accessibility-test-scheduling/
+site_name: TestMu AI
+canonical: https://www.testmuai.com/support/docs/accessibility-test-scheduling/
 ---
 
 # Test Scheduling - Sitemap (Overview)
@@ -20,7 +23,7 @@ When you want recurring Accessibility scans outside of Web Scanner, this overvie
 
 ## Product boundary
 
-This page is for the Accessibility-native scheduling flow. If you are already inside Web Scanner, use [Starting an Accessibility Scan with Web Scanner](/support/docs/web-scanner-accessibility-scan/) instead.
+This page is for the Accessibility-native scheduling flow. If you use the separate **Web Scanner** product instead, start from [Getting Started with Web Scanner](/support/docs/web-scanner-getting-started/) or [Starting an Accessibility Scan with Web Scanner](/support/docs/web-scanner-accessibility-scan/).
 
 ## Typical workflow
 
@@ -30,9 +33,17 @@ This page is for the Accessibility-native scheduling flow. If you are already in
 4. Set the schedule.
 5. Review the resulting reports.
 
+## Onboarding: schedule your first recurring scan
+
+1. Read **[Steps to Schedule an Accessibility Scan](/support/docs/accessibility-test-scheduling-scan/)** end-to-end once—menus use the same vocabulary as the live product.
+2. Seed URLs using **[Sitemap Extraction & URL Import](/support/docs/accessibility-sitemap-extraction-url-import/)** when you have more than a handful of pages.
+3. If pages sit behind login, configure **authentication** in the wizard (basic auth, form login, or tunnel per your environment) before widening scope.
+4. Start with a **weekly** cadence on a **subset** of URLs; promote to daily only after noise is manageable.
+5. After the first run, open **[Navigating the Dashboard](/support/docs/accessibility-testing-navigating-dashboard/)** and confirm aggregates match expectations.
+6. Optional: enable **[Fragment Identifier](/support/docs/accessibility-fragment-identifier/)** in DevTools settings when hash routes should split reporting for SPA teams (web URL grouping only).
+
 ## Related docs
 
 - [Steps to Schedule an Accessibility Scan](/support/docs/accessibility-test-scheduling-scan/)
 - [Sitemap Extraction & URL Import](/support/docs/accessibility-sitemap-extraction-url-import/)
-- [Steps to Schedule an Accessibility Scan](/support/docs/accessibility-test-scheduling-scan/)
 - [Crawler](/support/docs/accessibility-test-crawler/)

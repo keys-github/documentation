@@ -12,6 +12,7 @@ Status messages that provide information about the success or results of an acti
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)
 :::
 

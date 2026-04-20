@@ -4,6 +4,9 @@ title: Integrations (JIRA / Slack)
 sidebar_label: Integrations (JIRA / Slack)
 description: Use integrations to route Accessibility results and issues into collaboration and issue management workflows.
 slug: accessibility-report-integrations/
+url: https://www.testmuai.com/support/docs/accessibility-report-integrations/
+site_name: TestMu AI
+canonical: https://www.testmuai.com/support/docs/accessibility-report-integrations/
 ---
 
 # Integrations (JIRA / Slack)
@@ -21,6 +24,14 @@ This guide explains when to use shared platform integrations alongside Accessibi
 ## Important note
 
 Many integrations are shared platform capabilities. This page exists to explain how they are used in the Accessibility context rather than to duplicate full integration setup docs.
+
+## Onboarding: wire Jira or Slack for Accessibility
+
+1. Complete the **global** integration setup first—see **[Jira Integration](/support/docs/jira-integration/)** or **[Slack Integration](/support/docs/slack-integration/)** for credentials, OAuth, and workspace allowlists.
+2. In the **Accessibility** report or workspace settings (exact menu depends on UI version), choose the integration you want to **receive** new issues or notifications.
+3. Map **severity or tags** to Jira priorities if the UI offers mapping; otherwise agree a default priority in your triage playbook.
+4. Send a **test ticket** from a non-production report to confirm fields populate correctly.
+5. Train reviewers to use **[Bug Report](/support/docs/accessibility-report-bug/)** for one-off escalations versus integration rules for systematic routing.
 
 ## Related docs
 

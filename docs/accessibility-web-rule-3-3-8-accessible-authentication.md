@@ -12,6 +12,7 @@ Authentication steps must not require a cognitive function test (such as remembe
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.2
 **Introduced in:** WCAG 2.2 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html)
 :::
 

@@ -12,6 +12,7 @@ Functionality that uses multi-point or path-based gestures must also be operable
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)
 :::
 

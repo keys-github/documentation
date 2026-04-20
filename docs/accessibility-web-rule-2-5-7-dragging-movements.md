@@ -12,6 +12,7 @@ Functionality that uses a dragging movement must also be achievable through a si
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.2
 **Introduced in:** WCAG 2.2 | **Level:** AA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html)
 :::
 

@@ -12,6 +12,7 @@ Functionality triggered by device motion (shaking, tilting) or user motion (gest
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.1 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/motion-actuation.html)
 :::
 

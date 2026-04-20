@@ -11,7 +11,8 @@ slug: accessibility-android-rule-misplaced-field-label/
 Form field labels in Android apps must be positioned correctly relative to their associated input so assistive technologies can pair them accurately.
 
 :::info WCAG Reference
-**Maps to:** WCAG 3.3.2 Labels or Instructions | **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
+**Maps to:** WCAG 3.3.2 Labels or Instructions | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html)
 :::
 
 ## What this rule checks

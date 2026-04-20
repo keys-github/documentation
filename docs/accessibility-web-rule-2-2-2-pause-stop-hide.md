@@ -11,6 +11,7 @@ slug: accessibility-web-rule-2-2-2-pause-stop-hide/
 Moving, blinking, scrolling, or auto-updating content must include a mechanism to pause, stop, or hide it.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)
 :::
 

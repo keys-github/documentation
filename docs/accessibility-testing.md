@@ -1,45 +1,69 @@
 ---
 id: accessibility-testing
-title: Accessibility Testing (Overview)
-sidebar_label: Accessibility Testing
-description: Overview of TestMu AI Accessibility Testing across web, mobile apps, reports, checklists, and integrated product surfaces.
+title: Getting Started with Accessibility Testing
+sidebar_label: Getting Started
+description: Overview of TestMu AI Accessibility Testing across web, mobile apps, reports, checklists, and integrated product surfaces. Includes quick setup to get your first report.
 slug: accessibility-testing/
 ---
 
-# Accessibility Testing (Overview)
+# Getting Started with Accessibility Testing
 
 TestMu AI Accessibility Testing helps teams find, understand, and fix accessibility issues across websites, web apps, and mobile apps.
 
-This overview introduces the Accessibility documentation set and how TestMu AI splits accessibility testing across web and app surfaces, checklists, screen reader coverage, product features such as reports and exports, the Accessibility MCP Server, and FAQs or reference material. Skim it first to see how those areas connect before you open a workflow-specific setup guide.
+## What Accessibility Testing covers
 
-## When to use this
+- **Manual Testing (DevTools)** -- browser-based scanning and assisted testing for websites and web apps.
+- **Automation** -- automated accessibility checks in supported test frameworks (Selenium, Cypress, Playwright, and more).
+- **Test Scheduling** -- recurring site scans driven by sitemaps, crawlers, or manual URL lists inside the Accessibility product (not the same doc set as the standalone Web Scanner product).
+- **Web Scanner** -- the separate **Web Scanner** product in the docs sidebar, where you add URLs and run accessibility scans on that surface. Use Accessibility **Test Scheduling** when your workflow is native to Accessibility scheduling, not Web Scanner.
+- **Mobile App Testing** -- manual and automated accessibility testing for native Android and iOS apps, including KaneAI-authored flows.
+- **Reports** -- dashboard, issue views, exports, integrations, passed tests, and bug reporting.
+- **Features** (sidebar: **Web**, then **Mobile**, then **Common**) -- **Web**: hide/restore, AI issue detection, capture screenshot, web score, fragment identifier, and PDF scanning; **Mobile**: scan tags; **Common**: remediation guidance and analytics widgets.
+- **Checklists** -- coverage summaries, WCAG rule repositories, and manual verification guidance.
+- **Accessibility MCP Server** -- AI-assisted accessibility analysis only. For installing and configuring the **platform-wide** TestMu AI MCP Server (all tools), use [TestMu AI MCP Server](/support/docs/testmu-mcp-server/) in the main docs sidebar.
 
-Use this page when you are new to Accessibility Testing or when you need to choose the right workflow before opening a setup guide.
+## Choose your path
 
-## Main product surfaces
+| If you want to... | Start here |
+|-----|-----|
+| Test a website manually | [Manual Testing (DevTools)](/support/docs/accessibility-devtools/) |
+| Run your first browser scan quickly | [Run a Quick Scan](/support/docs/accessibility-testing-run-quick-scan/) |
+| Run automated web tests | [Automation](/support/docs/accessibility-automation/) |
+| Schedule recurring scans | [Test Scheduling](/support/docs/accessibility-test-scheduling/) |
+| Use Web Scanner for scans | [Web Scanner](/support/docs/web-scanner-getting-started/) |
+| Test a mobile app manually | [Manual App Scanner](/support/docs/accessibility-app-scanner/) |
+| Run mobile automation | [Appium Automation](/support/docs/accessibility-native-app-automation-test/) |
+| Author mobile flows in KaneAI | [KaneAI Mobile App Testing](/support/docs/kaneai-mobile-app-accessibility/) |
+| View reports and issues | [Reports](/support/docs/accessibility-testing-navigating-dashboard/) |
+| Look up supported rules and gaps | [Web](/support/docs/accessibility-web-what-we-cover/) · [iOS](/support/docs/accessibility-ios-what-we-cover/) · [Android](/support/docs/accessibility-android-what-we-cover/) |
+| Use AI-assisted analysis | [Accessibility MCP Server](/support/docs/accessibility-mcp-server/) |
 
-- **Accessibility Web / DevTools** for browser-based scanning and assisted testing.
-- **Accessibility Web / Automation** for automated web checks in supported test frameworks.
-- **Accessibility Web / Test Scheduling** for recurring site scans.
-- **Accessibility Web / Web Scanner (Integration)** for URL-based Accessibility scanning inside the Web Scanner product surface.
-- **Accessibility App** for manual and automated mobile app accessibility testing.
-- **Accessibility App / KaneAI (Integration)** for KaneAI-authored mobile app flows that trigger Accessibility scans during execution.
-- **Features** for reports, score, exports, tags, passed tests, and issue management.
-- **Accessibility MCP Server** for AI-assisted accessibility analysis workflows.
+Not sure which tool fits? See [Choose Your Tool](/support/docs/accessibility-choosing-the-right-tool/) for a detailed comparison.
 
-## How to choose the right path
+## Quick setup
 
-- If you are testing a website manually, start with [Accessibility DevTools](/support/docs/accessibility-devtools/).
-- If you are running automated web tests, start with [Accessibility Automation](/support/docs/accessibility-automation/).
-- If you are using Web Scanner as the execution surface, start with [Starting an Accessibility Scan with Web Scanner](/support/docs/web-scanner-accessibility-scan/).
-- If you are testing a mobile app manually, start with [Accessibility App Scanner](/support/docs/accessibility-app-scanner/).
-- If you are testing a mobile app through automation, start with [Native App Automation Appium (Overview)](/support/docs/accessibility-native-app-automation-test/).
-- If you are authoring the flow in KaneAI, start with [Mobile App Accessibility Testing](/support/docs/kaneai-mobile-app-accessibility/).
-- If you need reports, issue views, or exports, start with [Navigating the Dashboard](/support/docs/accessibility-testing-navigating-dashboard/).
-- If you want to understand what accessibility rules are checked, start with [Rules & Checklist](/support/docs/accessibility-rules-checklist/).
-- If you need screen reader testing, start with [Screen Reader Overview](/support/docs/screen-reader-on-accessibility/).
-- If you want AI-assisted accessibility analysis, start with [Accessibility MCP Server](/support/docs/accessibility-mcp-server/).
+Use this section when you want the fastest path from "I need to test accessibility" to "I have my first report."
 
-## Accessibility standards and expectations
+### Prerequisites
 
-Accessibility Testing helps you work toward standards such as WCAG, ADA, EAA, and Section 508. Automated testing is useful, but it does not replace manual verification for every accessibility requirement.
+- Access to the Accessibility feature for your account
+- A website, web app, or mobile app you are authorized to test
+- The correct browser, device, framework, or scan surface for your use case
+
+### First-run checklist
+
+1. Pick the right product surface from the table above.
+2. Confirm whether your flow is manual, automated, scheduled, or integrated through Web Scanner or KaneAI.
+3. Run the scan.
+4. Open the report in the [dashboard](/support/docs/accessibility-testing-navigating-dashboard/).
+5. Review issue counts, severity, and next actions.
+
+### Common mistakes to avoid
+
+- Using DevTools when you actually need scheduled or automated execution.
+- Using Web Scanner docs for the Accessibility-native scheduling surface.
+- Using KaneAI guidance when your team is running direct Appium automation.
+
+## Accessibility standards
+
+Accessibility Testing helps you work toward standards such as WCAG, ADA, EAA, and Section 508. Automated testing covers many rules, but it does not replace manual verification for every accessibility requirement. See the [Web](/support/docs/accessibility-web-what-we-cover/), [iOS](/support/docs/accessibility-ios-what-we-cover/), and [Android](/support/docs/accessibility-android-what-we-cover/) checklists for supported rules plus each platform’s **manual test checklist**, with links into each rule repository.

@@ -2,34 +2,76 @@
 id: accessibility-cucumber-java-test
 title: Cucumber (Java)
 sidebar_label: Cucumber (Java)
-description: Use Accessibility Automation with Java Cucumber stacks when Accessibility is enabled in the underlying Selenium session.
+description: Run Accessibility Automation with Java Cucumber and Selenium—hooks, step defs, shared driver, and Accessibility reports.
+keywords:
+  - TestMu AI
+  - Accessibility
+  - Cucumber
+  - Java
+  - BDD
+url: https://www.testmuai.com/support/docs/accessibility-cucumber-java-test/
+site_name: TestMu AI
 slug: accessibility-cucumber-java-test/
+canonical: https://www.testmuai.com/support/docs/accessibility-cucumber-java-test/
 ---
 
 # Cucumber (Java)
 
-Use this page when your Accessibility Automation flow runs through Selenium with Java Cucumber.
+Cucumber scenarios still execute **ordinary Selenium** code under the hood. Enable Accessibility once on the **shared WebDriver** (usually in a **@Before** hook), then call **`lambda-accessibility-scan`** from step definitions or a small helper when a screen is stable. Behavior matches [Selenium Accessibility Automation](/support/docs/accessibility-automation-test/).
 
-This guide clarifies when Java Cucumber projects should rely on the shared Selenium Accessibility Automation flow and how resulting reports surface in the dashboard for review and follow-up. It matters most when your Gherkin scenarios already drive Selenium and you want accessibility results from the same sessions without a parallel harness.
-
-## When to use this
-
-Use this workflow when your team writes browser tests in Java with Cucumber and wants Accessibility results from the same execution.
+> **Browsers:** Chrome or Edge, supported versions only.
 
 ## Prerequisites
 
-- a Java + Cucumber Selenium project
-- Accessibility enabled in the Selenium session
-- access to the resulting Accessibility reports
+- Cucumber JVM + a DI or PicoContainer (or Spring) setup that exposes a singleton `WebDriver`
+- TestMu AI grid URL and credentials
+- Accessibility entitlement
 
-## Typical workflow
+## Onboarding path
 
-1. configure Accessibility in the Selenium session
-2. execute the Cucumber scenarios
-3. review the resulting Accessibility report
-4. escalate or remediate findings as required
+### 1. Create the driver with Accessibility in `@Before`
+
+```java
+@Before(order = 0)
+public void setUp() {
+    MutableCapabilities caps = new MutableCapabilities();
+    caps.setCapability("browserName", "chrome");
+    caps.setCapability("accessibility", true);
+    // caps.setCapability("accessibility.autoscan", true); // optional
+    driver = new RemoteWebDriver(new URL(HUB_URL), caps);
+    // inject driver into step defs
+}
+```
+
+### 2. Scan after key navigations
+
+In a step that represents “user is on dashboard” (or after `Given/When` that loads a URL):
+
+```java
+driver.executeScript("lambda-accessibility-scan");
+```
+
+Avoid calling the hook on every tiny interaction; align it with **logical pages** or states.
+
+### 3. Optional: auto-scan for exploratory flows
+
+If scenarios bounce across many URLs and you want full coverage without per-step hooks, enable `accessibility.autoscan` in `@Before` instead.
+
+### 4. Run Cucumber and open reports
+
+```bash
+mvn test -Dcucumber.filter.tags="@smoke"
+```
+
+Dashboard → session → **Accessibility** tab.
+
+### 5. CI alignment
+
+Tag scenarios that should run Accessibility (`@a11y`) so pipelines stay fast; keep capability setup in the shared hook so tagged and untagged runs behave predictably.
 
 ## Related docs
 
 - [Selenium](/support/docs/accessibility-automation-test/)
 - [Configure Accessibility Automation](/support/docs/accessibility-automation-settings/)
+- [JUnit 5](/support/docs/accessibility-junit5-test/) (often the JUnit Platform runner behind Cucumber)
+- [CI/CD Integration Guide](/support/docs/accessibility-cicd-integration-guide/)

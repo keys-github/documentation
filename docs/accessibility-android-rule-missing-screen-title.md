@@ -11,7 +11,8 @@ slug: accessibility-android-rule-missing-screen-title/
 Each screen or activity in an Android app must have a descriptive title so users can identify where they are in the app.
 
 :::info WCAG Reference
-**Maps to:** WCAG 2.4.2 Page Titled | **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html)
+**Maps to:** WCAG 2.4.2 Page Titled | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html)
 :::
 
 ## What this rule checks

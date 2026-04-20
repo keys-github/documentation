@@ -12,6 +12,7 @@ Information previously entered by or provided to the user in the same process mu
 
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.2
 **Introduced in:** WCAG 2.2 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html)
 :::
 

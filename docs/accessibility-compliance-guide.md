@@ -4,6 +4,9 @@ title: Accessibility Compliance Guide (ADA / WCAG / EAA / 508)
 sidebar_label: Accessibility Compliance Guide (ADA / WCAG / EAA / 508)
 description: High-level reference for common accessibility compliance frameworks and how Accessibility Testing supports those workflows.
 slug: accessibility-compliance-guide/
+url: https://www.testmuai.com/support/docs/accessibility-compliance-guide/
+site_name: TestMu AI
+canonical: https://www.testmuai.com/support/docs/accessibility-compliance-guide/
 ---
 
 # Accessibility Compliance Guide (ADA / WCAG / EAA / 508)
@@ -22,6 +25,13 @@ Teams working under ADA, WCAG, Section 508, or the EAA still need a practical br
 ## Important note
 
 Accessibility Testing supports compliance workflows, but automated results alone should not be treated as final legal certification.
+
+## Onboarding stakeholders (what to say in week one)
+
+1. **WCAG** is the technical baseline—map automated findings to success criteria using **[Web](/support/docs/accessibility-web-what-we-cover/)**, **[iOS](/support/docs/accessibility-ios-what-we-cover/)**, and **[Android](/support/docs/accessibility-android-what-we-cover/)** checklists plus rule repositories.
+2. **ADA / EAA / 508 conversations** still require **manual evidence** (keyboard-only paths, screen readers, policy docs). Use Accessibility outputs as **inputs**, not the final legal position.
+3. Establish a **definition of done**: e.g., “no open critical/serious automated issues on core journeys + documented manual matrix.”
+4. For procurement or VPAT work, pair this guide with **[VPAT Report Generation](/support/docs/accessibility-vpat-report-generation/)** and **[Supported WCAG Versions & Browsers](/support/docs/accessibility-supported-wcag-browsers/)**.
 
 ## Related docs
 

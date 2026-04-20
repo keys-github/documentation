@@ -11,7 +11,8 @@ slug: accessibility-android-rule-insufficient-target-spacing/
 Adjacent interactive Android elements must have adequate spacing between them to prevent accidental activation of neighboring controls.
 
 :::info WCAG Reference
-**Maps to:** WCAG 2.5.5 Target Size (Enhanced) | **Introduced in:** WCAG 2.1 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)
+**Maps to:** WCAG 2.5.5 Target Size (Enhanced) | **Applies to:** WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.1 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)
 :::
 
 ## What this rule checks

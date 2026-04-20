@@ -51,6 +51,14 @@ When you are already in Web Scanner, this page walks through configuring an Acce
 
 Use this page when you are already in Web Scanner and want to run an Accessibility scan against a set of URLs from that product surface.
 
+## Prerequisites (onboarding)
+
+1. You can open the **Web Scanner** product and see **[Getting Started with Web Scanner](/support/docs/web-scanner-getting-started/)** flows without errors.
+2. You have a **URL list** or plan to add URLs through the wizard, and permission to scan those hosts.
+3. For private environments, install or enable **TestMu AI Tunnel** per [Testing Locally Hosted Pages](/support/docs/testing-locally-hosted-pages/) **before** starting a scan that depends on local routing.
+4. For authenticated sites, collect **login steps** or credentials formats the wizard supports (see **Login Configurations** on this page).
+5. Decide the **WCAG target** and whether **best-practice** or **needs-review** items belong in the first run—narrower scopes make first triage faster.
+
 ## Key configuration options
 
 - **WCAG Version** selects the standards target for the scan.

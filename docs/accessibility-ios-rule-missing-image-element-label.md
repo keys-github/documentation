@@ -11,7 +11,8 @@ slug: accessibility-ios-rule-missing-image-element-label/
 Meaningful `UIImageView` and `Image` elements in iOS apps must have an accessibility label that describes their content or purpose.
 
 :::info WCAG Reference
-**Maps to:** WCAG 1.1.1 Non-text Content | **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)
+**Maps to:** WCAG 1.1.1 Non-text Content | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)
 :::
 
 ## What this rule checks

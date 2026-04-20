@@ -11,7 +11,8 @@ slug: accessibility-ios-rule-button-element-capitalisation-check/
 Button labels in iOS apps should follow standard capitalisation conventions to ensure VoiceOver reads them naturally and consistently.
 
 :::info WCAG Reference
-**Maps to:** WCAG 3.1.6 Pronunciation | **Introduced in:** WCAG 2.0 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/pronunciation.html)
+**Maps to:** WCAG 3.1.6 Pronunciation | **Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
+**Introduced in:** WCAG 2.0 | **Level:** AAA | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/pronunciation.html)
 :::
 
 ## What this rule checks

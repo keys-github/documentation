@@ -2,34 +2,84 @@
 id: accessibility-robot-framework-test
 title: Robot Framework
 sidebar_label: Robot Framework
-description: Use Accessibility Automation with Robot Framework when your team drives web tests through Robot-based Selenium workflows.
+description: Run Accessibility Automation when Robot Framework drives Selenium—variables, Open Browser keywords, hooks, and reports.
+keywords:
+  - TestMu AI
+  - Accessibility
+  - Robot Framework
+  - Selenium
+url: https://www.testmuai.com/support/docs/accessibility-robot-framework-test/
+site_name: TestMu AI
 slug: accessibility-robot-framework-test/
+canonical: https://www.testmuai.com/support/docs/accessibility-robot-framework-test/
 ---
 
 # Robot Framework
 
-Use this page when your Accessibility Automation flow runs through Robot Framework.
+Robot Framework sits **above** Selenium: Accessibility is still configured on the **underlying browser session** (desired capabilities passed into `Open Browser` or your library’s remote configuration). This page is the onboarding path for teams using **SeleniumLibrary** (or equivalent) against the TestMu AI grid.
 
-This page places Robot Framework inside the Selenium-based Accessibility Automation model so you can see which layer owns browser keywords versus enabling accessibility in the underlying session. Refer to it when you run Robot suites and need to interpret reports consistently with other Selenium-backed frameworks.
-
-## When to use this
-
-Use this workflow when your team runs browser automation through Robot Framework and wants Accessibility checks in the same execution path.
+> **Browsers:** Use **Chrome or Edge** with supported versions for Accessibility Automation.
 
 ## Prerequisites
 
-- a Robot Framework web automation project
-- a Selenium-backed session with Accessibility enabled
-- access to the Accessibility dashboard for report review
+- Robot Framework + SeleniumLibrary (or compatible library) installed
+- Remote URL and credentials for TestMu AI
+- Accessibility enabled for your workspace
 
-## Typical workflow
+## Onboarding path
 
-1. enable Accessibility in the underlying Selenium session
-2. run the Robot Framework suite
-3. review the resulting report in the dashboard
-4. use the report views for triage and follow-up
+### 1. Encode capabilities as variables
+
+Define suite or global variables so every test uses the same grid options:
+
+```robot
+*** Variables ***
+${LT_OPTIONS}    {"accessibility": true, "accessibility.wcagVersion": "wcag21aa"}
+```
+
+Exact syntax depends on how you merge JSON into capabilities for your `Open Browser` keyword—some teams use a **custom keyword** that builds the options dict in Python and passes it to `Create Dictionary` / `Evaluate`.
+
+### 2. Open Browser with Accessibility on
+
+Pass the merged capabilities into `Open Browser` (or your wrapper) so the remote session includes `"accessibility": true`. Match the pattern you already use for `browserName`, `platformName`, and auth.
+
+### 3. On-demand scan with Execute Javascript
+
+After the page is ready:
+
+```robot
+Execute Javascript    return document.readyState
+Execute Javascript    lambda-accessibility-scan
+```
+
+Use the second line only when you are **not** using `accessibility.autoscan`.
+
+### 4. Auto-scan alternative
+
+If you prefer scans on every navigation without Robot keywords:
+
+```robot
+# In capabilities JSON / dict
+accessibility.autoscan    ${True}
+```
+
+### 5. Run the suite and review reports
+
+```bash
+robot --outputdir results tests/
+```
+
+Then open the [Automation Dashboard](https://accounts.lambdatest.com/dashboard) for the session and the **Accessibility** tab.
+
+## Troubleshooting
+
+| Symptom | What to check |
+|--------|----------------|
+| No report | Robot must forward `accessibility` to the remote session; inspect the session capabilities in the dashboard. |
+| Hook errors | Ensure `Execute Javascript` runs in browser context and spelling is exactly `lambda-accessibility-scan`. |
 
 ## Related docs
 
 - [Accessibility Automation (Overview)](/support/docs/accessibility-automation/)
+- [Selenium](/support/docs/accessibility-automation-test/)
 - [Configure Accessibility Automation](/support/docs/accessibility-automation-settings/)

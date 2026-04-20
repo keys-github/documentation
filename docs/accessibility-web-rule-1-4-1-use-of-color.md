@@ -11,6 +11,7 @@ slug: accessibility-web-rule-1-4-1-use-of-color/
 Color must not be the only means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
 
 :::info WCAG Reference
+**Applies to:** WCAG 2.0, WCAG 2.1, WCAG 2.2
 **Introduced in:** WCAG 2.0 | **Level:** A | [Read the official specification →](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)
 :::
 
