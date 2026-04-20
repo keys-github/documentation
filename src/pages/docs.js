@@ -181,7 +181,7 @@ export default function Home() {
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="testManager-light.svg" dark="testManager-dark.svg" alt="" />TestMu AI MCP Server &nbsp;<NewTag value="NEW" /></h2>
             <div className="home_inners">
-              <a href="/support/docs/lambdatest-mcp-server/"><p className="p_home_inners">Setting up TestMu AI MCP Server</p></a>
+              <a href="/support/docs/testmu-mcp-server/"><p className="p_home_inners">Setting up TestMu AI MCP Server</p></a>
             </div>
           </div>
         </div>

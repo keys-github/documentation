@@ -8,8 +8,8 @@ keywords:
     - TestMu AI
     - Accessibility
     - Testing
-    - DevTools
-    - Accessibility Testing Settings
+    - Test Scheduling
+    - Scheduled Scan
 url: https://www.testmuai.com/support/docs/accessibility-test-scheduling-scan/
 site_name: TestMu AI
 slug: accessibility-test-scheduling-scan/
