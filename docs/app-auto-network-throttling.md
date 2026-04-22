@@ -127,6 +127,29 @@ To utilize the **networkProfile** capability, ensure that you include `network: 
     driver.execute_script("updateNetworkProfile=offline")
     ```
 
+### Can I Test Offline Mode Without Changing Capabilities?
+
+Yes. If you don't want to modify your existing capabilities, use the REST API to toggle offline mode mid-session. This is useful when you want to reuse the same capability set across online and offline scenarios.
+
+The example below shows a C# implementation:
+
+```csharp
+var sessionId = ((IHasSessionId)driver).SessionId.ToString();
+var client = new HttpClient();
+client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+    "Basic", Convert.ToBase64String(
+        Encoding.ASCII.GetBytes("YOUR_USERNAME:YOUR_ACCESS_KEY")));
+
+// Go offline
+await client.PostAsync(
+    $"https://mobile-api.lambdatest.com/mobile-automation/api/v1/sessions/{sessionId}/update_network",
+    new StringContent("{\"mode\": \"offline\"}", Encoding.UTF8, "application/json"));
+
+// Restore online
+await client.PostAsync(
+    $"https://mobile-api.lambdatest.com/mobile-automation/api/v1/sessions/{sessionId}/update_network",
+    new StringContent("{\"mode\": \"online\"}", Encoding.UTF8, "application/json"));
+```
 
 ## Toggle Offline/Online Mode via API
 

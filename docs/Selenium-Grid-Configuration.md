@@ -66,6 +66,37 @@ Review the current driver versions, HUB URI, port, and default settings for the 
 | Default Idle Timeout        | 120 seconds<br/>[Want to change Idle Timeout?](https://www.testmuai.com/capabilities-generator/)                |
 | Default Screen Resolution   | 1024x768<br/>[Want to change Resolution?](https://www.testmuai.com/capabilities-generator/)                     |
 
+---
+
+## Session and Connection Timeouts
+
+Selenium's default HTTP timeouts can be too short for remote cloud sessions, especially when browsers take longer to start or commands run over slow networks.
+
+### Can I Increase the RemoteWebDriver Connection Timeout?
+
+Yes. Use `ClientConfig` to set custom `connectionTimeout` and `readTimeout` values before building the driver:
+
+```java
+ClientConfig clientConfig = ClientConfig.defaultConfig()
+
+.connectionTimeout(Duration.ofMinutes(5))
+
+.readTimeout(Duration.ofMinutes(20));
+
+RemoteWebDriver driver = RemoteWebDriver.builder()
+
+.oneOf(chromeOptions)
+
+.address("https://hub.lambdatest.com/wd/hub")
+
+.config(clientConfig)
+
+.build();
+```
+
+- **`connectionTimeout`** - time to establish a connection to the grid.
+- **`readTimeout`** - time to wait for a server response after a command is sent.
+
 <nav aria-label="breadcrumbs">
   <ul className="breadcrumbs">
     <li className="breadcrumbs__item">
