@@ -3614,6 +3614,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "Export Build Data",
+            id: "smartui-export-build-data",
+          },
+          {
+            type: "doc",
             label: "Audit & Activity Logs",
             id: "smartui-audit-logs",
           },
