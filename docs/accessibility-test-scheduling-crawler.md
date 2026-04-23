@@ -110,5 +110,6 @@ You can drill down into individual URLs for a more detailed analysis of accessib
 ## Related docs
 
 - [Test Scheduling - Sitemap (Overview)](/support/docs/accessibility-test-scheduling/)
+- [Login & Authentication for Scheduled Scans](/support/docs/accessibility-test-scheduling-login-authentication/)
 - [Create Scheduled Scan](/support/docs/accessibility-test-scheduling-scan/)
 - [Sitemap Extraction & URL Import](/support/docs/accessibility-sitemap-extraction-url-import/)

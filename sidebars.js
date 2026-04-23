@@ -2058,6 +2058,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "Login & Authentication",
+            id: "accessibility-test-scheduling-login-authentication",
+          },
+          {
+            type: "doc",
             label: "Create Scheduled Scan",
             id: "accessibility-test-scheduling-scan",
           },
