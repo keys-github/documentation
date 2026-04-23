@@ -2056,6 +2056,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "Login & Authentication",
+            id: "accessibility-test-scheduling-login-authentication",
+          },
+          {
+            type: "doc",
             label: "Create Scheduled Scan",
             id: "accessibility-test-scheduling-scan",
           },
@@ -3924,6 +3929,11 @@ module.exports = {
             type: "doc",
             label: "Multiselect & Bulk Operations",
             id: "smartui-multiselect-bulkops",
+          },
+          {
+            type: "doc",
+            label: "Export Build Data",
+            id: "smartui-export-build-data",
           },
           {
             type: "doc",
