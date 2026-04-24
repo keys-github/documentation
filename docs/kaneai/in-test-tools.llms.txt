@@ -1,0 +1,608 @@
+# In-Test Tools
+
+> API testing, database queries, JavaScript execution, TOTP, network assertions, visual testing, file operations, deeplinks, accessibility
+
+---
+
+## KaneAI - API Testing
+
+---
+
+This document provides a detailed guide to performing API testing using KaneAI. The API testing feature allows for comprehensive backend testing, complementing existing UI testing capabilities. Follow the instructions below to execute API tests using the PetStore API as an example.
+
+## 1. Adding an API in a Web Test
+
+To start API testing on KaneAI, create a web test using the PetStore API, a commonly available sample. This will allow you to demonstrate API testing capabilities effectively.
+
+- **Step**: Add an API through the slash command and navigate to the API module.
+  
+  
+
+## 2. Adding a Curl Command
+
+Within the API module, you can input the curl command to configure the API settings automatically.
+
+- **Step**: Paste your curl command into the designated area. KaneAI will populate all necessary details. You may choose to validate the API response or add it directly to the test steps.
+
+  
+
+## 3. Validating API Response on KaneAI
+
+To ensure the API works as expected, use the validation feature. This step confirms that the API responds correctly and can be added to test steps.
+
+- **Step**: Click the 'validate' option to check the API response. A 200 response status indicates successful validation, automatically adding the API to your test steps. You can now proceed to submit multiple APIs simultaneously if needed.
+
+  
+
+## 4. Adding Non-Success APIs in Test Steps
+
+For APIs that do not return a 200 status, you can review the response body and manually add them to the test steps as required.
+
+- **Step**: If the API returns a 400 Bad Request or another error, it will not be added automatically. Review the response and add the API manually if needed.
+
+  
+
+## 5. Adding Multiple APIs in One Go
+
+KaneAI allows batch processing of multiple APIs to streamline testing. This feature is helpful for scenarios requiring the execution of several API calls in succession.
+
+- **Step**: Add multiple APIs by clicking the plus icon and selecting each API, or paste multiple curl commands to add them automatically to the test steps.
+
+  
+
+## 6. Handling Different HTTP Methods
+
+KaneAI supports various HTTP methods like POST, PUT, GET, and DELETE, allowing you to test diverse API interactions.
+
+- **Step**: Add APIs using different HTTP methods, such as a PUT or DELETE command. Validate each API as before, and if successful, they will be automatically included in the test steps.
+
+  
+  
+
+## 7. Executing and Reviewing Test Steps
+
+Once all APIs are added, KaneAI enables simultaneous execution, with details available on methods used, response statuses, and execution times.
+
+- **Step**: Click to execute all added APIs in one go and review the response details for insights into API performance and data returned.
+
+This structure provides logical groupings for different aspects of API testing with KaneAI, making it easier to follow each type of action required for comprehensive API testing.
+
+---
+
+## Database Connection in KaneAI
+
+---
+
+Managing test data in isolation or manually updating it across different test cases can lead to inconsistencies, increased maintenance efforts, and slower test execution. Integrating database connections within KaneAI allows teams to access and manipulate real-time data directly during test creation and execution. This capability ensures that tests are always aligned with the latest data, reducing manual data management, improving test accuracy, and enabling more efficient and scalable test automation workflows.
+
+> **Note:** 
+**This document provides a step-by-step process to connect databases within the KaneAI platform. It covers the creation of a new connection, selecting database types, entering necessary details, and performing operations like queries and assertions. The guide ensures a smooth setup and usage experience for users looking to integrate their databases seamlessly with KaneAI.**
+
+## Creating a database connection
+
+To begin, you need to access the [database connections](https://kaneai.lambdatest.com/databases "database connections") page within KaneAI and initiate the creation of a new connection by clicking on **Create New Connection**.
+
+### Add connection details
+
+Select the connection type as either TCP/IP or over SSH. Enter the database name and choose from available database types, including MySQL, PostgreSQL, MSSQL, Oracle, Mongo DB, and GCP Spanner.
+
+Provide a description and input your host name, port, username, and other relevant details. You can enter the password using an **organisation-level secret** or directly entering the password. For PostgreSQL, ensure you select the database name.
+
+**Special Connection Types (GCP Spanner):**
+Unlike traditional databases, GCP Spanner does not use standard hostnames, ports, usernames, or passwords. To connect to a Spanner instance, you will instead need to provide:
+*   **Instance ID** (The Spanner instance name)
+*   **Database ID** (The database name within the instance)
+*   **Credentials JSON** (The service account credentials file used for authentication)
+
+> **Tip:** 
+**KaneAI supports SQL, NoSQL, and Cloud-native (GCP Spanner) database connections.**
+
+### Connecting local databases
+
+For local or private databases, select a tunnel if your tunnel is active. The tunnel can be activated easily by following the details available [here](/support/docs/kane-ai-geolocation-tunnel-proxy/#tunnel-support). Test the connection and create it to see the sample database added.
+
+*Note: GCP Spanner does not support SSH tunneling since it utilizes Google Cloud's native built-in security and networking.*
+
+Following flag will be additionally required for database connections: `--expose database_type:host:port`. 
+
+So, your command will look like:
+```bash
+
+./LT --user YOUR_LAMBDATEST_USERNAME --key YOUR_LAMBDATEST_ACCESS_KEY --expose mysql:0.0.0.0:3306 --verbose --env ht-prod
+
+```
+
+## Using Database queries within KaneAI session
+
+Navigate within your KaneAI session. Use the slash command to add a database query. All connected databases will be visible, allowing you to view the schema or directly enter a query. For instances like GCP Spanner, the schema discovery will automatically show all user-created tables and column data types for the configured database.
+
+To perform a query, you can select any connected database and input your query to execute. You can leverage variables or parameters as well within the query to make your tests even more robust.
+
+> **Tip:** 
+**Safe Queries Only**
+
+For safety and data integrity, KaneAI only allows `SELECT`, `INSERT`, and `UPDATE` operations. Altering or destructive queries such as `ALTER`, `CREATE`, `DELETE`, or `DROP` commands are not supported and will return an error.
+
+> **Info:** 
+**Spanner Row Limit**
+
+For **GCP Spanner** queries, a **100-row limit** is enforced on all `SELECT` queries to ensure fast performance and prevent excessive data transfer. It is recommended to use `WHERE` clauses to filter your data.
+
+Once you Run or Add query, your query will be recorded as a test step within KaneAI, and a JSON variable containing the table response will be generated if the query is successful. This JSON variable can be used to perform various assertions on the data. You can continue adding multiple database queries and validate responses easily.
+
+## Video explanation
+
+Have any feedback or request? Reach out to us via [support@testmuai.com](mailto:support@testmuai.com) and we would be happy to hear from you.
+
+---
+
+## KaneAI - JavaScript Execution
+
+---
+
+With KaneAI’s new JavaScript Execution feature, you now have the flexibility to write or paste custom JavaScript code snippets to perform tests. This allows for more advanced and customized test scenarios alongside KaneAI’s plain English test-writing format.
+
+This can be very useful for:
+- **Advanced Interactions:** If you need more granular control over interactions that can’t be expressed in plain English.
+- **Complex Test Scenarios:** For scenarios that involve manipulating the DOM, testing specific elements, or interacting with APIs directly.
+- **Flexibility:** Switch between natural language and JavaScript to suit your testing needs.
+- **Precision:** Perform tests that require more detailed code logic.
+- **Seamless Execution:** Test JavaScript code directly without any setup.
+
+## How to Execute Custom JavaScript Tests
+### Step 1: Click on the "Write a Step" Field
+In KaneAI’s test editor, navigate to the "Write a Step" field where you typically write your test scenarios in plain English.
+
+### Step 2: Trigger JavaScript Mode
+To switch to JavaScript execution mode, type the forward slash `/` or click on the `+` icon. You will see a JavaScript Pop-up Option appear. Click on the JavaScript option to switch the input mode to custom JavaScript.
+
+### Step 3: Write or Paste Your JavaScript Code
+Now, you can write or paste your custom JavaScript code snippet directly into the text field. A sample JavaScript code:
+
+```javascript
+function simulateTyping(element, text) {
+    element.value = '';  // Clear any existing value
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+        let keyDownEvent = new KeyboardEvent('keydown', {key: char});
+        element.dispatchEvent(keyDownEvent);
+        element.value += char;
+
+        let inputEvent = new Event('input', {bubbles: true});
+        element.dispatchEvent(inputEvent);
+        let keyUpEvent = new KeyboardEvent('keyup', {key: char});
+        element.dispatchEvent(keyUpEvent);
+    }
+
+    let changeEvent = new Event('change', {bubbles: true});
+    element.dispatchEvent(changeEvent);
+}
+
+// Example usage
+let inputElement1 = document.querySelector('[aria-label="First Name"]');
+let inputElement2 = document.querySelector('[aria-label="Last Name"]');
+let inputElement3= document.querySelector('[aria-label="Email"]');
+simulateTyping(inputElement1, 'Aman');
+simulateTyping(inputElement2, 'Chopra');
+simulateTyping(inputElement3, 'amanc@lambdatest.com');
+
+return {"First name": "Aman", "Last name": "Chopra", "email": "amanc@lambdatest.com"};
+```
+
+The provided code snippet simulates typing into text fields programmatically by dispatching key-related events such as keydown, input, keyup, and change. It mimics real user interaction by typing each character into the field and updating its value accordingly. The example provided fills in the first name, last name, and email fields with specific values and returns them in an object format.
+
+### Step 4: Execute the Test
+Once your code is ready, simply press Enter. KaneAI will run your custom JavaScript snippet in the current testing environment.
+
+#### Handling Return Values and Variable Usage
+If your JavaScript snippet contains return values, KaneAI will automatically save these values in a variable that can be used later in the test. The output from your JavaScript code will be captured and assigned to a variable. This variable will be available for use throughout your test execution.
+
+For example, in the code snippet provided:
+
+```javascript
+return {"First name": "Aman", "Last name": "Chopra", "email": "amanc@lambdatest.com"};
+```
+
+The returned object with the keys `First name`, `Last name`, and `email` will be stored in a variable. You can reference this variable later in your test to validate or reuse the values.
+
+> **Note:** 
+Variables created from return values can be used in subsequent test steps. To use the variable, simply refer to the specific property (e.g., First name) in your test steps for verification or further actions.
+
+#### JavaScript Snippets in Generated Code
+When your test is executed, the JavaScript code snippet you provided will be added directly into the generated test code. This ensures that any custom interactions performed with JavaScript are part of the overall test logic. The inclusion of JavaScript in the generated code allows for easy tracking, debugging, and modification if needed.
+
+---
+
+## TOTP Authentication in KaneAI
+
+---
+
+## Introduction
+
+Teams often need to test SSO or MFA‑protected applications where the second factor is a six‑digit OTP. Native TOTP support in KaneAI generates those codes on the fly from the shared secret key, keeps the entire login journey inside KaneAI with identical behavior in Replay, generated code, and CI, and lets you inject the code directly into your test steps—no external scripts or servers required.
+
+## How it works
+
+1. **Register the TOTP secret** once  during authoring via Secret Key.
+2. At runtime KaneAI calculates the correct Time-based OTP code every 30 seconds.
+3. You can reference the TOPT code as a smart variable inside any test step, assertion, or API call.
+
+## Prerequisites
+
+- A TOTP‑compatible login flow (e.g., Google Authenticator, Okta Verify, Microsoft Authenticator).
+- The **secret key** (base32 encoded) associated with the account you want KaneAI to log in as.
+
+## Step‑by‑step Guide
+
+### Add a TOTP Secret Key
+
+1. Start a web authoring session from [here](https://www.kaneai.lambdatest.com/objective) and press **/**.
+2. Choose **Add TOTP Authentication Key**.
+3. Enter the Base32 secret directly or user TestMu AI Secrets using `{{` syntax.
+4. Click **Save**.
+5. A **smart variable** gets generated which provides the 6-digit code based on above secret key when invoked.
+
+### Insert the TOTP into your test
+
+1. Navigate to the OTP input field in your application.
+2. Use the smart variable generated to add your instruction such as "Enter `{{totp}}` in verify field"
+3. KaneAI fetches and inserts the 6-digit code.
+
+## Video Explanation
+
+## FAQ
+
+### Does KaneAI store my secret securely?
+
+Yes. Secrets are encrypted, stored in Vault and never exposed in logs or generated code.
+
+### Do mobile tests support TOTP?
+
+Yes. The smart variable generated via secret key `{{totp}}` is available in both Web and Mobile test steps.
+
+---
+
+## Network Logs Assertions
+
+---
+
+The **Network Logs Assertions** feature in KaneAI enables you to test and validate the behavior of your application at the **network layer**.  
+This is useful when you need to ensure that API calls, response codes, payloads, or request timings meet expected conditions during your test executions.  
+
+- **Start a test session** (Desktop or Mobile Web). 
+
+- All network calls are automatically recorded in the background as you navigate through your application, you can see the Network calls made so far through the **Assert Network Logs** option available in the " / " commands. 
+
+- Here you will find all the Network requests made in this session so far and **having the Json data format**, you can filter the requests on basis of **Status Code** or **HTTP Methods**:
+
+- Select the specific key's that you want to add in the assertion from the **Request Headers**. 
+
+- To add **Request** or **Response blocks** in assertions click on the `Add Assertion` button. All the chosen values will be validated in a single step.  
+
+- Once added, the request will be stored as a **variable**. KaneAI then makes assertions based on this variable. 
+
+#### How to validate a specific object in request or response of an API?
+
+- You can reuse the request later in your test using the familiar `{{variable}}` syntax.  
+
+- The stored variable is in **JSON format**, so you can easily access nested values with dot-notation (e.g., `header.status`).  
+
+> **Note:** 
+**This feature is not enabled for all users. Please contact our support team to request access.**
+
+---
+
+## Visual Test Creation with KaneAI
+
+---
+
+This guide provides a detailed walkthrough on how to leverage KaneAI to create, manage, and automate visual regression tests. By integrating with SmartUI, you can capture screenshots, compare visual changes, and maintain UI consistency throughout your development lifecycle.
+
+## Creating Your First Visual Test
+
+### Initiate a Web Test
+To begin, navigate to the [KaneAI dashboard](https://kaneai.lambdatest.com/objective) and click **Author Browser Test**. You can configure network settings before clicking **Start Testing** to launch the test authoring environment.
+
+### Add a Visual Comparison Step
+Author your test by writing steps in plain language, such as `go to testmu ai`.
+
+To add a visual test step, type `/` in the "Write a step" editor and select **Visual Comparison** from the command menu. You may also use the **Eye Icon** on the dashboard for quick access.
+
+### Configure Your Screenshot
+A configuration modal will appear for your screenshot.
+* **Screenshot Name (Required):** You must provide a descriptive name for the screenshot.
+* **Mis-Match Threshold (Optional):** Set an acceptable percentage of difference below which changes are auto-approved. The default is 0%.
+* **Screenshot Type (Optional):** Choose between **View Port** (default) or **Full Page**.
+
+Click **Create** to add the step to your test flow.
+
+## Analyzing Baselines and Regressions
+
+### Establish the Baseline
+The first time the test is executed, it captures an initial screenshot that becomes the **Baseline** for all future comparisons. You can view this image by clicking **Show Baseline**.
+
+### Rerun and Analyze the Comparison
+When the test case is replayed or re-run during authoring, a new screenshot is captured and compared against the baseline. Click **Show Comparison** to open the SmartUI view. This interface highlights any visual differences found between the two images.
+
+### Approve or Reject Changes
+Within the comparison view, you can review the changes and decide on a verdict.
+* **Reject Screenshot:** If the changes are unintended defects, you may reject the comparison.
+* **Approve Screenshot:** If the changes are intentional, you may accept the comparison. This will update the baseline with the new image.
+
+You can also adjust project settings like **Compare Type** and **Mis-Match Threshold** directly from this view.
+
+## Saving and Automating Your Visual Test
+
+### Save Your Test Case
+Once your test flow is complete, click **Finish test**. You will be prompted to save the session, where you can define the **Project**, **Folder**, **Test Name**, and **Description**.
+
+### Execution and Scheduling
+
+Once your test case is saved, navigate to the **Test Runs** tab to configure and launch its execution. For a complete guide on the initial setup, refer to our documentation on [Test Run Execution](/support/docs/kaneai-hyperexecute-test-run-execution/).
+
+You can execute your test using one of two methods:
+
+* **Run Instance Now**
+This option triggers an immediate, one-time execution of your test. It is ideal for quick validations or debugging a specific change.
+
+* **Schedule Test Run**
+This option allows you to automate your visual regression testing by setting up a recurring schedule. Learn more in our guide to [Scheduled Test Runs](/support/docs/kaneai-scheduled-test-runs/).
+
+### Using Advanced Configurations for Visual Regression
+While running **Run Instances Now** user can access **Visual Regression** settings via **Advanced Configurations** 
+
+Here users can enable **Visual Regression** settings to use the advanced configurations:
+* Custom Browsers (upto 4)
+* Custom Viewports (upto 5)
+* Custom Devices (upto 2) with Orientation (Portrait and Landscape)
+
+For a more flexible usage you may use the **JSON** tab where you can set your own parameters and configuration.
+
+## View Your Visual Test Results on SmartUI
+
+After the Test Run job is finished, all screenshots captured using the `/Visual Comparison` command via KaneAI will be available in your SmartUI project for review.
+
+1.  Navigate to the [SmartUI Dashboard](https://smartui.lambdatest.com/).
+2.  Select your project and the most recent build.
+3.  Here, you can compare screenshots against the baseline, highlight differences, and approve or reject changes. You can use features like Smart Ignore to mask dynamic areas for more stable comparisons.
+
+---
+
+## Upload and Download Files
+
+---
+
+This guide provides a step-by-step process for uploading and downloading files within Kane AI, a cloud-based testing platform provided by TestMu AI. Users can easily upload files from their local system, access pre-uploaded files, and download files generated during a test session.
+
+## Prerequisites
+
+- A valid TestMu AI account with access to Kane AI.
+- An active test session on Kane AI.
+- Supported file formats:
+  - **Images :** JPG, JPEG, PNG, GIF (Maximum size: 10 MB)
+  - **Videos :** MP4 (Maximum size: 50 MB)
+  - **Files :** XLS, XLSX, DOC, DOCX, PDF, CSV, TXT (Maximum size: 15 MB)
+
+## Steps to Upload a File
+### Step 1: Initiate a Test Session
+- Log in to your TestMu AI account.
+- Click on **Create a Web Test** to start a new session within Kane AI.
+
+### Step 2: Navigate to the Upload Section
+- Within the test session, navigate to the specific webpage where file uploads are required.
+- Type a **`slash (/)`**  to access the file selection menu.
+
+### Step 3: Select Files for Upload
+- Choose to either:
+    - Select from pre-uploaded files.
+    - Upload files from your local system.
+
+> **Note:** 
+- Ensure the upload limit does not exceed 5 files per session. <br />
+- Supported file formats:
+   - **Images :** JPG, JPEG, PNG, GIF (Maximum size: 10 MB)
+   - **Videos :** MP4 (Maximum size: 50 MB)
+   - **Files :** XLS, XLSX, DOC, DOCX, PDF, CSV, TXT (Maximum size: 15 MB)
+
+- Click **Add File** to confirm your selection.
+
+### Step 4: File Upload Process
+- Upon clicking **Add File**, the selected files are uploaded successfully to the downloads folder within the session.
+- These files are treated as variables and their paths are dynamically assigned.
+- These variables are named with prefix `FILE_`
+
+### Step 5: Accessing Uploaded Files
+- In the test environment, type upload in the command field.
+- Select the required file from the available list using **double-curly braces syntax** (e.g.,`upload {{FILE_IMAGE_1_PNG}} in upload section`).
+- Kane AI will detect the appropriate action for uploading and provide relevant options.
+- On the right panel, all downloaded files in the session’s downloads folder will be displayed.
+
+## Downloading Files from Kane AI
+### Step 1: Managing Downloaded Files
+- Files added during the session will be visible in the downloads section.
+- Users can either download all files at once or select specific files for download.
+
+### Step 2: Reviewing Uploaded Files Post-Test
+- After test completion, all uploaded files are recorded as variables.
+- These files are also available as attachments in the test summary page for easy reference and download.
+
+The file upload and download functionality in Kane AI enhances test automation by providing easy access to necessary files. By following these steps, testers can efficiently manage files during their test sessions.
+
+---
+
+## Deeplinks Support for Mobile App Authoring
+
+---
+
+## What are Deeplinks?
+
+Deeplinks are URL-based mechanisms that allow you to directly access specific screens and functionalities within your mobile application, bypassing standard navigation flows. In the context of mobile app testing with KaneAI, deeplinks enable testers to quickly navigate to targeted screens and perform context-aware actions without manually navigating through the app interface.
+
+## How Deeplinks Work in KaneAI
+
+When you use deeplinks in KaneAI during mobile app test authoring, the system:
+
+1. Accepts a deeplink URL from the user
+2. Identifies the target application package (Android) or bundle ID (iOS)
+3. Invokes the deeplink within the active app session
+4. Navigates directly to the specified screen or performs the defined action
+
+KaneAI automatically pre-fills the application package or bundle ID based on the app currently installed in your test session, making the process seamless and intuitive.
+
+## Adding Deeplinks in KaneAI
+
+### Step 1: Access the Deeplink Feature
+
+During your mobile app test authoring session in KaneAI, you can add a deeplink instruction using the following method:
+
+- Type a **slash (/)** in the input box and select the **Deeplink** option from the menu
+
+### Step 2: Configure Deeplink Parameters
+
+Once the deeplink modal appears, provide the following information:
+
+1. **URL*** (Required)
+   - Enter the complete deeplink URL
+   - Example: `kaneai://settings` or `myapp://product/123`
+
+2. **App package for target*** (Required)
+   - For **Android**: Enter the application package name (e.g., `com.example.QAapp`)
+   - For **iOS**: Enter the bundle ID (e.g., `com.example.QAapp`)
+   - KaneAI automatically pre-fills this field with the currently installed app's package or bundle ID
+
+### Step 3: Add to Test Steps
+
+Click the **Add in steps** button to include the deeplink instruction in your test case. KaneAI will execute this step during test runs, invoking the specified deeplink within your target application.
+
+## Best Practices
+
+1. **Verify Deeplink Support:** Ensure your mobile application has proper deeplink handling implemented before using this feature in tests.
+
+2. **Test Deeplink Validity:** Manually verify deeplinks work correctly in your app before adding them to automated test cases.
+
+3. **Handle Edge Cases:** Consider scenarios where deeplinks might fail (e.g., user not logged in, invalid parameters) and add appropriate assertions.
+
+4. **Combine with Assertions:** After invoking a deeplink, add assertion steps to verify the correct screen was loaded and displays expected content.
+
+## Troubleshooting
+
+### Deeplink Not Working
+
+- Verify the deeplink URL format is correct
+- Ensure the target app package/bundle ID matches the installed application
+- Check if the app has proper deeplink handling configured
+- Confirm the app is already running in the test session
+
+### Wrong Screen Opens
+
+- Double-check the deeplink path and parameters
+- Verify your app's deeplink routing configuration
+- Ensure no conflicting deeplink schemes exist
+
+### App Crashes on Deeplink
+
+- Validate the deeplink with your development team
+- Check if required data or permissions are available
+- Review app logs for specific error messages
+
+---
+
+> **Note:** 
+**Need Help?** If you have questions about deeplink implementation or encounter issues, contact our <span className="doc__lt" onClick={() => window.openLTChatWidget()}>support team</span> for assistance.
+
+---
+
+## Mobile App Accessibility Testing
+
+---
+
+Mobile app accessibility testing enables automated accessibility scanning for native mobile applications in KaneAI. This feature performs accessibility checks during test execution, helping identify accessibility issues and ensure compliance with accessibility standards.
+
+{/* 
+> **Info:** 
+**Prerequisite**
+
+The **Native App Accessibility** add-on must be enabled for your account to use this feature.
+ */}
+
+---
+
+### Platform Support
+
+| Platform | Supported Versions | Notes |
+|----------|-------------------|-------|
+| **iOS** | 17.0 and above | Versions below 17.0 will pass tests but won't generate accessibility reports |
+| **Android** | All versions | Full support for accessibility scanning |
+
+---
+
+## How It Works
+
+### Step 1: Add Accessibility Scan Instruction
+
+During test authoring, add the accessibility scan instruction:
+
+1. Navigate to the screen you want to scan
+2. Type "/" in the input box and click on **Accessibility scan**
+3. The instruction is recorded as part of the test flow
+4. The current screen is marked for accessibility scanning
+
+### Step 2: Instruction Recording
+
+When the accessibility scan instruction is added:
+
+- The instruction is recorded in the test execution flow
+- The current screen is marked to be scanned using the app scanner hook for accessibility
+- The scan hook is triggered during test execution at the corresponding screen
+
+### Step 3: Test Case Creation
+
+Once the test is saved:
+
+- A test case is automatically created with the **`accessibility-scan`** tag
+- The accessibility scan instruction is visible in the test case summary
+- Use this tag to filter and identify tests that include accessibility scanning
+
+To view the screenshot of the screen where the accessibility scan was performed, click the (•••) icon.
+
+### Step 4: Execution and Reporting
+
+During automated test execution:
+
+- The accessibility scan is performed at the corresponding screen
+- Accessibility issues are detected and categorized
+- The accessibility report is available in the test execution results on Automation dashboard
+
+---
+
+## Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Native App Scanning** | Uses platform-native accessibility scan hooks |
+| **Automatic Tagging** | Tests are automatically tagged with `accessibility-scan` for easy identification |
+| **Test Case Integration** | Accessibility instructions are visible in test case summaries |
+| **Automated Reporting** | Accessibility reports are generated during test execution |
+| **Cross-Platform Support** | Works on iOS 17+ and all Android versions |
+
+---
+
+## Troubleshooting
+
+### No Accessibility Report Generated
+
+**Possible Cause:**
+- iOS version is below 17.0 (tests will execute but no report is generated)
+
+### Accessibility Scan Instruction Not Recorded
+
+**Possible Causes:**
+- Instruction not properly added during authoring
+- Test not saved after adding the instruction
+
+**Solutions:**
+1. Verify the instruction was added correctly during authoring
+2. Ensure the test is saved after adding the accessibility instruction
+3. Check the test case summary for accessibility instruction visibility
+

@@ -192,19 +192,10 @@
   };
 
   const reinitialize = () => {
-    // Don't reinitialize on 404 pages
-    if (is404Page()) {
-      // Clean up any CTA that might have been injected before 404 was detected
-      const existingCTA = document.querySelector('.lt-bottom-cta');
-      const existingHelp = document.querySelector('.lt-help-support');
-      if (existingCTA) existingCTA.remove();
-      if (existingHelp) existingHelp.remove();
-      return;
-    }
     initYouTubeIframes();
     getUsernameToken();
     setupNavbarTracking();
-    injectBottomCTA();
+    injectSidebarBottomLinks();
   };
 
   // ============================================
@@ -402,6 +393,34 @@
   };
 
   // ============================================
+  // Sidebar Bottom Links (Book a Demo, Changelog)
+  // ============================================
+  const injectSidebarBottomLinks = () => {
+    if (document.querySelector('.lt-sidebar-bottom')) return;
+    const sidebar = document.getElementById('sidebar') || document.getElementById('sidebar-content') || document.querySelector('aside nav') || document.querySelector('[class*="sidebar"]');
+    if (!sidebar) return;
+
+    const container = document.createElement('div');
+    container.className = 'lt-sidebar-bottom';
+    container.innerHTML = `
+      <ul class="list-none">
+        <li class="list-none">
+          <a href="https://www.lambdatest.com/demo" target="_blank" rel="noreferrer" class="link nav-anchor pl-4 group flex items-center lg:text-sm lg:leading-6 mb-3 gap-3.5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
+            <div class="h-4 w-4 secondary-opacity group-hover:fill-primary-dark group-hover:bg-gray-900 dark:group-hover:bg-gray-300 bg-gray-400 dark:bg-gray-500" style="-webkit-mask-image:url(https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/solid/calendar-check.svg);-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;mask-image:url(https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/solid/calendar-check.svg);mask-repeat:no-repeat;mask-position:center"></div>
+            <span>Book a Demo</span>
+          </a>
+        </li>
+        <li class="list-none">
+          <a href="https://changelog.testmuai.com/" target="_blank" rel="noreferrer" class="link nav-anchor pl-4 group flex items-center lg:text-sm lg:leading-6 mb-3 gap-3.5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300">
+            <div class="h-4 w-4 secondary-opacity group-hover:fill-primary-dark group-hover:bg-gray-900 dark:group-hover:bg-gray-300 bg-gray-400 dark:bg-gray-500" style="-webkit-mask-image:url(https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/solid/clock-rotate-left.svg);-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;mask-image:url(https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/solid/clock-rotate-left.svg);mask-repeat:no-repeat;mask-position:center"></div>
+            <span>Changelog</span>
+          </a>
+        </li>
+      </ul>`;
+    sidebar.appendChild(container);
+  };
+
+  // ============================================
   // Initialize
   // ============================================
   const init = () => {
@@ -410,15 +429,7 @@
     initYouTubeIframes();
     setupNavbarTracking();
     setupHistoryListener();
-
-    // Only inject CTA if not a 404 page
-    if (!is404Page()) {
-      injectBottomCTA();
-    }
-
-    // Delayed check in case 404 content loads after initial render
-    setTimeout(cleanupOn404, 500);
-    setTimeout(cleanupOn404, 1500);
+    injectSidebarBottomLinks();
   };
 
   // Load chat scripts
@@ -434,14 +445,6 @@
 
   // Handle Mintlify's dynamic rendering
   setTimeout(() => {
-    // Run cleanup first to remove any CTA on 404 pages
-    cleanupOn404();
-    // Then run init (which will skip CTA injection on 404)
-    if (!is404Page()) {
-      init();
-    }
+    init();
   }, 1000);
-
-  // Additional delayed cleanup to catch late-rendering 404 pages
-  setTimeout(cleanupOn404, 2000);
 })();

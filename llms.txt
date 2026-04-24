@@ -1,0 +1,6 @@
+# TestMu AI Documentation
+
+> TestMu AI (formerly LambdaTest) — AI-powered testing platform for web, mobile, and cloud applications.
+
+## Products
+- [KaneAI](/docs/kaneai/llms.txt): AI-native test authoring platform — author tests in natural language across Desktop, Mobile Browser, and Mobile App

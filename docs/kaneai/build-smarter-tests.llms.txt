@@ -1,0 +1,1043 @@
+# Build Smarter Tests
+
+> Manual interaction, scrolling, conditional logic, failure conditions, modules, drag-drop, and rename instructions
+
+---
+
+## KaneAI Manual Interaction Mode
+
+---
+
+## Overview
+Manual Interaction in KaneAI lets you take direct control of the application during test authoring or while working in a playground session. Instead of relying only on natural language instructions, you can interact with the app in real time and let the agent record everything you do as structured test steps.
+
+This is especially useful when you need to reach a very specific UI state, handle complex flows, or deal with elements that are difficult to describe in words. You can pause the agent, perform actions like a real user, and then resume automated authoring from that exact point.
+
+Manual Interaction works for Web and Mobile app testing, making it easier to capture realistic user behavior across platforms. 
+
+{/* 
+> **Note:** 
+**Manual interaction is now supported for both Web Browser Test Authoring on desktop and Mobile App Test Authoring on Android and iOS.  **
+
+ */}
+### Supported platforms
+Manual Interaction is available for
+
+ - Web browser test authoring on desktop
+
+ - Mobile app test authoring on Android
+
+ - Mobile app test authoring on iOS
+
+### How Manual Interaction works
+While you are in Authoring mode, you can enable Manual Interaction by clicking the Manual Interaction button. Once enabled, you can directly interact with the application under test.
+
+Every action you perform such as clicking, typing, scrolling, or navigating through screens is automatically captured by the agent and converted into natural language test steps. You do not need to describe these actions in natural language while Manual Interaction is active.
+
+When you want to switch back to writing instructions in plain language, simply click Turn off Manual Interaction. From that point onward, the agent will again follow natural language commands.
+### Limitations of Instructions
+Manual Interaction focuses only on capturing real-time UI actions, so it has a few limitations you should be aware of. It cannot record any instruction that involves logic, validation, or reusable test components. These need to be added through natural language instructions after you finish interacting with the application.
+
+The following instruction types are not supported in Manual Interaction:
+
+**Assertions**
+
+You can’t record checks or validations while interacting manually. Any “verify,” “confirm,” or “assert” step must be added as a written instruction.
+
+**If--else logic**
+
+Conditional flows or branching logic aren't captured during manual actions. These must be written out in natural language if your test needs conditional behavior.
+
+**Modules and Reusable Blocks**
+
+Manual Interaction can’t insert or reference modules. You’ll need to add them separately once the manual steps are done.
+
+**Variables, Parameters, and Secrets**
+
+These structured inputs aren't detected during manual steps. You must define or call them through natural language instructions.
+
+**Datasets or Dynamic Data**
+
+Using dataset-driven values or any form of dynamic data requires a written instruction, since they can’t be recorded through interactions.
+
+In short, Manual Interaction is great for capturing what you do on the screen, but any logic, validation, or reusable component needs to be added through natural language instructions afterward.
+
+### Visual indicators in test steps
+Each recorded step clearly shows how it was created - via natural language or manual interaction. An icon indicates whether the step was captured through Manual Interaction or written using natural language instructions. This helps you quickly understand and review how the test was authored.
+
+### Editing Manual Interaction Steps
+Once a step is recorded using Manual Interaction, editing options are intentionally limited to preserve the accuracy of the recorded action. Currently, only the locator name can be edited for manual interaction steps.
+
+You cannot modify the action type, element behavior, or interaction flow after recording. If the recorded step does not match the intended behavior, it is recommended to delete the step and record it again using Manual Interaction, or recreate it using a natural language instruction.
+
+This ensures that recorded steps remain consistent with the actual UI interaction performed during the session.
+
+## Manual Interaction Limitations:
+### Web Browser on Desktop
+
+- **Drag and drop on canvas based elements:** Canvas elements rely on custom rendering, which makes drag and drop actions unreliable to record accurately.
+
+- **Double click:** Manual Interaction currently captures single click actions only.
+
+- **Right click:** Context menu interactions triggered by right click are not supported.
+
+- **Hover:** Mouse hover actions that trigger tooltips or menus cannot be recorded.
+
+### Mobile Apps
+
+- **Two finger scroll:** Multi touch gestures are not captured during recording.
+
+- **Click and hold:** Long press interactions are not supported in Manual Interaction.
+
+- **Double click:** Only single tap actions can be recorded on mobile devices.
+
+- **Copy and paste:** Clipboard based actions are not captured during recording.
+
+- **Recent apps actions:** System navigation actions like opening or switching recent apps are not supported.
+
+- **Mobile keyboard actions such as backspace:** Special keyboard keys and actions are not recorded accurately.
+
+- **System level popups:** Popups controlled by the operating system, such as permission dialogs, cannot be captured.
+
+**Important Note on Text Input Behavior**
+
+Manual Interaction records all characters you attempt to type as part of the instruction, even if the application does not accept them.
+
+For example, if an input field allows only numeric values and you try typing alphabets, those characters will still appear in the recorded instruction, even though they do not appear in the input field.
+
+## Common use cases
+### Use Case 1: Recording a complete workflow manually and converting it into a test
+This is useful when you already know the exact flow and want KaneAI to capture it as an automated test.
+
+**Steps:**
+
+1. Open KaneAI and start a new test in Authoring mode.
+
+2. Launch the application under test in the browser or mobile device.
+
+3. Perform the workflow exactly as a real user would. For example, logging in, navigating through pages, and submitting a form.
+
+4. As you interact with the app, KaneAI records each action automatically as test steps.
+
+5. Once the workflow is complete, click Turn off Manual Interaction.
+
+6. Review the generated steps and add assertions using natural language where needed by pausing the test.
+
+7. Save the test.
+
+### Use Case 2: Working with dynamic or lazy loaded UI elements
+Ideal for infinite scroll lists or carousels that load items on demand.
+
+**Steps:**
+
+1. Start Authoring mode and enable Manual Interaction.
+
+2. Scroll through the list or carousel until the desired element becomes visible.
+
+3. Click or interact with the loaded element.
+
+4. Turn off Manual Interaction after the interaction is captured.
+
+5. Add assertions to verify the correct item or state using natural language.
+
+### Use Case 3: Combining Manual Interaction with natural language instructions
+
+This approach gives you the best of both worlds.
+
+**Steps:**
+
+1. Start writing your test using natural language instructions.
+
+2. When you reach a step that is easier to perform manually, enable Manual Interaction.
+
+3. Perform the required actions directly on the app.
+
+4. Disable Manual Interaction once done.
+
+5. Continue the test with natural language instructions.
+
+6. Add assertions at appropriate steps to validate outcomes.
+### Use Case 4: Click and drag to adjust UI elements
+This use case applies when you need to move or adjust an element using a click and drag action, such as sliders, scrollbars, or draggable controls that are supported outside of canvas based elements.
+
+**Steps:**
+
+1. Start the test in Authoring mode.
+
+2. Enable Manual Interaction.
+
+3. Click on the element and drag it to the required position.
+
+4. Release the mouse once the desired state is reached.
+
+5. KaneAI records the click and drag action as a test step.
+
+6. Turn off Manual Interaction.
+
+7. Add an assertion in natural language to verify the final state. 
+
+### Use Case 5: Adjusting values using sliders (Only works on web)
+
+This use case applies when you need to change a value using a slider, such as volume controls, range selectors, brightness settings, or price filters.
+
+Sliders are often easier to handle using Manual Interaction rather than describing exact movements in natural language.
+
+**Steps:**
+
+1. Start the test in Authoring mode.
+
+2. Click on the slider handle.
+
+3. Drag the slider to the required value or position.
+
+4. Release the slider once the desired value is set.
+
+5. KaneAI records the slider movement as a test step.
+
+6. Turn off Manual Interaction.
+
+7. Add an assertion in natural language to verify the final value or state. For example, verify that the selected range or value is displayed correctly.
+
+**Notes specific to sliders**
+- Slider interactions are recorded as click and drag actions.
+- Exact pixel-level precision may vary depending on the UI implementation.
+- Always validate the outcome using an assertion rather than relying only on the recorded movement.
+
+## Best practices
+ 
+- Use Manual Interaction to reach complex UI states quickly.
+- Switch back to natural language for validations and assertions.
+- Review recorded steps to ensure they reflect the intended behavior.
+- Avoid unsupported interactions to prevent incomplete steps.
+
+## Troubleshooting:
+### Manual actions are not being recorded
+Make sure Manual Interaction is turned on before you start interacting with the application. If it is disabled, your actions will not be captured as test steps.
+
+### Assertions are not getting recorded
+This is expected behavior. Assertions are not recorded through Manual Interaction and must be added using natural language instructions after turning it off.
+
+### Some interactions are missing or incomplete
+Check whether the interaction you are trying to perform is currently supported. Actions like drag and drop, hover, or certain mobile gestures are not available yet and will not be recorded.
+
+### Typed text does not appear in the input field
+If the input field restricts certain characters, those characters may still appear in the recorded instruction even though they are not visible in the UI. This does not affect test execution.
+
+### Unable to interact with system popups
+System level popups are not supported through Manual Interaction. These flows need to be handled using alternative approaches or natural language instructions where possible.
+
+### Application state does not look correct after switching modes
+After turning off Manual Interaction, give the application a moment to stabilize before adding new steps or assertions. This helps avoid inconsistencies in recorded steps.
+
+## Video Tutorial
+
+---
+
+## KaneAI - Scroll in Element
+
+---
+
+The "Scroll in Element" feature in Kane AI allows users to perform scrolling actions on web elements during testing by using natural language commands. With this feature, you can easily navigate through elements like sidebars, lists, or any scrollable content on a web page.
+
+## Supported Commands
+You can pass the following commands in English to scroll within the web test:
+
+- **"Scroll left" :** Moves the content horizontally to the left.
+- **"Scroll right" :** Moves the content horizontally to the right.
+- **"Scroll up" :** Moves the content vertically upwards.
+- **"Scroll down" :** Moves the content vertically downwards.
+
+## Example Use Cases
+
+- **Scroll a Sidebar:** If a web page has a left or right sidebar, you can command Kane AI to scroll within the sidebar to access hidden elements.
+- **Navigate Lists:** Use scrolling commands to move through long lists or dropdown menus.
+- **Access Off-screen Content:** When elements are outside the viewport, scrolling commands help bring them into view.
+
+## How to Use
+
+**Step 1:** Identify the element you want to scroll.
+
+**Step 2:** Use the appropriate command based on the direction you need to scroll. For example:
+
+- "Scroll right in the sidebar" to move right in a horizontal sidebar.
+- "Scroll down" if you want to scroll downwards on a long page.
+
+**Step 3:** Verify the content is in view after the scrolling action.
+
+---
+
+## Scroll Until Element for Mobile Authoring
+
+---
+
+> **Note:** 
+This document provides a comprehensive guide on using the Scroll Until Element feature in KaneAI. It covers how to define scroll actions using simple natural language commands, eliminating the need for manual coordinate-based scripting for mobile app testing.
+
+---
+
+## Overview
+
+In modern mobile and web applications, important elements are often located below the fold or deep within long, scrollable pages. Writing custom scroll logic or managing scroll coordinates manually can be fragile, difficult to maintain, and time-consuming.
+
+The **Scroll Until Element** feature allows users to automate scrolling using **natural language commands**. Instead of controlling how to scroll, users simply describe the element they want to reach.
+
+This feature helps by:
+- **Automatically locating elements** by scrolling until the target becomes visible
+- **Reducing complexity** by removing the need for technical selectors or manual scroll logic
+
+---
+
+## How-To Guide
+
+### Identify the Target
+
+Determine the element you need to reach based on its **visual representation**.
+
+In natural language mode, elements can be referenced using:
+- Visible text (e.g., *"Login button"*)
+- Element type (e.g., *"input field"*)
+
+> **Note:** 
+**Note:**  
+Natural language commands do **not** support technical selectors such as IDs, XPaths, or CSS attributes.  
+Always describe what is visibly present on the screen.
+
+---
+
+### Formulate the Command
+
+Enter your command into the test editor using **action-oriented language**.  
+Clearly specify what the agent should find and what action to perform once found.
+
+**Examples:**
+- `"Scroll until search bar is visible and click on it."`
+- `"Scroll down until element with text 'Shipping Policy' is visible."`
+- `"Scroll inside a subsection until date input field and click on it."`
+
+---
+
+## Use Cases
+
+| Scenario | Example Natural Language Command |
+|--------|--------------------------------|
+| Visibility Check | `Scroll until search bar is visible and click on it.` |
+| Text Search | `Scroll down until element with text XYZ is visible.` |
+| Button Interaction | `Scroll until Submit button and click on it.` |
+| Subsection Navigation | `Scroll inside a subsection until date input field and click on it.` |
+| Dropdown Selection | `Scroll inside the dropdown until 'New option' and select it.` |
+
+---
+
+## Limitations
+
+Please be aware of the following constraints in the current version.
+
+---
+
+### Mobile App Authoring
+
+- **Scroll Limit**:  
+  Maximum of **20 scroll attempts** are performed. If the element is not found, the action fails.
+- **Horizontal Scrolling**:  
+  ❌ Not supported (only vertical scrolling is available).
+- **Nested Containers**:  
+  ❌ Scrolling inside specific container elements is not supported; only the main viewport can be scrolled.
+- **Directional Extremes**:  
+  ❌ Commands such as *“Scroll to top”* or *“Scroll to bottom”* are not supported.
+
+---
+
+### Mobile Browser Authoring
+
+- **Element Eligibility**:  
+  Applicable **only to interactable elements** (buttons, links, dropdowns, inputs).  
+  ❌ Plain text or static labels are not supported.
+- **Native Popups**:  
+  ❌ Scrolling inside native browser popups or system alerts is not supported.
+- **Horizontal Scrolling**:  
+  ❌ Not supported.
+
+---
+
+## Troubleshooting
+
+If you encounter execution issues, refer to the table below:
+
+| Error Message / Behavior | Potential Cause | Solution |
+|------------------------|-----------------|----------|
+| Maximum Scroll Limit Reached | Element is beyond 20 scrolls or not present | Verify element visibility and ensure it appears within 20 scrolls |
+| Element Not Found | Non-interactable or plain text element (Mobile Browser) | Target a button, link, or input field instead |
+| Scroll Timeout | Element is inside a nested container (App Agent) | Use manual scroll steps if element is not in the main viewport |
+| Command Not Recognized | Usage of IDs, XPaths, or attributes | Rewrite using visible text or element type (e.g., "button") |
+
+---
+
+> **Note:** 
+Have any feedback or request? Reach out to us via [support@testmuai.com](mailto:support@testmuai.com) and we would be happy to hear from you.
+
+---
+
+## Conditional Logic (If / Else-If / Else) in KaneAI
+
+---
+
+## Introduction
+
+KaneAI supports conditional branching in your test cases using **If / Else-If / Else** blocks. This lets you handle dynamic application behavior — for example, clicking a login button only when it is visible, or choosing between different checkout flows based on a variable value.
+
+Each branch can contain multiple steps, including regular actions, **modules**, **JavaScript**, **API**, and **DB** steps, giving you full flexibility to build complex, real-world test scenarios.
+
+## How It Works
+
+1. Insert a conditional block from the **/** slash command menu during authoring or from the **+ Add step** option during a paused state.
+2. Define a condition using variables and comparison operators.
+3. Optionally add **Else-If** branches for additional conditions.
+4. Add steps — including modules, JS, API, and DB steps — inside each branch.
+5. During authoring, only the branch whose condition is true gets executed — steps in the remaining branches are queued.
+6. In automation, KaneAI evaluates the conditions top-to-bottom at runtime and executes the first matching branch automatically.
+
+## Prerequisites
+
+- An active KaneAI authoring session.
+- Variables or element states available to build your conditions (e.g., smart variables, global variables, or extracted values).
+
+## Step-by-step Guide
+
+### Step 1 — Add a Conditional Block
+
+1. In your authoring session, press **/** to open the slash command menu.
+2. Select **Add If-Else** option.
+3. KaneAI inserts an **If / Else** block into your test flow.
+
+### Step 2 — Define the Condition
+
+Click the **If** header to open the condition editor. You can define conditions in two ways — toggle between them using the **switcher icon** (`&&`).
+
+#### Option A — Natural Language
+
+Type your condition as a plain-English sentence (e.g., "login button is visible"). KaneAI interprets the intent and evaluates it at runtime.
+
+#### Option B — Operand & Operator
+
+Build the condition explicitly using left operand, operator, and right operand:
+
+1. Enter a **left operand** — this can be a variable (e.g., `{{login_button_visible}}`), extracted text, or a literal value.
+2. Choose a **comparison operator** from the dropdown:
+
+| Operator | Description |
+|---|---|
+| `==` | Equals |
+| `!=` | Not equals |
+| `>` | Greater than |
+| `<` | Less than |
+| `>=` | Greater than or equal to |
+| `<=` | Less than or equal to |
+| `contains` | Left operand contains the right operand |
+| `not_contains` | Left operand does not contain the right operand |
+| `starts_with` | Left operand starts with the right operand |
+| `ends_with` | Left operand ends with the right operand |
+
+3. Enter the **right operand** (e.g., `true`, a number, or another variable).
+
+#### Adding Multiple Conditions
+
+You can combine conditions using **AND** / **OR** logic:
+
+1. After defining the first condition, click the **+** button (labeled **Add condition**).
+2. Toggle the logical operator between **AND** and **OR** using the dropdown.
+3. Fill in the additional condition's operands and operator.
+4. Click the green **checkmark** to confirm.
+
+### Step 3 — Add Steps Inside a Branch
+
+Each branch (**If**, **Else-If**, **Else**) supports multiple steps. You can add:
+
+- **Regular test steps** — type your instruction in the step input field.
+- **Modules** — reuse existing modules by adding them inside any branch.
+- **JavaScript steps** — execute custom JS within a branch.
+- **API steps** — make API calls as part of a conditional flow.
+- **DB steps** — run database queries conditionally.
+- **Manual interaction** — click the **manual interaction icon** next to the step input field to perform actions directly on the browser within the branch.
+
+Use the step input field or press **/** inside a branch to access the slash command menu.
+
+### Step 4 — Add Else-If Branches
+
+To handle additional conditions beyond the initial **If**:
+
+1. Click **Add Else-If** between the **If** and **Else** blocks.
+2. Define the condition for the new branch (same process as Step 2).
+3. Add steps inside the **Else-If** block.
+4. Repeat to add as many **Else-If** branches as needed.
+
+> **Note:** 
+**Authoring vs. Automation behavior:** During authoring only one condition can be true at a time, so only the matching branch's steps are executed — steps under the remaining branches go into a **queued** state. When the test runs in automation, all queued branches are evaluated automatically and the first matching branch is executed.
+
+### Step 5 — Add Steps to the Else Branch
+
+The **Else** block executes when none of the preceding conditions are met. Click **+ Add step** inside the **Else** block and add your fallback steps.
+
+### Step 6 — Close the Block
+
+Click **End If** at the bottom of the conditional block to finalize it. You can then continue adding steps after the conditional block as usual.
+
+## Using Modules Inside Conditional Branches
+
+You can embed entire modules within any branch of a conditional block. This is useful for reusing login flows, setup routines, or shared workflows that should only run under specific conditions.
+
+To add a module inside a branch:
+
+1. Click into the step input field within the branch.
+2. Press **/** and select the module you want to add, or type your instruction.
+3. The module and its steps appear inline within the branch.
+
+## Tips and Recommendations
+
+- **Keep conditions simple.** Use clear, single-purpose comparisons. Combine with AND / OR only when necessary.
+- **Use variables for dynamic values.** Store extracted values or API responses in variables, then reference them in your conditions.
+- **Leverage modules for reusable logic.** Instead of duplicating steps across branches, create a module and embed it.
+- **Test each branch independently.** During authoring, verify that each branch executes the correct steps before saving.
+
+## Limitations
+
+- **Nested conditions are not supported.** You cannot place an If / Else-If / Else block inside another conditional block.
+
+## FAQ
+
+### Can I add an Else-If branch after I have already authored the test?
+
+Yes. When you pause the test or revisit it in the playground, you can edit the conditional block and add new Else-If branches.
+
+### How many Else-If branches can I add?
+
+You can add up to **5** Else-If branches per conditional block.
+
+### Can I use modules, JS, API, and DB steps inside every branch?
+
+Yes. All branch types — If, Else-If, and Else — support the full range of step types including modules, JavaScript, API, and DB steps.
+
+### Are nested If / Else blocks supported?
+
+No. Nested conditional blocks are not supported. If you need complex branching, consider splitting the logic across multiple test cases or using Else-If branches instead.
+
+---
+
+## Failure Conditions
+
+---
+
+Failure conditions in KaneAI allow you to define how the test execution in a Test Run should behave when a particular test step fails. These conditions give you fine-grained control over how failures are handled at the step level and how they impact the overall execution result.
+
+Failure conditions are configurable for every type of command or step in KaneAI Authoring mode and are essential for aligning your tests with your quality and failure tolerance.
+
+> **Tip:** 
+**Failure conditions are set in the Authoring mode but they are applicable only in Test Run your Test's flow while authoring & code generation will not be affected by this. **
+
+Below are the failure conditions available in KaneAI:
+
+1. **Fail test immediately:**
+If the step fails, the test execution is halted immediately, and the overall test status is marked as `Failed`. This ensures that no further steps are executed after a critical failure. This is ideal for scenarios where proceeding further does not make sense or could lead to misleading results.
+
+2. **Fail but continue execution:**
+If the step fails, the test execution continues with the remaining steps, but the overall test is marked as `Failed` after completion. This is useful when you want to capture all failures in a single run for debugging purposes, but still treat the test as failed overall.
+
+3. **Warn but continue execution:**
+If the step fails, the test execution continues with the remaining steps and the overall test result remains `unaffected`. This is particularly useful for non-critical validations where failure should not impact the test outcome.
+
+You can set the failure condition in the Authoring mode by clicking on the three-dots on the step:
+
+>This change will not affect your existing test cases or the generated code where you’ve used hard/soft assertions. However, when you edit these tests, the new failure conditions will be applied.
+ 
+## Default Failure Condition Setting
+
+By default, the failure condition for each step is set to **Fail test immediately**, ensuring that the execution stops as soon as a step fails.
+
+The default failure condition can be configured at the Organization level within the **Org Product Preferences** section of **Organization settings**, [here](https://accounts.lambdatest.com/org-settings/kane-ai/failure-conditions).
+
+> **Note:** 
+**These settings will be applied to all the **new tests** being created in that Organization & can only be edited by the **Admins** of the Organization. **
+
+> **Info:** 
+**If you are transitioning from a Hard & Soft Assertions approach, think of **Fail test immediately** as your **Hard Assertion**, which halts on assertion failure, and **Warn but continue execution** as your **Soft Assertion**, which logs the failure but continues execution.**
+
+---
+
+## Rename Slash Command Steps
+
+---
+
+Rename test steps for API, JS, Database, Network Assertion and Visual Comparison to improve clarity and consistency without affecting functionality.
+
+---
+
+## Overview
+
+The **Rename Test Steps** feature allows users to change a test step’s name without changing how it works.  
+
+**Benefits:**  
+- Improves readability of test steps  
+- No impact on execution or instruction logic  
+- Renamed step name stays even if instruction changes later
+- Works for Web and Mobile slash command instructions
+- The step names are updated even in the execution command logs.
+
+---
+
+## How to Use
+
+1. Ensure the authoring session is running and the relevant step is visible.
+2. Pause the session. Renaming only works in "DRAFT" session state after session is Paused. 
+3. Click on the step name to make it editable.  
+4. Enter the new name and press **Enter** or click outside to save.
+5. Resume the session.  
+
+> **Note:** 
+**Note:** Only the step name changes; the instruction logic and behavior remain the same.
+
+---
+
+## Limitations
+
+- Supported instruction types:  
+  - **Web:** API, DB, JS, Visual comparison, Network assertion  
+  - **Mobile:** API, DB, JS, Visual comparison  
+- Only the **step name** can be updated (max 255 characters)  
+- Renaming inside Modules is not supported  
+- Step rename history is not versioned  
+- Special characters `{}` appear as `{{}}` in the generated code
+
+---
+
+## Troubleshooting
+
+| Issue | Cause | Solution |
+|-------|-------|---------|
+| Step name not updated | Save action missed | Re-edit and save |
+| Step name resets after refresh | Network/session issue | Refresh page and retry |
+
+---
+
+> **Note:** 
+Have any feedback or request? Reach out to us via [support@testmuai.com](mailto:support@testmuai.com) and we would be happy to hear from you.
+
+---
+
+## Modules in KaneAI
+
+---
+
+The KaneAI Modules feature is a powerful tool for optimizing your testing processes. By converting test steps into reusable modules, you can enhance productivity and maintain accuracy in your test executions. Follow this guide to fully utilize this feature and maximize the potential of your testing workflows.
+
+## Creating Modules
+
+### Step 1: Author Your Test Using KaneAI
+- Begin with authoring your test with KaneAI and executing a set of test steps. These steps will form the basis of your module.
+
+### Step 2: Pause and Select Test Steps
+- Click the Pause Test button.
+- Select the test steps you wish to include in the module.
+
+For example, if you want to group test steps related to login functionality, highlight those steps.
+
+### Step 3: Create and Save your Module
+- With the relevant test steps selected, click on the Create Module button.
+- Enter a module name and description:
+    - **Name :** "Login Flow for TestMu AI.com"
+    - **Description :** "This is the login flow module."
+
+- Click Create Module to finalize the process. The selected steps will be converted into a module structure. You can now view and manage these steps as a cohesive unit.
+
+### Step 4: Reuse Modules in a New Test
+- Create a new test in KaneAI to demonstrate module reuse.
+
+### Step 5: Access the Modules Functionality
+- Create a web test in KaneAI and use either of the following methods to access existing modules:
+    - Click the **plus (+)** icon in the test interface.
+    - Type a **slash (/)** to invoke the modules menu.
+
+Here, you can browse all existing modules, including the one you just created.
+
+- Select the desired module from the list, add the module to the test queue and observe as the execution of the module's test steps begins automatically, eliminating the need to reconfigure or repeat those steps.
+
+By following the steps above, you can:
+
+- Reuse existing test modules effortlessly.
+- Reduce duplication in test creation.
+- Maintain consistency across test cases.
+
+> **Note:** 
+📕 Refer here for your created [KaneAI Modules](https://kaneai.lambdatest.com/module) 🚀
+
+---
+
+## Module Versioning and Management
+
+This section covers how to manage module versions, track changes, and reuse module updates across various test cases.
+
+### Viewing and Creating Modules
+- Navigate to the **Modules** section.
+- View the list of available modules or click **Create a New Module** to add one.
+- The updated interface allows for improved module visibility and usability.
+- Each module card displays the count of test cases linked to it.
+
+### Deleting a Module
+
+You can delete modules that are no longer needed from the module listing page.
+
+1. Navigate to the **Modules** section
+2. Locate the module you want to delete
+3. Click the meatball menu (•••) icon on the module card
+4. Select **Delete**
+
+---
+
+> **Warning:** 
+**Important**
+
+Only modules that are **not linked to any test cases** can be deleted. If a module is currently used in one or more test cases, the delete option will be disabled. You must first remove the module from all linked test cases before deleting it.
+
+---
+
+### Accessing Module Details
+- Click on a module to view its complete details, including:
+    - Descriptions
+    - Tags
+    - Version history
+- Utilize **Version History** to track changes and reuse module updates in multiple test cases.
+
+### Comparing and Reverting Module Versions
+- Compare different versions of a module.
+- Review modifications made between versions.
+- Revert to a previous version if required.
+
+### Creating a Module from KaneAI Agent
+- If test steps are already present:
+    - Pause the test.
+    - Select the relevant test steps.
+    - Click Create Module to extract them into a reusable module.
+- Modules now support variables, parameters, and secrets.
+
+### Defining Module Properties
+- Click on the module and enter details such as:
+    - Module Name (e.g., Sample Module)
+    - Description and Tags
+- Click Create Module to save the test step as a reusable module with a specific version.
+
+### Editing and Importing Modules
+- Click on an existing module to modify its steps or properties.
+- To import a module into the web agent:
+    - Click the slash icon
+    - Select Add Module
+    - Choose from the list of created modules
+
+### Executing Test Steps
+- Click **Add in Queue** to execute test steps.
+- The executed test steps will be displayed in the results section.
+
+### Updating Module Versions
+- If changes are made to an existing module, a new version will be created automatically.
+- For example, adding a test step (e.g., clicking on login) will prompt an updated version (e.g., from 1.1 to 1.2).
+
+### Version Selection Flexibility
+- Users can choose to either:
+    - Accept the new version.
+    - Continue using the current version.
+- The newly updated version will reflect the added test step.
+
+By implementing these enhancements, module management is now more efficient, flexible, and user-friendly. Users can seamlessly create, modify, and reuse test modules to streamline automation testing.
+
+---
+
+## Bulk Module Update
+
+Maintaining many test cases that share the same module can become slow and error-prone when a module evolves. Each time a module is updated, you would otherwise have to manually open and edit every affected test case and bump the module version one by one.
+
+The **Bulk Module Update** feature solves this by allowing you to:
+
+- Update a validated module version across multiple eligible KaneAI test cases in one action
+- Clearly see which test cases are eligible or ineligible for the update, and why
+- Safely roll the new module version into your existing tests while keeping execution verification explicit and controlled
+
+> **Info:** 
+Bulk Module Update is currently supported only for **KaneAI test cases**. Support for non-KaneAI test cases is coming soon.
+
+> **Warning:** 
+**Limited Availability**
+
+This feature is currently being rolled out gradually and may not be available to all users. If you don't see this feature in your account, it will be enabled for you soon.
+
+---
+
+### How to Use Bulk Module Update
+
+#### Step 1: Access Bulk Module Update
+
+You can start a bulk module update from two places:
+
+**From the Module Detail Page**
+
+1. Navigate to the module whose version you want to bulk-update
+2. Click the **Update Test Cases** button
+3. If the module version is not yet authored/validated or there are no eligible test cases, this button will be disabled
+
+**From the Test Case Summary Page**
+
+1. Open a test case that uses the module version you want to update
+2. If there is a newer version of the same module and other test cases still use the older version, you will see an **Update Module for all Linked Test Cases** button
+3. Click this button to open the bulk update flow, pre-filtered for that module and version
+
+---
+
+#### Step 2: Module Validation Check
+
+Before the bulk update flow starts, the system checks whether the selected module version is authored/validated and whether there are eligible test cases to update.
+
+**When Update is Disabled**
+
+The **Update Test Cases** button will be disabled if:
+
+- The module version is **not authored/validated** yet
+- There are **no eligible test cases** (e.g., all linked test cases are faulty, unverified, or non-KaneAI)
+
+You will see a message such as:
+
+> **Note:** 
+"This module version is not authored yet. Author it in a test to enable bulk update."
+
+**To resolve:** Use the module in a test case and complete its authoring/validation, then ensure eligible KaneAI test cases are available.
+
+---
+
+#### Step 3: Select Test Cases
+
+After starting the flow, you will see a list of all test cases linked to the target module version.
+
+**Ineligible Test Cases**
+
+| Case | Description |
+|--------|---------|
+| **Faulty Test Cases** | Test Cases with **Faulty** status can't be updated |
+| **Non-KaneAI Test Cases** | Bulk update supports only KaneAI test cases currently |
+| **Unverified Test Cases** | Test Cases with **Unverified** status can't be updated |
+
+Ineligible test cases are greyed out, disabled for selection, and annotated with the reason.
+
+Select the eligible test cases you want to update and click **Next** to proceed.
+
+---
+
+#### Step 4: Review and Confirm
+
+Before running the bulk update, you will see a final summary screen showing:
+
+- The **target module version** (the version you are updating to)
+- The **count of selected eligible test cases**
+- Optionally, a **version movement summary** (e.g., from v1 → v2)
+
+> **Info:** 
+**Coming Soon**
+
+- **Seamless Module Validation** - Module validation will be performed automatically in future releases
+- **Bulk Code-Gen Validation** - Bulk Code-Gen validation will be available in an upcoming update
+
+Click **Confirm Update** to trigger the bulk job and apply the new module version to all selected test cases.
+
+---
+
+After triggering the update, you will see a success banner along with a toast message as shown in the screenshot below
+
+---
+
+#### Step 5: Post-Update Changes
+
+Once the bulk update is completed:
+
+**Bulk Job Execution**
+
+- A single bulk job is created
+- All selected eligible test cases have their module version updated
+
+**Changes on Each Updated Test Case**
+
+For each updated test case:
+
+| Change | Description |
+|--------|-------------|
+| Module Version | Updated to the new version |
+| Test Case Version | Bumped with commit message: "Module updated from vX to vY (Bulk-Update)" |
+| Code-Gen | New Code-Gen for the updated module is automatically used for future runs|
+| Code-Gen Status | Set to **Unvalidated** |
+| Execution Verified | Set to **false** until new Code-Gen is validated |
+
+---
+
+### Linked Test Cases Tab
+
+The module detail page includes a **Linked Test Cases** tab that lists all test cases linked to the module, grouped by module version, with key metadata. From here, you can navigate directly to individual test case summary pages.
+
+---
+
+### Current Limitations
+
+The following limitations apply currently to the Bulk Module Update Feature:
+
+1. **No Module Validation in Bulk Flow**
+
+   - The bulk update flow **does not perform module validation**.
+   - You can only bulk‑update to module versions that have already been authored and validated in a KaneAI session.
+
+2. **No Bulk Code-Gen Validation**
+
+   - Bulk validation of Code‑Gen across test cases is **not supported yet**.
+   - `code_gen_status` will remain Unvalidated after the bulk module update until the Code-gen is successfully executed through a Test Run.
+
+---
+
+### Troubleshooting
+
+#### "Update Test Cases" Button Is Disabled
+
+**Symptoms:**
+- The **Update Test Cases** button on the Module Detail Page is disabled
+- You see a message: "This module version is not authored yet. Author it in a test to enable bulk update."
+
+**Solutions:**
+1. Confirm that the module version has been authored/validated at least once in a test case
+2. Ensure there are eligible KaneAI test cases linked to this module version (non-faulty, non-unverified)
+3. Refresh the Module Detail Page and try again
+
+---
+
+#### Some Test Cases Are Greyed Out in the Selection List
+
+**Symptoms:**
+- Certain test cases appear greyed out and cannot be selected
+- They display reasons such as "Cannot update - test case is faulty"
+
+**Solutions:**
+1. For **faulty** test cases: Fix the underlying issues causing the faulty status, then re-attempt
+2. For **non-KaneAI** test cases: Bulk update is not supported; update them manually if needed
+3. For **unverified** test cases: Complete verification steps, then revisit the bulk update flow
+
+---
+
+#### Tests Still Show "Code-Gen Unvalidated" After Update
+
+**Symptoms:**
+- After the bulk update, test cases show: "Code-Gen updated after module update – will be validated on next execution."
+- Code-Gen status remains **Unvalidated**
+
+**Solutions:**
+1. Run or re-run the affected test cases following your standard validation workflow
+2. Once Code-Gen is validated, the test case's code-gen status will be updated and execution verified will be set to **true**
+
+---
+
+## Drag and Drop for Web applications
+
+---
+
+A wide range of applications incorporate drag and drop features, enabling users to reorganize and position elements within the interface. KaneAI now supports **drag and drop** and **click and drag** interactions in web applications on Desktop, enabling you to test complex UI interactions like moving items between containers, adjusting sliders, resizing elements, and working with flow charts. This feature provides two methods for capturing these interactions: natural language commands and manual recording.
+
+## Supported Interaction Types
+
+### Drag and Drop (Natural Language)
+Use natural language commands to move elements between defined drop zones. This method is ideal for straightforward drag and drop operations where both the source and target elements are clearly visible. This is not ideal in case the source or the target elements are not clearly visible.
+
+**Examples:**
+- `Drag item 4 from source items to drop target`
+- `Drag and drop product card from available items to shopping cart`
+- `Move file from folder A to folder B`
+
+> **Tip:** 
+**Natural language drag and drop works best when:**
+
+- Drop zones are explicitly defined and visible
+- You're moving items between containers
+- The target location is static (not dynamically generated)
+
+### Click and Drag (Manual Interaction)
+Record click and drag actions manually during test authoring. This method provides precise control for complex interactions like sliders, resizing, and canvas operations.
+
+**Use Cases:**
+- Adjusting slider values
+- Resizing elements
+- Moving elements in flow charts
+- Dragging within canvas or drawing areas
+
+> **Tip:** 
+**Manual recording is recommended for:**
+
+- Slider adjustments
+- Element resizing
+- Flow chart interactions
+- Any scenario where drop locations aren't explicitly defined
+
+## Supported Scenarios
+
+### ✅ What Works
+- **Drag and Drop (Natural Language)**
+    - Moving items between visible containers
+    - Transferring elements to defined drop zones
+    - Simple drag operations within the same page context
+    - Kanban board card movements
+    - File upload via drag and drop
+- **Click and Drag (Manual Interaction)**
+    - All drag scenarios - works reliably in any case
+    - Slider value adjustments
+    - Resizing elements and panels
+    - Drawing and canvas interactions
+    - Flow chart and diagram manipulation
+    - List item reordering
+    - Precise positioning of elements
+
+### ⚠️ Limitations
+
+#### Natural Language Limitations
+- **List reordering** - Cannot reorder list items using natural language
+- **Pixel-based commands** - Cannot specify exact pixel offsets (e.g., "drag 50px right")
+- **Dynamic targets** - Cannot drag to targets that appear only during drag
+- **Undefined drop zones** - May not work if drop locations aren't explicitly defined
+
+#### General Limitations
+- **Cross-context dragging** - Cannot drag between iframes or shadow DOMs
+- **Multi-element dragging** - Cannot drag multiple elements simultaneously
+- **Mobile drag and drop** - Not supported on mobile devices
+- **Editing restrictions** - Click and drag instructions cannot be edited after recording
+
+### When to Use Each Method
+
+| Scenario | Natural Language | Manual Interaction |
+|----------|-----------------|------------------|
+| Container to container transfer | ✅ Recommended | ✅ Works |
+| Slider adjustments | ❌ Not supported | ✅ Recommended |
+| Element resizing | ❌ Not supported | ✅ Recommended |
+| List reordering | ❌ Not supported | ✅ Recommended |
+| Flow charts | ❌ Limited | ✅ Recommended |
+| Kanban boards | ✅ Recommended | ✅ Works |
+| Canvas drawing | ❌ Limited | ✅ Recommended |
+
+## Example Use Cases
+
+### E-commerce Product Sorting
+```
+Drag product "iPhone 15" from available items to comparison table
+```
+
+### Project Management Board
+```
+Move task card from "To Do" column to "In Progress" column
+```
+
+### Form Builder
+Use manual interaction to:
+- Drag form fields from palette to canvas
+- Resize input fields
+- Reorder form sections
+
+### Data Visualization Dashboard
+Use manual interaction to:
+- Adjust date range sliders
+- Resize chart panels
+- Rearrange dashboard widgets
+

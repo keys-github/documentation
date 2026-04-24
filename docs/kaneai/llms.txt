@@ -1,0 +1,19 @@
+# KaneAI - AI-Native Test Authoring Platform
+
+> KaneAI by TestMu AI (formerly LambdaTest) is the world's first GenAI-native testing assistant for end-to-end test automation. Author tests in natural language across Desktop Browser, Mobile Browser, and Mobile App.
+
+## Topic Docs
+- [Getting Started](/docs/kaneai/getting-started.llms.txt): Introduction to KaneAI, setup, and authoring your first test on Desktop, Mobile Browser, and Mobile App
+- [Build Smarter Tests](/docs/kaneai/build-smarter-tests.llms.txt): Manual interaction, scrolling, conditional logic, failure conditions, modules, drag-drop, and rename instructions
+- [In-Test Tools](/docs/kaneai/in-test-tools.llms.txt): API testing (/api), database queries (/db), JavaScript execution (/js), TOTP (/totp), network assertions (/network), visual testing (/visual), file upload/download, deeplinks, accessibility
+- [Manage Test Data](/docs/kaneai/manage-test-data.llms.txt): Variables, smart variables, secrets, parameters, and datasets
+- [Session Configuration](/docs/kaneai/session-config.llms.txt): Chrome options, custom headers, geolocation/tunnel/proxy, GPS location, network throttling, dynamic URL replacement, mobile app capabilities
+- [Generate Code & Run](/docs/kaneai/generate-code-run.llms.txt): Automation code generation, auto-heal, test run configurations, HyperExecute execution, scheduled runs
+- [Integrate with Your Workflow](/docs/kaneai/integrate-workflow.llms.txt): CI/CD automation, pull request creation, GitHub App integration, Jira integration
+- [Guides & Troubleshooting](/docs/kaneai/guides-troubleshooting.llms.txt): Command guide, element interactions, forms, assertions, waits, mobile patterns, authentication, API testing, JS workarounds, error handling
+
+## Links
+- [KaneAI App](https://kaneai.lambdatest.com): Launch KaneAI
+- [Documentation](https://www.lambdatest.com/docs/getting-started-with-kane-ai): Full docs
+- [Changelog](https://changelog.testmuai.com/): Release changelog
+- [Community](https://community.lambdatest.com/): Community forum

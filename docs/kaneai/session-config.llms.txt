@@ -1,0 +1,459 @@
+# Session Configuration
+
+> Chrome options, custom headers, geolocation, tunnel, proxy, GPS, network throttling, dynamic URL replacement, and mobile app capabilities
+
+---
+## Chrome Options
+
+---
+
+Chrome options, also known as Chrome arguments, are command-line switches that alter the default behavior of the Chrome browser. These options provide flexibility to users by enabling or disabling certain browser features, modifying settings, and configuring custom behaviors such as headless browsing or disabling GPU acceleration.
+
+In KaneAI Web Agent, Chrome options are used to tailor the testing environment to suit the specific needs of automated tests. By defining Chrome options, users can configure the browser behavior before initiating a test session, allowing for a more customized and controlled testing setup. This guide will walk you through the steps to configure and use Chrome options in the KaneAI Web Agent:
+
+## Steps to use Chrome Options in KaneAI Web Agent
+Using Chrome options in KaneAI Web Agent is simple and involves defining specific configurations before launching a test. Follow the steps below to add and manage Chrome options for your tests.
+
+### Step 1: Navigate to the Test Configuration Page
+- Begin by accessing the Test Configuration page within the KaneAI Web Agent interface. Click on the **Create a Web Test** button.
+
+### Step 2: Locate the Chrome Options Section
+- Enable the toggle to add Chrome browser command-line options when launching your instance.
+- Enter your Command line switches and you can provide the type of argument as well i.e. String or File for that particular command line.
+- You can enter up to 10 Chrome options in the provided input fields.
+- For example:
+  - `--headless`
+  - `--disable-gpu`
+  - `--use-file-for-fake-audio-capture=/path/to/audio/file`
+
+### Step 3: Start the Web Agent
+- Once the configuration is done, initiate the Web Agent. The browser will launch with the specified Chrome options applied, allowing you to perform your tests under the customized environment.
+
+## Considerations
+- **Maximum Options :** You can configure up to 10 Chrome options per session. Ensure you only input the necessary options for your test case.
+- **Supported Options :** KaneAI Web Agent will validate that only supported Chrome options are entered. If you enter an unsupported option, an error message will notify you to correct the configuration.
+- **File Paths :** If a Chrome option requires a file path (for instance, `--use-file-for-fake-audio-capture`), KaneAI will automatically inject the Downloads folder path by default. This simplifies the process and removes the need to manually specify file paths for certain features.
+- **Default Browser Configuration :** If no Chrome options are provided, KaneAI will default to the standard browser configuration, meaning the browser will launch with its default settings.
+
+---
+
+## Custom Headers in KaneAI
+
+---
+
+Custom hеadеrs providе you thе ability to kееp crucial information about thе rеquеst or rеsponsе, such as thе mеthod, URL, and body contеnt. You can modify thе paramеtеrs of thе HTTP rеquеsts dеlivеrеd in your tеsts by manipulating thеsе hеadеrs. 
+
+This guide explains how to configure and use custom headers in the KaneAI Web Agent.
+
+## Steps to Use Custom Headers in KaneAI Web Agent
+
+Follow the steps below to add and manage custom headers for your Web tests:
+
+### Configure & Add Custom Headers for a Section
+Start by creating a Web session by going on the [KaneAI page](https://kaneai.lambdatest.com/objective) and clicking on the **Create a Web Test** button. You will find the **Custom Headers** section there. 
+
+Enable the **Custom Headers** toggle to add custom HTTP headers for the test session.
+
+You can add new header rows by clicking the **+** button. Each row will have two fields: **Header Name** and **Header Value**.
+
+> **Note:** 
+**You can add up to 10 custom headers.**
+
+#### Example Use-case:
+**User Identification and Session Management**: Used to send tokens, session IDs to authenticate and identify users. This helps in managing user sessions, implement stateless authentication mechanisms, track user behavior.
+
+Example: The Custom header `X-Session-ID`is used to track user sessions.
+
+```java
+X-Session-ID: 1234567890 
+```
+
+> **Note:** 
+**If you provide a Default Header in the Custom Header section your Default header will get overridden. **
+
+ 
+
+***
+
+### Authoring with Custom Headers
+After configuring the custom headers, initiate the Web Authoring session. The headers you added will be applied during the test session, allowing you to test under the configured conditions.
+
+Custom Headers will be applied to all the API call you make in the session like 'Go to https://lambdatest.com' or doing API testing like shown below:
+
+To see the list of Custom Headers applied in the Authoring session click on the `Custom Headers` option present on the top left side in the navbar. 
+
+You will see the list of applied Custom Headers.
+
+***
+
+### View the Custom Headers in the Summary Page
+Once the session completes, the custom headers used during the session will be displayed on the summary page, similar to how Chrome options are shown.
+
+You can click on `view details` to see the value of Custom Headers.
+
+---
+
+## KaneAI - Geolocation, Tunnel and Proxy Support
+
+---
+
+Now you can start your web tests on Kane AI using advanced configurations like geolocation, tunnel, and dedicated proxy support.
+
+## Geolocation Support
+
+With KaneAI's geolocation feature, you can simulate user interactions from different regions to ensure your website works as expected worldwide.
+
+### Steps to Use Geolocation
+
+**Step 1 :** Select the **Geolocation** option from the **Advanced Settings** and choose your desired region.
+
+**Step 2 :** Run your web test on KaneAI with traffic proxied through the selected region.
+
+**Step 3 :** Once the test is saved, the generated code will include geolocation details automatically, making it easier to 
+replicate the test across different regions.
+
+## Tunnel Support
+
+KaneAI also supports tunneling to allow you to test websites hosted locally or behind a firewall.
+
+### Steps to Use Tunnel
+
+**Step 1 :** Configure the tunnel using the [LT tunnel binary](/support/docs/testing-locally-hosted-pages/#lambdatest-tunnel-guide) with `--env ht-prod` mode enabled. You can use the following command to trigger your tunnel:
+
+```bash
+
+./LT --user YOUR_LAMBDATEST_USERNAME --key YOUR_LAMBDATEST_ACCESS_KEY  --env ht-prod -v -n TUNNEL_NAME
+
+```
+
+**Step 2 :** Select the tunnel from the **Advanced Settings** on KaneAI and choose the tunnel that you have spun up.
+
+**Step 3 :** Run your web test on KaneAI from a locally hosted webpage.
+
+**Step 4 :** Once the test is saved, the generated code will include tunnel details automatically for easy replication.
+
+## Dedicated Proxy Support (Enterprise only)
+
+KaneAI offers support for dedicated proxy usage, exclusively available for enterprise accounts with dedicated proxy enabled.
+
+### Steps to Use Dedicated Proxy
+
+**Step 1 :** Select the **Dedicated Proxy** option from the **Advanced Settings** and choose the region.
+
+**Step 2 :** Run your web test on KaneAI with traffic routed through the dedicated proxy IP configured for your organization.
+
+**Step 3 :** Once the test is saved, the generated code will include proxy details automatically, allowing seamless future executions.
+
+---
+
+## GPS location mocking for Mobile App Authoring
+
+---
+
+> **Note:** 
+This document provides detailed instructions for utilizing GPS Location Override feature in KaneAI's mobile app testing. It covers how to set GPS coordinates during session initialization to test location-based application behavior accurately.
+
+## Overview
+
+Testing location-based application behavior (such as geo-restricted content, regional UI, compliance flows, or location-aware features) is challenging when device GPS coordinates are dynamic or tied to the physical location of the tester.
+
+The GPS Location Override feature solves this problem by allowing users to explicitly define latitude and longitude values during session initialization. This ensures consistent, repeatable, and deterministic testing of location-dependent scenarios on supported mobile devices.
+
+## How To Use
+
+### Select GPS location while Authoring App Test
+
+While creating a test session, go to Advanced Settings and enable GPS location mocking option. Either include the location Coordinates or search for a particular location from the map. Ensure the coordinates fall within the allowed ranges:
+
+- Longitude: -180 to 180
+- Latitude: -90 to 90
+
+### Start the Session
+
+1. Launch the session after providing the coordinates
+2. The device GPS location is mocked at session start
+3. The configured location remains active for the entire session of the test being authored.
+
+### Verify the Applied Location
+
+GPS coordinates can be verified 
+- Inside the running session by clicing Advanced Settings
+- On the Session Summary page after execution
+- During Edit Test, the coordinates used in authoring would be autoselected in playground
+
+## Limitations
+
+- GPS override is applied only during authoring session initialization
+- GPS coordinates cannot be changed while the session is running
+- Replay/Edit sessions reuse GPS values from the original session
+- Currently not supported for Mobile Browser sessions
+
+## Troubleshooting
+
+### Invalid Latitude or Longitude Error
+
+**Issue:** Session fails to start due to a validation error.
+
+**Cause:**
+- Longitude is less than -180 or greater than 180
+- Latitude is less than -90 or greater than 90
+
+**Resolution:**
+- Verify that latitude and longitude values are within valid ranges
+- Ensure values are passed as valid numbers or numeric strings
+
+### Feature Not Working in Mobile Browser
+
+**Issue:** GPS override Currently not suported for mobile browser testing.
+
+**Reason:**
+- GPS Location Override is not currently supported for Mobile Browser sessions
+
+**Workaround:**
+- Use Mobile App testing for GPS-dependent scenarios
+
+---
+
+> **Note:** 
+Have any feedback or request? Reach out to us via [support@testmuai.com](mailto:support@testmuai.com) and we would be happy to hear from you.
+
+---
+
+## Network Throttling
+
+---
+
+The Network Throttling feature in Kane AI enables users to simulate various network conditions during mobile app testing. 
+This document outlines how to configure and use network throttling in Kane AI for mobile test creation & execution.
+
+Following are the Network Throttling settings available:
+
+| Throttling Setting | Download Speed |  Upload Speed | Latency |
+| ---------  | ------------ | ----------- | ------------ |
+| 2G | ↓ 30 - 50kbps | ↑ 1 - 16 kbps | 500ms |
+| 3G | ↓ 100 - 200kbps | ↑ 50 - 64 kbps | 400ms |
+| 3G+ | ↓ 3 - 5mbps | ↑ 1 - 2 mbps | 100ms |
+| 4G LTE | ↓ 13 - 15mps | ↑ 4 - 7 kbps | 70ms |
+| 4G Advanced | ↓ 23 - 25mbps | ↑ 9 - 12 mbps | 20ms |
+| Custom | ~ kbps | ~ kbps | ~ ms |
+
+You can create session-specific throttling by selecting the `Custom` option.
+
+## How to Set Up Network Throttling ?
+For your mobile app test session, network throttling can be set up in advance by applying those settings from the start of the Authoring session, or you can modify them at any point during the session.
+
+### Selecting Network Setting
+- Go to `Advanced Settings` in the `Create App Test` section to add Network Throttling setting in advance.
+
+You can select desired Network setting & your session will start with that setting.
+
+### Honoring the Network setting 
+If you want to honor the Network settings in the Authoring session too: 
+
+- Click on the `Honor network profile configuration` toggle.
+
+This will apply network setting in the Authoring session too, allowing you to experience how your Application works under that particular Network setting.
+
+> **Tip:** 
+**Recommended to use this setting only if its absolutely necessary, as this will hamper Authoring experience in low Network Bandwidth settings.**
+
+> **Note:** 
+**Network setting will always be Honored while executing the Test Case & code generation, the Honoring option is applicable for Authoring mode only.**
+
+## Changing Network Throttling setting mid session :
+To change Network Throttling setting in between the Authoring session:
+
+- Click on the `Change network throttling` present in Actions Tab, or type `/` to access it.
+
+- Then select desired Network setting.
+
+A change in Network throttling setting is also condidered as a step in the Test Case.
+
+You can edit the Network Throttling setting at that particular step too. To do that: 
+
+- `Pause` the execution flow to enter into the **Draft** state.
+- Click on the `Edit Instruction` button & change the Network setting.
+
+## Changing network throttling in Edit Test Steps mode
+Before you begin editing a test case , you can set up network throttling. This Edit mode specific setting will overwrite the network configuration previously established during the app session's initialization in Authoring mode.
+
+> **Note:** 
+**The network throttling for your Editing session is determined by what you set when you start that session. If you don't specify any network settings for the Edit mode, no throttling will be applied. The network settings mentioned while initializing the Authoring session will not be applicable in the Edit session, as saving changes in the Edit mode creates a new test case version.**
+
+ 
+ And all Test Case executions, like Test Runs and code generation, are performed on the test case's latest saved version.
+
+## Network Throttling in Test Runs
+While executing your Test Cases every Network Throttle step will be honoered. In addition to the Authoring & Editing mode, you can also select the Network setting to initialize your session with :
+
+- Click on `Advanced Configurations` present in the `Run with HyperExecute` section or `Schedule Test Runs` section while executing a Test Run.  
+
+- Network Throttling setting is available in the `Network Settings` section.
+
+- You can view where & when Network Throttling commands are executed in the command logs present in the App Automation page.
+
+> **Note:** 
+**Offline Mode is not supported yet but it will be added in future release.**
+
+---
+
+## Dynamic URL Replacement
+
+---
+
+As a QA Engineer, you may need to run test cases on different environments (e.g., staging, production) without altering your test scripts. With Dynamic URL Replacement you can execute the same test cases across multiple environments without modifying the test scripts, ensuring seamless execution across different environments.
+
+> **Note:** 
+This feature is applicable only for Web Tests
+
+## Prerequisites
+You must have [created a test run for KaneAI Generated Tests](/support/docs/kaneai-hyperexecute-test-run-execution/).
+
+## How to Use Dynamic URL Replacement
+
+### Step 1: Navigate to the Test Runs Page
+- Log in to TestMu AI.
+- Go to the Test Manager > Test Runs section.
+- Click on your desired **Test Run**.
+- Click on **Run with HyperExecute** button.
+
+### Step 2: Configure the Test Execution URL
+- In the Run on HyperExecute side drawer, locate the new field labeled **Replace Test Execution URL**.
+- Enter the **Pattern URL** (your original URL used in the tests) and **Replacement URL** (URL of different environment you want to test) in the text field.
+
+> **Tip:** 
+You can add multiple URLs for all web tests in the run to execute in different environments
+
+### Step 3: Execute the Test Run
+- If the **Replace Test Execution URL** field is filled, the entered URL will override the default (Pattern) URL during execution.
+- If left empty, the test will run with the default URL.
+- Click on the **Execute** button
+
+## How to Use Dynamic URL Replacement via API
+If you prefer to use the API to configure and execute tests with Dynamic URL Replacement, follow the instructions below:
+
+### API Endpoint
+```yaml title="POST request"
+https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute
+```
+
+### Request Headers
+```javascript
+Content-Type: application/json
+Authorization: Basic <Base64Auth>
+```
+
+### Request Body
+The following JSON payload demonstrates how to use the API to configure Dynamic URL Replacement:
+
+```javascript
+{
+  "test_run_id": "YOUR_TEST_RUN_ID", // Replace with your test run ID
+  "concurrency": 1, // Optional, Default: 1
+  "title": "UNIQUE_BUILD_NAME", // Optional
+  "region": "YOUR_DESIRED_REGION", // e.g., eastus, centralindia
+  "replaced_url": [
+      {
+          "pattern_url": "TEST_URL_1",
+          "replacement_url": "REPLACED_TEST_URL_1"
+      },
+      {
+          "pattern_url": "TEST_URL_2",
+          "replacement_url": "REPLACED_TEST_URL_2"
+      },
+      {
+          "pattern_url": "TEST_URL_3",
+          "replacement_url": "REPLACED_TEST_URL_3"
+      }
+  ],
+  "accessibility": false
+}
+```
+
+### Parameters Explained
+| Parameter | Description |
+|-----------|-------------|
+| `test_run_id` | The unique identifier for the test run. |
+| `concurrency` | (Optional) Number of parallel executions. Default is 1. |
+| `title` | (Optional) A unique name for the build. |
+| `region` | The region where the tests will be executed (e.g., eastus, centralindia). |
+| `replaced_url` |  An array of objects containing `pattern_url` and `replacement_url` |
+| `accessibility` | (Optional) Enable or disable accessibility testing. |
+
+### Example cURL Command
+Here’s an example cURL command to trigger a test run with Dynamic URL Replacement:
+
+```javascript
+curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic <Base64Auth>' \
+--data '{
+    "test_run_id": "YOUR_TEST_RUN_ID", 
+    "concurrency": 1, 
+    "title": "UNIQUE_BUILD_NAME", 
+    "region": "eastus", 
+    "replaced_url": [
+        {
+            "pattern_url": "testmu ai",
+            "replacement_url": "ajio"
+        },
+        {
+            "pattern_url": "d",
+            "replacement_url": "flipkart"
+        },
+        {
+            "pattern_url": "hello",
+            "replacement_url": "1234"
+        }
+    ],
+    "accessibility": false
+}'
+```
+
+- Replace `<Base64Auth>` with your actual Base64-encoded authorization credentials.
+- Ensure that the `pattern_url` matches the exact URL pattern used in your test scripts.
+- Multiple `replaced_url` entries can be added to replace different URLs dynamically.
+
+---
+
+## Mobile App advanced authoring capabilities
+
+> **Warning:** 
+ This document provides detailed instructions for utilizing advanced features in KaneAI's mobile app authoring. It covers enabling video and image injections, configuring biometrics, and other advanced settings to enhance test authoring.
+
+## Introduction
+
+KaneAI's mobile app authoring support various advanced capabilities for authoring mobile app tests. Users can navigate to advanced settings to enable options such as disabling screenshot block, enabling biometric authentication, image injection, and video injection for creating tests within KaneAI.
+
+## Disable Screenshot Block
+
+If your app doesn't allow screenshot to be taken of the app and you want to test your app's performance without any hindrance, you can use this capability. It will disable the screenshot block check added in the application to allow authoring test cases in TestMu AI.
+
+You need to ensure to enable it from advanced settings before authoring your test on KaneAI. You can find more details about this capability [here](/support/docs/disable-screenshot-block/).
+
+## Biometrics Authentication
+
+Biometric Authentication is a security process that leverages the unique biological characteristics of individuals to verify their identities. In native applications, it is often used to provide a seamless, secure, and efficient user experience. This capability allows you to test your application's biometric authentication functionality more accurately and ensures your app provides an optimal user experience across a range of devices and platforms.
+
+You can find more details about this capability [here](/support/docs/biometric-authentication/).&#x20;
+
+## Image Injection
+
+Camera Image Injection feature allows you to author tests with **image capturing, QR code scanning**, and **barcode scanning** functionalities in your app across **real devices** on the TestMu AI.
+
+You need to ensure to enable it from advanced settings before authoring your test on KaneAI. Once enabled, you will get an option to inject image in "slash" commands in-session which needs to be used before you select the option to trigger camera API in your application workflow.
+
+You can find more details about this capability [here](/support/docs/camera-image-injection/).
+
+## Video Injection
+
+Video Injection feature enables you to test video-based functionalities such as **live streaming, real-time video capture,** and **video processing** in your app across **real devices** on the TestMu AI.
+
+You need to ensure to enable it from advanced settings before authoring your test on KaneAI. Once enabled, you will get an option to inject video in "slash" commands in-session which needs to be used before you select the option to trigger camera API in your application workflow.
+
+You can find more details about this capability [here](/support/docs/video-injection/).
+
+## Video Explanation
+
+🎥 **[Watch how mobile app advanced capabilities can be leveraged in KaneAI authoring](https://app.trupeer.ai/view/SZxMvBbih)**
+

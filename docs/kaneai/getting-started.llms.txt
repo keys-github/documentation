@@ -1,0 +1,300 @@
+# Getting Started with KaneAI
+
+> Introduction, setup, and first test authoring on Desktop, Mobile Browser, and Mobile App
+
+---
+
+## Introduction to KaneAI
+
+---
+
+Testing shouldn't slow innovation. KaneAI makes test automation as natural as writing a To Do list with no steep learning curves, no endless script maintenance.
+
+With KaneAI you can:
+
+- **Go from ideas to scripts in seconds** – Turn Jira tickets, PRDs, or plain text into ready-to-run test cases.
+
+- **Remove coding barrier** – Author tests with natural language, or let KaneAI write automation scripts for you.
+
+- **Scale without friction** – Run tests across browsers, devices, and environments with TestMu AI's cloud.
+
+- **Make testing Adaptive & intelligent** – KaneAI auto-heals tests when your UI changes, so your team keeps moving.
+
+**KaneAI isn't just a tool it's how modern teams test smarter and ship faster.**
+
+## Getting Started
+If you are new to KaneAI, you can learn more about how to use KaneAI by following guides:
+
+<CardGroup cols={3}>
+
+### Desktop Browser Testing
+
+    Author your first Browser test on Desktop device.
+
+### Mobile Browser Testing
+
+    Author your first Browser test on Mobile device.
+
+### App Testing
+
+    Author your first Mobile App test.
+
+## How to Instruct KaneAI
+Learn what is the best way to tell KaneAI what it needs to do:
+
+<CardGroup cols={2}>
+
+### Commands Guide
+
+    KaneAI works best with specific types of commands. Learn which commands are supported and how to use them effectively.
+
+### Assertions
+
+    Assertions make your test validations more seamless and effective, learn how to use assertions with KaneAI.
+
+---
+
+## Why KaneAI?
+
+KaneAI transforms the way teams approach test automation by bridging the gap between natural language requirements and executable test code. Built for modern development workflows, KaneAI empowers teams to plan, author, and evolve comprehensive test suites without the traditional barriers of complex scripting or framework expertise.
+
+### Current Testing Challenges
+Traditional test automation often creates bottlenecks in development cycles. Teams face several persistent challenges:
+
+- **Technical Barriers:** Writing and maintaining test scripts requires specialized programming knowledge, limiting who can contribute to test creation.
+- **Framework Complexity:** Managing multiple testing frameworks, languages, and integrations creates overhead and maintenance burden.
+- **Scalability Issues:** As applications grow, test suites become increasingly difficult to organize, update, and execute consistently.
+- **Security Concerns:** Handling authentication credentials and sensitive test data safely across different environments.
+- **Integration Friction:** Connecting testing workflows with CI/CD pipelines often requires significant configuration and ongoing maintenance.
+
+### The KaneAI Solution
+KaneAI addresses these challenges through an intelligent, unified platform that democratizes end-to-end test automation while maintaining enterprise-grade capabilities.
+
+- **Intelligent Input Processing:** KaneAI offers dual flexibility in test authoring by intelligently generating structured test cases by transforming various input formats such as text, JIRA tickets, PDFs, images, audio, videos, and spreadsheets, or manually author tests using conversational language for precise control.
+
+Whether you need rapid test generation from existing documentation or prefer hands-on test crafting, KaneAI's advanced processing capabilities streamline both approaches.
+
+- **Unified Test Management:** Consolidate your entire testing ecosystem within a single platform. KaneAI provides centralized control over test cases, execution plans, and results analysis, eliminating the fragmentation common in traditional testing tools. Teams benefit from:
+
+  - Complete visibility into test coverage and execution status
+  - Streamlined collaboration between development, QA, and business teams
+  - Simplified reporting and metrics tracking across all test activities
+
+- **Multi-Language & Framework Support:** KaneAI supports all prominent frameworks and languages, offering the flexibility to export test code in the language and framework that you and your team prefers.
+
+- **Comprehensive API Testing:** Create robust API test suites with intelligent validation and seamless integration capabilities. KaneAI understands API contracts and automatically generates meaningful assertions, reducing the manual effort typically required for thorough API testing coverage.
+
+- **Secret Management:** Securely manage authentication credentials and sensitive test data using HashiCorp Vault integration with user-level and org-level scoping.
+
+- **CI/CD Integration:** Connect seamlessly with your existing continuous integration and deployment pipelines. KaneAI's integration capabilities ensure automated test execution becomes a natural part of your development workflow, supporting consistent quality gates across multiple environments and deployment stages.
+
+---
+
+## Use Cases
+
+### Application Suites
+
+KaneAI accelerates testing and validation across complex application suites by auto-generating test cases, simulating user journeys, detecting integration failures, and continuously validating performance and reliability across modules and releases.
+
+### Corporate Legal Management
+
+KaneAI automates validation of legal workflows by testing contract lifecycle systems, clause extraction accuracy, compliance workflows, and document management reliability to help reduce legal risk and operational errors.
+
+### Customer Service, Support & CRM/CX
+
+KaneAI improves quality of CRM and CX platforms by autonomously testing customer journeys, chatbot accuracy, ticket workflows, integrations, and performance under high-volume scenarios to ensure seamless omnichannel experiences.
+
+### Digital Commerce
+
+KaneAI validates end-to-end eCommerce flows including browsing, search, cart, payments, offers, and order tracking by generating AI-driven test scenarios that detect checkout failures, latency issues, and conversion blockers.
+
+### Finance
+
+KaneAI strengthens financial systems by testing transaction integrity, reconciliation workflows, regulatory compliance, security vulnerabilities, and system resilience through AI-generated tests and real-world transaction simulations.
+
+### Human Resources / Recruiting
+
+KaneAI ensures HR and recruiting platforms perform reliably by testing applicant workflows, onboarding journeys, payroll accuracy, integrations with background checks, and system scalability during high hiring demand.
+
+### IT Operations / Service Desk
+
+KaneAI enhances ITSM and service desk platforms by validating incident, change, and asset workflows, chatbot accuracy, monitoring integrations, and system performance to improve uptime and operational efficiency.
+
+### Marketing
+
+KaneAI validates marketing automation platforms by testing campaign workflows, personalization engines, data integrations, email/SMS delivery, segmentation accuracy, and analytics reliability to maximize campaign performance.
+
+### Sales & Lead Management
+
+KaneAI ensures sales platforms function flawlessly by testing lead capture, routing, scoring, CRM synchronization, forecasting accuracy, and pipeline health across channels and integrations.
+
+### Security & Fraud Detection
+
+KaneAI proactively tests security and fraud systems by simulating attack vectors, anomaly scenarios, false-positive/false-negative conditions, and performance under threat load to strengthen detection accuracy and resilience.
+
+### Sourcing & Procurement
+
+KaneAI validates procurement workflows by testing vendor onboarding, purchase approval flows, contract compliance, invoice matching, and ERP integrations to reduce errors and cycle times.
+
+### Supply Chain
+
+KaneAI tests supply chain platforms by simulating demand spikes, inventory fluctuations, logistics delays, supplier failures, and integration accuracy to ensure system resilience and real-time visibility.
+
+### Workplace & Digital Workplace
+
+KaneAI strengthens digital workplace platforms by testing collaboration tools, access controls, identity flows, remote work scenarios, and performance across devices to ensure secure and seamless employee experiences.
+
+---
+
+## KaneAI Free Trial is here!
+
+---
+
+Every great product begins with a vision, but that vision can only become reality when it works flawlessly for real users. Whether you're a solo developer launching your first app, a startup team racing to validate your breakthrough idea, or a growing company looking to scale without breaking things, you face the same fundamental challenge: How do you ensure quality without slowing down innovation?
+
+Traditional testing approaches often force teams to choose between speed and reliability. Complex tools require months to master. Sophisticated frameworks demand specialized expertise. Enterprise solutions come with enterprise price tags that put them out of reach for teams just getting started.
+
+With KaneAI's free trial access, every team can access GenAI-Native testing capabilities and ship flawless products. 
+
+[**Start testing with KaneAI today →**](https://www.lambdatest.com/kane-ai)
+
+## Here's What it Has to Offer
+
+With KaneAI free trial, you get access to: 
+
+- **2 AI Agent Sessions:** Any two users can automate in parallel
+- **2 Test Manager Seats:** Collaborate, review, and oversee test projects
+- **30-Day Free Trial Access:** Upgrade anytime to unlock more power
+
+| Feature | Free Trial Access | 
+|----------|----------|
+| AI Test Case Generation | Based on credit availability |
+| Author/Edit Sessions | 10 sessions max |
+| Max Instructions per Session | 40 instructions max |
+| Session Time | 10 minutes per session |
+| Parallel Executions | Up to 2 |
+| HyperExecute| 300 minutes per Essential license |
+| Browser Tabs/Windows | Single-session only (no multi-tab or multi-device use) |
+|Frameworks | Selenium-Python (Web), Appium-Python (App) |
+| Mobile | Device access restricted (only RD freemium devices available) |
+| Idle Time | 2 min timeout per session |
+| **KaneAI Browser** |  |
+| Tunneling | Available |
+| Geolocation | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| Network throttling | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| Smart variables | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| **KaneAI Actions** |  |
+| JavaScript | Available |
+| API Call | Available |
+| Database Query | Available |
+| Module (multi-step) | Available |
+| Parameter | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| Secret | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| TOTP Auth Key | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| File Upload | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| **KaneAI App** |  |
+| Android app testing | Available |
+| iOS app testing | Available |
+| Number apk/ipa upload | Upto 5 |
+| Device restriction | Available |
+| Geolocation testing | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+| Network throttling | [Upgrade Now](https://billing.lambdatest.com/billing/plans) |
+
+[**Start testing with KaneAI today →**](https://www.lambdatest.com/kane-ai)
+
+---
+
+## Author Your First Test
+
+---
+
+In this guide, we'll walk you through how you can author your first test using KaneAI across Desktop Browser, Mobile Browser, and Mobile App platforms.
+
+### Desktop Browser
+
+## Steps to Author Your Desktop Browser Test
+
+**Step 1:** From the KaneAI dashboard, click on **Author Browser Test**.
+
+**Step 2:** A modal would appear from the side. Select **Desktop** from the sidebar.
+
+**Step 3:** You can also do additional customization with some advanced features such as:
+
+- **Chrome Options:** Command-line switches that alter the default behavior of the Chrome browser.
+- **Custom Headers:**  Keep crucial information about the request or response, such as the method, URL, and body content.
+
+Once done, click **Author Test.**
+
+**Step 4:** Now tell KaneAI what you want to author using natural language without the need for coding or scripting knowledge required. KaneAI translates your instructions into executable test steps automatically.
+
+**Step 5:** You can also leverage the **Manual Interaction Mode** to perform any particular step or action directly in the instance window and KaneAI would record it and create an automation step for the same.
+
+As you add each instruction, KaneAI queues them in real-time without waiting for completion. This allows you to build comprehensive test flows quickly and efficiently. Once you've outlined all your test steps, click Finish Test to finalize your automated test case.
+
+**Step 6:** Now, select your **Project** and the folder where you want to save your test cases. The **Test Name** and **Description** will be generated automatically, but you can also edit them. Select your test's **Type** and **Status**, as well as the necessary tags that will allow you to search for it later.
+
+**Step 7:** To execute your test, click on the **Execute test case** button and you will be redirected to the HyperExecute dashboard where your tests will be executed.
+
+### Mobile Browser
+
+## Steps to Author Your Mobile Browser Test
+
+**Step 1:** From the KaneAI dashboard, click on **Author Browser Test**.
+
+**Step 2:** A modal would appear from the side. Select **Mobile** from the sidebar.
+
+**Step 3:** Now, choose your preferred OS (Android or iOS), browser, device and the OS version.
+
+**Step 4:** You can also toggle on advanced settings such as network throttling or auto-login through Google from the Advanced Settings option.
+
+**Step 5:** Once done, click on **Author Test**.
+
+**Step 6:** Now tell KaneAI what you want to author using natural language without the need for coding or scripting knowledge required. KaneAI translates your instructions into executable test steps automatically.
+
+As you add each instruction, KaneAI queues them in real-time without waiting for completion. This allows you to build comprehensive test flows quickly and efficiently. Once you've outlined all your test steps, click Finish Test to finalize your automated test case.
+
+**Step 7:** Now, select your **Project** and the folder where you want to save your test cases. The **Test Name** and **Description** will be generated automatically, but you can also edit them. Select your test's **Type** and **Status**, as well as the necessary tags that will allow you to search for it later.
+
+**Step 8:** To execute your test, click on the **Execute test case** button and you will be redirected to the HyperExecute dashboard where your tests will be executed.
+
+### Feature Support Matrix
+
+| Feature / Action                                                      | Support Status         | Notes                                                                                   |
+|-----------------------------------------------------------------------|-----------------------|-----------------------------------------------------------------------------------------|
+| Element Scroll                                                        | Supported             |                                                                                         |
+| Key Events (e.g. Enter, Space, Tab)                                   | Not Supported         |                                                                                         |
+| Clear Input Fields                                                    | Supported             |                                                                                         |
+| App Instructions (e.g. background, hide keyboard, show notifications) | Not Supported         |                                                                                         |
+| Textual & Visual Queries                                              | Supported             | Includes driver-based queries.                                                          |
+| Sites with Permission Popups (notifications, cookies, location)       | Supported (Android only) | Popups are auto-accepted on Android. iOS not supported currently.                    |
+| Cookies & Local Storage                                               | Supported             |                                                                                         |
+| Network Assertions                                                    | Not Supported         | Not yet available for mobile web; only supported on web.                                |
+| Negative Scenarios from App UX (e.g. switch app, go to home, go back) | Not Supported         | These are app-specific and not currently available in browser testing mode.             |
+
+### Mobile App
+
+## Steps to Author Your Mobile App Test
+
+**Step 1:** From the KaneAI dashboard, click on **Author App Test**.
+
+**Step 2:** A modal would appear from the side. Upload the app you want to test.
+
+**Step 3:** Choose your preferred device and the OS version.
+
+**Step 4:** You can also select advanced configurations from the Advanced Settings option.
+
+**Step 5:** Once done, click on **Start Testing** to get started.
+
+**Step 6:** Now tell KaneAI what you want to author using natural language without the need for coding or scripting knowledge required. KaneAI translates your instructions into executable test steps automatically.
+
+**Step 7:** You can also leverage the **Manual Interaction Mode** to perform any particular step or action directly in the instance window and KaneAI would record it and create an automation step for the same.
+
+As you add each instruction, KaneAI queues them in real-time without waiting for completion. This allows you to build comprehensive test flows quickly and efficiently. Once you've outlined all your test steps, click Finish Test to finalize your automated test case.
+
+**Step 8:** Now, select your **Project** and the folder where you want to save your test cases. The **Test Name** and **Description** will be generated automatically, but you can also edit them. Select your test's **Type** and **Status**, as well as the necessary tags that will allow you to search for it later.
+
+**Step 9:** To execute your test, click on the **Execute test case** button and you will be redirected to the HyperExecute dashboard where your tests will be executed.
+
+> **Note:** 
+_Have any feedback or request? Reach out to us via support@testmuai.com and we would be happy to hear from you._
+
