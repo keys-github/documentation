@@ -219,6 +219,7 @@ To cancel:
 
 ## Next Steps
 
+- [Error Codes](/support/docs/kane-cli-error-codes/): Complete reference of `result_code` values and recommended actions
 - [Parallel Execution](/support/docs/kane-cli-parallel-execution/): Run multiple tests concurrently
 - [Skills](/support/docs/kane-cli-skills/): Install the Kane CLI skill for Claude, Codex, or Gemini
 - [CLI Reference](/support/docs/kane-cli-cli-reference/): Full flag and command reference
