@@ -5272,6 +5272,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "Error Codes",
+            id: "kane-cli-error-codes",
+          },
+          {
+            type: "doc",
             label: "Troubleshooting",
             id: "kane-cli-troubleshooting",
           },
