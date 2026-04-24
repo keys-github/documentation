@@ -1,0 +1,640 @@
+# Integrate with Your Workflow
+
+> CI/CD automation, pull request creation, GitHub App integration, and Jira integration
+
+---
+## Automating Test Runs Execution with CI/CD on KaneAI
+
+---
+
+This guide provides a detailed walkthrough for automating the execution of test runs using CI/CD tools such as GitHub Actions or Jenkins on the KaneAI platform. By following these steps, you can effortlessly integrate test run executions with your pipelines.
+
+## Prerequisites
+- Access to Test Manager.
+- A project with KaneAI-generated test cases.
+- Credentials for TestMu AI platform.
+
+## Step-by-Step Guide
+### Step 1: Navigate to the Test Manager
+- Log in to the KaneAI platform and go to the Test Manager page.
+- Access the project where the test run is located.
+
+### Step 2: Locate the 'Test Runs' Section & Copy Test run ID
+Inside your selected project, navigate to the Test Runs section. Select the desired test run for integration or direct triggering from your CI/CD pipeline.
+
+Open the test run to view its URL. Copy the Test Run ID from the URL. This ID will be used in the API call for integration.
+
+> **Tip:** 
+**A list of test instances with various configurations will be displayed for each test run.**
+
+### Step 3: Configure the API Call
+Replace `<TestRunID>` with the actual ID from the URL and set additional optional parameters:
+
+- **concurrency**: Select the concurrency you want to set for this test run. Defaults to 1 if not specified.
+- **title**: Assign a unique job title; a random one will be generated if omitted.
+- **region**: Choose a region for web tests such as _eastus_ or _centralindia_ to select the region from where the VM is allocated.
+- **mobile_region**: Choose a region for mobile app tests such as _us_,_ap_ or _eu_ to select the region from where the device is allocated.
+- **tunnel**: Add the parameter and tunnel name if you want to run using TestMu AI Tunnel for private applications. See more details for tunnel [here](/support/docs/kane-ai-geolocation-tunnel-proxy/#tunnel-support).
+- **dedicated_proxy**: Add the region of the dedicated proxy such as _us_ or _eu_, #Optional, either tunnel or dedicated proxy or geolocation can be used in a single API call.
+- **geolocation**: Add the resgion of the geolocation that you want to run your tests from. You can find the list of support geolocations [here](/support/docs/selenium-geolocation-capabilities/).
+- **environment_id**: Define the environment on which you want to run the test run if required.
+- **retry_on_failure**: Define whether to retry if the [testRunnerCommand](/support/docs/deep-dive-into-hyperexecute-yaml/#testrunnercommand) execution fails. If "retry_on_failure" is false, the default max retries will still be 1. You can find more details [here]( https://www.lambdatest.com/support/docs/deep-dive-into-hyperexecute-yaml/#retryonfailure).
+- **max_retries**: Define the number of maximum retries you want (Max value 5). Default retries 1. You can find more details [here](/support/docs/deep-dive-into-hyperexecute-yaml/#maxretries). 
+- **timezone**: Define the timezone you want to choose for test run in UTC+01:00 format.
+- **app_profiling**: Add true if you want to track app profiling metrics in your test. You can find more details [here](/support/docs/appium-app-performance-analytics/).
+- **performance**: Add true if you want generate Lighthouse report for your web tests. Supported on limited OS browser combinations. Additionally, Setting this as true could potentially slow down the execution time. You can find more details [here](/support/docs/view-lighthouse-performance-metrics/).
+- **android_app_id**: Specify an Android app ID to override the existing app in the configuration of the Test instances.
+- **ios_app_id**: Specify an iOS app ID to override the existing app in the configuration of the Test instances.
+- **accessibility**: Set as true if you want to run accessibility test on all your tests in the test run. Setting this as true could potentially slow down the execution time.
+- **replaced_url :** To be used to dynamically replace any pattern URL in test cases with the replacement URL for entire test run.
+
+#### Example API Call:
+
+```yaml
+curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic <Base64Auth>' \
+--data '{
+    "test_run_id": "YOUR_TEST_RUN_ID", #enter test run id
+    "concurrency": 1, # Optional, default 1
+    "title": "UNIQUE_BUILD_NAME", #Optional
+    "console_log": false, #Optional for web tests, options - false, error, warn, info, true
+    "network_logs": false, #Optional to capture network calls during the test
+    "network_full_har": false, #Optional, Only for web, to capture complete network requests & response during the test
+    "region": "YOUR_DESIRED_REGION", #Optional for web tests, options - eastus, centralindia
+    "mobile_region": "YOUR_DESIRED_REGION", #Optional for mobile tests, options - us,eu,ap
+    "tunnel": "tunnel-name", #Optional, either tunnel or dedicated proxy or geolocation can be used
+    "dedicated_proxy": "region", #Optional, either tunnel or dedicated proxy or geolocation can be used
+    "geolocation": "region", #Optional, either tunnel or dedicated proxy or geolocation can be used
+    "environment_id": 0, #Optional, default null, to define the environment for test run
+    "retry_on_failure": true, #Optional, default true, to define if retry is needed in case of failure
+    "max_retries": 1, #Optional, default 1, to define the number of retries needed if retry_on_failure is enabled
+    "timezone": {"region":"Indianapolis"}, #Optional, Only for web, to define the timezone using which the test runs should run
+    "app_profiling": false, #Optional for performance metrics for native mobile apps
+    "performance": false, #Optional for lighthouse report for web tests
+    "android_app_id": "lt://<YOUR_ANDROID_APP_ID>", #optional 
+    "ios_app_id": "lt://<YOUR_iOS_APP_ID>", #optional 
+    "accessibility": false, #Optional only for web tests
+    "network_throttle": {
+        "label": "No Throttling",
+        "value": "default",
+        "download_speed": 0,
+        "upload_speed": 0,
+        "latency": 0,
+        "honor_network": true
+    }, #Optional, only for mobile tests, to define if sessions needs to be enabled with network throttling enabled
+    "replaced_url": [
+      {
+          "pattern_url": "TEST_URL_1",
+          "replacement_url": "REPLACED_TEST_URL_1"
+      },
+      {
+          "pattern_url": "TEST_URL_2",
+          "replacement_url": "REPLACED_TEST_URL_2"
+      }
+    ] #Optional to be used to dynamically replace any pattern URL in test cases with the replacement URL
+}'
+```
+
+#### Sample API Response:
+
+The API response contains the job ID for both jobs created for desktop web tests as well as mobile tests on real devices. Here is a sample response for a test run which contains both app and web test cases:
+
+```yaml
+{
+    "job_id": "abcd1234-abcd-1234-abcd-1234abcd1234",
+    "app_job_id": "abcd1234-abcd-1234-abcd-1234abcd1234",
+    "test_run_id": "01LAMBDATEST2024KANEAIJ8NPGDP",
+    "job_link": "https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=<job_id>",
+    "mobile_job_link": "https://hyperexecute.lambdatest.com/hyperexecute/task?jobId=<app_job_id>"
+}
+```
+
+### Step 4: Authenticate and Trigger the Job
+- Provide your TestMu AI username and access key for Basic Authentication.
+- Submit the API call to trigger the job. The process will start within seconds.
+
+> **Warning:** 
+**Important :** Keep your credentials secure to maintain platform integrity.
+
+### Step 5: Monitor Test Executions
+- Follow the link provided in the API response to view the HyperExecute Job.
+- Monitor running executions in real time through the dashboard.
+
+## GithubActions sample
+Here is a sample that you can use on how to integrate the API with GithubActions in your Github repository:
+
+**Step 1: Create a GitHub Actions Workflow YAML File**
+In your Git repository, navigate to .github/workflows/ and create a file named sanity-test.yml.
+
+**Step 2: Sample for yml file**
+In below sample, we are executing a test run using test_run_id and then verifying the result for it using HyperExecute job status API. You can find more details on HyperExecute APIs [here](https://www.lambdatest.com/support/api-doc/?key=hyperexecute) and update the API in the .yml file based on your needs.
+
+```yml
+name: Run Sanity Tests on TestMu AI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sanity-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Sanity Test on TestMu AI
+        id: trigger-test
+        run: |
+          echo "Triggering sanity tests on TestMu AI"
+          response=$(curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
+            --header 'accept: application/json' \
+            --header 'Content-Type: application/json' \
+            --header 'Authorization: Basic <Base64Auth>' \
+            --data '{
+                "test_run_id" : "<test_run_id>",
+                "concurrency" : 1,
+            }')
+          echo "Response: $response"
+          job_id=$(echo $response | jq -r '.job_id')
+          echo "Job ID: $job_id"
+          echo "::set-output name=job_id::$job_id"
+      
+      - name: Check Test Status
+        run: |
+          echo "Checking test status"
+          job_id=${{ steps.trigger-test.outputs.job_id }}
+          sleep 240  # Wait before checking the status
+          response=$(curl --location "https://api.hyperexecute.cloud/v2.0/job/$job_id" \
+            --header "accept: application/json" \
+            --header "Authorization: Basic <Base64Auth>")
+            
+          echo "Response: $response"
+          status=$(echo $response | jq -r '.data.status')
+          echo "Test status: $status"
+          if [[ "$status" != "completed" ]]; then
+            echo "Tests failed. Exiting with error."
+            exit 1
+          fi
+          echo "Sanity tests passed successfully."
+```
+
+**Step 3: Define Workflow Triggers**
+Set the workflow to trigger on push and pull_request events (you can modify the trigger based on your needs) under "on" section of the yaml above.
+
+## Video Explanation
+
+> **Tip:** 
+**The video consists of old configuration with Test Plans and Builds instead of Test Runs. Please keep this in mind while going through the video. The video will be updated soon.**
+
+---
+## Create Pull Requests from KaneAI Test Cases
+
+KaneAI lets you export generated test code directly to your GitHub or GitLab repository as a pull request (PR) or merge request (MR). Instead of downloading ZIP files and manually copying code, you can raise PRs from the Test Manager in a few clicks — or automatically whenever code is generated.
+
+This guide covers how to integrate your Git provider, configure PR settings, create pull requests from test cases, and track their status.
+
+> **Note:** 
+**Beta Feature:** This feature is currently in **beta** and is not generally available. If you would like access, please reach out to [support@lambdatest.com](mailto:support@lambdatest.com).
+
+## Prerequisites
+
+- A TestMu AI account with access to KaneAI and Test Manager.
+- A GitHub or GitLab account with at least one repository.
+- At least one test case with code generated.
+- Admin role to configure integration and PR settings. Users with appropriate permissions can create PRs for their own test cases.
+
+## Supported Platforms and Frameworks
+
+| Platform | Framework | File Exported |
+|----------|-----------|---------------|
+| Desktop Browser | Selenium (Python) | `test.py` |
+| Mobile Browser | Selenium (Python) | `test.py` |
+| Mobile App | Appium (Python) | `test.py` |
+
+## Step 1: Integrate Your Git Provider
+
+Before you can create pull requests, you need to connect your GitHub or GitLab account to TestMu AI.
+
+### Connect via Integrations Page
+
+Set up your Git provider from the TestMu AI Integrations page:
+
+- **GitHub**: Supports OAuth, Repo-based OAuth, Cloud/PAT, and Self-Hosted (GitHub Enterprise) connection methods. See the [GitHub Integration guide](/support/docs/github-integration/) for detailed setup instructions.
+- **GitLab**: Supports OAuth, Personal Access Token, and Self-Managed instance connection methods. See the [GitLab Integration guide](/support/docs/gitlab-integration/) for detailed setup instructions.
+
+### Select Platform from Test Manager
+
+When you initiate PR creation for the first time from the Test Manager, a **Select Platform to Create PR** dialog appears. This dialog shows the integration status for each provider.
+
+- If your provider is **not integrated**, click the **Integrate** button to be redirected to the Integrations page.
+
+![Select Platform dialog showing GitHub as Not Integrated](/assets/images/kane-ai/features/create-pr/pr-setup-no-integration.png)
+
+- If your provider is already **integrated**, the status shows in green. Click **Setup** to proceed to the repository configuration.
+
+![Select Platform dialog showing GitHub as Integrated](/assets/images/kane-ai/features/create-pr/pr-setup-integration-done.png)
+
+> **Tip:** 
+Bitbucket support is coming soon. Currently, GitHub and GitLab are the supported providers.
+
+## Step 2: Configure Repository Settings (First-Time Setup)
+
+After selecting your integrated provider, you are taken to the **Setup Pull Request** page. This is a one-time configuration that defines how test code is organized in your repository.
+
+![Setup Pull Request page with repository strategy and configuration options](/assets/images/kane-ai/features/create-pr/pr-setup-flow.png)
+
+### Repository Strategy
+
+Choose how repositories are mapped to your projects:
+
+| Strategy | Description |
+|----------|-------------|
+| **Single Repository** | One repository for the entire organization. All projects push test files to the same repo under project-specific folders. |
+| **Multiple Repositories** | Each project can be linked to its own repository. A default repository handles unmapped and new projects. |
+
+### Configuration Fields
+
+| Field | Description |
+|-------|-------------|
+| **Repository** | The target repository where PRs will be created. In Single mode, all projects use this repo. In Multiple mode, this is the default repo for unmapped projects. |
+| **Folder Structure** | The file path pattern inside the repository. Default: `{project_name}/{test_id}_{test_name}/{version_no}`. The test file (`test.py`) is placed at this path. |
+| **Base Branch (PR Target)** | The branch that PRs are opened against (e.g., `main`, `master`, `develop`). |
+| **Auto-PR** | When enabled, a PR is automatically created whenever new code is generated for a test case. Default: Disabled. |
+
+Click **Complete Setup** to save the configuration.
+
+> **Note:** 
+You can change all of these settings later from the [Test Manager Settings > Pull Requests](https://test-manager.lambdatest.com/settings/pull-requests#) tab.
+
+### Single Repository Mode
+
+In Single Repository mode, all test case PRs across all projects go to one repository. The settings page shows the selected repository, folder structure pattern, base branch, and Auto-PR toggle.
+
+![Pull Requests settings tab showing Single Repository configuration](/assets/images/kane-ai/features/create-pr/pr-setting-single.png)
+
+### Multiple Repositories Mode
+
+In Multiple Repositories mode, you can map individual projects to specific repositories. The configuration table shows columns for **Project Name**, **Repository Name**, **Folder Path**, **Base Branch**, and **Auto-PR**.
+
+![Pull Requests settings tab showing Multiple Repositories configuration with project mapping](/assets/images/kane-ai/features/create-pr/pr-settings-multi.png)
+
+- **Unmapped Projects** — Any project without a specific mapping uses the default repository configuration.
+- **+ Add Project** — Click to map a specific project to a different repository. Only KaneAI-enabled projects are available for mapping.
+
+Click **Update Setup** to save any changes.
+
+## Step 4: Create a Pull Request
+
+Once the integration and repository settings are configured, you can create PRs directly from the test case listing page or from the code section of an individual test case details page.
+
+### PR Status in the Test Case Listing
+
+Each test case in the listing displays its PR status inline:
+
+- **PR number with icon** (e.g., `#2`, `#3`, `#4`) — A PR exists for this test case. Hover over the PR indicator to see the status (Open, Merged, or Closed), creation details, and a **View on GitHub** link that opens the PR directly.
+- **No PR** — No pull request has been created for this test case yet.
+
+![Test case listing showing PR status indicators and PR details tooltip](/assets/images/kane-ai/features/create-pr/tc-listing-page-PR.png)
+
+### How to Create a PR
+
+1. Navigate to your project in **Test Manager**.
+2. Find the test case you want to create a PR for in the test case listing.
+3. Click the **three-dot menu** (actions) on the test case and select **Create PR**.
+4. If this is your first time, you will be prompted to select a platform and complete the setup (see Steps 1-2 above).
+5. Confirm the PR details and submit. The PR is created in your configured repository.
+
+### Diff-Based Updates
+
+KaneAI automatically tracks whether each code export version already has an associated PR. This detection happens in the background — the **Create PR** button only appears for a version when there is no existing PR for it.
+
+In the **Code** section of a test case, each code export version shows its PR status alongside the **Create PR** and **Execute** actions. If a PR already exists for that version, the **Create PR** button is disabled with a tooltip: "PR already exists for this version."
+
+![Code section showing Create PR button for new version and disabled state for version with existing PR](/assets/images/kane-ai/features/create-pr/pr-diff-code-export.png)
+
+- **New version without a PR** — The **Create PR** button is active. Click it to raise a PR with that version's code.
+- **Version with an existing PR** — The PR number is shown (e.g., `#2`) and the **Create PR** button is disabled since the code is already synced.
+
+### Auto-PR
+
+When Auto-PR is enabled in your settings, a pull request is automatically created whenever code generation completes for a test case. No manual action is required.
+
+- The PR uses your saved configuration (repository, folder structure, base branch).
+
+## Step 5: Filter by PR Status
+
+Use the **PR Status** filter to quickly find test cases based on their pull request state. Click the **More** filter option in the test case listing toolbar, then select **PR Status**.
+
+![PR Status filter dialog with options for Open, Merged, Closed, Diff Available, and No PR](/assets/images/kane-ai/features/create-pr/tc-listing-filter.png)
+
+Available filter options:
+
+| Filter | Description |
+|--------|-------------|
+| **Open** | Test cases with an open PR that has not been merged or closed. |
+| **Merged** | Test cases whose PR has been merged into the base branch. |
+| **Closed** | Test cases whose PR was closed without merging. |
+| **Diff Available** | Test cases where code has changed since the last PR was created. |
+| **No PR** | Test cases that do not have any associated pull request. |
+
+Select one or more filters and click **Apply** to filter the listing.
+
+## Additional Details
+
+### Folder Structure in the Repository
+
+Test files are organized in your repository following the configured folder structure pattern. The default pattern is:
+
+```
+your-repo/
+├── {project_name}/
+│   ├── {test_id}_{test_name}/
+│   │   └── {version_no}/
+│   │       └── test.py
+│   └── {test_id}_{test_name}/
+│       └── {version_no}/
+│           └── test.py
+```
+
+- **`{project_name}`** — Derived from the Test Manager project name.
+- **`{test_id}_{test_name}`** — The test case ID and name combined for uniqueness.
+- **`{version_no}`** — The code export version number.
+
+You can customize this pattern during setup or in the Pull Requests settings tab.
+
+### Permissions
+
+| Action | Admin | User |
+|--------|-------|------|
+| Configure Git integration | Yes | No |
+| Modify repository strategy and settings | Yes | No |
+| Toggle Auto-PR | Yes | No |
+| Create PR for own test cases | Yes | Yes |
+| Create PR for permitted folders | Yes | Yes |
+| View PR status | Yes | Yes |
+
+---
+
+## github-app-integration
+
+## 1. Overview
+
+### What is the TestMu AICloud GitHub App?
+
+The TestMu AICloud GitHub App leverages KaneAI, our advanced AI testing agent, to transform how your team approaches quality assurance. Instead of manually writing test cases for every code change, the app intelligently analyzes your pull requests, understands the business logic and technical implementation, and automatically generates relevant end-to-end test scenarios.
+
+### How It Works
+
+When a developer creates a pull request, simply add a comment to trigger the AI workflow. The app then:
+
+1. **Analyzes** the code changes, PR content and repository context (including your README)
+2. **Generates** intelligent test cases using KaneAI's AI engine
+3. **Authors** executable test scripts with proper assertions and validations
+4. **Executes** tests on TestMu AI's cloud infrastructure via HyperExecute
+5. **Reports** results with AI-powered Root Cause Analysis (RCA) for failures
+
+All of this happens automatically, with real-time progress updates posted directly to your pull request.
+
+### Key Benefits
+
+- **Accelerated Test Coverage**: Automatically generate comprehensive test cases for every PR, significantly reducing the time from code commit to production-ready testing
+- **Intelligent Test Design**: AI-powered analysis creates contextually relevant test scenarios that understand both code changes and business logic
+- **Seamless Developer Experience**: Native GitHub integration means developers never leave their workflow—all updates, results, and insights appear directly in PR comments
+- **Enterprise Scalability**: Leverages HyperExecute for parallel test execution across multiple browsers, devices, and platforms
+- **Continuous Quality Intelligence**: AI-driven Root Cause Analysis automatically diagnoses test failures, reducing debugging time and accelerating resolution
+- **Unified Test Management**: All generated tests sync with TestMu AI Test Manager, providing centralized visibility and control across your QA operations
+
+## 2. Prerequisites
+
+Before implementing the TestMu AICloud GitHub App in your development workflow, ensure your organization has the following:
+
+### Account Requirements
+
+- **TestMu AI Enterprise Account**: An active TestMu AI account with appropriate licensing. [Sign up now](https://accounts.lambdatest.com/register) if you don't have an account yet.
+
+- **KaneAI Access**: This integration requires KaneAI to be enabled on your TestMu AI account. New signups receive a 14-day free trial of KaneAI with full feature access. 
+
+### Repository Requirements
+
+- **GitHub Repository Access**: Administrative access to the GitHub repositories where you want to install the app
+{/*<!-- - **Repository README**: A well-documented README.md file in your repository (the AI uses this for contextual understanding of your application) -->*/}
+---
+
+## 3. Installation
+
+Follow these steps to install and authorize the TestMu AICloud GitHub App for your organization.
+
+### Step 1: Access GitHub Marketplace
+
+Navigate to the [TestMu AICloud GitHub App](https://github.com/apps/lambdatest-ai-cloud) on GitHub Marketplace and click **Install** to begin the installation process.
+
+### Step 2: Configure Repository Access
+
+During installation, you'll need to specify which repositories should have access to the app:
+
+- **Organization-wide Installation**: Select **All repositories** to enable the app across your entire GitHub organization
+- **Selective Installation**: Choose **Only select repositories** and specify individual repositories for more granular control
+
+After making your selection and clicking the **Install and Authorize** button, you will be redirected to TestMu AI's integration page where under the **My Integrations** section you will be able to see this application.
+
+<Check>
+**BEST PRACTICE**
+
+For pilot programs or initial rollouts, we recommend installing on a select subset of repositories first. Once your team is comfortable with the workflow, you can expand access organization-wide.
+</Check>
+
+### Step 3: Verify Successful Installation
+
+Confirm the installation was successful by:
+
+1. Navigating to your GitHub organization's **Settings** page
+2. In left side menu under **Integrations**, click **Applications**.
+3. Selecting **Installed GitHub Apps** from the left sidebar
+4. Verifying that **TestMu AICloud** appears in the list of installed applications
+
+You can also click on the app to review and modify repository access permissions at any time.
+
+## 3.1 Uninstalling the GitHub App
+
+If you need to remove the TestMu AICloud GitHub App from your organization:
+
+1. Navigate to the [TestMu AICloud GitHub App](https://github.com/apps/lambdatest-ai-cloud) on GitHub Marketplace
+2. Click on the **Configure** button to access the app settings
+3. Scroll down to the bottom of the page to find the **Danger Zone** section
+4. Click on the **Uninstall** button to remove the app from your organization
+5. Confirm the uninstallation when prompted
+
+<Check>
+**CAUTION**
+
+Uninstalling the GitHub App will stop all AI-powered test generation workflows on your pull requests. This action cannot be undone, and you'll need to reinstall the app to restore functionality.
+</Check>
+
+## 4. Repository Configuration
+
+After installing the GitHub App, each repository requires a configuration file to connect your GitHub workflow with your TestMu AI Test Manager environment. This configuration defines where tests should be stored, who should be assigned, and which environment to test against.
+
+### Configuration File Setup
+
+Create a `.lambdatest/config.yaml` file in the root directory of your repository with the following structure:
+
+```yaml
+project_id: "your_project_id"
+folder_id: "your_folder_id"
+assignee: your_user_id
+environment_id: environment_id
+test_url: "https://your-deployed-app-url.com/"
+```
+
+### Configuration Parameters
+
+| Parameter | Description | How to Obtain |
+|-----------|-------------|---------------|
+| `project_id` | The unique identifier for your TestMu AI Test Manager project | Navigate to your project in Test Manager and copy the ID from the URL |
+| `folder_id` | The folder where generated test cases will be organized | Create or select a folder in Test Manager and obtain its ID from the URL |
+| `assignee` | The TestMu AI user ID who will be assigned to test runs for executions | Can be referenced from APIs |
+| `environment_id` | The target testing environment (browser, OS, device configurations) | Create environments in Test Manager and reference their IDs |
+| `test_url` | The base URL of your application under test | Your staging or testing environment URL where tests will be executed |
+
+> **Warning:** 
+ **Note:** All configuration IDs can be retrieved programmatically from the [TestMu AI Test Manager API Documentation](/support/api-doc/?key=test-management).
+
+<Check>
+**Maximize AI Context**
+
+The `README.md` file in your repository is analyzed by KaneAI to understand your application's purpose, architecture, and business logic. A comprehensive README significantly improves the quality and relevance of generated test cases. Include:
+- Application overview and key features
+- User workflows and critical paths
+- Architecture and technology stack
+- Business rules and validation logic
+</Check>
+
+### Repository Structure
+
+Your final repository structure should look like this:
+
+```
+your-repo/
+├── .lambdatest/
+│   └── config.yaml          # TestMu AI configuration
+    └── agent.md             # Optional file for custom instructions to enhance responses
+├── src/                     # Your application source code
+├── README.md                # Detailed project documentation (used by AI)
+└── ... other project files
+```
+
+### Configuration Best Practices
+
+- **Environment Segregation**: Use separate `project_id` and `folder_id` values for different branches (e.g., staging vs. production) to maintain test organization
+- **Team Assignment**: Configure `assignee` to route test runs to the appropriate QA team member or use a shared team account for visibility
+- **Dynamic URLs**: For teams with ephemeral preview environments, consider parameterizing `test_url` or updating it per deployment
+- **Version Control**: Commit `.lambdatest/config.yaml` to your repository so all team members use consistent configuration
+
+## 5. Triggering Test Generation
+
+With the GitHub App installed and your repository configured, you're ready to start generating AI-powered tests for your pull requests.
+
+### Initiating the Workflow
+
+The test generation workflow is triggered through a simple comment on any pull request in your repository. Once your development work is ready for testing:
+
+1. **Create a Pull Request**: Push your feature branch and open a PR as you normally would
+2. **Add a Trigger Comment**: Post any of the following commands in the PR comments section:
+
+```bash
+@TestMu AI Validate this PR
+#OR
+@KaneAI Validate this PR
+```
+
+Any of these commands will initiate the complete AI-powered testing workflow, from analysis to execution and reporting.
+
+### What Happens Next
+
+After you post the trigger comment, KaneAI immediately begins working:
+
+1. **Code Analysis**: The AI examines all code changes in the pull request, including file modifications, additions, and deletions
+2. **Context Gathering**: Your repository's README.md, PR Title, Description, Comments and AGENT.md are analyzed to understand application context
+3. **Test Strategy**: Based on the changes and context, the AI determines which areas require testing and what scenarios to cover
+4. **Test Generation**: Intelligent test cases are created with appropriate assertions, validations, and edge case handling
+
+This entire process typically completes within minutes, depending on the complexity of your code changes.
+
+## 6. Automated Workflow and Real-Time Tracking
+
+The TestMu AICloud GitHub App provides complete transparency throughout the testing lifecycle. From the moment you trigger the workflow, you'll receive real-time updates directly in your pull request—keeping your entire team informed without requiring context switching or dashboard checking.
+
+### Unified Progress Tracking
+
+As soon as the workflow begins, KaneAI posts a comprehensive progress tracker comment to your PR. This dynamic comment serves as your single source of truth for the entire testing operation.
+
+**The Progress Tracker includes:**
+
+- **Current Workflow Status**: Real-time updates on which phase is currently executing
+- **Test Case Pipeline**: Progress through analysis, generation, authoring, and code generation phases
+- **Intelligent Test Case Suggestion**: AI suggests semantically similar test cases present in the project
+- **Test Run Management**: Execution status, including configuration, triggering, monitoring, and completion
+- **Reporting Status**: Final report generation and PR approval recommendation
+
+This tracker automatically updates as each stage completes, providing instant visibility into the workflow without requiring any manual refreshes.
+
+### Detailed Step Comments
+
+In addition to the main progress tracker, KaneAI creates dedicated, detailed comments for each major milestone. These comments provide actionable information and direct access to relevant resources.
+
+#### 1. AI-Generated Test Case Inventory
+
+Once KaneAI completes test generation, a detailed comment lists every test case that was created, including:
+
+- **Test Case Names**: Descriptive titles reflecting the functionality being tested
+- **Coverage Areas**: Which features, components, or user flows each test validates
+- **Authoring Status**: Real-time updates as each test case is converted into executable code
+- **Direct Links**: Quick access to view, edit, or customize tests in TestMu AI Test Manager
+
+This comment updates dynamically as test authoring progresses, so you can monitor the transition from conceptual test cases to executable automation.
+
+#### 2. Duplicate Detection and Test Optimization
+
+To prevent test redundancy and optimize your test suite, KaneAI performs semantic analysis against your existing test inventory:
+
+- **Similar Test Identification**: Finds existing tests that cover similar functionality or user scenarios
+- **Test Suite Optimization**: Helps maintain a lean, efficient test suite by preventing duplicate coverage
+
+This intelligent analysis ensures your test repository remains organized and maintainable as it grows over time.
+
+#### 3. Test Execution Dashboard
+
+When test execution begins on HyperExecute, a dedicated comment provides:
+
+- **Test Run Configuration**: Details about the execution environment, browser matrix, and parallel execution settings
+- **Real-Time Execution Status**: Live updates as tests run, including pass/fail counts and completion percentage
+- **HyperExecute Dashboard Link**: Direct access to detailed logs, screenshots, video recordings, and network traces
+
+#### 4. Comprehensive Test Report with AI-Powered Insights
+
+Upon completion, KaneAI generates a final report that goes far beyond simple pass/fail metrics:
+
+- **Executive Summary**: High-level test coverage and success rate for quick stakeholder review
+- **Detailed Test Results**: Pass/fail status for each individual test case with failure details
+- **AI Root Cause Analysis (RCA)**: For any failures, KaneAI automatically analyzes logs, screenshots, and stack traces to identify:
+  - The specific component or code path that failed
+  - Potential root causes (e.g., locator changes, timing issues, data validation errors)
+  - Recommended remediation steps
+- **PR Approval Recommendation**: Based on test results and failure severity, KaneAI suggests whether the PR should be approved, requires changes, or needs further investigation
+
+This intelligent reporting dramatically reduces the time from test completion to actionable insights, accelerating your deployment cycles.
+
+### Benefits: Unified Visibility
+
+The GitHub-native workflow provides critical advantages for enterprise teams:
+
+- **Developer-Centric Experience**: All testing information lives where developers already work—no need to check external dashboards or switch contexts
+- **Stakeholder Transparency**: Product managers, architects, and other stakeholders can follow testing progress by simply monitoring the PR
+- **Audit Trail and Compliance**: Every test run, result, and AI recommendation is permanently documented in your PR history
+- **Deep-Dive Capability**: When detailed analysis is needed, one-click access to TestMu AI Test Manager and HyperExecute provides comprehensive diagnostics
+- **Asynchronous Collaboration**: Team members in different time zones can review testing status and results without requiring synchronous communication
+

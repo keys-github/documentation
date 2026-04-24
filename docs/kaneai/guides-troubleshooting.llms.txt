@@ -1,0 +1,2560 @@
+# Guides & Troubleshooting
+
+> Command guide, element interactions, forms, assertions, waits, mobile patterns, authentication, API testing, JS workarounds, error handling
+
+---
+
+## KaneAI - Command Guide
+
+---
+
+KaneAI lets you write **natural language instructions** that it converts into executable automation steps. This guide covers  a wide range of commands that help you interact with web pages, control tabs, handle waits, perform assertions, and build dynamic, reliable tests without writing code, best practices and troubleshooting tips to help you get the most out of KaneAI.
+
+---
+
+## Navigation & Page Interaction
+
+Use the below commands to move around the page:
+
+| Action       | Example Commands                               |
+|--------------|------------------------------------------------|
+| Open URL     | `go to https://example.com`  ,  `open https://example.com` |
+| Click        | `click on login button`                        |
+| Type Text    | `enter "user@example.com"`  ,  `type "password123"` |
+| Clear Field  | `clear email input field`                      |
+| Select Date  | `select 21st september date`                   |
+| Hover        | `hover on shop by category option`             |
+| Search       | `search for "laptop"`                          |
+| Refresh      | `refresh the page`                             |
+| Navigation   | `go back`  ,   `navigate back`  ,  `go forward`  ,  `navigate forward` |
+
+---
+
+## Waits & Timeouts
+
+**Wait until element**
+
+Every element interaction automatically includes a **default maximum wait timeout of 10 seconds**, giving the element time to become interactable. This ensures that commands with locators such as click or type don't fail due to slow loading or page transitions.
+
+**Explicit Waits**
+
+You can **define timeouts explicitly** when you expect a slower response or need to wait longer than the default. Use simple, natural language commands like:
+
+- **wait for 5 seconds** - This will pause the script for exactly 5 seconds before proceeding to the next step.
+
+This is useful when you need precise control over wait times for specific actions or page loads.
+
+**Custom Timeouts**
+
+If you prefer, you can also set custom wait timeouts directly in the step menu:
+
+1. Click the step menu
+2. Select **Step Timeout**
+3. Enter your preferred timeout value (up to 300 seconds)
+
+Use custom wait timeout when dealing with slow page loads or dynamic content.
+
+**When to Use Explicit & Custom Waits**
+
+- **Custom waits** are ideal for cases where you need to adjust the wait time for certain elements to load (such as dynamic content or external API calls). [RECOMMENDED]
+- **Use explicit waits** when you know an action (like a button click or form submission) will take longer than usual.
+
+> **Note:** 
+**Custom waits apply only to element-based interactions.  **
+
+---
+
+## Tab Management
+
+KaneAI makes it easy to manage browser tabs during automated tests, whether you’re opening new tabs, switching between them, or closing them. Here's how to control your tabs with simple commands:
+
+**Opening a New Tab**
+
+To open a new tab in your browser, use the following command:
+
+- Open amazon.com in a new tab. This will open a new tab, allowing you to work in multiple tabs during your test.
+- **IMPORTANT:** Highlight that even when a new tab is open, we need to explicitly switch context of the application to that new tab by adding an instruction for “Switch to Amazon tab” or “Switch to 2nd tab”
+
+**Switching Between Tabs**
+
+Switching between tabs lets you interact with different pages or elements within the same session. You can switch by tab number or by the tab's name:
+
+- **Switch to 2nd tab:** This switches focus to the second tab (index starts at 1), allowing you to perform actions on that page.
+- **Switch to TestMu AI tab:** Switch to the tab named "TestMu AI", regardless of its position in the tab order.
+
+Use these commands when you have multiple pages open and need to shift focus between them.
+
+**Closing Tabs**
+
+You can close tabs either by position or by name when you're done with them:
+
+- **Close TestMu AI tab:** Closes the tab named "TestMu AI". This is useful when you’ve finished interacting with a specific page and want to clean up the session.
+- **Close 2nd tab:** Closes the second tab in the current session. This command is useful when you want to manage tab resources and focus on a single page.
+
+**Tips for Managing Tabs** 
+
+- When switching tabs, be sure the tab is open before using a **switch** command. If the tab doesn’t exist or has already been closed, the command will fail.
+- Tabs are indexed in the order they were opened. Keep track of the open tabs to avoid confusion, especially when switching by position.
+- Use **explicit waits** if the tab change involves loading content or dynamic changes.
+
+---
+
+## Scrolling Commands
+
+KaneAI allows you to easily control scrolling behavior on your web pages. Here’s how you can scroll to elements, pages, or specific sections:
+
+**Scroll Until Element is Visible:**  This command scrolls the page until a specific element, like a button, becomes visible in the viewport. It's perfect for revealing hidden elements that are off-screen initially. [Currently only supported on Web]
+
+**Scroll by a Set Amount**
+
+- **Scroll by 100px:** Scrolls the page down by 100 pixels, allowing for fine-grained control of the viewport position.
+- **Scroll by 20 percent:** Scrolls the page down by 20% of the current page height, which is useful for relative scrolling in dynamic pages.
+
+**Scroll to Specific Positions**
+
+- **Scroll to the bottom:** Scrolls to the very bottom of the page, making the last section or content visible.
+- **Scroll to the top:** Brings the page back to the top, useful for navigating or resetting the viewport.
+
+**Scroll Multiple Times**
+
+- **Scroll 3 times:** Repeats the scroll action three times, which can be helpful for interacting with infinite scroll pages or loading dynamic content.
+
+> **Tip:** 
+**Use `scroll until` for elements not yet visible in the viewport. Works for entire pages and scrollable subsections.  **
+
+---
+
+## Assertions
+
+Assertions are used to validate whether your expectations match the actual outcomes in the application. KaneAI supports several types of assertions to check various elements during test execution:
+
+| Category | Example |
+| :--- | :--- |
+| **Driver Assertions** | Validate **browser state** ( current URL, window dimensions).<ul><li>Example: Assert if current URL is `https://example.com`</li><li>Validate window height and width</li></ul> |
+| **Text Assertions** | Check for **presence/absence of text**.<ul><li>Example: Assert “Welcome Back!” is visible</li><li>Example: Assert error message “Invalid password” is displayed</li></ul> |
+| **Visual Assertions** | Confirm **image or logo visibility**.<ul><li>Example: Assert company logo appears in header</li><li>Example: Assert product image is visible</li></ul> |
+| **Relative Assertions** | Validate **element relationships**.<ul><li>Example: Assert login button is in same column as username</li><li>Example: Assert submit & cancel buttons are in same row</li></ul> |
+| **Mathematical Assertions** | Check **numeric calculations**.<ul><li>Example: Assert `3 + 4 = 7`</li></ul> |
+
+> **Note:** 
+**Since **July 20, 2025**, all assertions fail tests immediately by default.  **
+
+Older tests may still use *warn-and-continue* until edited.  
+More info: [Failure Conditions](/support/docs/kaneai-failure-conditions)  
+
+---
+
+## Unsupported Assertions (Coming Soon)
+
+Currently, the following assertion types are not available in KaneAI. These features are being developed and will be supported soon:
+
+| Category | Example | Description |
+| :--- | :--- | :--- |
+| **Element State** | Assert if submit button is disabled | Directly accessing and asserting an element's state (e.g., enabled/disabled) is not supported yet. | 
+| **Element Property** | Assert if font size is 16px | Direct assertions on element properties (like CSS styles) are not yet available. |
+| **Spatial** | Assert the 5th column of the table contains "Jordan.Mathews" | Requires detailed knowledge of the DOM structure to assert based on element positions and arrangement. 
+| **Action-based** | Assert tooltip appears after hover | Assertions based on actions (e.g., hover or click) are split into multiple steps and not fully supported as a single assertion yet. |
+| **Nested Assertions** | Assert login button enabled AND welcome message visible | Nested assertions involve multiple layers of validation within a single assertion. |
+
+---
+
+## Query Information
+
+KaneAI allows you to retrieve specific information from your web page during tests:
+
+- **query the current URL:** Retrieves the current URL of the active page
+- **query the time mentioned in the poster:** Extracts specific text or data, such as the time listed on a poster or other page element
+
+---
+
+## Conditional Actions
+
+Highlight that nested conditions are not yet supported. Additionally usage of modules within if else conditions is part of the roadmap.
+
+Use conditional logic to execute actions based on specific conditions on the page.
+
+**Conditional Click** 
+Example:
+ **if pop up is present in the viewport then click on it**: clicks on a pop-up element if it is visible within the current view.
+
+**Conditional Selection**
+Example:
+**if price < 200 then click add to cart else select second product**: selects an action based on the price condition. If the price is less than $200, it adds the item to the cart. Otherwise, it selects the second product.
+
+---
+
+## Do's and Don'ts
+
+Follow these examples for better clarity and performance during test writing:
+
+| **Do (Good Example)**                                             | **Don’t (Bad Example)**                                                                |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Assert text "Submit" on form footer is visible`                  | `Assert that the submit button works and the layout is correct`                        |
+| `Assert textbox contains the exact value 'heading1'`              | `Assert the textbox has heading` (vague, unclear what “heading” refers to)             |
+| `Assert logo is visible`                                          | `Assert 3 search results are shown`          |
+| `Assert search results appear after a wait step`             | `Wait for search results and then assert they are visible` (assertion contains action) |
+| `Assert the divider looks red`                                    | `Assert divider color is #ff5733` (too detail‑specific, fragile visual check)          |
+| `Assert no text in table overflows its cell`                      | `Assert the page looks well designed` (subjective, unclear)                            |
+
+**Key Takeaways:**
+
+- **Be specific and clear:** Avoid vague assertions like "heading" and ensure conditions are well-defined.
+- **Don’t mix actions with assertions:** Keep actions (like waiting for an element) separate from assertions.
+- **Avoid overly specific checks:** Instead of checking for exact visual details (like a color code), focus on functionality (e.g., "Assert divider is visible").
+- **Limit the number of assertions:** Avoid making too many assertions in a single step. Test one clear outcome per assertion.
+
+---
+
+## Best Practices
+
+Follow these best practices to write effective and reliable tests:
+
+- **Write clear, specific commands:** Ensure your instructions are precise and unambiguous to improve test reliability.
+- **Combine command types for richer tests:** Use a mix of commands like waits, clicks, and queries to create more complex and dynamic test flows.
+- **Use conditional logic for dynamic scenarios:** When a page changes dynamically (e.g., based on user interaction), use if-else logic to handle different conditions effectively.
+- **Apply waits thoughtfully for stability:** Use waits when necessary to ensure elements are loaded and ready for interaction, preventing timing issues.
+- **Always add assertions to validate outcomes:** After actions, always verify expected outcomes (e.g., element visibility, text presence) to ensure that the desired result has been achieved.
+
+---
+
+## Error Handling in Authoring
+
+---
+
+This page provides a comprehensive reference for common errors encountered when authoring automated test cases for both web and app platforms.  Each table below lists error categories, describes what they mean, gives examples of instructions that are not accepted, and suggests how to write correct instructions.  
+
+Use this guide to quickly identify, understand, and correct authoring issues to ensure your test cases run smoothly.
+
+## Error Categories for Web and App Authoring 
+
+### Unsupported Operation
+**Description:** This command is not supported while authoring test cases. It applies to actions that cannot be executed in the authoring environment. <br />
+**Common Authoring Error:** Draw signature or Take a screenshot, Hover over the settings icon <br />
+**Suggested Ways:** Use supported web actions e.g., Use tap or click instead of hover or Try performing using slash commands in the prompt box.
+
+---
+
+### Invalid Parameter
+**Description:** The value provided is not valid for this command.  The value provided is not valid for this command. This may happen if the input is missing, outside the supported range, or formatted incorrectly.<br />
+**Common Authoring Error:** Switch to tab with index 0 or Swipe top left.  <br />
+**Suggested Ways:** Use: scroll up, scroll down, scroll left, or scroll right. You can also use pixel value and percentage, scroll until.
+
+---
+
+### Nested Conditional
+**Description:** Conditional logic cannot be placed inside another conditional. To avoid errors, break down the flow into separate, standalone conditions instead of nesting them. <br />
+**Common Authoring Error:** If X is visible then if Y is not visible then click it.  
+**Suggested Ways:** Use separate, simple conditions. E.g., If X is visible then click it.
+
+---
+
+### Missing Context
+**Description:** The system cannot determine the required state or context. This usually occurs when the instruction relies on information that hasn’t been defined, provided, or established earlier in the test. <br />
+**Common Authoring Error:** After clicking login, verify 'redirect happens' or Verify the checkbox you ticked earlier is now unchecked. 
+**Suggested Ways:** Assert only on current, observable states.
+
+---
+
+### Ambiguous Relationship
+**Description:** The specified property or relationship is too vague for the system to validate. Use clear and precise terms to ensure accurate validation. <br /> 
+**Common Authoring Error:**  
+
+1. Check page loaded properly without errors  
+2. Assert if input field is editable  
+
+**Suggested Ways:** Use specific, testable properties (e.g., visible, enabled, disabled).
+
+---
+
+### Invalid Assertion
+**Description:** The assertion provided is either not supported or is too broad to be validated. Use only allowed assertion operators and ensure the condition is specific and measurable. <br /> 
+**Common Authoring Error:**  
+
+1. Assert all products are visible  
+2. Check all products have price  
+
+**Suggested Ways:** Assert each product individually or specify a count.
+
+---
+
+### Excessive Queries
+**Description:** The instruction attempts to check too many elements at once. Reduce the number of queries to stay within the supported limit. <br /> 
+**Common Authoring Error:** Assert login, signup, user, password, continue, email is visible  
+**Suggested Ways:** Split into multiple instructions.
+
+---
+
+### Instruction is Too Complex
+**Description:** The instruction contains too many actions or conditions to be processed at once. Simplify it by breaking it into smaller, more manageable steps. <br /> 
+**Common Authoring Error:** Assert user is logged in and profile is updated and dashboard is loaded  
+**Suggested Ways:** Break into smaller steps.
+
+---
+
+### Unspecified Element
+**Description:** The target element is not clearly defined. Provide a specific identifier to ensure the system can locate the correct element. <br /> 
+**Common Authoring Error:** Click it, Type in input field or Tap it.<br />
+**Suggested Ways:** Specify the exact element, e.g., click 'Submit'.
+
+---
+
+### Vague Instruction
+**Description:** The instruction is unclear or incomplete.  
+**Common Authoring Error:** Waiting, qwertyu, Perform login on this page.  
+**Suggested Ways:** Provide a specific action or check.
+
+---
+
+### Attribute Not Allowed
+**Description:** Attribute used is not supported (e.g., button has color #333 on mobile). <br />
+**Common Authoring Error:** Using blocked or unsupported attributes. <br />
+**Suggested Ways:** Remove it or use a supported attribute.
+
+---
+
+### Invalid Variable Syntax
+**Description:** The variable is written in an incorrect format, such as using extra or mismatched braces, spaces.  
+**Common Authoring Error:** Wrong variable like ``${{name}}`` or ``${ user }``.  
+**Suggested Ways:** Always use ``${var}`` or ``{{var}}`` format.
+
+---
+
+### Time Sensitive Assertion
+**Description:** The instruction attempts to validate temporary UI elements such as toasts, spinners, or banners. These elements are short-lived and may lead to unreliable results; use stable post-conditions instead. <br />
+**Common Authoring Error:** Example — assert toast says "Forecast job deleted". <br />
+**Suggested Ways:** Instead, check something stable (e.g., row is gone, job is absent).
+
+---
+
+### Captcha Blocked
+
+**Description:** If CAPTCHA is detected on screen, the test flow will be halted immediately, as interacting with CAPTCHA (e.g., solving puzzles, entering characters) is not supported. <br />
+**Common Authoring Error:** Selecting CAPTCHA checkbox or entering CAPTCHA text. <br />
+**Suggested Ways:** Generally, CAPTCHA is not present in application used for testing. If you encounter a CAPTCHA, try testing the application where CAPTCHA is disabled or not triggered.
+
+---
+
+### Loop Detected
+
+**Description:** The same operation is repeated 3 or more times without any state change, indicating a possible infinite loop.<br />
+**Common Authoring Error:** Repeating the same action (e.g., clicking) without checking state.<br />
+**Suggested Ways:** Review and update the flow to ensure that each iteration results in a state change to avoid loops.
+
+---
+
+### Persistent Loader
+**Description:** If a loading spinner or progress indicator stays visible for too long—specifically, after waiting multiple times or for more than 30 seconds—it usually means the system is stuck and not progressing as expected.<br />
+**Common Authoring Error:** Waiting forever for the loader to go away without handling timeouts.<br />
+**Suggested Ways:** Implement a timeout to stop waiting after a reasonable period. Use checks that confirm when the page or content has fully loaded instead of relying only on the loader disappearing.
+
+---
+
+### Dead Click
+
+**Description:** If you keep clicking the same element but nothing happens—no change on the screen, no popup, and no response—this means the click isn’t having any effect.<br />
+**Common Authoring Error:** Repeatedly clicking on an element that isn’t interactive or is disabled.<br />
+**Suggested Ways:** Make sure the element you want to click can actually be clicked and will trigger some action before clicking it. stop the flow if clicks don’t cause any response.
+
+---
+
+### Navigation Stuck
+
+**Description:** If you try to navigate multiple times but nothing changes on the screen, and the system can’t confirm that the navigation succeeded, it means the navigation is stuck.<br />
+**Common Authoring Error:** repeatedly navigating without checking if the page or state actually changed.<br />
+**Suggested Ways:** check the navigation to ensure it is successful and the page or state changes as expected.
+
+---
+
+### Lambda Error
+
+**Description:** This error indicates an internal issue within the system. it may be caused by problems such as creating input parameters, accessing secrets, or other internal issues. <br />
+**Common Authoring Error:** Errors related to parameter configuration, secret management, or system-level issues. <br />
+**Suggested Ways:** Please attempt to resolve the issue on your side. if the problem continues, contact support at support@testmuai.com for assistance.
+
+---
+
+### Reached Maximum Step Limit
+
+**Description:** During the generative step, if the number of steps reaches the maximum limit of 50, this error occurs.<br />
+**Common Authoring Error:** Flows that are too long or contain loops causing excessive steps.<br />
+**Suggested Ways:** Simplify the flow by breaking it into smaller parts and ensure there are no infinite loops or unnecessary steps.
+
+---
+
+> **Note:** 
+_Have any feedback or request? Reach out to us via support@testmuai.com and we would be happy to hear from you._
+
+---
+
+## Finding & Interacting with Elements
+
+KaneAI converts natural language instructions into automation actions by identifying the right element on the page. The more precisely you describe an element, the more reliably KaneAI will find and interact with it. This guide covers practical techniques for targeting elements in real-world applications.
+
+## How KaneAI Finds Elements
+
+KaneAI uses a combination of signals to locate elements:
+
+- **Text content** — visible labels, button text, placeholder text
+- **Element type** — button, link, input field, dropdown, checkbox
+- **Position on page** — top, bottom, left sidebar, inside a specific section
+- **Visual appearance** — color, size, icons
+- **Accessibility attributes** — aria-labels, roles, alt text
+
+The best instructions combine **what the element is** (type) with **how to identify it** (text or position).
+
+## Describing Elements Clearly
+
+### Use the Element Type
+
+Always mention what kind of element you are targeting. This eliminates ambiguity when multiple elements share the same text.
+
+| Instruction | Why it works |
+|---|---|
+| `click on the "Login" button` | Specifies both the text and element type |
+| `click on the "Pricing" link in the navigation bar` | Distinguishes the nav link from other "Pricing" text on the page |
+| `type "john@example.com" in the email input field` | Targets the input specifically, not a label |
+
+> **Tip:** 
+Think of it like giving directions to a person: "Click the blue **button** that says Submit" is clearer than "Click Submit."
+
+### Use Quotes for Exact Text Matching
+
+Wrap element text in quotes when you need an exact match. This prevents KaneAI from matching similar but incorrect elements.
+
+| Scenario | Instruction |
+|---|---|
+| Page has both "Sign In" and "Sign Up" buttons | `click on the "Sign In" button` |
+| Input field has placeholder "Enter your email" | `type "test@example.com" in the "Enter your email" field` |
+| Multiple links with similar names | `click on the "View Details" link` |
+
+### Use Positional Cues to Disambiguate
+
+When multiple elements look the same (e.g., a table with "Edit" buttons on every row, or a page with multiple "Submit" buttons), use position or context to narrow down the target.
+
+**Absolute positions:**
+```
+click on the "Submit" button at the bottom of the page
+click on the search icon in the top right corner
+```
+
+**Relative positions (near another element):**
+```
+click the "Edit" button next to "john@example.com"
+click the "Delete" icon beside the "Quarterly Report" row
+```
+
+**Ordering (nth element):**
+```
+click on the second "Add to Cart" button
+select the third item in the dropdown
+```
+
+**Inside a container:**
+```
+click "Submit" inside the payment form
+click "Save" inside the modal dialog
+```
+
+## Real-World Scenarios
+
+### Scenario: E-Commerce Product Listing
+
+Your page shows a grid of products, each with an "Add to Cart" button.
+
+> **Note:** 
+**Bad approach:** `click on Add to Cart` — KaneAI won't know which product you mean.
+
+> **Tip:** 
+**Good approaches:**
+```
+click the "Add to Cart" button below the "Running Shoes" product
+click the "Add to Cart" button for the first product in the list
+```
+
+### Scenario: Data Table with Repeated Actions
+
+A user management table has Edit, Delete, and View buttons for each row.
+
+> **Tip:** 
+```
+click the "Edit" button in the row containing "jane.doe@company.com"
+click "Delete" next to user "John Smith"
+click the "View" link in the third row of the users table
+```
+
+### Scenario: Navigation Menu with Nested Items
+
+A multi-level navigation has "Settings" under both "Account" and "Admin" sections.
+
+> **Tip:** 
+```
+hover on the "Account" menu, then click on "Settings"
+click on "Settings" inside the "Admin" dropdown
+```
+
+### Scenario: Modal/Dialog Interactions
+
+A page has a confirmation modal with "Cancel" and "Confirm" buttons, but the background page also has buttons.
+
+> **Tip:** 
+```
+click "Confirm" inside the confirmation dialog
+click the "Cancel" button in the modal
+```
+
+## Scrolling to Find Elements
+
+If an element is not visible in the current viewport, KaneAI can scroll to find it.
+
+| Action | Instruction |
+|---|---|
+| Scroll until element appears | `scroll until the "Load More" button is visible` |
+| Scroll by specific amount | `scroll down by 500 pixels` |
+| Scroll by percentage | `scroll down by 30 percent` |
+| Scroll to page boundaries | `scroll to the bottom of the page` |
+| Scroll multiple times (infinite scroll) | `scroll down 5 times` |
+| Scroll within a container | `scroll down inside the chat messages panel` |
+
+> **Note:** 
+`scroll until` works only for interactable elements. For non-interactable elements, use `scroll down X times` combined with a wait step.
+
+> **Note:** 
+`scroll until` is currently supported on **Web only**. For mobile app, use `scroll down X times` combined with a wait step.
+
+## Tab & Window Management
+
+Many real-world flows open new tabs (e.g., clicking "Terms & Conditions" or a payment gateway).
+
+**Key rule:** When a new tab opens, you must explicitly switch to it before interacting with elements on that tab.
+
+| Action | Instruction |
+|---|---|
+| Open URL in new tab | `open https://example.com in a new tab` |
+| Switch to tab by name | `switch to the "Payment Gateway" tab` |
+| Switch to tab by position | `switch to the 2nd tab` |
+| Close a tab | `close the "Terms" tab` |
+| Return to original tab | `switch to the 1st tab` |
+
+> **Note:** 
+Window management is currently not supported on KaneAI.
+
+### Scenario: Checkout Flow That Opens Payment in New Tab
+
+```
+click on "Proceed to Payment"
+switch to the 2nd tab
+type "4111111111111111" in the card number field
+click "Pay Now"
+switch to the 1st tab
+assert "Payment Successful" is visible
+```
+
+> **Warning:** 
+Always add a `switch to tab` instruction after any action that opens a new tab. Without it, subsequent instructions will execute on the wrong tab and fail.
+
+## Hover & Multi-Step Interactions
+
+Some UI elements only appear after hovering (e.g., dropdown menus, tooltips, action icons on table rows).
+
+```
+hover on the "Products" menu item
+click on "Electronics" in the dropdown
+```
+
+```
+hover on the user avatar in the top right corner
+click on "Sign Out"
+```
+
+### Scenario: Tooltip Verification
+
+```
+hover on the info icon next to "Annual Revenue"
+assert tooltip text "Total revenue for the fiscal year" is visible
+```
+
+## Drag and Drop
+
+KaneAI supports drag-and-drop interactions for sortable lists, kanban boards, and similar UI patterns.
+
+```
+drag "Task: Fix Bug" and drop it on the "In Progress" column
+drag the first item and drop it below the third item in the list
+```
+
+> **Note:** 
+Drag and Drop is only supported in Web Tests and not in Mobile app tests right now.
+
+## When Natural Language Isn't Enough
+
+For complex or highly dynamic pages where natural language targeting is unreliable, KaneAI supports **JS Snippets** as a workaround. Common cases include:
+
+- Elements with no visible text or distinguishing attributes
+- Canvas-based interactions
+- Custom web components with non-standard rendering
+
+Use the `/` command and select **"Add JS Snippet"** to execute JavaScript directly. For example, to click a deeply nested shadow DOM element:
+
+```javascript
+document.querySelector('my-component').shadowRoot.querySelector('.hidden-btn').click();
+```
+
+> **Info:** 
+See the [JS Snippets & Workarounds](/support/docs/kaneai-kb-js-snippets-and-workarounds) guide for a comprehensive list of scenarios where JS scripting is the recommended approach.
+
+## Quick Reference: Element Interaction Commands
+
+| Action | Example Instructions |
+|---|---|
+| **Click** | `click on the "Submit" button` |
+| **Type** | `type "hello world" in the search input` |
+| **Clear** | `clear the email input field` |
+| **Hover** | `hover on the "Products" menu` |
+| **Select (dropdown)** | `select "United States" from the country dropdown` |
+| **Select (date)** | `select 21st September date` |
+| **Check/Uncheck** | `check the "I agree" checkbox` |
+| **Drag & Drop** | `drag "Card A" and drop it on "Column B"` |
+
+## Do's and Don'ts
+
+| Do | Don't |
+|---|---|
+| `click the "Save" button inside the settings modal` | `click Save` (which Save button?) |
+| `type "admin" in the "Username" input field` | `type admin` (which field?) |
+| `click the "Edit" button next to "john@example.com"` | `click the Edit button` (which row?) |
+| `hover on "Account" menu, then click "Profile"` | `go to my profile` (too vague for nested nav) |
+| `scroll until the "Footer" section is visible` | `scroll to the bottom` (if you need a specific section, name it) |
+| `switch to the "Checkout" tab` | `continue on the new tab` (KaneAI needs explicit tab switch) |
+
+---
+
+## Forms, Inputs & Data Entry
+
+Forms are at the heart of most web applications — login pages, registration flows, checkout processes, search filters, and admin panels. This guide covers how to handle every type of form element in KaneAI with real-world testing scenarios.
+
+## Text Input Fields
+
+### Basic Text Entry
+
+Use `type`, `enter` or `input` followed by the value and the target field.
+
+```
+type "john.doe@example.com" in the email input field
+enter "SecurePass123!" in the password field
+type "123 Main Street" in the address field
+```
+
+### Using Variables & Parameters for Dynamic Data
+
+Instead of hardcoding values, use parameters for reusable and parameterized tests.
+
+```
+create a parameter using /(slash) command called username
+type ${username} in the username field
+```
+
+> **Tip:** 
+Parameters once used in authoring can be used to input different data values via dataset. See the [Parameters](/support/docs/kane-ai-using-parameters/) guide for more information.
+
+For test data that needs to be unique each run, use **smart variables**:
+
+```
+type {{smart.random_email}} in the email field
+type {{smart.random_phone}} in the phone number field
+```
+
+> **Tip:** 
+Smart variables like `{{smart.random_email}}` generate unique values every run, which is ideal for registration flows where duplicate emails would fail. See the [Smart Variables](/support/docs/kane-ai-smart-variables/) guide for the full list.
+
+## Dropdown & Select Menus
+
+### Standard HTML Select Dropdowns
+
+```
+select "United States" from the country dropdown
+select "California" from the state dropdown
+```
+
+### Custom Dropdowns (Non-Native)
+
+Many modern applications use custom-built dropdowns that aren't standard HTML `<select>` elements. For these, use a click-then-select pattern:
+
+```
+click on the "Country" dropdown
+click on "United States" in the dropdown list
+```
+
+If the dropdown requires typing to filter:
+
+```
+click on the "Country" dropdown
+type "United" in the search field inside the dropdown
+click on "United States" in the filtered results
+```
+
+### Multi-Select Dropdowns
+
+```
+click on the "Tags" dropdown
+click on "Urgent" in the dropdown list
+click on "Bug" in the dropdown list
+```
+
+### Scenario: Cascading Dropdowns (Country → State → City)
+
+A common pattern where the second dropdown options depend on the first.
+
+```
+select "India" from the country dropdown
+wait for 2 seconds
+select "Maharashtra" from the state dropdown
+wait for 2 seconds
+select "Mumbai" from the city dropdown
+```
+
+> **Warning:** 
+Always add a `wait` between cascading dropdowns. The child dropdown needs time to populate after the parent selection changes.
+
+## Date Pickers
+
+### Simple Date Pickers
+
+```
+select 15th March 2026 date
+select tomorrow's date
+```
+
+### Calendar Widget Date Pickers
+
+For custom calendar components, navigate month by month:
+
+```
+click on the date input field
+click the "Next Month" arrow 3 times
+click on day "22"
+```
+
+### Date Range Pickers
+
+```
+click on the "Start Date" field
+select 1st February 2026 date
+click on the "End Date" field
+select 28th February 2026 date
+```
+
+### Using Smart Variables for Dynamic Dates
+
+```
+type {{smart.current_date}} in the "Start Date" field
+type {{smart.end_of_month}} in the "End Date" field
+```
+
+> **Tip:** 
+**JS Workaround:** If the date picker uses a read-only input that doesn't accept typed values, use a JS snippet to set the value directly:
+
+```javascript
+document.querySelector('input[name="startDate"]').value = '2026-03-15';
+document.querySelector('input[name="startDate"]').dispatchEvent(new Event('change', { bubbles: true }));
+```
+
+Use `/` → **Add JS Snippet** to execute this.
+
+## Checkboxes & Radio Buttons
+
+### Checkboxes
+
+```
+check the "I agree to Terms and Conditions" checkbox
+uncheck the "Subscribe to newsletter" checkbox
+```
+
+### Radio Buttons
+
+```
+click on the "Express Shipping" radio button
+select the "Monthly" billing option
+```
+
+### Scenario: Preferences Form with Multiple Checkboxes
+
+```
+check the "Email Notifications" checkbox
+check the "SMS Alerts" checkbox
+uncheck the "Marketing Communications" checkbox
+click the "Save Preferences" button
+assert "Preferences saved successfully" is visible
+```
+
+## File Uploads
+
+KaneAI supports uploading files during test authoring. Use the `/` command to access the file upload option.
+
+### Steps to Upload a File
+
+1. Type `/` in the input field
+2. Select **Upload File**
+3. Choose the file from your system
+4. The file gets uploaded and can be used in the test step as a variable.
+
+```
+upload file {{FILE_sample_report_pd}} to the file input
+```
+
+> **Note:** 
+For detailed instructions, refer to [File Upload & Download Testing](/support/docs/kaneai-upload-and-download-files).
+
+## OTP & PIN Fields
+
+Applications that use separate input boxes for each digit (e.g., 4-digit or 6-digit OTP fields) require the `OTP` keyword.
+
+```
+enter OTP "1234"
+enter OTP "567890"
+```
+
+> **Warning:** 
+Do **not** try to type into each OTP box individually (e.g., `type "1" in first box, type "2" in second box`). Use the `OTP` keyword as a single instruction — KaneAI handles the per-box distribution automatically.
+
+### Scenario: Login with OTP Verification
+
+```
+type "john@example.com" in the email field
+click on "Send OTP" button
+wait for 5 seconds
+enter OTP "123456"
+click on "Verify" button
+assert "Welcome, John" is visible
+```
+
+For real TOTP-based MFA, see the [TOTP Authentication](/support/docs/kaneai-totp) guide.
+
+## Sliders & Range Inputs
+
+### Web Sliders
+
+For range sliders on web, describe the target value:
+
+```
+set the price slider to 500
+drag the volume slider to 75 percent
+```
+
+If the slider is not responsive to natural language, use a **JS snippet**:
+
+```javascript
+const slider = document.querySelector('input[type="range"]');
+slider.value = 75;
+slider.dispatchEvent(new Event('input', { bubbles: true }));
+```
+
+### Mobile Sliders & Pickers
+
+On mobile, specific element classes are supported:
+- **Android**: `android.widget.SeekBar`, `android.widget.NumberPicker`
+- **iOS**: `XCUIElementTypeSlider`, `XCUIElementTypePicker`, `XCUIElementTypePickerWheel`
+
+```
+enter "5" in the first column
+drag the slider to 80 percent
+```
+
+## Rich Text Editors
+
+For applications with WYSIWYG editors (TinyMCE, CKEditor, Quill, etc.), the editor content is typically inside an iframe or contenteditable div.
+
+### Using Natural Language
+
+```
+click inside the text editor
+type "This is a test paragraph for the blog post."
+```
+
+### If the Editor is Inside an iFrame
+
+KaneAI handles iFrames automatically in most cases. If not, use a JS snippet:
+
+```javascript
+document.querySelector('iframe.editor').contentDocument.body.innerHTML = '<p>Test content</p>';
+```
+
+## Search Fields with Autocomplete
+
+Many search fields show suggestions as you type. Handle these by typing, waiting for suggestions, then selecting.
+
+```
+type "New Yo" in the search field
+wait for 2 seconds
+click on "New York, NY" in the suggestions dropdown
+```
+
+### Scenario: Address Autocomplete (Google Places)
+
+```
+type "221B Baker" in the address field
+wait for 3 seconds
+click on "221B Baker Street, London" in the autocomplete suggestions
+assert the city field contains "London"
+```
+
+## Keyboard Interactions in Forms
+
+| Action | Instruction |
+|---|---|
+| Submit a form via Enter key | `type "search query" in the search field and press Enter` |
+| Tab between fields | `press Tab` |
+
+### Hiding the Keyboard (Mobile)
+
+- **Android**: `hide keyboard`
+- **iOS**: `press Enter` after typing (preferred), or `click on the "Done" button on the keyboard`
+
+```
+type "test@example.com" in the email field and press Enter
+```
+
+## Do's and Don'ts for Form Testing
+
+| Do | Don't |
+|---|---|
+| `type "admin" in the "Username" input field` | `type admin` (which field?) |
+| `wait for 2 seconds` between cascading dropdowns | Immediately select child dropdown after parent change |
+| `enter OTP "1234"` for OTP/PIN fields | `type "1" in the first OTP box` |
+| Use `{{smart.random_email}}` for unique registration data | Hardcode `test@test.com` which may already exist |
+| Use JS snippets for stubborn date pickers | Fight with natural language for read-only date inputs |
+
+---
+
+## Assertions & Validation
+
+Assertions verify that your application behaves correctly after performing actions. In KaneAI, you write assertions in natural language, and the AI evaluates them against the current page state. This guide covers every assertion type, shows how to write them reliably, and explains how to handle tricky validation scenarios.
+
+> **Note:** 
+All assertions have an option for failure behavior. By default, a failure in assertion will fail the test during execution. You can configure the default failure behavior for assertions via Organisation Settings. See more details in [Failure Conditions](/support/docs/kaneai-failure-conditions/#default-failure-condition-setting).
+
+## Assertion Categories
+
+### Text Assertions
+
+Check whether specific text content is present (or absent) on the page.
+
+```
+assert "Welcome Back, John!" is visible
+assert "Your order has been placed" is displayed
+assert error message "Invalid email address" is visible
+assert "Out of Stock" is not visible on the page
+```
+
+**With variables:**
+```
+assert {{username}} is visible on the page
+assert {{api_response.message}} contains "success"
+```
+
+### Visual Assertions
+
+Verify that images, logos, icons, or visual elements appear correctly.
+
+```
+assert the TestMu logo is visible in the header
+assert the product image is displayed
+assert the green checkmark icon appears next to "Verified"
+```
+
+> **Warning:** 
+Visual assertions rely on screenshots. Elements smaller than 12×12 pixels may not be detected reliably. Avoid asserting on exact hex colors — use descriptive colors instead.
+
+### URL & Browser State Assertions
+
+Validate the browser state such as the current URL or page title.
+
+```
+assert the current URL is "https://example.com/dashboard"
+assert the current URL contains "/dashboard"
+assert the page title contains "Dashboard"
+```
+
+### Relative/Layout Assertions
+
+Check the spatial relationship between elements.
+
+```
+assert the "Login" button is in the same row as the "Register" link
+assert the "Submit" button is below the form fields
+```
+
+### Mathematical Assertions
+
+Validate calculations and numeric values.
+
+```
+assert 3 + 4 = 7
+assert the cart total equals the sum of item prices visible
+```
+
+## Writing Good Assertions: Do's and Don'ts
+
+| Good Assertion | Bad Assertion | Why |
+|---|---|---|
+| `assert text "Submit" on the form footer is visible` | `assert that the submit button works and the layout is correct` | Combines multiple concerns; "works" is vague |
+| `assert the textbox contains the exact value "heading1"` | `assert the textbox has heading` | "heading" is ambiguous — which heading? |
+| `assert the TestMu logo is visible` | `assert 3 search results are shown` (as a visual assertion) | Count assertions need text-based evidence, not visual |
+| `assert "Error" is not visible on the page` | `assert there are no errors` | Too vague; specify what kind of error |
+
+## Key Rules for Reliable Assertions
+
+### Be Specific, Not Subjective
+
+The assertion must have a clear true/false answer given the page state.
+
+> **Note:** 
+**Bad:**
+```
+assert the page is user-friendly
+assert the layout is correct
+```
+
+> **Tip:** 
+**Good:**
+```
+assert the navigation menu has 5 items
+assert the "Search" input field is visible at the top of the page
+```
+
+### Avoid Asserting on Imperceivable Details
+
+KaneAI uses a screenshot + DOM combination. Very small visual details may not be detectable.
+
+**Risky assertions (may be flaky):**
+- Exact hex color codes (`#ff5733`)
+- Colors of thin lines or indicator dots
+- SVG shapes smaller than 12px
+- Font sizes or font families
+
+**Safer alternatives:**
+```
+assert the button appears red          (instead of assert color is #ff0000)
+assert the error border is visible   (instead of assert border is 2px solid red)
+```
+
+## Real-World Assertion Scenarios
+
+### Scenario: Login Flow Validation
+
+```
+type "admin@example.com" in the email field
+type "wrong_password" in the password field
+click on "Sign In" button
+assert "Invalid credentials" error message is visible
+
+clear the password field
+type "CorrectPass123" in the password field
+click on "Sign In" button
+assert the current URL contains "/dashboard"
+assert "Welcome, Admin" is visible
+```
+
+### Scenario: E-Commerce Cart Validation
+
+```
+click "Add to Cart" for the "Wireless Mouse" product
+click on the cart icon
+assert "Wireless Mouse" is visible in the cart
+assert the cart item count shows "1"
+assert the cart total is "$29.99"
+click "Remove" next to "Wireless Mouse"
+assert "Your cart is empty" is visible
+```
+
+### Scenario: Form Validation Messages
+
+```
+click the "Submit" button without filling any fields
+assert "First name is required" error is visible
+assert "Email is required" error is visible
+assert "Password is required" error is visible
+
+type "J" in the "First Name" field
+assert "First name must be at least 2 characters" is visible
+```
+
+### Scenario: Search Results Verification
+
+```
+type "laptop" in the search field and press Enter
+wait for 3 seconds
+assert search results are visible
+assert the first result contains the word "laptop"
+assert the results count is greater than 0
+```
+
+### Scenario: Data Table Content Validation
+
+```
+assert the "Users" table header is visible
+assert the table contains a row with "john@example.com"
+assert "Active" status is shown next to "john@example.com"
+```
+
+## Asserting with Variables
+
+Variables make assertions dynamic and reusable, especially when combined with API responses or stored values.
+
+### String Variable Assertions
+
+```
+set expectedTitle as "Dashboard"
+assert {{expectedTitle}} is visible on the page
+```
+
+### JSON Variable Assertions (from API)
+
+After making an API call via the `/` command, the response is stored as a JSON variable:
+
+```
+assert {{api_response.status}} is "200"
+assert {{api_response.data.email}} is "john@example.com"
+assert {{api_response.data.items}} contains "Laptop"
+```
+
+### Cross-Referencing UI and API Data
+
+Store a value from the UI, make an API call, and compare:
+
+```
+Fetch the order ID displayed on the confirmation page
+-- (stored as a variable such as {{orderID}}) --
+-- Make API call to verify order via /api command --
+assert {{api_response.orderId}} equals {{orderID}}
+```
+
+## Conditional Assertions
+
+KaneAI supports basic if-else logic for assertions that depend on page state.
+
+```
+if "Login" button is visible then click on it
+if price < 200 then click "Add to Cart" else select the second product
+```
+
+> **Note:** 
+Nested conditions are **not yet supported**. Keep conditional logic simple and flat. For complex branching, break the test into separate test cases.
+
+## Unsupported Assertions (Current Limitations)
+
+These assertion types are not yet available via natural language. Use **JS snippets** as workarounds where applicable.
+
+| Category | Example | Workaround |
+|---|---|---|
+| **Element State** (disabled/enabled) | `assert the submit button is disabled` | JS: `document.querySelector('button[type="submit"]').disabled` |
+| **CSS Properties** | `assert font size is 16px` | JS: `getComputedStyle(element).fontSize` |
+| **Specific DOM Position** | `assert the 5th table column contains "Jordan"` | JS: `document.querySelectorAll('td')[4].textContent` |
+| **Action-Based** | `assert tooltip appears after hover` | Split into: hover step → wait → assert tooltip text |
+| **Nested Conditions** | `assert A is true AND B is visible` | Split into two separate assertions |
+| **Changes Over Time** | `assert the spinner disappears after 5 seconds` | Use wait step, then assert spinner is not visible |
+
+### JS Snippet Workaround: Assert CSS Property
+
+```javascript
+const element = document.querySelector('.price-tag');
+const fontSize = getComputedStyle(element).fontSize;
+if (fontSize === '16px') {
+  return 'PASS: Font size is 16px';
+} else {
+  throw new Error('FAIL: Font size is ' + fontSize);
+}
+```
+
+> **Info:** 
+For the full list of JS execution options, see [JS Snippets](/support/docs/kane-ai-javascript-execution) guide.
+
+## Configuring Assertion Failure Behavior
+
+By default, assertions fail the test immediately (unless configured otherwise in Organisation Settings). You can configure this per step:
+
+| Mode | Behavior |
+|---|---|
+| **Fail Immediately** (default) | Test stops at the failed assertion |
+| **Fail and Continue** | Assertion failure is recorded, but subsequent steps continue executing |
+| **Warn and Continue** | Assertion failure is logged as a warning; test is not marked as failed |
+
+Configure via: Step menu → **Failure Condition** → Select behavior.
+
+This is useful when you want to run all assertions in a test and see a complete report of what passed and what failed, rather than stopping at the first failure.
+
+---
+
+## Dynamic Content, Waits & Page State
+
+Modern web applications are heavily asynchronous — data loads from APIs, pages render progressively, notifications pop up and disappear, and content appears based on user interaction. This guide teaches you how to handle these dynamic behaviors reliably in KaneAI tests.
+
+## Understanding Waits in KaneAI
+
+KaneAI provides three types of wait mechanisms:
+
+### 1. Default Auto-Wait (Built-In)
+
+Every element interaction command (click, type, assert, etc.) automatically waits up to **10 seconds** for the target element to become interactable. You don't need to add explicit waits for most simple interactions.
+
+**When auto-wait is sufficient:**
+- Clicking a button that's already on the page
+- Typing in a visible input field
+- Asserting text that's already rendered
+
+### 2. Explicit Waits
+
+Use explicit waits when you know an action will take longer than the default 10 seconds, or when you need to pause between steps.
+
+```
+wait for 5 seconds
+wait for 10 seconds
+```
+
+**When to use explicit waits:**
+- After form submission that triggers a page redirect
+- After clicking a button that triggers an API call
+- Between cascading dropdown selections
+- After scrolling on infinite-scroll pages
+- Before asserting on content loaded from an API
+
+### 3. Custom Step Timeout
+
+For individual steps that need more time, set a custom timeout via the step menu:
+
+1. Click the **step menu** (three dots)
+2. Select **Step Timeout**
+3. Enter your timeout value (up to 300 seconds)
+
+**When to use custom timeout:**
+- Waiting for file uploads to complete
+- Waiting for large reports to generate
+- Waiting for third-party payment gateways to respond
+
+> **Tip:** 
+**Recommendation:** Prefer **custom step timeout** over explicit waits when you're waiting for a specific element to appear. Custom timeouts are dynamic — they proceed as soon as the element is ready, while explicit waits always wait the full duration.
+
+## Real-World Dynamic Content Scenarios
+
+### Scenario: Loading Spinner After Form Submit
+
+Your app shows a spinner after clicking "Submit" and then displays a success message.
+
+```
+click on the "Submit" button
+wait for 5 seconds
+assert "Submission Successful" is visible
+assert the loading spinner is not visible
+```
+
+**Better approach using custom timeout:**
+1. Set the custom step timeout to 15 seconds for the assertion step
+2. Write: `assert "Submission Successful" is visible`
+3. KaneAI will wait up to 15 seconds for the message, proceeding immediately when it appears
+
+### Scenario: Toast Notification (Auto-Dismiss)
+
+Toast notifications appear briefly (typically 3-5 seconds) and then disappear. KaneAI does not currently support interacting with toast notifications via natural language commands. Use a JS snippet to capture them instead.
+```javascript
+// Wait briefly and capture the toast content
+return document.querySelector('.toast-message')?.textContent || 'NO TOAST FOUND';
+```
+
+> **Tip:** 
+Adjust the selector (`.toast-message`) to match your application's toast component class or ID.
+
+### Scenario: Modal/Dialog After Button Click
+
+```
+click on "Delete Account" button
+wait for 2 seconds
+assert the confirmation modal is visible
+assert "Are you sure you want to delete your account?" is visible in the modal
+click "Cancel" inside the modal
+assert the modal is not visible
+```
+
+### Scenario: Auto-Complete Search (Debounced Input)
+
+Search fields often wait 300-500ms after the user stops typing before making an API call.
+
+```
+type "react testing" in the search bar
+wait for 2 seconds
+assert search suggestions are visible
+click on the first suggestion
+assert the search results page has loaded
+```
+
+### Scenario: Page Redirect After Action
+
+After login, the app redirects to the dashboard.
+
+```
+type "admin@example.com" in the email field
+type "password123" in the password field
+click "Sign In"
+wait for 5 seconds
+assert the current URL contains "/dashboard"
+assert "Welcome, Admin" is visible
+```
+
+### Scenario: Lazy-Loaded Images
+
+Product pages often load images lazily as you scroll.
+
+```
+scroll down 3 times
+wait for 3 seconds
+assert the product image for "Winter Jacket" is visible
+```
+
+### Scenario: Tab Content That Loads on Click
+
+Tabs that load their content via AJAX when selected:
+
+```
+click on the "Reviews" tab
+wait for 3 seconds
+assert customer reviews are visible
+assert "5 out of 5 stars" is visible
+```
+
+### Scenario: Conditional UI Based on API Response
+
+A dashboard that shows different content based on the user's subscription:
+
+```
+go to https://app.example.com/dashboard
+wait for 5 seconds
+if "Upgrade to Pro" button is visible then click on it
+```
+
+## Handling Popups & Dialogs
+
+### Browser Alert Dialogs
+
+KaneAI handles native browser alerts (`alert()`, `confirm()`, `prompt()`) automatically in most cases.
+
+### Cookie Consent Banners
+
+```
+if "Accept Cookies" button is visible then click on it
+```
+
+### Permission Dialogs
+
+For notification or location permission popups, handle them before they appear using Chrome options or custom headers. See [Chrome Options](/support/docs/kaneai-chrome-options).
+
+### Dismissing Popups Without Close Buttons (Mobile)
+
+On mobile apps, use:
+```
+dismiss dialog
+```
+
+This works for popups that don't have visible close buttons.
+
+## Network-Dependent Content
+
+### Scenario: Slow API Response
+
+When your app fetches data from a slow API:
+
+```
+click on "Generate Report"
+wait for 15 seconds
+assert "Report ready for download" is visible
+```
+
+**Or with custom timeout:** Set the assertion step timeout to 30 seconds instead of using explicit wait.
+
+### Testing Under Poor Network Conditions
+
+Use KaneAI's [Network Throttling](/support/docs/kaneai-network-throttling) to simulate slow connections:
+
+1. Before starting the session, set network profile to **3G** or **Custom**
+2. Add longer waits to account for slower load times
+3. Validate that the app handles slow networks gracefully
+
+```
+-- With 3G throttling enabled --
+go to https://app.example.com
+wait for 10 seconds
+assert the page content has loaded
+assert no "Network Error" message is visible
+```
+
+## Patterns for Robust Test Flows
+
+### Pattern: Action → Wait → Assert
+
+The most reliable pattern for any action that triggers asynchronous behavior:
+
+```
+-- Action --
+click on "Submit" button
+
+-- Wait --
+wait for 3 seconds
+
+-- Assert --
+assert "Success" message is visible
+```
+
+### Pattern: Scroll → Wait → Interact
+
+For content below the fold:
+
+```
+scroll down until "Contact Us" section is visible
+wait for 2 seconds
+type "feedback@example.com" in the email field
+```
+
+### Pattern: Conditional Wait for Dynamic Content
+
+When you're unsure if a popup or overlay will appear:
+
+```
+if "Close" button is visible then click on "Close" button
+wait for 2 seconds
+click on "Continue" button
+```
+
+## Common Mistakes and How to Avoid Them
+
+| Mistake | What happens | Fix |
+|---|---|---|
+| No wait after page navigation | Assertion runs on old page, fails or passes incorrectly | Add `wait for 3-5 seconds` after navigation |
+| Asserting toast after long wait | Toast has already disappeared | Assert immediately after the triggering action via JS snippet |
+| Using explicit wait when custom timeout is better | Test always waits full duration even if element appears early | Use custom step timeout instead |
+| Asserting dynamic count without waiting for load | Count is 0 because data hasn't loaded yet | Wait for data to load, then assert count |
+| Not handling conditional popups | Test fails when an unexpected cookie banner or dialog appears | Use `if` conditional to dismiss popups |
+
+---
+
+## Mobile App Testing Patterns
+
+Mobile native app testing in KaneAI follows many of the same principles as web testing, but with platform-specific nuances for Android and iOS. This guide covers the patterns, workarounds, and best practices that will help you write reliable mobile app tests.
+
+## Getting Started with Mobile Tests
+
+1. Navigate to the [KaneAI home page](https://kaneai.lambdatest.com/objective)
+2. Choose **App Test** (Android or iOS)
+3. Select a real device from the device cloud
+4. Upload your app (APK for Android, IPA for iOS) or select a previously uploaded app
+5. Start authoring with natural language instructions
+
+## Keyboard Handling
+
+The keyboard is one of the biggest differences between web and mobile testing. On mobile, the on-screen keyboard persists after typing and can block elements below it.
+
+### Android
+
+The keyboard typically auto-dismisses on most interactions, but you can explicitly dismiss it:
+
+```
+hide keyboard
+```
+
+### iOS
+
+iOS keyboards are more persistent. The best approach is to use `press Enter` after typing, which both submits the current field and dismisses the keyboard:
+
+```
+type "john@example.com" in the email field and press Enter
+```
+
+Alternatively, if the keyboard has a "Done" or "Cancel" button:
+
+```
+click on "Done" button on the keyboard
+click on "Cancel" button on the keyboard
+```
+
+> **Warning:** 
+If you skip keyboard dismissal on iOS, the keyboard may cover the next element you need to interact with, causing the step to fail. Always dismiss the keyboard before moving to the next field.
+
+### Scenario: Login Form on iOS
+
+```
+type "admin@example.com" in the email field and press Enter
+type "password123" in the password field and press Enter
+click on the "Sign In" button
+wait for 5 seconds
+assert "Welcome" is visible
+```
+
+## OTP & PIN Fields
+
+Mobile apps frequently use individual digit boxes for OTP entry. Use the `OTP` keyword — KaneAI automatically distributes digits across the boxes.
+
+```
+enter OTP "123456"
+enter OTP "7890"
+```
+
+> **Warning:** 
+Do **not** type into each box individually. The `OTP` keyword handles multi-box distribution.
+
+### Scenario: SMS OTP Verification
+
+```
+type "+1-555-0123" in the phone number field and press Enter
+click on "Send Code"
+wait for 10 seconds
+enter OTP "654321"
+click on "Verify"
+assert "Phone verified" is visible
+```
+
+## Scrolling on Mobile
+
+Mobile scrolling works differently from web — there's no pixel-based scroll. Use count-based or directional scrolling.
+
+```
+scroll down 3 times
+scroll up 2 times
+scroll down 1 time
+```
+
+### The Scroll → Wait Pattern
+
+Always add a wait after scrolling on mobile. Content may need time to load, and the scroll animation needs to complete.
+
+```
+scroll down 2 times
+wait for 2 seconds
+assert "Contact Us" section is visible
+```
+
+### Scenario: Scrolling Through a Long Settings Page
+
+```
+scroll down 3 times
+wait for 2 seconds
+click on "Privacy Settings"
+scroll down 2 times
+wait for 2 seconds
+click on "Delete Account"
+assert confirmation dialog is visible
+```
+
+> **Note:** 
+`scroll until element is visible` is currently supported only on **Web**. On mobile, use `scroll down X times` combined with waits and assertions.
+
+## Pickers, Wheels & Sliders
+
+### Native Pickers
+
+Mobile apps use native picker wheels for dates, numbers, and selections. KaneAI supports the following element classes:
+
+**Android:**
+- `android.widget.NumberPicker`
+- `android.widget.SeekBar`
+
+**iOS:**
+- `XCUIElementTypePickerWheel`
+- `XCUIElementTypePicker`
+- `XCUIElementTypeDatePicker`
+- `XCUIElementTypeSlider`
+
+### Interacting with Picker Wheels
+
+```
+enter "5" in the first column
+enter "March" in the second column
+enter "2026" in the third column
+```
+
+### Slider Interactions
+
+```
+drag the slider to 80 percent
+set the brightness slider to 50
+```
+
+### Troubleshooting Pickers
+
+If a picker doesn't respond to natural language:
+
+1. Open LambdaTest **App Live** with the [UI Inspector](https://www.lambdatest.com/support/docs/ui-inspector/)
+2. Inspect the picker element to verify its class name
+3. Confirm the class is one of the supported types listed above
+4. If the class is a custom implementation, you may need to use **manual interaction** mode
+
+## Partially Clickable Text (Spannable Text)
+
+In mobile apps, text labels often contain partially clickable links — for example, "By signing up, you agree to our **Terms and Conditions** and **Privacy Policy**" where only "Terms and Conditions" is tappable.
+
+Use the `spannable text` keyword:
+
+```
+click on spannable text: "Terms and Conditions" in the bottom info section
+click on spannable text: "Privacy Policy" in the sign-up footer
+```
+
+## Dismissing Popups & Dialogs
+
+Mobile apps frequently show permission dialogs, promotional popups, or system alerts that don't have visible close buttons.
+
+### Generic Dialog Dismissal
+
+```
+dismiss dialog
+```
+
+### Permission Dialogs
+
+```
+if "Allow" button is visible then click on "Allow"
+if "Don't Allow" button is visible then click on "Don't Allow"
+```
+
+### App Rating Dialogs
+
+```
+if "Rate this app" dialog is visible then dismiss dialog
+```
+
+### Scenario: Handling Permission Prompts on App Launch
+
+```
+-- App launches and asks for location permission --
+wait for 3 seconds
+if "Allow While Using App" is visible then click on "Allow While Using App"
+
+-- App asks for notification permission --
+wait for 2 seconds
+if "Allow Notifications" is visible then click on "Allow Notifications"
+
+-- Now proceed with the test --
+assert the home screen is visible
+```
+
+## Typing & Special Keys
+
+### Deleting Characters
+
+```
+press Del
+press Del
+press Del
+```
+
+This deletes one character at a time. To clear an entire field, it's more efficient to:
+
+```
+clear the "Username" field
+type "new_username" in the "Username" field
+```
+
+### Pressing Enter/Return
+
+```
+press Enter
+```
+
+This can trigger form submission, keyboard dismissal, or moving to the next field depending on the app's implementation.
+
+## Using Explicit Element Identifiers
+
+On mobile, adding element type keywords improves accuracy because there may be multiple elements with similar text.
+
+```
+click on "Continue" button
+click on "Learn More" text
+click on "Settings" icon
+assert "Welcome" text is visible
+assert the profile button's background color is blue
+```
+
+| Keyword | Purpose |
+|---|---|
+| `button` | Targets tappable buttons |
+| `text` | Targets text labels/views |
+| `icon` | Targets image/icon elements |
+| `input field` | Targets text inputs |
+| `checkbox` | Targets checkable elements |
+| `switch` | Targets toggle switches |
+
+## Deep Links
+
+KaneAI supports deep links for navigating directly to specific screens in your app, bypassing the normal navigation flow using the slash command.
+
+> **Tip:** 
+Deep links are excellent for test setup — jump directly to the screen you want to test instead of navigating through the entire app flow. See [Deep Link Support](/support/docs/kane-ai-deeplink-support).
+
+## Mobile-Specific Testing Scenarios
+
+### Scenario: E-Commerce App — Browse and Purchase
+
+```
+-- Handle initial permissions --
+if "Allow Notifications" is visible then click on "Allow Notifications"
+wait for 2 seconds
+
+-- Search for product --
+click on the search icon
+type "wireless earbuds" in the search field and press Enter
+wait for 3 seconds
+
+-- Browse results --
+scroll down 2 times
+wait for 2 seconds
+click on the first "Wireless Earbuds" product
+
+-- Add to cart --
+scroll down 2 times
+wait for 2 seconds
+click on "Add to Cart" button
+assert "Added to cart" toast is visible
+
+-- Go to cart --
+click on the cart icon
+assert "Wireless Earbuds" is visible in the cart
+click on "Checkout" button
+```
+
+### Scenario: Banking App — Check Balance with Biometric
+
+```
+-- App launches with biometric authentication enabled from advanced settings --
+wait for 5 seconds
+-- (Biometrics pop-up visible via LambdaTest device settings) --
+click "pass" in modal
+assert the home screen is visible
+
+-- Navigate to accounts --
+click on "Accounts" in the bottom navigation
+wait for 3 seconds
+assert account balance is visible
+
+-- Check recent transactions --
+scroll down 2 times
+wait for 2 seconds
+assert "Recent Transactions" section is visible
+```
+
+### Scenario: Social Media App — Post with Image
+
+```
+click on the "New Post" button
+click on "Choose from Gallery"
+wait for 3 seconds
+click on the first image in the gallery
+click on "Next"
+wait for 2 seconds
+type "Testing with KaneAI! #automation" in the caption field and press Enter
+hide keyboard
+click on "Share" button
+wait for 5 seconds
+assert "Post shared successfully" is visible
+```
+
+## Network Conditions & Geolocation
+
+### Testing Under Different Network Conditions
+
+Set network throttling before or during the test session to simulate real-world conditions:
+
+- **Offline**: Test no-network behavior
+- **2G/3G**: Test on slow connections
+- **Custom**: Define specific bandwidth limits
+
+See [Network Throttling](/support/docs/kaneai-network-throttling) for configuration.
+
+### GPS Mocking (Mobile)
+
+Test location-dependent features by mocking GPS coordinates:
+
+```
+-- Set location to New York --
+-- (Configured in session settings before test starts) --
+assert "Stores near New York" is visible
+```
+
+See [Geolocation Testing](/support/docs/kane-ai-geolocation-tunnel-proxy).
+
+## Best Practices for Mobile App Testing
+
+| Practice | Details |
+|---|---|
+| **Always dismiss keyboard after typing (especially iOS)** | Use `press Enter` or `hide keyboard` to prevent keyboard blocking elements |
+| **Add waits after scrolls** | Mobile scroll animations need time to complete; content may lazy-load |
+| **Use `OTP` keyword for PIN/OTP fields** | Don't type into individual digit boxes |
+| **Handle permission dialogs upfront** | Use `if...then` conditionals at the start of your test |
+| **Use deep links for test setup** | Skip navigation to jump directly to the screen under test |
+| **Use element type keywords** | `button`, `text`, `icon` improve targeting accuracy |
+| **Use `dismiss dialog` for stubborn popups** | Works for dialogs without visible close buttons |
+| **Use `spannable text` for inline links** | Essential for "Terms and Conditions" style partial links |
+
+---
+
+## Authentication & Session Management
+
+Authentication testing is one of the most critical areas for any QA team. This guide covers how to test login flows, multi-factor authentication (MFA/2FA), TOTP, session handling, and authentication-related edge cases in KaneAI.
+
+## Basic Login Flows
+
+### Standard Username/Password Login
+
+```
+go to https://app.example.com/login
+type "admin@example.com" in the email input field
+type "SecurePassword123!" in the password field
+click on the "Sign In" button
+wait for 5 seconds
+assert the current URL contains "/dashboard"
+assert "Welcome, Admin" is visible
+```
+
+### Login with "Remember Me"
+
+```
+type "admin@example.com" in the email field
+type "SecurePassword123!" in the password field
+check the "Remember me" checkbox
+click on the "Sign In" button
+wait for 5 seconds
+assert the current URL contains "/dashboard"
+```
+
+### Reusable Login Module
+
+If most of your tests start with a login, create a **Module** to avoid repeating the login steps in every test:
+
+1. Author the login steps in a test
+2. Pause the test
+3. Select the login steps
+4. Click **Create Module** → Name it "Login Flow"
+5. In future tests, use `/` → Select your "Login Flow" module
+
+```
+-- In any new test: --
+-- Use / command → Add Module → "Login Flow" --
+-- The module executes all login steps automatically --
+assert "Welcome" is visible
+-- Continue with your test-specific steps --
+```
+
+> **Tip:** 
+Use **environment variables** for credentials so the same login module works across staging, QA, and production environments. Set `{{env.login_email}}` and `{{env.login_password}}` per environment.
+
+## Using Variables for Credentials
+
+### Environment Variables (Recommended)
+
+Create environment-specific variables to test login across different environments:
+
+```
+type {{env.login_email}} in the email field
+type {{env.login_password}} in the password field
+click "Sign In"
+```
+
+Set different values for each environment:
+- **Staging**: `login_email` = `test@staging.example.com`
+- **Production**: `login_email` = `readonly@example.com`
+
+> **Tip:** 
+You can find more information about environment variables in [this guide](/support/docs/kane-ai-using-variables/#environments).
+
+### Secrets (For Sensitive Data)
+
+Store passwords securely using KaneAI Secrets (backed by HashiCorp Vault):
+
+1. Go to [KaneAI Variables](https://kaneai.lambdatest.com/variables)
+2. Create a secret variable for the password
+3. Reference it in your test: `type {{secret.admin_password}} in the password field`
+
+Secrets are:
+- Encrypted at rest and in transit
+- Never exposed in logs or generated code
+- Not visible in the test step output
+
+## TOTP / Multi-Factor Authentication
+
+KaneAI has native TOTP support, which means you can test applications protected by authenticator apps (Google Authenticator, Okta Verify, Microsoft Authenticator) without any external scripts.
+
+### How It Works
+
+1. KaneAI stores your TOTP **secret key** (Base32 encoded) securely
+2. At runtime, KaneAI generates the correct 6-digit code every 30 seconds
+3. You reference the code as a smart variable in your test steps
+
+### Step-by-Step: Testing a TOTP Login Flow
+
+**Step 1: Register the TOTP Secret Key**
+
+1. Start a web authoring session
+2. Type `/` and select **Add TOTP Authentication Key**
+3. Enter the Base32 secret key (the one you'd normally scan as a QR code in an authenticator app)
+4. You can also use a LambdaTest secret: `{{secret.totp_key}}`
+5. Click **Save**
+6. A smart variable (e.g., `{{totp}}`) is generated
+
+**Step 2: Use the TOTP in Your Test**
+
+```
+-- Login with username/password first --
+type "admin@example.com" in the email field
+type {{secret.admin_password}} in the password field
+click "Sign In"
+
+-- MFA screen appears --
+wait for 3 seconds
+enter {{totp}} in the verification code field
+click "Verify"
+
+-- Authenticated --
+wait for 5 seconds
+assert the current URL contains "/dashboard"
+assert "Welcome, Admin" is visible
+```
+
+> **Note:** 
+The `{{totp}}` smart variable generates a time-based 6-digit code based on the registered secret key. KaneAI calculates the correct code at the moment the step executes, so you get a valid code for each step run. Since TOTP codes refresh every 30 seconds, ensure that the step entering the code and the step submitting it execute in quick succession — avoid placing long waits between them.
+
+### TOTP on Mobile
+
+TOTP smart variables work identically on mobile tests:
+
+```
+type {{env.login_email}} in the email field
+type {{secret.login_password}} in the password field
+click "Login"
+wait for 3 seconds
+enter {{totp}} in the OTP field
+click "Verify"
+```
+
+### Where to Get the TOTP Secret Key
+
+- Most authenticator setups show a "Can't scan QR?" link that reveals the Base32 secret key
+- For enterprise SSO, ask your IT team for the TOTP secret associated with the test account
+
+## SSO (Single Sign-On) Flows
+
+SSO flows typically redirect to an identity provider (Okta, Azure AD, Google Workspace) and then back to the application.
+
+> **Warning:** 
+KaneAI does not currently support testing SSO flows. SSO involves cross-domain redirects and third-party identity provider pages, which are outside the scope of KaneAI's natural language automation at this time.
+
+### Recommended Alternatives
+
+- **Bypass SSO in test environments:** Configure your application to allow direct login (username/password) in staging/test environments, bypassing the SSO redirect entirely.
+- **Use API-based authentication:** Obtain a session token or auth cookie via API calls before launching KaneAI, and inject it into the browser session.
+- **Pre-authenticated sessions:** Work with your identity provider to set up test accounts with persistent sessions that don't require interactive login.
+
+## Testing Login Validation & Edge Cases
+
+### Invalid Credentials
+
+```
+type "admin@example.com" in the email field
+type "wrong_password" in the password field
+click "Sign In"
+wait for 2 seconds
+assert "Invalid email or password" error message is visible
+assert the current URL still contains "/login"
+```
+
+### Empty Field Validation
+
+```
+click "Sign In" without entering any credentials
+assert "Email is required" error is visible
+assert "Password is required" error is visible
+```
+
+### Account Lockout After Failed Attempts
+
+```
+-- Attempt 1 --
+type "admin@example.com" in the email field
+type "wrong1" in the password field
+click "Sign In"
+wait for 2 seconds
+
+-- Attempt 2 --
+type "wrong2" in the password field
+click "Sign In"
+wait for 2 seconds
+
+-- Attempt 3 --
+type "wrong3" in the password field
+click "Sign In"
+wait for 2 seconds
+
+assert "Account locked" message is visible
+```
+
+## Session Management Testing
+
+### Session Persistence After Page Refresh
+
+```
+-- Login first --
+type "admin@example.com" in the email field
+type "password123" in the password field
+click "Sign In"
+wait for 5 seconds
+assert "Dashboard" is visible
+
+-- Refresh the page --
+refresh the page
+wait for 3 seconds
+
+-- Should still be logged in --
+assert "Dashboard" is visible
+assert "Welcome, Admin" is visible
+```
+
+### Logout Flow
+
+```
+click on the user avatar in the top right corner
+click on "Sign Out"
+wait for 3 seconds
+assert the current URL contains "/login"
+
+-- Verify session is cleared --
+go to https://app.example.com/dashboard
+wait for 3 seconds
+assert the current URL contains "/login"
+```
+
+### Testing Session Timeout
+
+For applications with session timeouts, combine explicit waits with assertions:
+
+```
+-- Login --
+-- ... login steps ... --
+assert "Dashboard" is visible
+
+-- Wait for session timeout (if timeout is 60 seconds in test env) --
+wait for 65 seconds
+
+-- Try to navigate --
+click on "Reports" in the sidebar
+wait for 3 seconds
+assert "Session expired" is visible
+```
+
+> **Note:** 
+For session timeout testing, consider setting a short timeout in your test environment (e.g., 60 seconds) rather than waiting for production-length timeouts (30 minutes).
+
+## Custom Headers for Authentication
+
+For applications that require auth tokens in headers, use KaneAI's [Custom Headers](/support/docs/kaneai-custom-headers) feature:
+
+1. In session settings, add custom headers
+2. Example: `Authorization: Bearer <your-token>`
+3. All requests from the browser will include this header
+
+This is useful for:
+- Bypassing login in test environments
+- Testing API-authenticated applications
+- Injecting test-user tokens
+
+## Best Practices for Authentication Testing
+
+| Practice | Details |
+|---|---|
+| **Use environment variables for credentials** | Never hardcode passwords in test steps |
+| **Store passwords as secrets** | Use KaneAI Secrets (HashiCorp Vault) for encrypted storage |
+| **Create a login module** | Avoid repeating login steps in every test |
+| **Test negative cases** | Always test invalid credentials, empty fields, and lockout |
+| **Use TOTP smart variables for MFA** | Don't use hardcoded OTPs that expire |
+| **Add waits after SSO redirects** | SSO flows involve multiple page loads |
+| **Test session persistence** | Refresh the page after login to verify session |
+| **Test logout properly** | Verify that navigating to protected pages redirects to login |
+
+---
+
+## API Testing & Network Assertions
+
+KaneAI isn't just a UI testing tool — it also supports API testing and network-level assertions, allowing you to validate both frontend behavior and backend responses in a single test flow. This is critical for scenarios where the UI depends on API data, or where you need to verify that the correct API calls are being made behind the scenes.
+
+## API Testing in KaneAI
+
+### Adding an API Call
+
+You can add API calls to your test using the `/` (slash) command:
+
+1. Type `/` in the input field
+2. Select **API** from the options
+3. Paste your **curl command** — KaneAI will auto-populate all request details (URL, method, headers, body)
+4. Click **Validate** to execute the API and see the response
+5. If the response is successful (2xx), click **Add to Test** to include it as a test step
+
+### Supported HTTP Methods
+
+KaneAI supports all standard HTTP methods:
+
+| Method | Use Case |
+|---|---|
+| **GET** | Retrieve data (fetch user, list products) |
+| **POST** | Create data (register user, create order) |
+| **PUT** | Update data (update profile, modify settings) |
+| **PATCH** | Partial update (change email, update single field) |
+| **DELETE** | Remove data (delete user, cancel order) |
+
+### Example: GET Request
+
+```bash
+curl -X GET "https://api.example.com/users/123" \
+  -H "Authorization: Bearer {{secret.api_token}}" \
+  -H "Content-Type: application/json"
+```
+
+### Example: POST Request
+
+```bash
+curl -X POST "https://api.example.com/users" \
+  -H "Authorization: Bearer {{secret.api_token}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "role": "admin"
+  }'
+```
+
+## API Response Variables
+
+After a successful API call, the response is automatically stored as a **JSON variable**. You can reference it in subsequent steps using `{{variable_name}}` syntax.
+
+### Accessing Response Data
+
+```
+-- After making a GET /users/123 API call --
+-- Response stored as {{api_users}} --
+
+assert {{api_users.response.name}} is "John Doe"
+assert {{api_users.response.email}} is "john@example.com"
+assert {{api_users.response.status}} is "active"
+```
+
+### Accessing Nested Data
+
+Use dot notation to reach nested properties:
+
+```
+assert {{api_users.response.address.city}} is "New York"
+assert {{api_users.response.orders[0].total}} is "150.00"
+```
+
+### Using API Data in UI Steps
+
+Combine API data with UI interactions:
+
+```
+-- Fetch user data from API --
+-- (stored as {{api_user}}) --
+
+-- Navigate to UI and verify data matches --
+go to https://app.example.com/users/123
+wait for 3 seconds
+assert the name field shows {{api_user.response.name}}
+assert the email field shows {{api_user.response.email}}
+```
+
+## Network Logs Assertions
+
+The **Network Logs Assertions** feature lets you validate actual network calls that your application makes during a test session. This is different from making your own API calls — it captures what the app itself is doing behind the scenes.
+
+### How It Works
+
+1. During a test session, **all network calls are recorded automatically** in the background
+2. Use `/` → **Assert Network Logs** to view them
+3. Filter by **Status Code** (200, 404, 500, etc.) or **HTTP Method** (GET, POST, etc.)
+4. Select the specific request you want to assert on
+5. Choose which **request headers**, **request body**, or **response body** keys to validate
+6. Click **Add Assertion** — all chosen values are validated in a single step
+
+### Accessing Network Data as Variables
+
+Once you add a network assertion, the request data is stored as a **variable** in JSON format. You can reuse it later with `{{variable}}` syntax and access nested values with dot notation (e.g., `{{network_req.response.data.userId}}`).
+
+> **Note:** 
+Network log assertions are currently only supported on desktop web authoring in KaneAI. You can find more details in [Network Logs Assertion](/support/docs/kane-ai-network-assertions/) guide.
+
+## Real-World API + UI Scenarios
+
+### Scenario: Create User via API, Verify in UI
+
+Use the API to set up test data, then verify it appears correctly in the UI.
+
+```
+-- Step 1: Create user via API --
+-- (Use / → API → Paste curl for POST /api/users) --
+-- Response stored as {{new_user}} --
+
+-- Step 2: Verify in UI --
+go to https://app.example.com/admin/users
+wait for 3 seconds
+type {{new_user.response.email}} in the search field
+wait for 2 seconds
+assert {{new_user.response.name}} is visible in the users table
+```
+
+### Scenario: Verify UI Action Triggers Correct API Call
+
+Test that clicking "Add to Cart" on the UI actually sends the right API call.
+
+```
+-- Browse to product page --
+go to https://shop.example.com/products/laptop
+click "Add to Cart"
+wait for 3 seconds
+
+-- Assert the network call was correct --
+-- (Use / → Assert Network Logs → Find the POST /cart/items call) --
+-- Assert the request body contains the correct product ID --
+-- Assert the response status is 200 --
+assert "Added to cart" success message is visible
+```
+
+### Scenario: E-Commerce Checkout with Backend Validation
+
+```
+-- Step 1: Add items to cart via UI --
+go to https://shop.example.com
+click "Add to Cart" on "Wireless Mouse"
+click "Add to Cart" on "USB Cable"
+
+-- Step 2: Proceed to checkout --
+click on "Cart" icon
+click on "Checkout"
+
+-- Step 3: Verify order total via API --
+-- (Use / → Assert Network Logs → Find the POST /api/orders call) --
+-- Assert the response total matches what the UI shows --
+assert the order total on the page matches {{order_api.response.total}}
+```
+
+### Scenario: Test API Error Handling in UI
+
+Verify that the UI handles API errors gracefully.
+
+```
+-- Navigate to a page that fetches data --
+go to https://app.example.com/reports/nonexistent
+wait for 5 seconds
+
+-- Assert Network Logs shows a 404 --
+-- (Use / → Assert Network Logs → Find the GET /api/reports/nonexistent call) --
+-- Assert status code is 404 --
+
+-- Verify UI handles the error --
+assert "Report not found" message is visible
+assert no unhandled error or stack trace is shown on the page
+```
+
+### Scenario: API-Driven Test Data Setup
+
+Before running a UI test, use APIs to set up the exact state you need.
+
+```
+-- Create test product via API --
+-- POST /api/products with name "Test Product", price 29.99 --
+-- Response stored as {{test_product}} --
+
+-- Create test user via API --
+-- POST /api/users with name "Test Buyer" --
+-- Response stored as {{test_user}} --
+
+-- Now run the UI test --
+go to https://shop.example.com/login
+type {{test_user.response.email}} in the email field
+type "password123" in the password field
+click "Sign In"
+wait for 3 seconds
+
+-- Search for the product we created --
+type {{test_product.response.name}} in the search field and press Enter
+wait for 3 seconds
+assert {{test_product.response.name}} is visible in the results
+click "Add to Cart"
+assert cart count shows "1"
+```
+
+### Scenario: Validate API Response Headers
+
+```
+-- Make an API call --
+-- GET /api/users with Authorization header --
+
+-- Assert response headers --
+assert {{api_users.headers.content-type}} contains "application/json"
+assert {{api_users.headers.x-ratelimit-remaining}} is not "0"
+```
+
+## Combining API Testing with Database Queries
+
+KaneAI also supports database queries. You can combine API calls, UI interactions, and database validation in a single test:
+
+```
+-- Step 1: Create order via UI --
+-- ... add items and checkout ... --
+
+-- Step 2: Verify API response --
+-- Assert the POST /orders response contains order ID --
+
+-- Step 3: Verify in database --
+-- (Use / → Database Query) --
+-- Query: SELECT * FROM orders WHERE id = {{order_api.response.id}} --
+-- Assert the database record matches the API response --
+```
+
+For database testing details, see [Database Connections](/support/docs/kaneai-database).
+
+## Best Practices
+
+| Practice | Details |
+|---|---|
+| **Use API calls for test data setup** | Faster and more reliable than creating data through the UI |
+| **Store API tokens as secrets** | Never hardcode tokens; use `{{secret.api_token}}` |
+| **Validate both UI and API** | A test that only checks UI can miss backend errors |
+| **Use network assertions for passive validation** | Verify what the app is doing under the hood without making separate calls |
+| **Filter network logs by status code** | Quickly find 4xx/5xx errors your app might be making silently |
+| **Chain API response variables** | Use output from one API call as input to the next |
+| **Test error scenarios via API** | Set up invalid data via API, then verify UI handles it gracefully |
+
+---
+
+## JS Snippets & Workarounds
+
+KaneAI's natural language engine handles the vast majority of web testing scenarios. However, some interactions require direct DOM manipulation or precise programmatic control that natural language can't reliably express. For these cases, KaneAI provides **JS Snippets** — the ability to execute JavaScript code directly on the page.
+
+This guide is organized by common QA scenario, showing you **when** natural language falls short and **exactly what JS snippet** to use as a workaround.
+
+## How to Add a JS Snippet
+
+1. In the KaneAI input field, type `/` or click the `+` icon
+2. Select **Add JS Snippet**
+3. Write or paste your JavaScript code
+4. Click **Add** to execute it as a test step
+
+The snippet runs in the context of the page and has full access to the DOM, `document`, `window`, and any JavaScript variables the page has defined.
+
+---
+
+## Date Picker Interactions
+
+**Problem:** Many date pickers use read-only inputs that reject typed values. Natural language typing doesn't trigger the custom event handlers these components rely on.
+
+### Set Date on a Read-Only Date Picker
+
+```javascript
+const dateInput = document.querySelector('input[name="startDate"]');
+// Remove readonly temporarily
+dateInput.removeAttribute('readonly');
+// Set the value
+dateInput.value = '2026-03-15';
+// Trigger change events so the framework (React, Angular, Vue) picks up the change
+dateInput.dispatchEvent(new Event('input', { bubbles: true }));
+dateInput.dispatchEvent(new Event('change', { bubbles: true }));
+return 'Date set to 2026-03-15';
+```
+
+### Set Date on React DatePicker
+
+React components use synthetic events. Use the native input setter:
+
+```javascript
+const dateInput = document.querySelector('input[name="date"]');
+const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+  window.HTMLInputElement.prototype, 'value'
+).set;
+nativeInputValueSetter.call(dateInput, '2026-03-15');
+dateInput.dispatchEvent(new Event('input', { bubbles: true }));
+return 'React date picker value set';
+```
+
+### Set Date Range Picker
+
+```javascript
+const startDate = document.querySelector('input[name="start"]');
+const endDate = document.querySelector('input[name="end"]');
+
+const setter = Object.getOwnPropertyDescriptor(
+  window.HTMLInputElement.prototype, 'value'
+).set;
+
+setter.call(startDate, '2026-02-01');
+startDate.dispatchEvent(new Event('input', { bubbles: true }));
+
+setter.call(endDate, '2026-02-28');
+endDate.dispatchEvent(new Event('input', { bubbles: true }));
+
+return 'Date range set: Feb 1 - Feb 28, 2026';
+```
+
+---
+
+## String Manipulation & Data Transformation
+
+**Problem:** Operations like converting text to lowercase, extracting substrings, or formatting data are not reliably handled via natural language.
+
+### Convert Text to Lowercase and Validate
+
+```javascript
+const title = document.querySelector('h1.page-title').textContent;
+const lowercase = title.toLowerCase();
+if (lowercase === 'welcome to dashboard') {
+  return 'PASS: Title in lowercase matches expected value';
+} else {
+  throw new Error('FAIL: Got "' + lowercase + '"');
+}
+```
+
+### Extract and Validate a Substring
+
+```javascript
+const orderText = document.querySelector('.order-id').textContent;
+// Text is "Order #12345" — extract just the number
+const orderId = orderText.replace('Order #', '');
+if (orderId.length === 5 && !isNaN(orderId)) {
+  return 'PASS: Order ID is valid: ' + orderId;
+} else {
+  throw new Error('FAIL: Invalid order ID format: ' + orderId);
+}
+```
+
+### Trim Whitespace and Compare
+
+```javascript
+const actual = document.querySelector('.username').textContent.trim();
+const expected = 'john_doe';
+if (actual === expected) {
+  return 'PASS: Username matches';
+} else {
+  throw new Error('FAIL: Expected "' + expected + '", got "' + actual + '"');
+}
+```
+
+---
+
+## Table & List Validation
+
+**Problem:** KaneAI can't reliably assert specific cell values in complex tables (e.g., "the 5th column of the 3rd row contains X").
+
+### Assert Specific Table Cell Value
+
+```javascript
+const rows = document.querySelectorAll('table.users-table tbody tr');
+const thirdRowFifthCol = rows[2].querySelectorAll('td')[4].textContent.trim();
+if (thirdRowFifthCol === 'Active') {
+  return 'PASS: 3rd row, 5th column is "Active"';
+} else {
+  throw new Error('FAIL: Got "' + thirdRowFifthCol + '"');
+}
+```
+
+### Count Table Rows
+
+```javascript
+const rowCount = document.querySelectorAll('table tbody tr').length;
+if (rowCount === 10) {
+  return 'PASS: Table has 10 rows';
+} else {
+  throw new Error('FAIL: Table has ' + rowCount + ' rows, expected 10');
+}
+```
+
+### Validate Table is Sorted
+
+```javascript
+const cells = Array.from(document.querySelectorAll('table tbody tr td:first-child'));
+const values = cells.map(cell => cell.textContent.trim());
+const sorted = [...values].sort((a, b) => a.localeCompare(b));
+const isSorted = JSON.stringify(values) === JSON.stringify(sorted);
+if (isSorted) {
+  return 'PASS: Table is sorted alphabetically by first column';
+} else {
+  throw new Error('FAIL: Table is not sorted. Got: ' + values.join(', '));
+}
+```
+
+---
+
+## Clipboard Operations
+
+**Problem:** Natural language can't directly read or write clipboard content.
+
+### Copy Text to Clipboard
+
+```javascript
+const text = document.querySelector('.referral-code').textContent;
+await navigator.clipboard.writeText(text);
+return 'Copied to clipboard: ' + text;
+```
+
+### Read Clipboard Content
+
+```javascript
+const clipText = await navigator.clipboard.readText();
+return 'Clipboard contains: ' + clipText;
+```
+
+---
+
+## Local Storage & Session Storage
+
+**Problem:** You may need to verify, set, or clear browser storage for test setup or validation.
+
+### Read a Local Storage Value
+
+```javascript
+const token = localStorage.getItem('authToken');
+if (token) {
+  return 'Auth token exists: ' + token.substring(0, 20) + '...';
+} else {
+  throw new Error('FAIL: No auth token in localStorage');
+}
+```
+
+### Set a Local Storage Value (Test Setup)
+
+```javascript
+localStorage.setItem('feature_flag_newUI', 'true');
+return 'Feature flag set';
+```
+
+### Clear Session Storage (Logout Simulation)
+
+```javascript
+sessionStorage.clear();
+return 'Session storage cleared';
+```
+---
+
+## Quick Reference: When to Use JS Snippets
+
+| Scenario | Natural Language? | JS Snippet Needed? |
+|---|---|---|
+| Click a visible button | Yes | No |
+| Type in a standard input | Yes | No |
+| Assert text is visible | Yes | No |
+| Set date on read-only date picker | Unreliable | **Yes** |
+| Validate specific table cell | No | **Yes** |
+| String manipulation (lowercase, trim) | Unreliable | **Yes** |
+| Read/write localStorage | No | **Yes** |
+| Clipboard operations | No | **Yes** |
+| Check if page is fully loaded | No | **Yes** |
+| Count elements on page | Unreliable for exact counts | **Yes** |
+
+## Best Practices for JS Snippets
+
+| Practice | Details |
+|---|---|
+| **Use natural language first** | Only fall back to JS when natural language is unreliable |
+| **Keep snippets focused** | One snippet = one action or assertion |
+| **Use descriptive return values** | Return "PASS: ..." or throw "FAIL: ..." for clear test output |
+| **Null-check elements** | Always check if `querySelector` returns `null` before operating on it |
+| **Test snippets in browser DevTools first** | Paste into the Console to verify before adding to KaneAI |
+

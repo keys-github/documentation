@@ -1,0 +1,357 @@
+# Manage Test Data
+
+> Variables, smart variables, secrets, parameters, and datasets for dynamic test data
+
+
+
+
+---
+
+## Variables in KaneAI
+
+---
+
+Variables are placeholders that store values, which can be reused across different parts of a test case. In automation, using variables helps make the tests more flexible, reusable, and maintainable. Instead of hardcoding values in test steps, you can define variables, assign them values, and reference them throughout your tests. This reduces redundancy and makes the tests easier to modify, especially when dealing with frequently changing parameters like URLs, credentials, or device configurations. Variables can be accessed directly from https://kaneai.lambdatest.com/variables.
+
+Using variables enables you to:
+- Avoid repetitive entries in test cases.
+- Get values from within the application under test & store it in variable to validate the accuracy of data.
+- Increase the reusability and adaptability of test scripts, especially useful for parameters that might change frequently, such as URLs, credentials, or environmental settings.
+
+## Types of variables
+- **String Variables**: Store simple text values. They can be used for things like usernames, or any textual data. String variables can be created via KaneAI or manually within the session.
+
+- **JSON Variables**: Store structured data in the form of key-value pairs. JSON variables are especially useful for passing complex objects such as API responses. JSON variables are auto-generated from API calls and DB queries used in KaneAI and cannot be created manually.
+
+## Scope of variables
+
+### Local Variables
+Local variables can only be defined using natural language or used as a part of an operation when an instruction is provided by the user. They are only accessible within the specific test case where they are defined. They help ensure that values are isolated and can be used temporarily within a specific context. A local variable can be converted to a global or an environment variable within the authoring session of KaneAI.
+
+### Global Variables
+Global variables are accessible across multiple test cases within the entire organisation. They allow values to be reused in multiple places, enhancing consistency and reducing redundancy. Any variable which is converted from local to global has an option to persist value across sessions if the value changes within a session. More details about persist check are added below.
+
+### Environment Variables
+Environment variables are variables that are typically set for a specific environment (e.g., staging, production). They are useful for managing values like URLs, or credentials that differ based on the environment in which the tests are being executed. Using environment variables you can execute your test on multiple environments easily. More details about environments are added below.
+
+## How to create & edit variables
+Variables can be created using the following three methods:
+
+### Using Slash "/" Command in authoring session
+You can define variables directly by using the `/` command in the step input and select "Add a variable" option. You are allowed to create _global_ and _environment_ variables using this approach and define their values. 
+The value of variables can be edited by clicking on the variables listing icon on the top right.
+
+### Using Natural Language in authoring session
+KaneAI allows you to create variables using natural language. For instance, you can write:
+
+```bash
+Set username as John
+```
+This will automatically create a _local_ variable `{{username}}` with the value "John".
+For such _local_ variables, only the scope of the variable can be changed to a global with an option to enable the persist check which ensures that the value when updated in one session or test execution gets persistes across sessions and test executions.
+
+### Via UI from Variables page
+By visiting the [variables page](https://kaneai.lambdatest.com/variables), you can click on "Create new" option and add relevant details and scope. You can list of all global and environment variables on this page.
+You can edit the session value for the variables here which will lead to updation of the value in all new test executions and sessions for that variable.
+
+## How to leverage variables during authoring
+Variables can be used to enhance your test cases, making them more dynamic.
+
+### Syntax for Assertions
+Variable usage can be done using the `{{` prefix to list all existing variables in the KaneAI session input box. When making assertions in your test case, you can use variables for inputing a value or as part of the assertion logic.
+
+#### String variables example:
+
+```bash
+Enter {{username}} in user input field
+```
+This will input the value of the username variable in the user input field.
+
+```bash
+assert {{username}} contains 'John'
+```
+This will assert if the username variable contains the value "John".
+
+#### JSON variables example:
+JSON variables are generated from the response of an API used via the slash command or from the DB query output. We can use JSON variables to reach a particular object which might be inside the JSON hierarchy via the UI when the `{{` prefix is used in the input box inside the KaneAI session. For instance, we can assert that the email field inside the API variable response matches "john.doe@example.com".
+
+```bash
+assert {{api_variable.response.email}} is 'john.doe@example.com'
+```
+Here is a video to further explain the JSON variables usage:
+
+## Persist Value in Variables
+
+Persist value check is a mechanism used to ensure that variables retain their values across multiple test executions. This is important for situations where a variable’s value should be preserved between test cases and test executions to ensure consistency. For example, if you fetch a value from the AUT in a test while authoring, you may want to persist it for the other test cases even during test executions.
+
+> **Tip:** 
+**The persist check option becomes available only when you change a variable's scope from local to global.**
+
+## Environments
+
+### What are Environments?
+Environments in KaneAI refer to the different configurations under which the tests are executed. Environments typically represent different stages of deployment (e.g., development, staging, production). Each environment can have its own set of variables tailored to the respective deployment scenario.
+
+### How to Use Environments During Test Runs
+Once a test case is authored using environment variables, it can then be executed in any environment as long as the variables used in the test case, exist in the requested environment.
+
+#### Leveraging UI
+While executing a test run or scheduling one, you can choose which environment they want to execute a test run on. All the test cases inside a test run can be executed on a single environment only at a point of time.
+
+#### Leveraging API
+You can pass environment name programmatically when initiating test runs via the API. This allows you to automate the execution of tests in different environments without manual intervention. For instance,
+
+```bash
+curl --location 'https://test-manager-api.lambdatest.com/api/atm/v1/hyperexecute' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic <Base64Auth>' \
+--data '{
+    "test_run_id": "YOUR_TEST_RUN_ID", #enter test run id
+    "concurrency": 1,
+    "environment": "staging" #Optional
+```
+
+This will run the test case in the "staging" environment.
+
+If you have any feedback or suggestions, feel free to reach out at support@testmuai.com with your comments.
+
+---
+
+## Utilizing KaneAI Secrets Feature: A Step-by-Step Guide
+
+---
+
+KaneAI now supports the use of secret variables to enhance security and streamline functionality. This feature leverages HashiCorp Vault for secure management of sensitive information, ensuring robust protection for your data while maintaining ease of use. This guide outlines the process for creating, managing, and utilizing secret variables within KaneAI.
+
+> **Note:** 
+- In Web/App Agent, users will see list of all secrets created at user or org level for that user.**
+
+- A user role can create only user level secrets, while an admin can create either user-level or org-level secrets.
+- A user can delete their own secrets, but only an admin can delete org-level secrets.
+- Secret variables will be accessible in test steps, modules, and test cases.
+
+## How to Create Secrets and use them in your tests?
+You can create Secrets variables via:
+- Test Manager
+- Web/App Agent
+
+### Create Secrets via Test Manager
+**Step 1:** Navigate to the Test Manager. <br />
+**Step 2:** Click on the settings icon > Secrets.<br />
+**Step 3:** Click on the **Create new secret** button.<br />
+**Step 4:** Provide the secret key and value and click on the **Create Secret** button.
+
+### Create Secrets via Web/App Agent
+**Step 1:** Navigate to the **"Write a Step"** field where you typically write your test scenarios in plain English. <br />
+**Step 2:** To switch to Secrets mode, type the forward slash / or click on the + icon. You will see a Secret pop-up option appear. <br />
+**Step 3:** Provide the secret key and value and click on the **Create Secret** button.
+
+## How to use your Secrets?
+Once created, you can now reference any secret variables in your test steps using **double-curly braces syntax (e.g.,`{{email}}`)**.
+
+> **Note:** 
+To use a previously created variable in any subsequent step or test case, reference the variable using the same `{{` syntax. This will list down all existing variables for this test.
+
+Format:
+```bash
+use the value of {{secrets.user.email}} in the email text field
+```
+
+## How to Update your Secrets?
+**Step 1:** Navigate to the Test Manager. <br />
+**Step 2:** Click on the settings icon > Secrets.<br />
+**Step 3:** Click on the **pencil** icon to update that respective secret value.<br />
+**Step 4:** Provide the secret value and click on the **Update secret** button.
+
+## How to Delete your Secrets?
+**Step 1:** Navigate to the Test Manager. <br />
+**Step 2:** Click on the settings icon > Secrets.<br />
+**Step 3:** Click on the **delete** icon to update that respective secret value.<br />
+**Step 4:** Provide the secret value and click on the confirmation button.
+
+---
+
+## Utilizing KaneAI Smart Variables Feature: A Step-by-Step Guide
+
+---
+
+KaneAI's Smart Variables feature enhances test automation by providing predefined, dynamic variables that can be used across test steps, modules, and test cases. These variables enable dynamic adaptation to various environments and conditions, improving test reliability, reusability, and efficiency. 
+
+They cover categories such as date & time, system information, location, connectivity, randomization, and device-specific details, allowing users to create flexible and robust test scenarios that adapt to real-time conditions without manual input.
+
+> **Note:** 
+**Smart variables are predefined and cannot be created or deleted by users. They are accessible in test steps, modules, and test cases.**
+
+ When typing `{{` in the Web/App Agent, an overlay displays all available variables, including regular, secret, and smart variables, with smart variables labeled as "Smart" and accompanied by descriptions.
+
+Smart Variables are listed under the variables section within an authoring session.
+
+## How to Use Smart Variables in Your Tests?
+
+Smart variables can be referenced in test steps, modules, and test cases using the `{{smart.variable_name}}` syntax. Follow these steps to integrate them into your tests:
+
+### Step 1: Access the Test Environment
+
+Enter the Authoring or Editing mode for a KaneAI test case
+
+### Step 2: Reference a Smart Variable
+
+In the "Write a Step" field type `{{` to trigger the variable overlay. This will display a list of all available variables, including smart variables labeled with "Smart".
+
+For example, to use the current date in a test step:
+
+Use `{{` syntax to get the list of smart variables listed and type to search and filter them out then select the desired one.
+```
+Enter the value of {{smart.current_date}} in the date field
+```
+
+### Step 3: Select a Smart Variable
+
+From the overlay, select the desired smart variable. The variable will be inserted into the test step in the correct syntax (e.g., `{{smart.current_date}}`).
+
+### Step 4: Run Your Test
+
+Once the test step is executed the smart variable will dynamically resolve to its corresponding value based on the current environment or condition (e.g., `2025-04-29` for `{{smart.current_date}}`).
+
+## Supported Smart Variables
+
+Below is a comprehensive list of supported smart variables, organized by category, along with their syntax and descriptions:
+
+| Category              | Variable Name         | Syntax                        | Description                                                                 |
+|-----------------------|-----------------------|-------------------------------|-----------------------------------------------------------------------------|
+| **Date & Time**       | `current_date`        | `{{smart.current_date}}`      | Current date in YYYY-MM-DD format                                           |
+|                       | `current_day`         | `{{smart.current_day}}`       | Current day of the week (Monday, Tuesday, etc.)                             |
+|                       | `current_month`       | `{{smart.current_month}}`     | Current month name (January, February, etc.)                                |
+|                       | `current_month_number`| `{{smart.current_month_number}}`| Current month number (01, 02, ..., 12)                                      |
+|                       | `current_year`        | `{{smart.current_year}}`      | Current year (YYYY)                                                         |
+|                       | `current_hour`        | `{{smart.current_hour}}`      | Current hour in 24-hour format (00 to 23)                                   |
+|                       | `current_minute`      | `{{smart.current_minute}}`    | Current minute (00 to 59)                                                   |
+|                       | `current_timestamp`   | `{{smart.current_timestamp}}` | Current timestamp in epoch milliseconds                                     |
+|                       | `current_timezone`    | `{{smart.current_timezone}}`  | Current timezone name (e.g., GMT, UTC+5:30)                                 |
+|                       | `next_day`            | `{{smart.next_day}}`          | Date of the next day in YYYY-MM-DD format                                   |
+|                       | `previous_day`        | `{{smart.previous_day}}`      | Date of the previous day in YYYY-MM-DD format                               |
+|                       | `start_of_week`       | `{{smart.start_of_week}}`     | Date of the first day of the current week (YYYY-MM-DD)                      |
+|                       | `end_of_week`         | `{{smart.end_of_week}}`       | Date of the last day of the current week (YYYY-MM-DD)                       |
+|                       | `start_of_month`      | `{{smart.start_of_month}}`    | Date of the first day of the current month (YYYY-MM-DD)                     |
+|                       | `end_of_month`        | `{{smart.end_of_month}}`      | Date of the last day of the current month (YYYY-MM-DD)                      |
+| **User/System Information** | `os_type`       | `{{smart.os_type}}`           | Operating system name on which test is running (e.g., Windows, macOS, Linux)|
+|                       | `os_version`          | `{{smart.os_version}}`        | Operating system version on which test is running (e.g., 10.0, 14.2)        |
+|                       | `browser_name`        | `{{smart.browser_name}}`      | Browser name on which test is running (e.g., Chrome, Firefox, Safari)       |
+|                       | `browser_version`     | `{{smart.browser_version}}`   | Browser version on which test is running (e.g., 112.0, 101.0.1)             |
+|                       | `user_name`           | `{{smart.user_name}}`         | Current user name on TestMu AI who trigger the test                        |
+| **Randomized**        | `random_int`          | `{{smart.random_int}}`        | Random 3 digit integer                                                      |
+|                       | `random_float`        | `{{smart.random_float}}`      | Random 2 digit float                                                        |
+|                       | `random_string_8`     | `{{smart.random_string_8}}`   | Random alphanumeric string of specified length                              |
+|                       | `random_string_56`    | `{{smart.random_string_56}}`  | Random alphanumeric string of specified length                              |
+|                       | `random_email`        | `{{smart.random_email}}`      | Random email address                                                        |
+|                       | `random_phone`        | `{{smart.random_phone}}`      | Random phone number                                                         |
+| **Device-Specific**   | `device_name`         | `{{smart.device_name}}`       | Name of the mobile device under test                                        |
+|                       | `device_model`        | `{{smart.device_model}}`      | Model of the mobile device                                                  |
+|                       | `device_os`           | `{{smart.device_os}}`         | Operating system of the mobile device (iOS, Android)                        |
+|                       | `device_os_version`   | `{{smart.device_os_version}}` | Version of the operating system (14.4, 11.0)                                |
+|                       | `device_orientation`  | `{{smart.device_orientation}}`| Orientation of the device (Portrait, Landscape)                             |
+|                       | `app_version`         | `{{smart.app_version}}`       | Version of the app under test                                               |
+|                       | `app_package_name`    | `{{smart.app_package_name}}`  | Package name of the app under test                                          |
+
+---
+
+## KaneAI - Using Parameters
+
+---
+
+This guide provides a detailed walkthrough for utilizing parameters in KaneAI to streamline test case management and execute tests with various data inputs. By leveraging data parameters, testers and developers can manage configurations effortlessly. Follow the step-by-step instructions below for successful implementation.
+
+## Key Features of Parameters in KaneAI
+- **Dynamic Data Input :** Use parameters to define and input test data dynamically during test execution.
+- **Multiple Configurations :** Simplify the execution of tests with different data sets.
+- **Seamless Test Management :** Centralized management of parameters improves efficiency and reduces redundancy.
+
+## Define Parameters in a Web or App Agent Test
+- Navigate to the specific web agent test URL and configure the test to accept input parameters.
+
+## Create a parameter in a test
+- Confirm that parameters are already defined in the system. To add a new parameter, use one of the following methods to define the parameter:
+  - Type a **`slash (/)`** and select the Parameter option.
+  - Click the Plus icon and choose the Parameter icon.
+
+Click **Create Parameter** to save.
+
+## Reference the parameter in test step
+Reference any parameter using **dollar-curly braces syntax** (e.g.,`${phone_number}`). Enter the name in its designated input field.
+
+## Test Summary Page
+Upon completing the test, review the Test Summary Page, where all utilized parameters are clearly displayed, and the corresponding generated code is readily available for seamless integration into future test scenarios.
+
+## Using parameters for test runs
+
+### Step 1: Navigate to Test Project
+Open the Test Project dashboard and go to the **Test Run** section.
+
+### Step 2: Create a New Test Run
+- Click **Create New Test Run** and name it (e.g., parameters test run).
+- Select the KaneAI-generated test cases.
+- Optionally, add a description or relevant tags.
+- Click **Create Test Run**.
+
+### Step 3: Add Test Cases and Data Sets
+- Select and add the desired test cases to the run.
+- Specify configurations (e.g., Windows 10 Chrome).
+- Attach the required data sets for the test run.
+
+### Step 4: Apply Data Sets
+- Ensure the data sets containing necessary parameters are pre-filtered and accessible.
+- Click **Apply** to confirm the Dataset selection.
+
+### Step 5: Save and Prepare for Execution
+- Save the test run with the selected parameters and Datasets. The system will create test instances ready for execution in a hybrid environment.
+
+### Step 6: Execute Tests with Parameters
+Utilize the parameters to run your test cases with different data sets and inputs. You can manage and monitor execution using the TestMu AI Test Manager interface.
+
+## Video Explanation
+
+---
+
+## KaneAI - Using Datasets on Test Manager
+
+---
+
+Datasets in KaneAI-TestMu AI allow you to manage and reuse input values for test cases efficiently. This guide explains how to create, edit, and manage these data sets while utilizing parameters to run test cases with a variety of inputs, improving flexibility and reducing manual data entry.
+
+## Accessing Datasets within a Project
+Navigate to the Parameters section within your project and review existing data sets under this section.
+
+> **Note:** 
+**Note :** Parameters act as placeholders for data, enabling test cases to use varying inputs.
+
+Every test case which uses parameters in KaneAI automatically generates a default data set during authoring. Example: A default data set might capture initial values like form submissions.
+
+> **Note:** 
+Default Datasets are immutable in nature i.e. they cannot be modified.
+
+## Creating and Editing Datasets
+- To create a dataset, navigate to the Datasets section, click "Create Dataset," and define parameters and values as needed.
+- For existing datasets, access the version history of a default dataset, create a copy, and edit the copied dataset to update or add values seamlessly.
+
+## Adding Data to Datasets
+Open the editable Dataset. Click on "**Add a Row After**". Enter your desired values (e.g., 5 or Mike).
+
+### Autofill with AI
+
+Alternatively, you can use the **Autofill with AI** option to automatically populate data fields. AI generates values based on the parameter's name, saving time and effort.
+
+### Importing Data via CSV Files
+Prepare your data set in CSV format. Use the Import Data feature in the data set editor and verify imported data and save the test case to ensure synchronization.
+
+## Utilizing Version History
+- **Version Tracking :** All changes to data sets are recorded.
+- **Revert or Restore :** Easily revert to a previous version if needed.
+- **Backup Assurance :** Ensure data integrity with a maintained history of edits.
+
+## Executing Test Cases with Parameters
+Combine multiple data sets with their respective parameters.
+Execute test cases using these data sets to simulate diverse input scenarios.
+
+## Video Explanation
+
+---

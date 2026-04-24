@@ -235,3 +235,26 @@ a {
 #feedback {
   display: none !important;
 }
+
+/* Hide navigation tabs (Home, Docs) */
+nav [class*="nav-tabs-item"],
+header [class*="nav-tabs"] {
+  display: none !important;
+}
+
+/* Bottom sidebar links (Book a Demo, Changelog) - matches nav-anchor style */
+.lt-sidebar-bottom {
+  padding: 0 0 12px;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 8px;
+}
+
+:is(.dark) .lt-sidebar-bottom {
+  border-top-color: rgba(255, 255, 255, 0.07);
+}
+
+.lt-sidebar-bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
