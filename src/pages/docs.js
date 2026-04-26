@@ -101,6 +101,15 @@ export default function Home() {
         {/* Row 2 */}
         <div className="home_main">
           <div className="home_inners_box">
+            <h2 className="homeMain_h2"><Icon light="automation-light-icon.svg" dark="automation-dark-icon.svg" alt="" />Browser Cloud &nbsp;<NewTag value="NEW" /></h2>
+            <div className="home_inners">
+              <a href="/support/docs/what-is-browser-cloud/"><p className="p_home_inners">What is Browser Cloud</p></a>
+              <a href="/support/docs/browser-cloud-quickstart/"><p className="p_home_inners">Launch Session With SDK</p></a>
+              <a href="/support/docs/browser-cloud-skills/"><p className="p_home_inners">Launch Session With Agent Skills</p></a>
+              <a href="/support/docs/browser-cloud-connect/"><p className="p_home_inners">Connect to a Session</p></a>
+            </div>
+          </div>
+          <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="visual-light-icon.svg" dark="visual-dark-icon.svg" alt="" />SmartUI</h2>
             <div className="home_inners">
               <a href="/support/docs/smart-visual-regression-testing/"><p className="p_home_inners">Getting Started</p></a>
@@ -135,6 +144,10 @@ export default function Home() {
               <a href="/support/docs/kaneai-ci-cd-automation/"><p className="p_home_inners">Test Automation with CI/CD</p></a>
             </div>
           </div>
+        </div>
+
+        {/* Row 3 */}
+        <div className="home_main">
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="Realtime-light-icon.svg" dark="Realtime-dark-icon.svg" alt="" />Agent To Agent &nbsp;<NewTag value="BETA" /></h2>
             <div className="home_inners">
@@ -143,10 +156,6 @@ export default function Home() {
               <a href="/support/docs/agent-to-agent-faqs/"><p className="p_home_inners">FAQs</p></a>
             </div>
           </div>
-        </div>
-
-        {/* Row 3 */}
-        <div className="home_main">
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="Realtime-light-icon.svg" dark="Realtime-dark-icon.svg" alt="" />Real Time</h2>
             <div className="home_inners">
@@ -178,16 +187,16 @@ export default function Home() {
               <a href="/support/docs/link-jira-issues-with-test-manager/"><p className="p_home_inners">Issue Tracker Integration</p></a>
             </div>
           </div>
+        </div>
+
+        {/* Row 4 */}
+        <div className="home_main">
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="testManager-light.svg" dark="testManager-dark.svg" alt="" />TestMu AI MCP Server &nbsp;<NewTag value="NEW" /></h2>
             <div className="home_inners">
               <a href="/support/docs/testmu-mcp-server/"><p className="p_home_inners">Setting up TestMu AI MCP Server</p></a>
             </div>
           </div>
-        </div>
-
-        {/* Row 4 */}
-        <div className="home_main">
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="Integration-light-icon.svg" dark="Integration-dark-icon.svg" alt="" />Integrations</h2>
             <div className="home_inners">
@@ -223,6 +232,10 @@ export default function Home() {
               <a href="/support/docs/charles-proxy/"><p className="p_home_inners">Charles Proxy</p></a>
             </div>
           </div>
+        </div>
+
+        {/* Row 5 */}
+        <div className="home_main">
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="settings-light-icon.svg" dark="settings-dark-icon.svg" alt="" />Settings and Security</h2>
             <div className="home_inners">
@@ -233,10 +246,6 @@ export default function Home() {
               <a href="/support/docs/scim/"><p className="p_home_inners">SCIM</p></a>
             </div>
           </div>
-        </div>
-
-        {/* Row 5 — Other Docs (single box) */}
-        <div className="home_main">
           <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="other-light-icon.svg" dark="other-dark-icon.svg" alt="" />Other Docs</h2>
             <div className="home_inners">
