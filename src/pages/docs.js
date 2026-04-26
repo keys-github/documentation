@@ -101,6 +101,15 @@ export default function Home() {
         {/* Row 2 */}
         <div className="home_main">
           <div className="home_inners_box">
+            <h2 className="homeMain_h2"><Icon light="automation-light-icon.svg" dark="automation-dark-icon.svg" alt="" />Browser Cloud &nbsp;<NewTag value="NEW" /></h2>
+            <div className="home_inners">
+              <a href="/support/docs/what-is-browser-cloud/"><p className="p_home_inners">What is Browser Cloud</p></a>
+              <a href="/support/docs/browser-cloud-quickstart/"><p className="p_home_inners">Launch Session With SDK</p></a>
+              <a href="/support/docs/browser-cloud-skills/"><p className="p_home_inners">Launch Session With Agent Skills</p></a>
+              <a href="/support/docs/browser-cloud-connect/"><p className="p_home_inners">Connect to a Session</p></a>
+            </div>
+          </div>
+          <div className="home_inners_box">
             <h2 className="homeMain_h2"><Icon light="visual-light-icon.svg" dark="visual-dark-icon.svg" alt="" />SmartUI</h2>
             <div className="home_inners">
               <a href="/support/docs/smart-visual-regression-testing/"><p className="p_home_inners">Getting Started</p></a>
