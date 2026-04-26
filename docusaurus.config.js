@@ -30,7 +30,19 @@ module.exports = {
    
   ],
   themes: ['docusaurus-theme-search-typesense','docusaurus-theme-github-codeblock'],
-  plugins: [require.resolve("docusaurus-plugin-image-zoom")],
+  plugins: [
+    require.resolve("docusaurus-plugin-image-zoom"),
+    function tailwindPlugin() {
+      return {
+        name: 'docusaurus-tailwind',
+        configurePostCss(postcssOptions) {
+          postcssOptions.plugins.push(require('tailwindcss'));
+          postcssOptions.plugins.push(require('autoprefixer'));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
   themeConfig: {
     zoom: {
       selector: 'img:not(.no-zoom)',
@@ -66,7 +78,7 @@ module.exports = {
     },
     navbar: {
       title: null,
-      hideOnScroll: true,
+      hideOnScroll: false,
       logo: {
         alt: 'LambdaTest',
         src: 'img/logo.svg',
@@ -82,35 +94,6 @@ module.exports = {
           type: 'search',
           position: 'right',
         },
-        {
-          type: 'html',
-          position: 'right',
-          value: '<a id="signbtn" href="https://accounts.lambdatest.com/register" class="getstart_btn">Get Started</a>',
-        },
-        {
-          to: 'docs/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
-        },
-        {
-          to: 'api-doc/',
-          activeBasePath: 'api-doc',
-          label: 'API Reference',
-          position: 'left',
-        },
-        {
-          to: 'faq/',
-          activeBasePath: 'faq',
-          label: 'FAQ',
-          position: 'left',
-        },
-        {
-          type: 'html',
-          position: 'left',
-          value: '<a role="button" tabindex="0" href="https://github.com/LambdaTest" target="_blank" class="navbar__item navbar__link">GitHub<img src="https://www.testmuai.com/support/img/Github.svg" alt="" role="presentation" title="LambdaTest GitHub" width="12" height="12" class="head_gitimg no-zoom" style="margin-left:5px;"/></a>',
-        },
-     
       ],
     },
   },
@@ -119,7 +102,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve('./sidebars-unified.js'),
           showLastUpdateTime: true,
           breadcrumbs: false,
         },
