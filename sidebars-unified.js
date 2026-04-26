@@ -37,6 +37,10 @@ const docsSidebar = [
     items: items(s.HyperExecuteSidebar),
   },
   {
+    type: 'category', label: 'Browser Cloud', collapsible: true, collapsed: true,
+    items: items(s.BrowserCloudSidebar),
+  },
+  {
     type: 'category', label: 'SmartUI', collapsible: true, collapsed: true,
     items: items(s.VisualRegressionTestingSidebar),
   },
