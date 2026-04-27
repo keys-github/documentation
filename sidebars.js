@@ -2967,7 +2967,6 @@ module.exports = {
         label: "Connect Your Tools",
         items: [
           "selenium-bidi-integration",
-          "automation-mcp-server",
           "lambda-hooks",
           "command-annotations",
           "selenium-add-test-meta-data",
