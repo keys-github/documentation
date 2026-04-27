@@ -52,28 +52,43 @@
           {
             "group": "KaneAI",
             "pages": [
-              "docs/getting-started-with-kane-ai",
-              "docs/author-your-first-desktop-browser-test",
               {
-                "group": "Build Smarter Tests",
+                "group": "Getting Started",
                 "pages": [
-                  "docs/kaneai-manual-interaction",
-                  "docs/kane-ai-scroll-in-feature",
-                  "docs/kaneai-conditional-logic",
-                  "docs/kaneai-failure-conditions",
-                  "docs/kane-ai-modules",
-                  "docs/kane-ai-drag-drop",
-                  "docs/kaneai-rename-instructions"
+                  "docs/getting-started-with-kane-ai",
+                  "docs/author-your-first-desktop-browser-test"
                 ]
               },
               {
-                "group": "In-Test Tools",
+                "group": "Setup & Configuration",
                 "pages": [
+                  "docs/kaneai-chrome-options",
+                  "docs/kaneai-custom-headers",
+                  "docs/kane-ai-geolocation-tunnel-proxy",
+                  "docs/kaneai-gps-location",
+                  "docs/kaneai-network-throttling",
+                  "docs/kane-ai-mobile-app-capabilities",
+                  "docs/kane-ai-secrets"
+                ]
+              },
+              {
+                "group": "Author Tests",
+                "pages": [
+                  "docs/kaneai-manual-interaction",
+                  "docs/kane-ai-scroll-in-feature",
+                  "docs/kane-ai-drag-drop",
+                  "docs/kaneai-conditional-logic",
+                  "docs/kaneai-rename-instructions",
+                  "docs/kaneai-failure-conditions",
+                  "docs/kane-ai-using-variables",
+                  "docs/kane-ai-smart-variables",
+                  "docs/kane-ai-using-parameters",
+                  "docs/kane-ai-modules",
                   "docs/kane-ai-api-testing",
                   "docs/kaneai-database",
                   "docs/kane-ai-javascript-execution",
-                  "docs/kaneai-totp",
                   "docs/kane-ai-network-assertions",
+                  "docs/kaneai-totp",
                   "docs/kaneai-smartui-visual-testing",
                   "docs/kaneai-upload-and-download-files",
                   "docs/kane-ai-deeplink-support",
@@ -81,41 +96,21 @@
                 ]
               },
               {
-                "group": "Manage Test Data",
-                "pages": [
-                  "docs/kane-ai-using-variables",
-                  "docs/kane-ai-smart-variables",
-                  "docs/kane-ai-secrets",
-                  "docs/kane-ai-using-parameters",
-                  "docs/kane-ai-using-datasets"
-                ]
-              },
-              {
-                "group": "Session Configuration",
-                "pages": [
-                  "docs/kaneai-chrome-options",
-                  "docs/kaneai-custom-headers",
-                  "docs/kane-ai-geolocation-tunnel-proxy",
-                  "docs/kaneai-gps-location",
-                  "docs/kaneai-network-throttling",
-                  "docs/kaneai-dynamic-url-replacement",
-                  "docs/kane-ai-mobile-app-capabilities"
-                ]
-              },
-              {
-                "group": "Generate Code & Run",
+                "group": "Execute & Run",
                 "pages": [
                   "docs/kane-ai-automation-code-generation",
                   "docs/kaneai-auto-heal",
                   "docs/test-runs-configurations",
                   "docs/kaneai-hyperexecute-test-run-execution",
-                  "docs/kaneai-scheduled-test-runs"
+                  "docs/kaneai-scheduled-test-runs",
+                  "docs/kaneai-ci-cd-automation",
+                  "docs/kaneai-dynamic-url-replacement",
+                  "docs/kane-ai-using-datasets"
                 ]
               },
               {
-                "group": "Integrate with Your Workflow",
+                "group": "Integrations",
                 "pages": [
-                  "docs/kaneai-ci-cd-automation",
                   "docs/kaneai-create-pr",
                   "docs/github-app-integration",
                   "docs/kane-ai-jira-integration"
@@ -136,13 +131,7 @@
                   "docs/error-handling-kaneai"
                 ]
               },
-              {
-                "group": "Release Notes",
-                "pages": [
-                  "docs/kaneai-release-notes-0-0-2",
-                  "docs/kaneai-release-notes-0-0-1"
-                ]
-              }
+              "docs/kaneai-release-notes"
             ]
           }
         ]
