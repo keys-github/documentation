@@ -81,9 +81,11 @@ This allows you to selectively apply Smart Ignore to specific screenshots, makin
   className='doc_img'
 />
 
-#### 3. Using Smart Ignore in Hooks Flow (Automation Capabilities)
+#### 3. Using Smart Ignore in Hooks flow (automation capabilities)
 
-If you are using SmartUI Hooks (for example Selenium `executeScript("smartui.takeScreenshot=...")` style), enable Smart Ignore using `ignoreType` in capabilities.
+If you use **SmartUI Hooks** (for example Selenium `executeScript("smartui.takeScreenshot=...")`), enable Smart Ignore from **`LT:Options`** using **`smartUI.smartIgnore`: `true`**. That is the supported switch for subsequent builds (baseline and comparison should both use the same setting).
+
+**Node / JavaScript example**
 
 ```javascript
 const capabilities = {
@@ -93,14 +95,24 @@ const capabilities = {
     accessKey: process.env.LT_ACCESS_KEY,
     visual: true,
     'smartUI.project': 'My-Project',
-    ignoreType: ['smartignore']
-  }
+    'smartUI.smartIgnore': true,
+  },
 };
 ```
 
-> Smart Ignore is a strategy mode. Prefer `ignoreType` strategy configuration over a standalone `smartignore: true` flag.
+**Selenium Java** — set on your `HashMap` (or equivalent) passed as `LT:Options`:
 
-For full Hooks examples with Layout, Full Page, and Smart Ignore, see:
+```java
+ltOptions.put("smartUI.smartIgnore", true);
+```
+
+:::warning Avoid these alone for Hooks + Java
+Using only `ignoreType: ['smartignore']`, or a root-level `smartignore: true` key, often **does not** enable Smart Ignore the way the grid expects. Use **`smartUI.smartIgnore`** as above. See the full matrix in [Hooks: Layout + Full Page + Smart Ignore](/support/docs/smartui-hooks-layout-fullpage-smartignore/).
+:::
+
+With the Smart Ignore strategy, use either **Ignore DOM** or **Select DOM** where the product offers them—**not both at once**.
+
+For full Hooks examples (layout, full page, troubleshooting, strict mode notes), see:
 - [Hooks: Layout + Full Page + Smart Ignore](/support/docs/smartui-hooks-layout-fullpage-smartignore/)
 
 ## Use Cases of Smart Ignore

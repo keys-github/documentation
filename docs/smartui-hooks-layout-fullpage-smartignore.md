@@ -2,12 +2,13 @@
 id: smartui-hooks-layout-fullpage-smartignore
 title: SmartUI Hooks - Layout, Full Page, and Smart Ignore
 sidebar_label: Hooks Layout + Full Page
-description: Configure SmartUI Hooks for layout testing, full-page screenshots, and Smart Ignore strategy using Selenium capabilities and hook scripts.
+description: Configure SmartUI Hooks for layout testing, full-page screenshots, and Smart Ignore using Selenium capabilities—including smartUI.smartIgnore for Java.
 keywords:
   - smartui hooks
   - layout testing hooks
   - full page screenshot hooks
   - smart ignore hooks
+  - smartUI.smartIgnore
   - ignoreType
 url: https://www.testmuai.com/support/docs/smartui-hooks-layout-fullpage-smartignore/
 site_name: TestMu AI
@@ -21,16 +22,19 @@ This guide explains the recommended SmartUI Hooks setup when you want to:
 
 - run visual checks directly from automation (without `smartui exec` wrapper),
 - capture full-page screenshots,
-- switch comparison strategy between Layout and Smart Ignore.
+- switch comparison strategy between **Layout** and **Smart Ignore**.
 
-## How Hooks Strategy Works
+## How hooks strategy works
 
-In Hooks flow, strategy is controlled primarily by capabilities (`ignoreType`) and project settings.  
-The screenshot hook script usually carries only the screenshot name (or name plus config in supported runtimes).
+In the **Hooks** flow, comparison strategy comes from **LambdaTest / `LT:Options` capabilities** (and your SmartUI project context). The screenshot hook (`executeScript`) usually supplies the screenshot name (or a small config object). **Capability names must match what the grid expects**—typos or legacy keys are a common reason Smart Ignore does not turn on.
 
-## 1. Capability Setup (Hooks)
+:::info Smart Ignore vs Ignore DOM / Select DOM
+With the **Smart Ignore** strategy, use either **Ignore DOM** or **Select DOM** in the product where those options apply. **Do not combine Ignore DOM and Select DOM together** for the same flow; pick one approach. Mixing both is unsupported and does not match best practices.
+:::
 
-Set these in your LambdaTest capability object:
+## 1. Capability setup (Hooks)
+
+### Layout strategy (example)
 
 ```json
 {
@@ -45,13 +49,59 @@ Set these in your LambdaTest capability object:
 }
 ```
 
-Notes:
+- Use `ignoreType: ["layout"]` (with the rest of your layout options) for **layout-only** comparisons.
 
-- Use `ignoreType: ["layout"]` for layout-only comparisons.
-- For Smart Ignore, change strategy to `ignoreType: ["smartignore"]` (or `smart-ignore` if your account parser uses that token).
-- Keep the same strategy in baseline and comparison runs.
+### Smart Ignore strategy (Selenium Java) — recommended
 
-## 2. Full-Page Screenshot in Hooks
+For **Selenium with Java** and Hooks, enable Smart Ignore for the session by setting **`smartUI.smartIgnore`** to **`true`** on your **`LT:Options`** map (not only `ignoreType`).
+
+```java
+import java.util.HashMap;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+ChromeOptions browserOptions = new ChromeOptions();
+HashMap<String, Object> ltOptions = new HashMap<>();
+ltOptions.put("username", System.getenv("LT_USERNAME"));
+ltOptions.put("accessKey", System.getenv("LT_ACCESS_KEY"));
+ltOptions.put("visual", true);
+ltOptions.put("smartUI.project", "Your_Project_Name");
+// Enables Smart Ignore for this run (baseline capture and comparisons)
+ltOptions.put("smartUI.smartIgnore", true);
+
+browserOptions.setCapability("LT:Options", ltOptions);
+```
+
+Apply the **same** `smartUI.project` and **`smartUI.smartIgnore`: true** when you capture the **baseline** and when you run **non-baseline** builds. Changing strategy mid-stream without a new baseline will produce confusing diffs.
+
+### Smart Ignore (JSON / Node-style `LT:Options`)
+
+```javascript
+'LT:Options': {
+  visual: true,
+  'smartUI.project': 'Your_Project_Name',
+  'smartUI.smartIgnore': true,
+},
+```
+
+### C# (Hooks)
+
+```csharp
+capabilities.SetCapability("visual", true);
+capabilities.SetCapability("smartUI.project", "Your_Project_Name");
+capabilities.SetCapability("smartUI.smartIgnore", true);
+```
+
+:::warning Deprecated or ineffective patterns (do not use for Smart Ignore)
+The following are **not** sufficient on their own to enable Smart Ignore in typical Selenium Java Hooks sessions, and they match common presales confusion:
+
+- `ltOptions.put("ignoreType", Arrays.asList("smartignore"));` **without** `smartUI.smartIgnore`
+- `ltOptions.put("smartignore", true);` at the root of `LT:Options` (wrong key)
+- Relying only on UI project toggles while capabilities still imply **strict / pixel** behavior for the build
+
+Use **`smartUI.smartIgnore`: `true`** as shown above, keep baseline and compare runs aligned, then re-run.
+:::
+
+## 2. Full-page screenshot in hooks
 
 ### Name-only hook (widely supported)
 
@@ -83,60 +133,45 @@ var cfg = new Dictionary<string, object>
 ((IJavaScriptExecutor)driver).ExecuteScript("smartui.takeScreenshot", cfg);
 ```
 
-## 3. Enable Smart Ignore in Hooks
+For **Smart Ignore**, prefer session-level **`smartUI.smartIgnore`** in `LT:Options` rather than pushing `smartignore` only inside ad-hoc hook config objects.
 
-Smart Ignore is a strategy, not a standalone boolean flag.
+## 3. Baseline and comparison requirements
 
-- Recommended: set capability `ignoreType` to Smart Ignore strategy.
-- Do not depend on `smartignore: true` as the primary method.
+1. Same **`smartUI.project`**.
+2. Same **screenshot names** between runs.
+3. Same **comparison strategy**: for Smart Ignore, **`smartUI.smartIgnore`: true** on both baseline and comparison sessions (and avoid mixing with conflicting DOM-override modes).
+4. If you change strategy or major options, **recapture baseline**.
 
-### Example (C#)
+## 4. Strict comparison vs Smart Ignore
 
-```csharp
-capabilities.SetCapability("visual", true);
-capabilities.SetCapability("smartUI.project", "Your_Project_Name");
-capabilities.SetCapability("ignoreType", new[] { "smartignore" });
+If the build or project is effectively using **strict (pixel-to-pixel) comparison** as the dominant mode, some Smart Ignore–centric workflows (for example certain **baseline diff** experiences in the UI) **do not apply** the same way. **Smart Ignore–first behavior** (including the capabilities above) is what unlocks the intended Smart Ignore comparison path. Align **dashboard project comparison options** with your automation caps when customers refuse to use per-screenshot UI toggles.
 
-var smartUiOptions = new Dictionary<string, object>
-{
-    { "ignoreType", new[] { "smartignore" } }
-};
-capabilities.SetCapability("smartUI.options", smartUiOptions);
-```
+## 5. Why your name appears on every build
 
-### Example (Java)
+Builds executed with a **project token** (or default org identity) often show the **project creator** as the actor. To attribute runs differently where the product allows it, configure the **username**, **access key**, and **project name** / token context as appropriate for that automation user—not the personal account used to create the project, if that is not desired.
 
-```java
-HashMap<String, Object> ltOptions = new HashMap<>();
-ltOptions.put("visual", true);
-ltOptions.put("smartUI.project", "Your_Project_Name");
-ltOptions.put("ignoreType", Arrays.asList("smartignore"));
-```
-
-## 4. Baseline and Comparison Requirements
-
-To get correct comparison results:
-
-1. Use the same `smartUI.project`.
-2. Use the same screenshot names between runs.
-3. Use the same strategy (`layout` or `smartignore`) for baseline and comparison.
-4. If strategy changes, recapture baseline.
-
-## 5. Best Practices for Hooks
+## 6. Best practices for hooks
 
 - Keep screenshot names deterministic, for example: `page_viewport_1366x768`.
-- Use one shared build name for all viewport sessions in a single run.
+- Use one shared **build name** for all viewport sessions in a single run where applicable.
 - Wait for page stabilization before triggering screenshot hooks.
 - Include viewport in screenshot name if running responsive coverage.
-- Prefer capability-level strategy control over script-level overrides.
+- For Smart Ignore on Java Hooks, treat **`smartUI.smartIgnore`** as the source of truth at the capability layer.
 
-## 6. Troubleshooting
+## 7. Troubleshooting
 
-### Strategy not applied
+### Smart Ignore still not applied (Java / Selenium)
 
-- Verify `ignoreType` is present in the actual session capabilities.
-- Ensure baseline was captured with the same strategy.
-- Check project-level comparison settings in SmartUI dashboard.
+1. Confirm **`smartUI.smartIgnore`** is **`true`** in the **final** session capabilities (not only in a discarded map).
+2. Confirm **baseline** was taken with **`smartUI.smartIgnore`: true** as well.
+3. Remove conflicting keys: avoid stacking **Ignore DOM** and **Select DOM** patterns against Smart Ignore guidance.
+4. Confirm you are not expecting Smart Ignore–only UI behavior while the build is still in an effective **strict** comparison context.
+
+### Strategy not applied (general)
+
+- Verify capabilities on the session in LambdaTest automation logs.
+- Check **project-level** comparison defaults in the SmartUI dashboard.
+- After doc or product updates, refresh any cached examples—older snippets may show `ignoreType` alone for Smart Ignore.
 
 ### "Please provide screenshot name"
 
@@ -155,7 +190,7 @@ To get correct comparison results:
 - Confirm same screenshot name and same project on both runs.
 - Confirm second run is uploaded to the intended branch/build context.
 
-## Related Docs
+## Related docs
 
 - [Layout Testing](/support/docs/smartui-layout-testing/)
 - [Smart Ignore](/support/docs/smartui-smartignore/)
