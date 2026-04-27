@@ -4096,6 +4096,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "Iframes & Embeds",
+            id: "smartui-iframes-and-embedded-content",
+          },
+          {
+            type: "doc",
             label: "Handle Lazy Loading",
             id: "smartui-handle-lazy-loading",
           },
