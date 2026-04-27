@@ -270,6 +270,8 @@ await smartuiSnapshot(driver, 'Video Page');
 2. If issues persist, consider using `ignoreDOM` for iframe areas
 3. Check if iframe content is accessible (CORS policies may affect this)
 
+For same-origin vs cross-origin iframes and automation **frame** context, see [Iframes and Embedded Content in SmartUI](/support/docs/smartui-iframes-and-embedded-content/).
+
 </TabItem>
 </Tabs>
 
