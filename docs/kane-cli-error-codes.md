@@ -17,7 +17,9 @@ displayed_sidebar: KaneCLISidebar
 canonical: https://www.testmuai.com/support/docs/kane-cli-error-codes/
 ---
 
+import CodeBlock from '@theme/CodeBlock';
 import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
+import {YOUR_LAMBDATEST_USERNAME, YOUR_LAMBDATEST_ACCESS_KEY} from "@site/src/component/keys";
 
 <script type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -223,11 +225,13 @@ Platform or infrastructure failures. These are independent of the objective itse
 | **What happened** | The <BrandName /> controller returned a `401 Unauthorized` response. Your authentication token has expired or is invalid. |
 | **Action** | Refresh your authentication token: |
 
-```bash
-kane-cli login
-# or re-run setup
-kane-cli setup --auth-method basic --username YOUR_USERNAME --access-key YOUR_ACCESS_KEY
-```
+<div className="lambdatest__codeblock">
+<CodeBlock className="language-bash">
+{`kane-cli login
+# or re-run login with basic auth
+kane-cli login --username "${ YOUR_LAMBDATEST_USERNAME()}" --access-key "${ YOUR_LAMBDATEST_ACCESS_KEY()}"`}
+</CodeBlock>
+</div>
 
 Verify with `kane-cli whoami`, then retry the run.
 

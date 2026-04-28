@@ -2,7 +2,7 @@
 id: kane-cli-troubleshooting
 title: Troubleshooting
 sidebar_label: Troubleshooting
-description: "Fix common Kane CLI issues: Chrome launch failures, authentication errors, run timeouts, variables not resolving, and Agent Mode output problems."
+description: "Fix common Kane CLI issues: Chrome launch failures, authentication errors, run timeouts, variables not resolving, upload failures, and Agent Mode output problems."
 keywords:
   - kane cli troubleshooting
   - kaneai errors
@@ -16,7 +16,9 @@ displayed_sidebar: KaneCLISidebar
 canonical: https://www.testmuai.com/support/docs/kane-cli-troubleshooting/
 ---
 
+import CodeBlock from '@theme/CodeBlock';
 import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
+import {YOUR_LAMBDATEST_USERNAME, YOUR_LAMBDATEST_ACCESS_KEY} from "@site/src/component/keys";
 
 <script type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -63,7 +65,9 @@ The `run_end` event in Agent Mode provides `session_dir` and `run_dir` directly.
 
 ### "Chrome failed to launch"
 
-**Cause:** Chrome is not installed, or CDP ports 9222–9230 are already in use.
+**Cause:** Chrome is not installed, all CDP ports in the 9222–9230 range are in use, or a profile lock from another running Chrome.
+
+Kane CLI manages a Chrome process and connects to it over the Chrome DevTools Protocol (CDP). On macOS it looks under `/Applications/Google Chrome.app`; on Linux it looks for `google-chrome`, `google-chrome-stable`, `chromium`, and similar binaries; on Windows it looks under `Program Files\Google\Chrome\Application\chrome.exe` and `AppData\Local`.
 
 **Fix:**
 1. Install Google Chrome if not present
@@ -71,7 +75,9 @@ The `run_end` event in Agent Mode provides `session_dir` and `run_dir` directly.
    ```bash
    lsof -i :9222-9230
    ```
-3. Kill any blocking processes, or connect to the existing instance:
+3. Quit any extra Chrome processes hoarding the 9222–9230 port range
+4. Pick a different Chrome user-data directory, or quit the Chrome instance using it. See [Chrome Management](/support/docs/kane-cli-configuration/#chrome-management)
+5. If you only need to connect to an already-running Chrome:
    ```bash
    kane-cli run "..." --cdp-endpoint http://localhost:9222
    ```
@@ -105,21 +111,43 @@ Kill any existing processes, then retry.
 
 **Cause:** Expired tokens or incorrect credentials.
 
-**Fix:** Refresh tokens with `kane-cli login`, or verify your active profile:
-```bash
-kane-cli whoami
-```
+**Fix for interactive use:**
+1. Re-run the login flow:
+   ```bash
+   kane-cli login
+   ```
+2. Confirm which profile, environment, and token state are active:
+   ```bash
+   kane-cli whoami
+   ```
+   If the token is missing or expired and refresh did not succeed, log in again.
+
+**Fix for CI / non-interactive use:**
+
+Verify both values against the credentials shown in your <BrandName /> dashboard, then pass them on the command line:
+
+<div className="lambdatest__codeblock">
+<CodeBlock className="language-bash">
+{`kane-cli run "<objective>" \\
+  --username "${ YOUR_LAMBDATEST_USERNAME()}" \\
+  --access-key "${ YOUR_LAMBDATEST_ACCESS_KEY()}"`}
+</CodeBlock>
+</div>
+
+If they still do not work, regenerate the access key in the dashboard and retry.
 
 ### "Not configured" on first run
 
 **Cause:** No profile exists yet.
 
-**Fix:** Run first-time setup:
-```bash
-kane-cli setup --auth-method basic --username YOUR_USERNAME --access-key YOUR_ACCESS_KEY
-```
+**Fix:** Run the login flow:
+<div className="lambdatest__codeblock">
+<CodeBlock className="language-bash">
+{`kane-cli login --username "${ YOUR_LAMBDATEST_USERNAME()}" --access-key "${ YOUR_LAMBDATEST_ACCESS_KEY()}"`}
+</CodeBlock>
+</div>
 
-Get credentials from the <BrandName /> dashboard under **Settings → Keys**.
+Get credentials from the <BrandName /> [dashboard](https://accounts.lambdatest.com/dashboard) > **Credentials**.
 
 ### Basic auth not working
 
@@ -131,14 +159,15 @@ Get credentials from the <BrandName /> dashboard under **Settings → Keys**.
 
 ## Run Issues
 
-### "Run timed out" (exit code 3)
+### "Run timed out" or "max steps exceeded"
 
 **Cause:** Objective is too complex, page is slow to load, or `--max-steps` is too low.
 
 **Fix:**
 - Increase `--timeout`: `--timeout 300`
 - Increase `--max-steps`: `--max-steps 60`
-- Split the objective into smaller, sequential runs
+- Break the work into smaller objectives. Run several sequential `kane-cli run` invocations, each focused on one logical sub-task. The session keeps the same browser between runs, so state carries over.
+- Tighten the objective. Vague objectives often cause the agent to wander; describe the target outcome and any required values up front.
 
 ### Agent repeats the same action
 
@@ -154,12 +183,14 @@ Get credentials from the <BrandName /> dashboard under **Settings → Keys**.
 **Cause:** Variable file not loaded, wrong JSON format, or wrong variable key name.
 
 **Fix:**
-1. Test with inline variables first:
+1. **JSON syntax.** Variable files are JSON. A missing comma or unquoted key will cause the file to be skipped silently.
+2. **File location.** Confirm your file is in the right place — see [loading order](/support/docs/kane-cli-variables-and-context/#loading-order).
+3. **Inline test.** Bypass file loading by passing the variable on the command line:
    ```bash
-   kane-cli run "Login as {{email}}" --variables '{"email": {"value": "test@example.com"}}'
+   kane-cli run "log in as {{user}}" \
+     --variables '{"user":{"value":"alice"}}'
    ```
-2. Verify your variable file JSON is valid: `jq . your-file.json`
-3. Check the variable file is in the right directory (see [Variables & Context](/support/docs/kane-cli-variables-and-context/))
+   If the inline form works, the issue is with file loading, not the variable itself.
 
 ### Assertions fail even though the page looks correct
 
@@ -169,6 +200,23 @@ Get credentials from the <BrandName /> dashboard under **Settings → Keys**.
 1. Check the screenshot at `{run_dir}/run-test/screenshots/step_NNN.png`: see exactly what the agent saw
 2. Refine the assertion: use `assert the page contains` (substring) instead of exact text
 3. Add a wait: `"wait for the confirmation message to appear, then assert..."`
+
+---
+
+## Upload Issues
+
+### "Upload failed" or "Test Manager error"
+
+**Cause:** Kane CLI uploads run artifacts to <BrandName /> Test Manager at the end of the session. If the upload fails:
+
+**Fix:**
+1. **Authentication.** Re-check `kane-cli whoami` and re-login if needed. Test Manager upload requires a valid token (or basic auth) for the configured environment.
+2. **Network connectivity.** The upload talks to the <BrandName /> control plane and a cloud storage endpoint. Verify outbound HTTPS is not blocked by a proxy or firewall.
+3. **Project is set.** The pipeline will not commit a test case without a project. Confirm one is configured:
+   ```bash
+   kane-cli config show
+   ```
+   If `project_id` is empty, set it with `kane-cli config project` or pick one in the TUI.
 
 ---
 
@@ -211,14 +259,13 @@ kane-cli run "..." --agent 2>/dev/null | tail -1 | jq .
 
 **Fix:**
 ```bash
-# Find the npm global bin directory
-npm root -g
+npm config get prefix
 
 # Add to PATH (adjust path based on above output)
-export PATH="$(npm root -g)/../bin:$PATH"
+export PATH="$(npm config get prefix)/bin:$PATH"
 
 # Make permanent: add to ~/.zshrc or ~/.bashrc
-echo 'export PATH="$(npm root -g)/../bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="$(npm config get prefix)/bin:$PATH"' >> ~/.zshrc
 ```
 
 ### Installation fails
@@ -229,6 +276,14 @@ echo 'export PATH="$(npm root -g)/../bin:$PATH"' >> ~/.zshrc
 ```bash
 node --version   # Must be 18 or higher
 ```
+
+---
+
+## "Update available" Notice
+
+Kane CLI checks the public npm registry for a newer release once every 24 hours. The result is cached locally so the check itself is non-blocking and silent on failure. When a newer version exists, Kane CLI surfaces an "update available" notification with the current and latest versions and a severity label (`major`, `minor`, or `patch`).
+
+The notice is informational — your current version still works. To upgrade, follow the steps in [Updates](/support/docs/kane-cli-installation/#update).
 
 ---
 
@@ -244,7 +299,6 @@ Include the following:
 |-------|---------------|
 | Kane CLI version | `kane-cli --version` |
 | OS | macOS (ARM/Intel), Linux (x64/ARM64), Windows (x64) |
-| Install method | npm, Homebrew, curl, binary |
 | What happened | Describe the behavior |
 | Reproduction steps | The exact `kane-cli run` command and objective |
 | Expected behavior | What should have happened |
