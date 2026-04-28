@@ -44,6 +44,8 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
     }}
 ></script>
 
+Kane CLI is published to the public npm registry as `@testmuai/kane-cli`. Install it globally with `npm` to get the `kane-cli` command on your `PATH`.
+
 ## Install
 
 ```bash
@@ -52,11 +54,17 @@ npm install -g @testmuai/kane-cli
 
 Platform-specific native binaries are installed automatically for your OS. No additional configuration is needed.
 
+:::note
+Kane CLI requires **Node.js 18 or higher** and **Google Chrome** installed on your system. Chrome is used as the automation browser and is launched automatically when you run a test.
+:::
+
 ## Verify
 
 ```bash
 kane-cli --version
 ```
+
+If the command is not found, your shell is not seeing the npm global `bin` directory. Open a new terminal or update `PATH`, then try again.
 
 ## Platform Support
 
@@ -67,21 +75,31 @@ kane-cli --version
 | Linux | x64 | ✅ |
 | Windows | x64 | ✅ |
 
-:::note
-Kane CLI requires **Node.js 18 or higher** and **Google Chrome** installed on your system. Chrome is used as the automation browser and is launched automatically when you run a test.
-:::
-
 ## Update
 
+Kane CLI checks the npm registry once every 24 hours when you launch it. When a newer version is available, the CLI prints a one-line notification on startup with the current and latest versions. The check runs in the background and never blocks startup.
+
+Upgrade with:
+
 ```bash
-npm update -g @testmuai/kane-cli
+npm install -g @testmuai/kane-cli@latest
 ```
+
+After upgrading, run `kane-cli --version` to confirm the new version is active.
 
 ## Uninstall
 
 ```bash
 npm uninstall -g @testmuai/kane-cli
 ```
+
+This removes the `kane-cli` binary but leaves your local data in place. Kane CLI stores credentials, configuration, sessions, and Chrome profile data under `~/.testmuai/kaneai/`. To wipe that state as well:
+
+```bash
+rm -rf ~/.testmuai/kaneai
+```
+
+Only do this if you want a clean reset — it logs you out of all profiles and deletes saved configuration, session history, and command history.
 
 ## Troubleshooting Installation
 
@@ -91,10 +109,11 @@ Your npm global bin directory is not in your PATH. Find it and add it:
 
 ```bash
 # Find your npm global bin directory
-npm root -g
+npm config get prefix
 
-# Then add it to your PATH in ~/.zshrc or ~/.bashrc
-export PATH="$(npm root -g)/../bin:$PATH"
+# The kane-cli binary lives in <prefix>/bin on macOS/Linux, and <prefix> on Windows
+# Add it to your PATH in ~/.zshrc or ~/.bashrc
+export PATH="$(npm config get prefix)/bin:$PATH"
 ```
 
 **Installation fails on Node 16**
