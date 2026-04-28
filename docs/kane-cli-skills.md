@@ -20,7 +20,9 @@ canonical: https://www.testmuai.com/support/docs/kane-cli-skills/
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
 import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
+import {YOUR_LAMBDATEST_USERNAME, YOUR_LAMBDATEST_ACCESS_KEY} from "@site/src/component/keys";
 
 <script type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -184,14 +186,15 @@ curl -o .gemini/skills/kane-cli/SKILL.md \
 
 OAuth login opens a browser window: AI agents cannot complete this flow. Use Basic Auth instead:
 
-```bash
-kane-cli setup \
-  --auth-method basic \
-  --username YOUR_USERNAME \
-  --access-key YOUR_ACCESS_KEY
-```
+<div className="lambdatest__codeblock">
+<CodeBlock className="language-bash">
+{`kane-cli login \\
+  --username "${ YOUR_LAMBDATEST_USERNAME()}" \\
+  --access-key "${ YOUR_LAMBDATEST_ACCESS_KEY()}"`}
+</CodeBlock>
+</div>
 
-Get credentials from the <BrandName /> dashboard under **Settings → Keys**. Verify with `kane-cli whoami`.
+Get credentials from the <BrandName /> [dashboard](https://accounts.lambdatest.com/dashboard) > **Credentials**. Verify with `kane-cli whoami`.
 
 ---
 

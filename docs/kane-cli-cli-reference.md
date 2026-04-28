@@ -44,12 +44,12 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
 
 ## Commands
 
-### `kane-cli`
+### `kane-cli --tui`
 
 Launch the interactive TUI.
 
 ```bash
-kane-cli
+kane-cli --tui
 ```
 
 ---
@@ -66,49 +66,40 @@ kane-cli run "<objective>" [options]
 |------|-------------|---------|
 | `--url <url>` | Starting URL for the browser | Last used or configured URL |
 | `--headless` | Run Chrome without a visible window | Off |
-| `--max-steps <n>` | Maximum agent reasoning steps | 30 |
+| `--max-steps <n>` | Maximum agent reasoning steps | `30` |
 | `--timeout <s>` | Abort after N seconds | No limit |
 | `--cdp-endpoint <url>` | Connect to an existing Chrome via CDP | Auto-launch Chrome |
-| `--ws-endpoint <url>` | Connect via WebSocket (e.g. LambdaTest remote grid) | Local Chrome |
+| `--ws-endpoint <url>` | Connect via WebSocket (e.g. <BrandName /> remote grid `wss://`) | Local Chrome |
 | `--variables <json>` | Inline variable JSON | None |
 | `--variables-file <path>` | Load variables from a JSON file | None |
 | `--global-context <file>` | Override global context markdown | `~/.testmuai/kaneai/global-memory.md` |
 | `--local-context <file>` | Override local context markdown | `.testmuai/context.md` |
+| `--session-context <json>` | Prior runs context JSON | None |
 | `--agent` | Output structured NDJSON (for AI coding agents) | Off |
+| `--mode <name>` | Run mode: `action` (strict) or `testing` (lenient) | Config value, otherwise `testing` |
 | `--code-export` | Generate code export after run uploads | Off |
-| `--username <user>` | LambdaTest username (overrides stored profile) | N/A |
-| `--access-key <key>` | LambdaTest access key (overrides stored profile) | N/A |
+| `--code-language <lang>` | Code export language (currently `python`) | `python` |
+| `--skip-code-validation` | Skip post-codegen worker-side validation | On |
+| `--no-skip-code-validation` | Force post-codegen worker-side validation | Off |
+| `--username <user>` | Basic auth username (overrides stored profile) | N/A |
+| `--access-key <key>` | Basic auth access key (overrides stored profile) | N/A |
+| `--env <name>` | Environment (`prod`) | Active profile's env |
 
 ---
 
 ### `kane-cli login`
 
-OAuth login. Opens browser for authentication.
+Authenticate with <BrandName />. Opens a browser for OAuth, or accepts credentials for basic auth.
 
 ```bash
+# OAuth (interactive)
 kane-cli login [--profile <name>]
+
+# Basic auth (non-interactive)
+kane-cli login --username <user> --access-key <key> [--profile <name>]
 ```
 
-Uses OAuth 2.1 PKCE. Tokens stored locally and auto-refreshed.
-
----
-
-### `kane-cli setup`
-
-First-time setup with explicit auth method. Use in CI/CD or agent contexts where `kane-cli login` is not possible.
-
-```bash
-kane-cli setup \
-  --auth-method basic \
-  --username <user> \
-  --access-key <key> 
-```
-
-| Flag | Description |
-|------|-------------|
-| `--auth-method` | `basic` or `oauth` |
-| `--username` | LambdaTest username |
-| `--access-key` | LambdaTest access key |
+See [Authentication](/support/docs/kane-cli-authentication/) for details on profiles and auth methods.
 
 ---
 
@@ -127,8 +118,34 @@ kane-cli logout
 Show the active profile and authentication status.
 
 ```bash
-kane-cli whoami
+kane-cli whoami [--profile <name>]
 ```
+
+Prints profile, environment, auth method, username, and token state (for OAuth).
+
+---
+
+### `kane-cli balance`
+
+Show credit balance for the active profile.
+
+```bash
+kane-cli balance [--profile <name>]
+```
+
+---
+
+### `kane-cli profiles`
+
+Manage named authentication profiles.
+
+```bash
+kane-cli profiles list           # List all profiles
+kane-cli profiles switch <name>  # Switch the active profile
+kane-cli profiles delete <name>  # Delete a profile
+```
+
+See [Authentication — Profiles](/support/docs/kane-cli-authentication/#profiles) for details.
 
 ---
 
@@ -138,16 +155,18 @@ View and modify persistent settings.
 
 ```bash
 kane-cli config show                       # Show all settings
-kane-cli config set-url <url>              # Set default URL
 kane-cli config set-window <W>x<H>        # Set browser window size
-kane-cli config set-chrome-profile         # Interactive Chrome profile picker (human only)
-kane-cli config set-project                # Interactive TMS project picker (human only)
-kane-cli config set-folder                 # Interactive TMS folder picker (human only)
+kane-cli config set-mode <action|testing>  # Set run mode
+kane-cli config chrome-profile [path]      # Set Chrome profile (interactive picker if no path)
+kane-cli config project [id]               # Set Test Manager project (interactive picker if no id)
+kane-cli config folder [id]                # Set Test Manager folder (interactive picker if no id)
 ```
 
 :::note
-Commands marked "human only" launch an interactive picker UI. AI agents cannot run these: ask the user to run them directly.
+Commands without arguments (`chrome-profile`, `project`, `folder`) launch an interactive picker UI. AI agents cannot run these — ask the user to run them directly.
 :::
+
+See [Configuration](/support/docs/kane-cli-configuration/) for the full settings reference.
 
 ---
 
@@ -175,6 +194,26 @@ kane-cli feedback \
 
 ---
 
+## TUI Slash Commands
+
+| Command | Args | Description |
+|---------|------|-------------|
+| `/run` | `"objective"` | Execute a test run |
+| `/login` | `[--profile name]` | OAuth login |
+| `/logout` | `[--profile name]` | Logout and revoke tokens |
+| `/whoami` | `[--profile name]` | Show profile info |
+| `/balance` | | Show credit balance |
+| `/profiles` | `list\|switch\|delete` | Manage profiles |
+| `/config` | `show\|set-window\|set-mode\|chrome-profile\|project\|folder` | Manage configuration |
+| `/new` | | Start a fresh session (uploads current session first) |
+| `/summary` | `[index]` | View detailed run summaries |
+| `/cancel` | | Abort the current run |
+| `/help` | | Show the command reference |
+| `/clear` | | Clear chat history |
+| `/exit` | | Quit Kane CLI |
+
+---
+
 ## Keyboard Shortcuts
 
 | Shortcut | Action |
@@ -182,6 +221,7 @@ kane-cli feedback \
 | Enter | Submit objective |
 | Ctrl+C | Cancel current run |
 | Ctrl+C (twice) | Exit TUI |
+| Ctrl+R | Reverse history search |
 | Esc | Go back / close picker |
 | Up / Down | Navigate menu or input history |
 | Tab | Accept autocomplete |
@@ -193,12 +233,17 @@ kane-cli feedback \
 | Setting | Default | Command |
 |---------|---------|---------|
 | `window_size` | `1920x1080` | `config set-window` |
-| `default_url` | None | `config set-url` |
-| `chrome_profile_path` | `~/.testmuai/kaneai/chrome-profile` | `config set-chrome-profile` |
-| `project_id` / `project_name` | None | `config set-project` |
-| `folder_id` / `folder_name` | None | `config set-folder` |
+| `default_url` | `https://kaneai-playground.lambdatest.io` | Internal default |
+| `model` | `v16-alpha` | Internal default |
+| `mode` | `testing` | `config set-mode` |
+| `chrome_profile_path` | Empty (temporary per run) | `config chrome-profile` |
+| `project_id` / `project_name` | None | `config project` |
+| `folder_id` / `folder_name` | None | `config folder` |
+| `code_export.enabled` | `false` | TUI menu or `--code-export` flag |
+| `code_export.language` | `python` | `--code-language` flag |
+| `code_export.skip_validation` | `true` | TUI menu or `--skip-code-validation` flag |
 
-Settings are stored at `~/.testmuai/kaneai/tui-config.json`.
+Settings are stored at `~/.testmuai/kaneai/tui-config.json`. See [Configuration](/support/docs/kane-cli-configuration/) for details.
 
 ---
 
@@ -207,28 +252,23 @@ Settings are stored at `~/.testmuai/kaneai/tui-config.json`.
 ```
 ~/.testmuai/kaneai/
 ├── tui-config.json              # Persistent settings
-├── config.json                  # Shared auth configuration
 ├── global-memory.md             # Global agent context
-├── chrome-profile/              # Default Chrome user profile
+├── chrome-profiles/             # Named Chrome user profiles
+│   └── <name>/
 ├── profiles/                    # Stored credentials
-│   └── {profile-name}/
-│       └── {environment}/
-│           └── credentials      # OAuth tokens or basic auth
+│   └── <profile>/
+│       └── <environment>/
+│           └── credentials      # OAuth tokens or basic auth (mode 0600)
 ├── sessions/                    # All session history
-│   └── {session-id}/
+│   └── <session-id>/
 │       ├── session.json         # Session metadata and run list
 │       ├── tui.log              # Session event log
-│       └── runs/
-│           └── {n}/             # Per-run directory
-│               ├── run.log
-│               └── run-test/
-│                   ├── run_summary.json
-│                   ├── step_001.json
-│                   ├── step_002.json
-│                   ├── screenshots/
-│                   │   ├── step_001.png
-│                   │   └── step_002.png
-│                   └── dag_diagram.md
+│       ├── runs/
+│       │   └── <n>/             # Per-run directory
+│       │       └── run-test/
+│       │           ├── actions.ndjson
+│       │           └── screenshots/
+│       └── code-export/         # Generated code (when enabled)
 └── variables/                   # Global variable files
     └── *.json
 

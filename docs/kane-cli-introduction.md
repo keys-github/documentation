@@ -66,7 +66,7 @@ kane-cli run --url https://example.com "Click the 'More information' link and ve
 
 | Mode | Command | Best For |
 |------|---------|----------|
-| **Interactive TUI** | `kane-cli` | Development, exploration, chained multi-run sessions |
+| **Interactive TUI** | `kane-cli --tui` | Development, exploration, chained multi-run sessions |
 | **Non-Interactive CLI Mode** | `kane-cli run "..." --headless --agent` | CI/CD pipelines, shell scripts |
 | **Agent Mode** | `kane-cli run "..." --agent` | AI coding agents (Claude, Codex, Gemini) |
 
@@ -74,7 +74,10 @@ kane-cli run --url https://example.com "Click the 'More information' link and ve
 
 - [Installation](/support/docs/kane-cli-installation/): Install Kane CLI and verify your setup
 - [Quick Start](/support/docs/kane-cli-quickstart/): Authenticate and run your first test in 5 minutes
+- [Authentication](/support/docs/kane-cli-authentication/): OAuth, basic auth, and profile management
 - [Writing Objectives](/support/docs/kane-cli-writing-objectives/): Learn how to write effective natural language objectives
+- [Configuration](/support/docs/kane-cli-configuration/): Window size, Chrome profiles, Test Manager project, and run mode
+- [Test Manager Integration](/support/docs/kane-cli-tms-integration/): Uploads, share links, code export, and session history
 - [Agent Mode](/support/docs/kane-cli-agent-mode/): Use Kane CLI with AI coding agents
 - [CI/CD Integration](/support/docs/kane-cli-cicd/): Add Kane CLI to your pipeline
 - [Skills](/support/docs/kane-cli-skills/): Install the Kane CLI skill for Claude, Codex, or Gemini

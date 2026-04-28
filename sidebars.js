@@ -5202,6 +5202,11 @@ module.exports = {
             label: "Quick Start",
             id: "kane-cli-quickstart",
           },
+          {
+            type: "doc",
+            label: "Authentication",
+            id: "kane-cli-authentication",
+          },
         ],
       },
       {
@@ -5223,6 +5228,16 @@ module.exports = {
             type: "doc",
             label: "Variables & Context",
             id: "kane-cli-variables-and-context",
+          },
+          {
+            type: "doc",
+            label: "Configuration",
+            id: "kane-cli-configuration",
+          },
+          {
+            type: "doc",
+            label: "Test Manager Integration",
+            id: "kane-cli-tms-integration",
           },
         ],
       },
