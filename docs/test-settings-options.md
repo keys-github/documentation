@@ -31,15 +31,14 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
 
 We offer multiple options for comparing the **Baseline** and the **Test Output** screenshots captured during your automation testing suites.
 
-Here are the following common test setting options -
+Here are common **pixel-to-pixel** comparison options. The first group is **actively used** through `smartUI.options` (or your framework’s equivalent) in typical integrations:
 
-- `largeImageThreshold` - Sets the pixel granularity at the rate to which the pixel blocks are created.
-- `errorType` - Show the differences in the output screen by identifying the pixel changes type and capture the intended view.
-- `ignore` - To remove the Pixel to Pixel false-positive rate in identifying the screenshot.
-- `transparency` - To help adjust test transparency settings and strike a balance between highlighting in visual screening.
-- `boundingBoxes: [box1, box2]` - By specifying a bounding box measured in pixels from the top left, you can narrow down the area of comparison.
-- `ignoredBoxes: [box1, box2]` - By specifying a bounding box measured in pixels from the top left, you can exclude part of the image from comparison.
-- `ignoreAreasColoredWith` - By specifying a RGBA color, you can exclude colored areas of the image from comparison.
+- `largeImageThreshold` — Pixel granularity for how comparison blocks are formed.
+- `errorType` — How differences are highlighted (`movement`, `flat`, etc.).
+- `ignore` — Reduces P2P false positives (`antialiasing`, `alpha`, `colors`, `nothing`).
+- `transparency` — Overlay transparency for the diff view.
+
+The sections **[Bounding Boxes](#bounding-boxes---compare-only-specific-area)**, **[Ignore Boxes](#ignore-boxes---ignore-only-specific-area)**, and **[Ignore Areas Colored](#ignore-areas-colored---removes-the-colored-content-from-the-comparison)** describe **region- and color-based** comparison. Examples nest keys under **`smartUI.options`** / **`smart_ui.options`** like the options above; **still validate** with your integration or support—see the warning before **Bounding Boxes**. For region-level control in the product UI, prefer **[Draw on UI / annotations](/support/docs/smartui-draw-on-ui/)**.
 
 ## Examples with comparison settings
 
@@ -234,9 +233,15 @@ let capabilities = {
 
 ---
 
-### Bounding Boxes - Compare only specific area
+:::warning `boundingBoxes`, `ignoredBoxes`, `ignoreAreasColoredWith`
+These three comparison modes exist in SmartUI’s **pixel-to-pixel** model. The examples below nest them under **`smartUI.options`** (Selenium) and **`smart_ui.options`** (Cypress)—the same shape as **Image Threshold** through **Transparency**—but **behavior can still vary by integration**; **do not copy into production** without validating against your session or with **[support](mailto:support@testmuai.com)**. For box/color-style ignores in the UI, use **[Draw on UI](/support/docs/smartui-draw-on-ui/)** or confirm the supported payload with support.
+:::
+
+### Bounding Boxes - Compare only specific area {#bounding-boxes---compare-only-specific-area}
 
 The bounding boxes are the areas created on the screenshot which needs to be compared with the baseline ignoring other areas from the screenshot.
+
+**Reference only —** verify with support before relying on capability wiring.
 
 This specific case is used to compare only a specific area of the screenshot from the **baseline**.
 
@@ -266,9 +271,11 @@ let capabilities = {
 
   /*  ....Your Selenium capabilities go here */
 
-  "smartUI.project": "<Your Project Name>" // Your SmartUI project name
-  // highlight-next-line
-  "boundingBoxes" : [box1, box2] // Your bounding box configuration
+  "smartUI.project": "<Your Project Name>", // Your SmartUI project name
+  "smartUI.options": {
+    // highlight-next-line
+    "boundingBoxes": [box1, box2] // Compare only these regions (P2P)
+  }
 };
 
 ```
@@ -278,22 +285,24 @@ let capabilities = {
 <TabItem value="cypress" label="Cypress">
 
 ```json title="Make changes in your /project/lambdatest-config.json"
-"smart_ui":{
-   "project":"<Your Project Name>",
-   "boundingBoxes":[
+"smart_ui": {
+  "project": "<Your Project Name>",
+  "options": {
+    "boundingBoxes": [
       {
-         "left":100,
-         "top":500,
-         "right":800,
-         "bottom":300
+        "left": 100,
+        "top": 500,
+        "right": 800,
+        "bottom": 300
       },
       {
-         "left":800,
-         "top":50,
-         "right":20,
-         "bottom":700
+        "left": 800,
+        "top": 50,
+        "right": 20,
+        "bottom": 700
       }
-   ]
+    ]
+  }
 }
 
 ```
@@ -305,7 +314,9 @@ let capabilities = {
 
 ---
 
-### Ignore Boxes - Ignore only specific area
+### Ignore Boxes - Ignore only specific area {#ignore-boxes---ignore-only-specific-area}
+
+**Reference only —** verify with support before relying on capability wiring.
 
 The ignored boxes are the areas created on the screenshot which needs to be ignored with the baseline comparing the other areas from the screenshot.
 
@@ -337,9 +348,11 @@ let capabilities = {
 
   /*  ....Your Selenium capabilities go here */
 
-  "smartUI.project": "<Your Project Name>" // Your SmartUI project name
-  // highlight-next-line
-  "ignoredBoxes" : [box1, box2] // Your bounding box configuration
+  "smartUI.project": "<Your Project Name>", // Your SmartUI project name
+  "smartUI.options": {
+    // highlight-next-line
+    "ignoredBoxes": [box1, box2] // Ignore these regions during P2P compare
+  }
 };
 
 ```
@@ -349,22 +362,24 @@ let capabilities = {
 <TabItem value="cypress" label="Cypress">
 
 ```json title="Make changes in your /project/lambdatest-config.json"
-"smart_ui":{
-   "project":"<Your Project Name>",
-   "ignoredBoxes":[
+"smart_ui": {
+  "project": "<Your Project Name>",
+  "options": {
+    "ignoredBoxes": [
       {
-         "left":100,
-         "top":500,
-         "right":800,
-         "bottom":300
+        "left": 100,
+        "top": 500,
+        "right": 800,
+        "bottom": 300
       },
       {
-         "left":800,
-         "top":50,
-         "right":20,
-         "bottom":700
+        "left": 800,
+        "top": 50,
+        "right": 20,
+        "bottom": 700
       }
-   ]
+    ]
+  }
 }
 
 ```
@@ -376,7 +391,9 @@ let capabilities = {
 
 ---
 
-### Ignore Areas Colored - Removes the colored content from the comparison
+### Ignore Areas Colored - Removes the colored content from the comparison {#ignore-areas-colored---removes-the-colored-content-from-the-comparison}
+
+**Reference only —** verify with support before relying on capability wiring.
 
 You can exclude the pixels that match the specified color on a **baseline** image from the comparison view. This feature will ignore that specific regions with the color pixels and shows the comparison view.
 
@@ -399,9 +416,11 @@ let capabilities = {
 
   /*  ....Your Selenium capabilities go here */
 
-  "smartUI.project": "<Your Project Name>" // Your SmartUI project name
-  // highlight-next-line
-  "ignoreAreasColoredWith" : color // Your bounding box configuration
+  "smartUI.project": "<Your Project Name>", // Your SmartUI project name
+  "smartUI.options": {
+    // highlight-next-line
+    "ignoreAreasColoredWith": color // Ignore pixels matching this RGBA in P2P compare
+  }
 };
 
 ```
@@ -411,13 +430,15 @@ let capabilities = {
 <TabItem value="cypress" label="Cypress">
 
 ```json title="Make changes in your /project/lambdatest-config.json"
-"smart_ui":{
-   "project":"<Your Project Name>",
-   "ignoreAreasColoredWith": {
+"smart_ui": {
+  "project": "<Your Project Name>",
+  "options": {
+    "ignoreAreasColoredWith": {
       "r": 242,
       "g": 201,
       "b": 76,
       "a": 1
+    }
   }
 }
 
