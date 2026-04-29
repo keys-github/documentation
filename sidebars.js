@@ -2485,7 +2485,7 @@ module.exports = {
           },
           {
             type: "doc",
-            label: "VPAT Report Generation",
+            label: "VPAT & ACR evidence",
             id: "accessibility-vpat-report-generation",
           },
         ],
