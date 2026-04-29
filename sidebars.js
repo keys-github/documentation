@@ -2966,7 +2966,6 @@ module.exports = {
         label: "Connect Your Tools",
         items: [
           "selenium-bidi-integration",
-          "automation-mcp-server",
           "lambda-hooks",
           "command-annotations",
           "selenium-add-test-meta-data",
@@ -4724,6 +4723,26 @@ module.exports = {
         type: "doc",
         label: "Setting up TestMu AI MCP Server",
         id: "lambdatest-mcp-server",
+      },
+      {
+        type: "doc",
+        label: "Automation MCP Server",
+        id: "automation-mcp-server",
+      },
+      {
+        type: "doc",
+        label: "Accessibility MCP Server",
+        id: "accessibility-mcp-server",
+      },
+      {
+        type: "doc",
+        label: "SmartUI MCP Server",
+        id: "smartui-mcp-server",
+      },
+      {
+        type: "doc",
+        label: "HyperExecute MCP Server",
+        id: "hyperexecute-mcp-server",
       },
     ],
   ],
