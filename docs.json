@@ -39,99 +39,54 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Home",
-        "icon": "house",
-        "pages": [
-          "docs/index"
-        ]
-      },
-      {
         "tab": "Docs",
         "icon": "book-open-lines",
         "pages": [
           {
-            "group": "KaneAI",
+            "group": "Kane CLI",
             "pages": [
+              "docs/kane-cli-introduction",
               {
                 "group": "Getting Started",
                 "pages": [
-                  "docs/getting-started-with-kane-ai",
-                  "docs/author-your-first-desktop-browser-test"
+                  "docs/kane-cli-installation",
+                  "docs/kane-cli-quickstart",
+                  "docs/kane-cli-authentication"
                 ]
               },
               {
-                "group": "Setup & Configuration",
+                "group": "Core Concepts",
                 "pages": [
-                  "docs/kaneai-chrome-options",
-                  "docs/kaneai-custom-headers",
-                  "docs/kane-ai-geolocation-tunnel-proxy",
-                  "docs/kaneai-gps-location",
-                  "docs/kaneai-network-throttling",
-                  "docs/kane-ai-mobile-app-capabilities",
-                  "docs/kane-ai-secrets"
+                  "docs/kane-cli-modes",
+                  "docs/kane-cli-configuration",
+                  "docs/kane-cli-writing-objectives",
+                  "docs/kane-cli-variables-and-context"
                 ]
               },
               {
-                "group": "Author Tests",
+                "group": "Integrations & Automation",
                 "pages": [
-                  "docs/kaneai-manual-interaction",
-                  "docs/kane-ai-scroll-in-feature",
-                  "docs/kane-ai-drag-drop",
-                  "docs/kaneai-conditional-logic",
-                  "docs/kaneai-rename-instructions",
-                  "docs/kaneai-failure-conditions",
-                  "docs/kane-ai-using-variables",
-                  "docs/kane-ai-smart-variables",
-                  "docs/kane-ai-using-parameters",
-                  "docs/kane-ai-modules",
-                  "docs/kane-ai-api-testing",
-                  "docs/kaneai-database",
-                  "docs/kane-ai-javascript-execution",
-                  "docs/kane-ai-network-assertions",
-                  "docs/kaneai-totp",
-                  "docs/kaneai-smartui-visual-testing",
-                  "docs/kaneai-upload-and-download-files",
-                  "docs/kane-ai-deeplink-support",
-                  "docs/kaneai-mobile-app-accessibility"
+                  "docs/kane-cli-tms-integration",
+                  "docs/kane-cli-cicd",
+                  "docs/kane-cli-parallel-execution"
                 ]
               },
               {
-                "group": "Execute & Run",
+                "group": "Agent Mode",
                 "pages": [
-                  "docs/kane-ai-automation-code-generation",
-                  "docs/kaneai-auto-heal",
-                  "docs/test-runs-configurations",
-                  "docs/kaneai-hyperexecute-test-run-execution",
-                  "docs/kaneai-scheduled-test-runs",
-                  "docs/kaneai-ci-cd-automation",
-                  "docs/kaneai-dynamic-url-replacement",
-                  "docs/kane-ai-using-datasets"
+                  "docs/kane-cli-agent-mode",
+                  "docs/kane-cli-skills"
                 ]
               },
               {
-                "group": "Integrations",
+                "group": "Reference",
                 "pages": [
-                  "docs/kaneai-create-pr",
-                  "docs/github-app-integration",
-                  "docs/kane-ai-jira-integration"
+                  "docs/kane-cli-cli-reference",
+                  "docs/kane-cli-error-codes",
+                  "docs/kane-cli-troubleshooting",
+                  "docs/kane-cli-changelog"
                 ]
-              },
-              {
-                "group": "Guides & Troubleshooting",
-                "pages": [
-                  "docs/kane-ai-command-guide",
-                  "docs/kaneai-kb-finding-and-interacting-with-elements",
-                  "docs/kaneai-kb-forms-inputs-and-data-entry",
-                  "docs/kaneai-kb-assertions-and-validation",
-                  "docs/kaneai-kb-dynamic-content-waits-and-page-state",
-                  "docs/kaneai-kb-mobile-app-testing-patterns",
-                  "docs/kaneai-kb-authentication-and-session-management",
-                  "docs/kaneai-kb-api-testing-and-network-assertions",
-                  "docs/kaneai-kb-js-snippets-and-workarounds",
-                  "docs/error-handling-kaneai"
-                ]
-              },
-              "docs/kaneai-release-notes"
+              }
             ]
           }
         ]
