@@ -2380,8 +2380,11 @@ module.exports = {
               "dark-mode-on-real-devices",
               "group-folder-redirect-on-real-device",
               "apple-pay-manual",
+              "audio-injection-manual",
               "upload-files-media",
-              "multi-device-testing"
+              "multi-device-testing",
+              "manual-app-profiling",
+              "manual-tests-dashboard"
             ],
           },
         ],
@@ -2415,6 +2418,7 @@ module.exports = {
               "network-configurations-in-browser",
               "contacts-on-real-devices-browser",
               "set-date-time-hour-format-real-devices-browser",
+              "audio-injection-manual-browser",
             ]
           }
         ],
