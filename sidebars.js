@@ -2697,9 +2697,7 @@ module.exports = {
               "apple-pay-manual",
               "audio-injection-manual",
               "upload-files-media",
-              "multi-device-testing",
-              "manual-app-profiling",
-              "manual-tests-dashboard"
+              "multi-device-testing"
             ],
           },
         ],
