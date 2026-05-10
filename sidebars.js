@@ -89,10 +89,6 @@ module.exports = {
         ],
       },
       {
-        type: "doc",
-        id: "hyperexecute-mcp-server",
-      },
-      {
         type: "category",
         collapsed: true,
         label: "Key features of HyperExecute",
@@ -2303,11 +2299,6 @@ module.exports = {
         ],
       },
       {
-        type: "doc",
-        label: "Accessibility MCP Tool",
-        id: "accessibility-mcp-server",
-      },
-      {
         type: "category",
         collapsed: true,
         label: "Checklists",
@@ -2818,6 +2809,7 @@ module.exports = {
               "karma-integration-with-lambdatest",
               "npm-plugin-for-testcafe-integration-with-lambdatest",
               "selenium-tests-with-nemojs",
+              "codeceptjs-with-selenium",
             ],
           },
           {
@@ -4177,11 +4169,6 @@ module.exports = {
             label: "Basic Authentication",
             id: "smartui-cli-basic-auth",
           },
-          {
-            type: "doc",
-            label: "SmartUI MCP Tool",
-            id: "smartui-mcp-server",
-          },
         ],
       },
 
@@ -4719,28 +4706,35 @@ module.exports = {
     [
       {
         type: "doc",
-        label: "Setting up TestMu AI MCP Server",
+        label: "Set up TestMu AI MCP Server",
         id: "lambdatest-mcp-server",
       },
       {
-        type: "doc",
-        label: "Automation MCP Tool",
-        id: "automation-mcp-server",
-      },
-      {
-        type: "doc",
-        label: "Accessibility MCP Tool",
-        id: "accessibility-mcp-server",
-      },
-      {
-        type: "doc",
-        label: "SmartUI MCP Tool",
-        id: "smartui-mcp-server",
-      },
-      {
-        type: "doc",
-        label: "HyperExecute MCP Tool",
-        id: "hyperexecute-mcp-server",
+        type: "category",
+        collapsed: true,
+        label: "MCP Tools",
+        items: [
+          {
+            type: "doc",
+            label: "HyperExecute MCP",
+            id: "hyperexecute-mcp-server",
+          },
+          {
+            type: "doc",
+            label: "Automation MCP",
+            id: "automation-mcp-server",
+          },
+          {
+            type: "doc",
+            label: "SmartUI MCP",
+            id: "smartui-mcp-server",
+          },
+          {
+            type: "doc",
+            label: "Accessibility MCP",
+            id: "accessibility-mcp-server",
+          },
+        ],
       },
     ],
   ],
