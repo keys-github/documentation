@@ -2640,11 +2640,13 @@ module.exports = {
           {
             type: "category",
             collapsed: true,
-            label: "Applications",
+            label: "App Management and Distribution",
             items: [
               "upload-apps-on-real-device-cloud",
               "app-settings",
               "app-manager",
+              { type: "doc", id: "app-distribution", customProps: { beta: true } },
+              { type: "doc", id: "beta-testers-management", customProps: { beta: true } },
             ],
           },
           {
