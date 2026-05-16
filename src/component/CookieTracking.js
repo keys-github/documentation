@@ -158,17 +158,17 @@ export default function CookieTrackingLogin(e) {
       window.logAmplitude("click CTA - web pages", { "cta_text": "Get Started Free", "cta_type": "page header", "page_category": "Website header" });
     }
 
-    // Get the current href from the anchor element (which may already have GA parameters)
-    const anchorElement = e.currentTarget;
-    const currentHref = anchorElement?.href || `https://accounts.lambdatest.com/register`;
+    // // Get the current href from the anchor element (which may already have GA parameters)
+    // const anchorElement = e.currentTarget;
+    // const currentHref = anchorElement?.href || `https://testmuai.com/register/`;
 
-    // Append cookies to the current URL (preserving any existing query params like GA)
-    const urlWithCookies = getLoginUrlWithCookies(currentHref);
+    // // Append cookies to the current URL (preserving any existing query params like GA)
+    // const urlWithCookies = getLoginUrlWithCookies(currentHref);
 
-    // Update the href before navigation
-    if (anchorElement) {
-      anchorElement.href = urlWithCookies;
-    }
+    // // Update the href before navigation
+    // if (anchorElement) {
+    //   anchorElement.href = urlWithCookies;
+    // }
   };
 
 

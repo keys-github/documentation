@@ -51,7 +51,7 @@ This collaboration delivers substantial advantages to customers using both platf
 ## Prerequisites
 ---
 
-1. Ensure you have a <BrandName /> account. If you do not have an account, <a href="https://accounts.lambdatest.com/register" onClick={CookieTrackingSignup}>register for free</a>.
+1. Ensure you have a <BrandName /> account. If you do not have an account, <a href="https://testmuai.com/register/" onClick={CookieTrackingSignup}>register for free</a>.
 
 2. Ensure you have a GenRocket account.
 

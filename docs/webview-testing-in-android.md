@@ -70,7 +70,7 @@ WebView, in Android, is the feature which allows any app to display a webpage as
 
 * * *
 
-**Step 1:** You will need an account on <BrandName />. If you already have an account on <BrandName />, you can directly skip to the next step. If you don't have an account yet, you can <a href="https://accounts.lambdatest.com/register" onClick={CookieTrackingSignup}>register for free</a>.
+**Step 1:** You will need an account on <BrandName />. If you already have an account on <BrandName />, you can directly skip to the next step. If you don't have an account yet, you can <a href="https://testmuai.com/register/" onClick={CookieTrackingSignup}>register for free</a>.
 
 **Step 2:** Login to your <BrandName /> account using <a href="https://accounts.lambdatest.com/login" onClick={CookieTrackingLogin}>this link</a>.
 
