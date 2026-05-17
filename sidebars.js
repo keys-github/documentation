@@ -2586,6 +2586,7 @@ module.exports = {
         label: "Test Runs",
         items: [
           "test-run-creation-and-management",
+          "track-issues-in-test-runs",
           "sync-test-instance",
           "test-instance-audit-logs"
         ],
