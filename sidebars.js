@@ -3914,6 +3914,11 @@ module.exports = {
           },
           {
             type: "doc",
+            label: "A/B Testing & Variations",
+            id: "smartui-ab-testing-variations",
+          },
+          {
+            type: "doc",
             label: "Smart RCA (Root Cause Analysis)",
             id: "smartui-root-cause-analysis",
           },
@@ -3926,6 +3931,11 @@ module.exports = {
             type: "doc",
             label: "Multiselect & Bulk Operations",
             id: "smartui-multiselect-bulkops",
+          },
+          {
+            type: "doc",
+            label: "Group by Test Cases",
+            id: "smartui-group-by-test-cases",
           },
           {
             type: "doc",
