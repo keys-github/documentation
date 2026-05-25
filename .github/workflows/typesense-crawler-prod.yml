@@ -15,15 +15,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3   # You MUST checkout your repository first!
 
-      - name: Ensure Typesense collection exists
-        run: |
-          curl -s -o /dev/null -w "%{http_code}" \
-            --request POST \
-            --url "https://${{ secrets.TYPESENSE_HOST }}/collections" \
-            --header "X-TYPESENSE-API-KEY: ${{ secrets.TYPESENSE_API_KEY }}" \
-            --header "Content-Type: application/json" \
-            --data '{"name":"lambdatest","fields":[{"name":".*","type":"auto"}]}' || true
-
       - name: Run DocSearch Scraper
         uses: celsiusnarhwal/typesense-scraper@v2
         with:
