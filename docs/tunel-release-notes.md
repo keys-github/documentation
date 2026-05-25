@@ -41,6 +41,10 @@ import BrandName, { BRAND_URL } from '@site/src/component/BrandName';
       })
     }}
 ></script>
+## Version 3.2.28 (24th May 2026)
+- **Security Updates and Stability Fixes**
+  - Security Fixes for CVE
+  - Fixed SOCKS5 proxy authentication when --proxy-user / --proxy-pass are supplied
 ## Version 3.2.25 (28th Dec 2025)
 - **Security Updates and Stability Fixes**
   - Security Fixes for CVE
