@@ -2,7 +2,6 @@ name: Typesense crawler for prod
 
 on:
     push:
-    pull_request:
         branches:
             - testmuCom
 
