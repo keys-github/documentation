@@ -406,6 +406,7 @@ function youtubeIframe() {
     var image = new Image();
     image.src = source;
     image.alt = "Youtube Image";
+    image.classList.add("no-zoom");
     image.loading = loading ? loading : "";
     image.addEventListener("load", function () {
       youtube[i].appendChild(image);
