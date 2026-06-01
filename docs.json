@@ -13,7 +13,8 @@
   },
   "seo": {
     "metatags": {
-      "robots": "noindex, nofollow"
+      "robots": "noindex, nofollow",
+      "canonical": "https://www.testmuai.com/support"
     }
   },
   "fonts": {
