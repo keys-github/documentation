@@ -197,10 +197,4 @@ export default function CookieTrackingLogin(e) {
   };
 
 
-setTimeout(() => {
-  if (typeof document !== "undefined") {
-    setInitialReferrer()
-  }
-}, 500);
-
 
