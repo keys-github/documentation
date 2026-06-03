@@ -158,16 +158,16 @@ export default function CookieTrackingLogin(e) {
     }
 
     // Get the current href from the anchor element (which may already have GA parameters)
-    const anchorElement = e.currentTarget;
-    const currentHref = anchorElement?.href || `https://accounts.lambdatest.com/login`;
+    // const anchorElement = e.currentTarget;
+    // const currentHref = anchorElement?.href || `https://accounts.lambdatest.com/login`;
 
-    // Append cookies to the current URL (preserving any existing query params like GA)
-    const urlWithCookies = getLoginUrlWithCookies(currentHref);
+    // // Append cookies to the current URL (preserving any existing query params like GA)
+    // const urlWithCookies = getLoginUrlWithCookies(currentHref);
 
-    // Update the href before navigation
-    if (anchorElement) {
-      anchorElement.href = urlWithCookies;
-    }
+    // // Update the href before navigation
+    // if (anchorElement) {
+    //   anchorElement.href = urlWithCookies;
+    // }
   };
 
   export const CookieTrackingSignup = (e) => {
