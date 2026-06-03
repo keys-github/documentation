@@ -118,6 +118,31 @@ export const setInitialReferrer = () => {
 
   if (!isAllowedDomain) return;
 
+  const authPaths = ['/login', '/register'];
+  const matchesAuthPath = (pathname) =>
+    authPaths.some(path => pathname === path || pathname === path + '/' || pathname.startsWith(path + '?'));
+
+  const isAuthPage = matchesAuthPath(window.location.pathname);
+
+  if (isAuthPage) {
+    if (document.referrer) {
+      try {
+        const referrerUrl = new URL(document.referrer);
+        const referrerHost = referrerUrl.hostname;
+        const isReferrerAllowed = allowedDomains.some(domain =>
+          referrerHost === domain || referrerHost.endsWith(`.${domain}`)
+        );
+        if (isReferrerAllowed && !matchesAuthPath(referrerUrl.pathname)) {
+          writeLocalCookie('initial_referrer', document.referrer, 30);
+          return;
+        }
+      } catch (e) {}
+    }
+    // Direct landing (no referrer, external referrer, or referrer is also auth page)
+    writeLocalCookie('initial_referrer', window.location.href, 30);
+    return;
+  }
+
   writeLocalCookie('initial_referrer', window.location.href, 30);
 };
 export default function CookieTrackingLogin(e) {
