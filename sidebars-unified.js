@@ -118,5 +118,4 @@ const docsSidebar = [
 
 module.exports = {
   docsSidebar,
-  ...(s.KaneCLISidebar && { KaneCLISidebar: s.KaneCLISidebar }),
 };
