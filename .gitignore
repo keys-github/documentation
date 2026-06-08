@@ -12,6 +12,9 @@
 /src/data/api/all-apis.json
 /src/pages/api-doc/*/
 
+# Claude
+CLAUDE.md
+
 # Misc
 .DS_Store
 .venv-validate-smartui/
