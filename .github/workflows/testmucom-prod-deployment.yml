@@ -29,6 +29,7 @@ jobs:
           touch .env
           echo "HOST=${{ secrets.TYPESENSE_HOST }}" >> .env
           echo "API=${{ secrets.PUBLIC_APY_TYPESENSE }}" >> .env
+          echo "TYPESENSE_COLLECTION_NAME=testmuai" >> .env
 
      
 

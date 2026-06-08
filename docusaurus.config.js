@@ -55,7 +55,7 @@ module.exports = {
       }
     },
     typesense: {
-      typesenseCollectionName: 'lambdatest-internal',
+      typesenseCollectionName: process.env.TYPESENSE_COLLECTION_NAME || 'lambdatest-internal',
       typesenseServerConfig: {
         nodes: [
           {
