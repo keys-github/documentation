@@ -12,8 +12,6 @@ jobs:
     # environment: stage
     env:
       INDEX_NAME: lambdatest-internal
-      START_URL: https://stage.testmuinternal.ai/support/
-      SITEMAP_URL: https://stage.testmuinternal.ai/support/sitemap.xml
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3   # You MUST checkout your repository first!

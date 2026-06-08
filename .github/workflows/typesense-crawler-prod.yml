@@ -12,8 +12,6 @@ jobs:
     # environment: prod
     env:
       INDEX_NAME: testmuai
-      START_URL: https://www.testmuai.com/support/
-      SITEMAP_URL: https://www.testmuai.com/support/sitemap.xml
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3   # You MUST checkout your repository first!
