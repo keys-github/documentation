@@ -10,9 +10,16 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # environment: prod
+    env:
+      INDEX_NAME: testmuai
+      START_URL: https://www.testmuai.com/support/
+      SITEMAP_URL: https://www.testmuai.com/support/sitemap.xml
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3   # You MUST checkout your repository first!
+
+      - name: Prepare config
+        run: envsubst < config.json > config.processed.json
 
       - name: Run DocSearch Scraper
         uses: celsiusnarhwal/typesense-scraper@v2
@@ -21,7 +28,7 @@ jobs:
           host: ${{ secrets.TYPESENSE_HOST }}
           port: 443
           protocol: https
-          config: config.json
+          config: config.processed.json
 
           # run: |
           #     cat config.json

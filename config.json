@@ -1,10 +1,10 @@
 {
-    "index_name": "testmuai",
+    "index_name": "${INDEX_NAME}",
     "start_urls": [
-      "https://www.testmuai.com/support/"
+      "${START_URL}"
     ],
     "sitemap_urls": [
-      "https://www.testmuai.com/support/sitemap.xml"
+      "${SITEMAP_URL}"
     ],
     "sitemap_alternate_links": true,
     "stop_urls": [
