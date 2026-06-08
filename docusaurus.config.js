@@ -55,7 +55,7 @@ module.exports = {
       }
     },
     typesense: {
-      typesenseCollectionName: 'testmuai',
+      typesenseCollectionName: 'lambdatest-internal',
       typesenseServerConfig: {
         nodes: [
           {
@@ -67,8 +67,6 @@ module.exports = {
         apiKey: process.env.API,
       },
       typesenseSearchParameters: {
-        query_by: 'hierarchy.lvl0,hierarchy.lvl1,hierarchy.lvl2,hierarchy.lvl3,hierarchy.lvl4,content',
-        query_by_weights: '6,5,4,3,2,1',
         enable_analytics: true,
       },
       contextualSearch: true,
@@ -117,3 +115,4 @@ module.exports = {
     ],
   ],
 };
+
