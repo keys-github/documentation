@@ -3389,6 +3389,11 @@ module.exports = {
         items: [
           {
             type: "doc",
+            label: "SmartUI in Automation Dashboard",
+            id: "smartui-automation-dashboard",
+          },
+          {
+            type: "doc",
             label: "Baseline Management",
             id: "smartui-baseline-management",
           },
