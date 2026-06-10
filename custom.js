@@ -128,7 +128,7 @@
       );
       if (!isAllowedDomain) return baseUrl;
 
-      const allowedCookies = ['utm', 'utm_base', 'lt_gclid', 'gclid', 'msclkid', 'fbclid', 'initial_referrer', 'exit_popup_dismissed', 'google_button_clicked'];
+      const allowedCookies = ['utm', 'utm_base', 'lt_gclid', 'gclid', 'msclkid', 'fbclid', 'initial_referrer', 'exit_popup_dismissed', 'google_button_clicked', 'previous_url_testmu'];
       const cookies = document.cookie;
       if (!cookies || cookies.trim() === '') return baseUrl;
 
