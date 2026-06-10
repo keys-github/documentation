@@ -162,6 +162,7 @@
     };
 
     window.addEventListener('DOMContentLoaded', (event) => {
+      writeCookie("previous_url_testmu", document.referrer || window.location.href);
       getUsernameToken('dom');
 
       // Attach CookieTrackingSignup handler to the navbar "Get Started" button
@@ -341,6 +342,7 @@
     (function (history) {
       var pushState = history.pushState;
       history.pushState = function (state) {
+        writeCookie("previous_url_testmu", window.location.href);
         setTimeout(function () {
           if (typeof document !== "undefined") {
             var youtube = document.querySelectorAll(".youtube");
