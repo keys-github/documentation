@@ -93,6 +93,8 @@ This feature closes that gap. The visual results live next to the test that gene
 
 Open any test in the Automation Dashboard and select the **SmartUI tab**. You'll see the associated Project and Build, a total screenshot count, and a status roll-up showing how many screenshots are new, changed, approved, or rejected.
 
+<img loading="lazy" src={require('../assets/images/smartui-automation-dashboard/smartui-tab-overview.png').default} alt="SmartUI tab in the Automation Dashboard test view showing the build summary, screenshot count, status counts, and a screenshot grid alongside the test video" className="doc_img" style={{ width: "auto", height: "auto"}}/>
+
 ### 2. Grid and List views
 
 Toggle between a **Grid view** (screenshot thumbnails, ideal for a quick visual scan) and a **List view** (compact rows with per-screenshot status counts, ideal for dense builds). Use whichever suits the run.
