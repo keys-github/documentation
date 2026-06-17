@@ -54,7 +54,7 @@ Playwright Android automation is supported on <BrandName /> across **Node.js, Ja
 
 :::tip Supported Versions
 - Playwright versions **v1.20.0** to **v1.59.0** are supported for Android real device testing (excluding `v1.54.0`).
-- **Node.js** uses the `_android.connect()` API. **Java, C#, and Python** use `chromium.connectOverCDP()`. All use stock Playwright packages, no custom forks required.
+- **Node.js, Java, C#, and Python** all use the `chromium.connect()` API. All use stock Playwright packages, no custom forks required.
 - Playwright v1.53.0 is currently supported for Playwright C# (for Android & iOS).
 :::
 
@@ -142,39 +142,35 @@ dotnet add package Microsoft.Playwright
 <TabItem value="nodejs" label="Node.js" default>
 
 ```javascript title="playwright-android-test.js"
-const { _android } = require("playwright");
+const { chromium } = require("playwright");
 
 (async () => {
   const capabilities = {
     "LT:Options": {
-      "platformName": "android",
-      "deviceName": "Pixel 5",
-      "platformVersion": "11",
-      "isRealMobile": true,
-      "build": "Playwright Android Build",
-      "name": "Playwright Android Test",
-      "user": process.env.LT_USERNAME,
-      "accessKey": process.env.LT_ACCESS_KEY,
-      "network": true,
-      "video": true,
-      "console": true,
+      platformName: "android",
+      deviceName: "Pixel 5",
+      platformVersion: "11",
+      isRealMobile: true,
+      build: "Playwright Android Build",
+      name: "Playwright Android Test",
+      user: process.env.LT_USERNAME,
+      accessKey: process.env.LT_ACCESS_KEY,
+      network: true,
+      video: true,
+      console: true,
+      playwrightClientVersion: "1.53.0",
     },
   };
 
-  const device = await _android.connect(
-    `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
-      JSON.stringify(capabilities)
-    )}`
-  );
+  const cdpUrl = `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
+    JSON.stringify(capabilities)
+  )}`;
 
-  console.log(`Model: ${device.model()}, Serial: ${device.serial()}`);
-  await device.shell("am force-stop com.android.chrome");
+  const browser = await chromium.connect(cdpUrl);
+  const context = browser.contexts()[0] || (await browser.newContext());
+  const page = context.pages()[0] || (await context.newPage());
 
-  const context = await device.launchBrowser();
-  context.setDefaultTimeout(120000);
-  const page = await context.newPage();
-
-  await page.goto("https://duckduckgo.com");
+  await page.goto("https://duckduckgo.com", { timeout: 30000 });
   await page.locator('[name="q"]').fill("LambdaTest");
   await page.locator('[name="q"]').press("Enter");
   await page.waitForTimeout(3000);
@@ -204,7 +200,7 @@ const { _android } = require("playwright");
 
   await page.close();
   await context.close();
-  await device.close();
+  await browser.close();
 })();
 ```
 
@@ -253,7 +249,7 @@ def main():
     )
 
     with sync_playwright() as p:
-        browser = p.chromium.connect_over_cdp(cdp_url)
+        browser = p.chromium.connect(cdp_url)
         context = browser.contexts[0] if browser.contexts else browser.new_context()
         page = context.pages[0] if context.pages else context.new_page()
 
@@ -302,31 +298,34 @@ import com.microsoft.playwright.*;
 import com.google.gson.Gson;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PlaywrightAndroidTest {
     public static void main(String[] args) {
-        Map<String, Object> ltOptions = Map.of(
-            "platformName", "android",
-            "deviceName", "Pixel 5",
-            "platformVersion", "11",
-            "isRealMobile", true,
-            "build", "Playwright Android Build",
-            "name", "Playwright Android Test",
-            "user", System.getenv("LT_USERNAME"),
-            "accessKey", System.getenv("LT_ACCESS_KEY"),
-            "network", true,
-            "video", true,
-            "console", true
-        );
+        Map<String, Object> ltOptions = new LinkedHashMap<>();
+        ltOptions.put("platformName", "android");
+        ltOptions.put("deviceName", "Pixel 5");
+        ltOptions.put("platformVersion", "11");
+        ltOptions.put("isRealMobile", true);
+        ltOptions.put("build", "Playwright Android Build");
+        ltOptions.put("name", "Playwright Android Test");
+        ltOptions.put("user", System.getenv("LT_USERNAME"));
+        ltOptions.put("accessKey", System.getenv("LT_ACCESS_KEY"));
+        ltOptions.put("network", true);
+        ltOptions.put("video", true);
+        ltOptions.put("console", true);
+        ltOptions.put("playwrightClientVersion", "1.53.0");
 
-        Map<String, Object> capabilities = Map.of("LT:Options", ltOptions);
+        Map<String, Object> capabilities = new LinkedHashMap<>();
+        capabilities.put("LT:Options", ltOptions);
+
         String capsJson = new Gson().toJson(capabilities);
         String cdpUrl = "wss://cdp.lambdatest.com/playwright?capabilities="
             + URLEncoder.encode(capsJson, StandardCharsets.UTF_8);
 
         try (Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.chromium().connectOverCDP(cdpUrl);
+            Browser browser = playwright.chromium().connect(cdpUrl);
             BrowserContext context = browser.contexts().size() > 0
                 ? browser.contexts().get(0) : browser.newContext();
             Page page = context.pages().size() > 0
@@ -372,7 +371,6 @@ mvn compile exec:java -Dexec.mainClass="com.lambdatest.PlaywrightAndroidTest"
 ```csharp title="PlaywrightAndroidTest.cs"
 using Microsoft.Playwright;
 using System.Text.Json;
-using System.Web;
 
 var capabilities = new Dictionary<string, object>
 {
@@ -394,10 +392,10 @@ var capabilities = new Dictionary<string, object>
 };
 
 var capsJson = JsonSerializer.Serialize(capabilities);
-var cdpUrl = $"wss://cdp.lambdatest.com/playwright?capabilities={HttpUtility.UrlEncode(capsJson)}";
+var cdpUrl = $"wss://cdp.lambdatest.com/playwright?capabilities={Uri.EscapeDataString(capsJson)}";
 
 using var playwright = await Playwright.CreateAsync();
-var browser = await playwright.Chromium.ConnectOverCDPAsync(cdpUrl);
+var browser = await playwright.Chromium.ConnectAsync(cdpUrl);
 var context = browser.Contexts.Count > 0
     ? browser.Contexts[0] : await browser.NewContextAsync();
 var page = context.Pages.Count > 0
