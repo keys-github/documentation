@@ -54,7 +54,7 @@ Playwright Android automation is supported on <BrandName /> across **Node.js, Ja
 
 :::tip Supported Versions
 - Playwright versions **v1.20.0** to **v1.59.0** are supported for Android real device testing (excluding `v1.54.0`).
-- **Node.js, Java, C#, and Python** all use the `chromium.connect()` API. All use stock Playwright packages, no custom forks required.
+- **Java, C#, and Python** use the `chromium.connect()` API. **Node.js** supports both `chromium.connect()` and the Android-native `_android.connect()` API. All use stock Playwright packages, no custom forks required.
 - Playwright v1.53.0 is currently supported for Playwright C# (for Android & iOS).
 :::
 
@@ -141,6 +141,10 @@ dotnet add package Microsoft.Playwright
 
 <TabItem value="nodejs" label="Node.js" default>
 
+Node.js supports both the Chromium API (`chromium.connect()`) and the Android-native API (`_android.connect()`).
+
+**Using `chromium.connect()`**
+
 ```javascript title="playwright-android-test.js"
 const { chromium } = require("playwright");
 
@@ -199,8 +203,75 @@ const { chromium } = require("playwright");
   }
 
   await page.close();
-  await context.close();
   await browser.close();
+})();
+```
+
+**Using `_android.connect()`**
+
+```javascript title="playwright-android-test.js"
+const { _android } = require("playwright");
+
+(async () => {
+  const capabilities = {
+    "LT:Options": {
+      platformName: "android",
+      deviceName: "Pixel 5",
+      platformVersion: "11",
+      isRealMobile: true,
+      build: "Playwright Android Build",
+      name: "Playwright Android Test",
+      user: process.env.LT_USERNAME,
+      accessKey: process.env.LT_ACCESS_KEY,
+      network: true,
+      video: true,
+      console: true,
+      playwrightClientVersion: "1.53.0",
+    },
+  };
+
+  const cdpUrl = `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
+    JSON.stringify(capabilities)
+  )}`;
+
+  const device = await _android.connect(cdpUrl);
+  console.log(`Model: ${device.model()}, Serial: ${device.serial()}`);
+  await device.shell("am force-stop com.android.chrome");
+
+  const context = await device.launchBrowser();
+  context.setDefaultTimeout(120000);
+  const page = await context.newPage();
+
+  await page.goto("https://duckduckgo.com");
+  await page.locator('[name="q"]').fill("LambdaTest");
+  await page.locator('[name="q"]').press("Enter");
+  await page.waitForTimeout(3000);
+
+  const title = await page.title();
+  console.log("Page title:", title);
+
+  try {
+    if (title.includes("LambdaTest")) {
+      await page.evaluate(
+        (_) => {},
+        `lambdatest_action: ${JSON.stringify({
+          action: "setTestStatus",
+          arguments: { status: "passed", remark: "Title verified" },
+        })}`
+      );
+    }
+  } catch (e) {
+    await page.evaluate(
+      (_) => {},
+      `lambdatest_action: ${JSON.stringify({
+        action: "setTestStatus",
+        arguments: { status: "failed", remark: e.message },
+      })}`
+    );
+  }
+
+  await page.close();
+  await device.close();
 })();
 ```
 
@@ -274,7 +345,6 @@ def main():
             )
 
         page.close()
-        context.close()
         browser.close()
 
 if __name__ == "__main__":
@@ -351,7 +421,6 @@ public class PlaywrightAndroidTest {
             }
 
             page.close();
-            context.close();
             browser.close();
         }
     }
@@ -424,7 +493,6 @@ catch (Exception e)
 }
 
 await page.CloseAsync();
-await context.CloseAsync();
 await browser.CloseAsync();
 ```
 
