@@ -94,46 +94,6 @@
         ]
       },
       {
-        "tab": "Web Automation",
-        "icon": "code",
-        "pages": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "docs/getting-started-with-testmu-automation",
-              "docs/getting-started-with-cypress-testing",
-              "docs/playwright-testing",
-              "docs/puppeteer-testing",
-              "docs/k6-browser-testing"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "App Automation",
-        "icon": "mobile",
-        "pages": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "docs/app-automation",
-              "docs/getting-started-with-appium-testing",
-              "docs/getting-started-with-espresso-testing",
-              "docs/getting-started-with-xcuitest"
-            ]
-          },
-          {
-            "group": "Configure & Manage",
-            "pages": [
-              "docs/app-automation-on-emulators-simulators",
-              "docs/app-automation-dashboard",
-              "docs/app-automation-using-app-center",
-              "docs/app-automation-slack-notifications"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Browser Cloud",
         "icon": "cloud",
         "pages": [
@@ -220,59 +180,6 @@
             "pages": [
               "docs/getting-started-with-agent-testing-platform",
               "docs/agent-testing-platform-faqs"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Real Time",
-        "icon": "display",
-        "pages": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "docs/real-time",
-              "docs/getting-started-with-desktop-browser-real-time-testing",
-              "docs/getting-started-with-mobile-browser-real-time-testing",
-              "docs/getting-started-with-mobile-app-real-time-testing"
-            ]
-          },
-          {
-            "group": "Tools & Features",
-            "pages": [
-              "docs/real-time-desktop-browser-testing-tools",
-              "docs/real-time-mobile-browser-testing-tools",
-              "docs/real-time-mobile-app-testing-tools",
-              "docs/real-time-recents-and-favourites",
-              "docs/real-time-upload-and-download-files",
-              "docs/real-time-locally-hosted-pages",
-              "docs/real-time-testing-troubleshooting"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Test Insights",
-        "icon": "chart-line",
-        "pages": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "docs/analytics-test-insights"
-            ]
-          },
-          {
-            "group": "Insights",
-            "pages": [
-              "docs/analytics-test-case-insights",
-              "docs/analytics-build-insights"
-            ]
-          },
-          {
-            "group": "Dashboards",
-            "pages": [
-              "docs/analytics-create-dashboard",
-              "docs/analytics-dashboard-templates"
             ]
           }
         ]
