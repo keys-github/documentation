@@ -72,20 +72,10 @@ jobs:
           echo "Mapped products: $PRODUCTS"
           echo "list=$PRODUCTS" >> "$GITHUB_OUTPUT"
 
-      - name: Generate GitHub App Token
-        uses: LambdatestIncPrivate/create_github_app_token@v1
-        id: token
-        with:
-          app-id: ${{ vars.LT_USER_ACCESS_TOKEN_APP_ID }}
-          private-key: ${{ secrets.LT_USER_ACCESS_TOKEN_PRIVATE_KEY }}
-          installation-id: ${{ secrets.GH_APP_INSTALLATION_ID }}
-          repositories: "product-context"
-          permissions: "write"
-
       - name: Dispatch to product-context
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ steps.token.outputs.token }}
+          token: ${{ secrets.PRODUCT_CONTEXT_DISPATCH_TOKEN }}
           repository: LambdatestIncPrivate/product-context
           event-type: documentation-updated
           client-payload: |
