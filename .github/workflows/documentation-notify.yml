@@ -1,0 +1,87 @@
+# =============================================================================
+# INSTALL THIS FILE IN: LambdaTest/documentation  ->  .github/workflows/documentation-notify.yml
+# (It does NOT belong in product-context's own .github/workflows — it is the
+#  *sender* that lives in the docs repo. It is kept here only as the canonical copy.)
+#
+# Purpose: when a PR merges into the `stage` branch, notify product-context to
+#          re-crawl the affected product docs (Loop 2 of the auto-update system).
+#
+# One-time setup in LambdaTest/documentation:
+#   Settings -> Secrets and variables -> Actions -> New repository secret
+#     Name:  PRODUCT_CONTEXT_DISPATCH_TOKEN
+#     Value: a fine-grained PAT / GitHub App token with contents:write (dispatch)
+#            on LambdatestIncPrivate/product-context
+# =============================================================================
+name: Notify product-context on docs merge
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [stage]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    # Only when the PR was actually merged (not just closed)
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (for changed-file detection)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive changed product areas
+        id: products
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # List files changed in the merged PR and map doc paths -> product keys.
+          # Adjust the mapping to match the documentation repo's folder layout.
+          FILES=$(gh pr view "$PR_NUMBER" --json files --jq '.files[].path' || true)
+          echo "Changed files:"; echo "$FILES"
+
+          PRODUCTS=""
+          add() { case ",$PRODUCTS," in *",$1,"*) ;; *) PRODUCTS="${PRODUCTS:+$PRODUCTS,}$1";; esac; }
+
+          while IFS= read -r f; do
+            case "$f" in
+              *kaneai*|*kane-ai*)            add "KaneAI" ;;
+              *test-manager*|*test-management*) add "Test Manager" ;;
+              *hyperexecute*)                add "HyperExecute" ;;
+              *smartui*|*smart-ui*|*visual-regression*) add "SmartUI" ;;
+              *insights*|*dashboard*|*analytics*|*widget*) add "Insights" ;;
+              *accessibility*)               add "Accessibility Testing" ;;
+              *agent-to-agent*|*a2a*)        add "Agent To Agent" ;;
+              *real-time*|*realtime*)        add "Real Time" ;;
+              *real-device*)                 add "Real Device" ;;
+              *appium*|*virtual-device*|*app-automation*) add "App Automation" ;;
+              *cypress*|*playwright*|*puppeteer*|*web-automation*) add "Web Automation" ;;
+              *scanner*)                     add "Web Scanner" ;;
+              *tunnel*|*local*)              add "Testing Locally" ;;
+              *sso*|*scim*|*security*|*settings*) add "Settings and Security" ;;
+              *integration*|*ci-cd*)         add "Integrations" ;;
+            esac
+          done <<< "$FILES"
+
+          # Fall back to a full crawl if we couldn't map anything specific.
+          [ -z "$PRODUCTS" ] && PRODUCTS="all"
+          echo "Mapped products: $PRODUCTS"
+          echo "list=$PRODUCTS" >> "$GITHUB_OUTPUT"
+
+      - name: Dispatch to product-context
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PRODUCT_CONTEXT_DISPATCH_TOKEN }}
+          repository: LambdatestIncPrivate/product-context
+          event-type: documentation-updated
+          client-payload: |
+            {
+              "products": "${{ steps.products.outputs.list }}",
+              "source_pr": "${{ github.event.pull_request.html_url }}",
+              "merged_by": "${{ github.event.pull_request.merged_by.login }}",
+              "branch": "stage"
+            }
